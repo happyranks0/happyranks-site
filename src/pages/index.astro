@@ -8,6 +8,11 @@ import Layout from '../layouts/Layout.astro';
     <meta name="description" content="Get found by AI. Convert humans. Grow with systems." />
   </slot>
 
+  <!-- Phosphor icons stylesheet (no JS needed) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+
   <!-- ═══ NAV ═══ -->
   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b" style="background-color: rgba(10,10,10,0.75); border-color: #161616;">
     <div class="container-wide flex items-center justify-between h-16">
@@ -28,103 +33,177 @@ import Layout from '../layouts/Layout.astro';
   </nav>
 
   <!-- ═══ HERO ═══ -->
-  <section class="relative pt-36 md:pt-44 pb-24 md:pb-32 overflow-hidden">
-    <div class="absolute inset-0 bg-grid bg-grid-mask opacity-60"></div>
-    <div class="orb-red" style="top: -300px; left: 50%; transform: translateX(-50%); opacity: 0.5;"></div>
+  <section class="relative pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-grid bg-grid-mask opacity-50"></div>
+    <div class="orb-red" style="top: -250px; left: 50%; transform: translateX(-50%); opacity: 0.5;"></div>
 
     <div class="container-wide relative">
-      <div class="max-w-4xl mx-auto text-center">
-        <!-- Status pill -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[13px] mb-10 border" style="background-color: rgba(255,49,49,0.06); border-color: rgba(255,49,49,0.25); color: #ff7a7a;">
-          <span class="w-1.5 h-1.5 rounded-full pulse-dot" style="background-color: var(--color-brand);"></span>
-          Built for the AI era
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <!-- LEFT: Copy -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[13px] mb-8 border" style="background-color: rgba(255,49,49,0.06); border-color: rgba(255,49,49,0.25); color: #ff7a7a;">
+            <span class="w-1.5 h-1.5 rounded-full pulse-dot" style="background-color: var(--color-brand);"></span>
+            Built for the AI era
+          </div>
+
+          <h1 class="text-display-1 mb-7">
+            <span class="text-gradient-light">Marketing that</span><br />
+            <span class="text-gradient-light">AI can find.</span><br />
+            <span class="text-gradient-brand">Humans can trust.</span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-[#999] max-w-xl mb-9 leading-relaxed">
+            We build marketing systems for mid-market businesses — 
+            engineered to be cited by AI, optimized for human conversion, 
+            and automated to scale.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
+            <a href="/vital" class="btn btn-primary text-[15px] px-6 py-3.5">
+              Run a free VITAL audit
+              <i class="ph ph-arrow-right" style="font-size: 16px;"></i>
+            </a>
+            <a href="/services" class="btn btn-ghost text-[15px] px-6 py-3.5">
+              <i class="ph ph-play" style="font-size: 16px;"></i>
+              See how it works
+            </a>
+          </div>
+
+          <!-- Quick stats with icons -->
+          <div class="flex flex-wrap items-center gap-6 text-sm">
+            <div class="flex items-center gap-2 text-[#888]">
+              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
+              <span>No long-term contract</span>
+            </div>
+            <div class="flex items-center gap-2 text-[#888]">
+              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
+              <span>Full-system reporting</span>
+            </div>
+            <div class="flex items-center gap-2 text-[#888]">
+              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
+              <span>Built for AI era</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Headline -->
-        <h1 class="text-display-1 mb-8">
-          <span class="text-gradient-light">Marketing that</span><br />
-          <span class="text-gradient-light">AI can find.</span><br />
-          <span class="text-gradient-brand">Humans can trust.</span>
-        </h1>
+        <!-- RIGHT: Visual dashboard mock -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <!-- Floating visual element behind -->
+            <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-30" style="background: radial-gradient(circle, #ff3131, transparent 70%); filter: blur(30px);"></div>
 
-        <!-- Subhead -->
-        <p class="text-lg md:text-xl text-[#999] max-w-2xl mx-auto leading-relaxed mb-12">
-          We build marketing systems for mid-market businesses — 
-          engineered to be cited by AI, optimized for human conversion, 
-          and automated to scale.
-        </p>
+            <div class="card card-glow p-6 relative">
+              <!-- Window chrome -->
+              <div class="flex items-center gap-1.5 mb-5 pb-4 border-b" style="border-color: #1f1f1f;">
+                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #ef4444;"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #eab308;"></div>
+                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #22c55e;"></div>
+                <div class="flex-1 mx-3">
+                  <div class="text-[11px] mono text-[#666] text-center">happyranks.com/audit</div>
+                </div>
+                <i class="ph ph-arrow-square-out" style="color: #555; font-size: 14px;"></i>
+              </div>
 
-        <!-- Single primary CTA -->
-        <div class="flex flex-col items-center gap-3">
-          <a href="/vital" class="btn btn-primary text-[15px] px-7 py-3.5">
-            Run a free VITAL audit
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <p class="text-xs text-[#666]">50-point scan · 5 dimensions · PDF in your inbox</p>
-        </div>
-      </div>
+              <!-- Big score -->
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <div class="text-xs text-[#666] uppercase tracking-wider mb-1">VITAL Score</div>
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="text-6xl font-bold text-gradient-brand leading-none">54</span>
+                    <span class="text-xl text-[#444]">/100</span>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-[10px] text-[#555] uppercase tracking-wider mb-1">Grade</div>
+                  <div class="text-2xl font-bold" style="color: var(--color-brand);">C+</div>
+                </div>
+              </div>
 
-      <!-- Live VITAL preview — full width, integrated, not a side card -->
-      <div class="mt-24 md:mt-32 max-w-4xl mx-auto">
-        <div class="card card-glow p-6 md:p-8">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 pb-6 border-b" style="border-color: #1f1f1f;">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-md flex items-center justify-center font-bold text-sm" style="background-color: rgba(255,49,49,0.15); color: var(--color-brand);">V</div>
+              <!-- Dimension bars -->
+              <div class="space-y-3 mb-5">
+                <div>
+                  <div class="flex justify-between text-[12px] mb-1.5">
+                    <span class="text-[#aaa] flex items-center gap-1.5">
+                      <i class="ph ph-eye" style="font-size: 14px;"></i>
+                      Visibility
+                    </span>
+                    <span class="mono text-[#888]">80</span>
+                  </div>
+                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 80%; background-color: #22c55e;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[12px] mb-1.5">
+                    <span class="text-[#aaa] flex items-center gap-1.5">
+                      <i class="ph ph-paint-brush" style="font-size: 14px;"></i>
+                      Impression
+                    </span>
+                    <span class="mono text-[#888]">46</span>
+                  </div>
+                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 46%; background-color: #eab308;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[12px] mb-1.5">
+                    <span class="text-[#aaa] flex items-center gap-1.5">
+                      <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
+                      Transition
+                    </span>
+                    <span class="mono" style="color: var(--color-brand);">33</span>
+                  </div>
+                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 33%; background-color: var(--color-brand);"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[12px] mb-1.5">
+                    <span class="text-[#aaa] flex items-center gap-1.5">
+                      <i class="ph ph-robot" style="font-size: 14px;"></i>
+                      Automation
+                    </span>
+                    <span class="mono text-[#888]">42</span>
+                  </div>
+                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 42%; background-color: #eab308;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[12px] mb-1.5">
+                    <span class="text-[#aaa] flex items-center gap-1.5">
+                      <i class="ph ph-chart-line-up" style="font-size: 14px;"></i>
+                      Learning
+                    </span>
+                    <span class="mono text-[#888]">68</span>
+                  </div>
+                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 68%; background-color: #22c55e;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom alert -->
+              <div class="pt-4 border-t flex items-center gap-3" style="border-color: #1f1f1f;">
+                <div class="w-8 h-8 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
+                  <i class="ph-fill ph-warning" style="font-size: 16px;"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12px] font-medium text-white">Biggest leak: Transition</div>
+                  <div class="text-[11px] text-[#666] truncate">No primary CTA above the fold</div>
+                </div>
+                <a href="/vital" class="text-[12px] font-semibold whitespace-nowrap" style="color: var(--color-brand);">Fix →</a>
+              </div>
+            </div>
+
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 card px-4 py-3 hidden md:flex items-center gap-2.5 float">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: rgba(34,197,94,0.15); color: #22c55e;">
+                <i class="ph-fill ph-trend-up" style="font-size: 16px;"></i>
+              </div>
               <div>
-                <div class="text-sm font-medium text-white">happyranks.com</div>
-                <div class="text-xs text-[#666] mono">v2.0 · Live audit · Just now</div>
-              </div>
-            </div>
-            <div class="flex items-baseline gap-2">
-              <span class="text-5xl font-bold text-gradient-brand">54</span>
-              <span class="text-xl text-[#555]">/100</span>
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-5 gap-x-6 gap-y-4">
-            <div>
-              <div class="flex justify-between text-[13px] mb-2">
-                <span class="text-[#aaa]">Visibility</span>
-                <span class="mono text-[#888]">80</span>
-              </div>
-              <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                <div class="h-full rounded-full" style="width: 80%; background-color: #22c55e;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-[13px] mb-2">
-                <span class="text-[#aaa]">Impression</span>
-                <span class="mono text-[#888]">46</span>
-              </div>
-              <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                <div class="h-full rounded-full" style="width: 46%; background-color: #eab308;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-[13px] mb-2">
-                <span class="text-[#aaa]">Transition</span>
-                <span class="mono text-[#ff7a7a]">33</span>
-              </div>
-              <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                <div class="h-full rounded-full" style="width: 33%; background-color: var(--color-brand);"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-[13px] mb-2">
-                <span class="text-[#aaa]">Automation</span>
-                <span class="mono text-[#888]">42</span>
-              </div>
-              <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                <div class="h-full rounded-full" style="width: 42%; background-color: #eab308;"></div>
-              </div>
-            </div>
-            <div>
-              <div class="flex justify-between text-[13px] mb-2">
-                <span class="text-[#aaa]">Learning</span>
-                <span class="mono text-[#888]">68</span>
-              </div>
-              <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                <div class="h-full rounded-full" style="width: 68%; background-color: #22c55e;"></div>
+                <div class="text-[10px] text-[#666] uppercase tracking-wider">Avg client lift</div>
+                <div class="text-sm font-semibold text-white">3.2x leads</div>
               </div>
             </div>
           </div>
@@ -133,167 +212,221 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ TRUST BAR ═══ -->
-  <section class="py-16 border-y" style="border-color: #141414;">
+  <!-- ═══ LOGO STRIP ═══ -->
+  <section class="py-12 border-y" style="border-color: #141414;">
     <div class="container-wide">
-      <p class="text-center text-xs text-[#555] mb-10 uppercase tracking-[0.15em]">Trusted by growing businesses</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-16 gap-y-4">
-        <span class="text-[15px] font-medium text-[#444] hover:text-[#777] transition-colors">Tutti Rouge</span>
-        <span class="text-[15px] font-medium text-[#444] hover:text-[#777] transition-colors">Lotus Mahal</span>
-        <span class="text-[15px] font-medium text-[#444] hover:text-[#777] transition-colors">Think Accounting</span>
-        <span class="text-[15px] font-medium text-[#444] hover:text-[#777] transition-colors">Viruksha Gardens</span>
-        <span class="text-[15px] font-medium text-[#444] hover:text-[#777] transition-colors">Efficy</span>
+      <p class="text-center text-xs text-[#555] mb-8 uppercase tracking-[0.15em]">Trusted by growing businesses</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-3">
+        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Tutti Rouge</span>
+        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Lotus Mahal</span>
+        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Think Accounting</span>
+        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Viruksha Gardens</span>
+        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Efficy</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══ WHAT WE DO — Three horizontal rows, generous space ═══ -->
+  <!-- ═══ WHAT WE DO — Three big rows with custom visuals ═══ -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-24">
+      <div class="max-w-2xl mb-20">
         <p class="eyebrow mb-5">What we do</p>
-        <h2 class="text-display-2 mb-6">One system. <span class="text-gradient-brand">Seven capabilities.</span></h2>
+        <h2 class="text-display-2 mb-6">One system. <span class="text-gradient-brand">Three pillars.</span></h2>
         <p class="text-lg text-[#888] leading-relaxed">
-          Three core pillars. Built into every engagement. 
-          Backed by tooling, automation, and AI that you can actually own.
+          Seven capabilities. Three core outcomes. 
+          Every engagement is built to be found, to convert, and to run without you.
         </p>
       </div>
 
-      <!-- Row 1 -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-12 mb-24 items-start">
-        <div class="md:col-span-1">
-          <div class="mono text-sm text-[#555]">01</div>
+      <!-- PILLAR 1: Be found by AI -->
+      <div class="grid md:grid-cols-12 gap-8 md:gap-10 mb-20 items-center">
+        <div class="md:col-span-5 md:order-2">
+          <div class="relative">
+            <!-- Visual: AI search results mockup with real Unsplash image -->
+            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
+              <img
+                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop"
+                alt="AI search interface"
+                class="w-full h-full object-cover opacity-50"
+                loading="lazy"
+              />
+              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
+              <!-- Overlay UI -->
+              <div class="absolute inset-0 p-5 flex flex-col justify-end">
+                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
+                  <div class="flex items-center gap-2 mb-2">
+                    <div class="w-5 h-5 rounded" style="background-color: #10a37f;"></div>
+                    <span class="text-[10px] mono text-[#888]">ChatGPT</span>
+                    <span class="text-[10px] mono text-[#22c55e] ml-auto">cited</span>
+                  </div>
+                  <div class="text-[12px] text-white">"Best marketing agency for AI visibility"</div>
+                  <div class="text-[10px] text-[#666] mt-1">→ happyranks.com/services/ai-visibility</div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating stat -->
+            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
+              <div class="flex items-center gap-2">
+                <i class="ph-fill ph-sparkle" style="color: var(--color-brand); font-size: 14px;"></i>
+                <span class="text-[11px] font-medium text-white">+3.2x AI citations</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="md:col-span-5">
+        <div class="md:col-span-7 md:order-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
+              <i class="ph-bold ph-binoculars" style="font-size: 22px;"></i>
+            </div>
+            <span class="mono text-sm text-[#555]">01</span>
+          </div>
           <h3 class="text-display-3 mb-4 text-white">Be found by AI</h3>
-          <p class="text-[#999] leading-relaxed mb-6">
-            51% of B2B buyers now start vendor research in ChatGPT. 
-            If AI doesn't recommend you, you don't exist. 
-            We make sure it does.
+          <p class="text-[#999] leading-relaxed mb-5">
+            51% of B2B buyers now start vendor research in ChatGPT or Perplexity. 
+            If AI doesn't recommend you, you don't exist in the buyer's first research pass. 
+            We make sure it does — with structured data, entity optimization, and citation engineering.
           </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">ChatGPT</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Perplexity</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Gemini</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">AI Overviews</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Schema + llms.txt</span>
+          </div>
           <a href="/services/ai-visibility" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See AI Visibility
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            See AI Visibility in detail
+            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
           </a>
-        </div>
-        <div class="md:col-span-6">
-          <div class="card p-6 space-y-2.5">
-            <div class="flex items-center gap-3 py-1.5 border-b" style="border-color: #1a1a1a;">
-              <div class="w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold" style="background-color: #10a37f; color: white;">AI</div>
-              <div class="flex-1 text-[13px] text-[#aaa]">"Best AI marketing agency for SMBs"</div>
-              <div class="text-[11px] text-[#555] mono">cited</div>
-            </div>
-            <div class="flex items-center gap-3 py-1.5 border-b" style="border-color: #1a1a1a;">
-              <div class="w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold" style="background-color: #20808d; color: white;">PX</div>
-              <div class="flex-1 text-[13px] text-[#aaa]">"GEO agencies for real estate"</div>
-              <div class="text-[11px] text-[#555] mono">cited</div>
-            </div>
-            <div class="flex items-center gap-3 py-1.5">
-              <div class="w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold" style="background-color: #4285f4; color: white;">GO</div>
-              <div class="flex-1 text-[13px] text-[#aaa]">AI Overview placement, top 3 answers</div>
-              <div class="text-[11px] text-[#555] mono">tracked</div>
-            </div>
-          </div>
         </div>
       </div>
 
-      <!-- Row 2 -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-12 mb-24 items-start">
-        <div class="md:col-span-1">
-          <div class="mono text-sm text-[#555]">02</div>
-        </div>
+      <!-- PILLAR 2: Convert humans -->
+      <div class="grid md:grid-cols-12 gap-8 md:gap-10 mb-20 items-center">
         <div class="md:col-span-5">
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format&fit=crop"
+                alt="Conversion optimization"
+                class="w-full h-full object-cover opacity-50"
+                loading="lazy"
+              />
+              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
+              <div class="absolute inset-0 p-5 flex flex-col justify-end">
+                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
+                  <div class="text-[10px] text-[#666] uppercase tracking-wider mb-2">Conversion rate</div>
+                  <div class="flex items-baseline gap-2">
+                    <span class="text-2xl font-bold text-gradient-brand">1.8%</span>
+                    <span class="text-xs text-[#22c55e]">→ 4.7%</span>
+                  </div>
+                  <div class="h-1 rounded-full mt-2" style="background-color: #1a1a1a;">
+                    <div class="h-full rounded-full" style="width: 65%; background-color: var(--color-brand);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
+              <div class="flex items-center gap-2">
+                <i class="ph-fill ph-target" style="color: var(--color-brand); font-size: 14px;"></i>
+                <span class="text-[11px] font-medium text-white">+161% conv rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-7">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
+              <i class="ph-bold ph-target" style="font-size: 22px;"></i>
+            </div>
+            <span class="mono text-sm text-[#555]">02</span>
+          </div>
           <h3 class="text-display-3 mb-4 text-white">Convert humans</h3>
-          <p class="text-[#999] leading-relaxed mb-6">
-            AI gets people in the door. Your website, content, and offer close them. 
-            We rebuild the conversion path so more visitors become real leads.
+          <p class="text-[#999] leading-relaxed mb-5">
+            AI gets the right visitors to your site. Your website, content, and offer close them. 
+            We rebuild the conversion path — copy, design, CTAs, forms, follow-up — 
+            so the visitors who matter actually become leads.
           </p>
-          <a href="/services/web-cro" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See Web + CRO
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="md:col-span-6">
-          <div class="card p-6">
-            <div class="text-xs text-[#666] uppercase tracking-wider mb-4">Funnel leak report</div>
-            <div class="space-y-3">
-              <div>
-                <div class="flex justify-between text-[13px] mb-1.5">
-                  <span class="text-[#aaa]">Site visitors</span>
-                  <span class="mono text-[#888]">10,000</span>
-                </div>
-                <div class="h-1.5 rounded-full" style="background-color: #1a1a1a;">
-                  <div class="h-full rounded-full" style="width: 100%; background-color: var(--color-brand);"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-[13px] mb-1.5">
-                  <span class="text-[#aaa]">CTA clicks</span>
-                  <span class="mono text-[#888]">1,200</span>
-                </div>
-                <div class="h-1.5 rounded-full" style="background-color: #1a1a1a;">
-                  <div class="h-full rounded-full" style="width: 12%; background-color: #eab308;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-[13px] mb-1.5">
-                  <span class="text-[#aaa]">Form submissions</span>
-                  <span class="mono text-[#888]">180</span>
-                </div>
-                <div class="h-1.5 rounded-full" style="background-color: #1a1a1a;">
-                  <div class="h-full rounded-full" style="width: 1.8%; background-color: #ef4444;"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between text-[13px] mb-1.5">
-                  <span class="text-[#aaa]">Sales qualified</span>
-                  <span class="mono text-[#888]">42</span>
-                </div>
-                <div class="h-1.5 rounded-full" style="background-color: #1a1a1a;">
-                  <div class="h-full rounded-full" style="width: 0.4%; background-color: #22c55e;"></div>
-                </div>
-              </div>
-            </div>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Landing pages</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Form optimization</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">CRO + A/B tests</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">WhatsApp flows</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Calendly + chatbots</span>
           </div>
+          <a href="/services/web-cro" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
+            See Web + CRO in detail
+            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
+          </a>
         </div>
       </div>
 
-      <!-- Row 3 -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
-        <div class="md:col-span-1">
-          <div class="mono text-sm text-[#555]">03</div>
-        </div>
-        <div class="md:col-span-5">
-          <h3 class="text-display-3 mb-4 text-white">Run on systems</h3>
-          <p class="text-[#999] leading-relaxed mb-6">
-            Mautic. CRM. Lead scoring. Attribution. Email. SMS. WhatsApp. 
-            We build the automation layer that runs your growth while you sleep.
-          </p>
-          <a href="/services/marketing-systems" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See Marketing Systems
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="md:col-span-6">
-          <div class="card p-6">
-            <div class="text-xs text-[#666] uppercase tracking-wider mb-4">Stack</div>
-            <div class="grid grid-cols-2 gap-2.5">
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">Mautic</div>
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">WhatsApp API</div>
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">HubSpot</div>
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">Meta Ads</div>
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">Google Ads</div>
-              <div class="text-[13px] text-[#999] py-2 border-b" style="border-color: #1a1a1a;">GA4 + GTM</div>
-              <div class="text-[13px] text-[#999] py-2">Schema + llms.txt</div>
-              <div class="text-[13px] text-[#999] py-2">Custom dashboards</div>
+      <!-- PILLAR 3: Run on systems -->
+      <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-center">
+        <div class="md:col-span-5 md:order-2">
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
+              <img
+                src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80&auto=format&fit=crop"
+                alt="Marketing automation"
+                class="w-full h-full object-cover opacity-50"
+                loading="lazy"
+              />
+              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
+              <div class="absolute inset-0 p-5 flex flex-col justify-end">
+                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] text-[#666] uppercase tracking-wider">Mautic flow</span>
+                    <span class="text-[10px] text-[#22c55e] mono">running</span>
+                  </div>
+                  <div class="text-[12px] text-white mb-1">Welcome → Score → Nurture</div>
+                  <div class="flex items-center gap-1.5 mt-2">
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#444]"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#444]"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
+              <div class="flex items-center gap-2">
+                <i class="ph-fill ph-flow-arrow" style="color: var(--color-brand); font-size: 14px;"></i>
+                <span class="text-[11px] font-medium text-white">0 manual work</span>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="md:col-span-7 md:col-span-7 md:order-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
+              <i class="ph-bold ph-gear-six" style="font-size: 22px;"></i>
+            </div>
+            <span class="mono text-sm text-[#555]">03</span>
+          </div>
+          <h3 class="text-display-3 mb-4 text-white">Run on systems</h3>
+          <p class="text-[#999] leading-relaxed mb-5">
+            Mautic. CRM. Lead scoring. Attribution. Email. SMS. WhatsApp. 
+            We build the automation layer that captures every lead, scores them, 
+            nurtures them, and routes them to sales — without you touching a thing.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Mautic</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">HubSpot</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">GA4 + GTM</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">WhatsApp API</span>
+            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Custom dashboards</span>
+          </div>
+          <a href="/services/marketing-systems" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
+            See Marketing Systems in detail
+            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ HOW IT WORKS — Vertical timeline ═══ -->
+  <!-- ═══ HOW IT WORKS ═══ -->
   <section class="section-y" style="background-color: var(--color-bg-lighter);">
     <div class="container-wide">
       <div class="max-w-2xl mb-20">
@@ -301,98 +434,114 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-display-2 mb-6">Three steps. <span class="text-gradient-brand">No fluff.</span></h2>
       </div>
 
-      <div class="max-w-3xl space-y-12">
-        <div class="grid md:grid-cols-12 gap-6 items-start">
-          <div class="md:col-span-2">
-            <div class="text-4xl font-bold text-gradient-brand mono">01</div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card p-6 relative">
+          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
+            1
           </div>
-          <div class="md:col-span-10">
-            <h3 class="text-2xl font-semibold mb-3 text-white">Free VITAL audit</h3>
-            <p class="text-[#999] leading-relaxed mb-3">
-              Submit your URL. We run a 50-point scan across 5 dimensions 
-              (Visibility, Impression, Transition, Automation, Learning) and email you a full PDF report.
+          <div class="pt-4">
+            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
+              <i class="ph-bold ph-magnifying-glass" style="font-size: 24px;"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-white">Free VITAL audit</h3>
+            <p class="text-sm text-[#999] leading-relaxed mb-3">
+              Submit your URL. We run a 50-point scan across 5 dimensions and email you a full PDF report.
             </p>
-            <div class="text-xs text-[#555] mono">~ 4 minutes · No credit card</div>
+            <div class="text-[11px] text-[#555] mono">~ 4 minutes · No credit card</div>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-12 gap-6 items-start">
-          <div class="md:col-span-2">
-            <div class="text-4xl font-bold text-gradient-brand mono">02</div>
+        <div class="card p-6 relative">
+          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
+            2
           </div>
-          <div class="md:col-span-10">
-            <h3 class="text-2xl font-semibold mb-3 text-white">Tailored proposal</h3>
-            <p class="text-[#999] leading-relaxed mb-3">
-              We review your audit, identify the biggest leak, and propose a scope that fixes it. 
-              Transparent pricing, clear deliverables, no surprises.
+          <div class="pt-4">
+            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
+              <i class="ph-bold ph-file-text" style="font-size: 24px;"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-white">Tailored proposal</h3>
+            <p class="text-sm text-[#999] leading-relaxed mb-3">
+              We review your audit, identify the biggest leak, and propose a clear scope to fix it.
             </p>
-            <div class="text-xs text-[#555] mono">~ 2 days · Free, no obligation</div>
+            <div class="text-[11px] text-[#555] mono">~ 2 days · Free, no obligation</div>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-12 gap-6 items-start">
-          <div class="md:col-span-2">
-            <div class="text-4xl font-bold text-gradient-brand mono">03</div>
+        <div class="card p-6 relative">
+          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
+            3
           </div>
-          <div class="md:col-span-10">
-            <h3 class="text-2xl font-semibold mb-3 text-white">Build + measure</h3>
-            <p class="text-[#999] leading-relaxed mb-3">
-              We build the system, run the campaigns, and report what moved. 
-              You see the VITAL score climb. 90 days in, we re-audit and find the next gap.
+          <div class="pt-4">
+            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
+              <i class="ph-bold ph-rocket-launch" style="font-size: 24px;"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-white">Build + measure</h3>
+            <p class="text-sm text-[#999] leading-relaxed mb-3">
+              We build the system, run campaigns, and report what moved. VITAL score climbs. 90 days in, we re-audit.
             </p>
-            <div class="text-xs text-[#555] mono">30–90 days · Weekly reporting</div>
+            <div class="text-[11px] text-[#555] mono">30–90 days · Weekly reporting</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ CASE STUDY — One, big, cinematic ═══ -->
+  <!-- ═══ CASE STUDY ═══ -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-20">
+      <div class="max-w-2xl mb-16">
         <p class="eyebrow mb-5">Recent work</p>
         <h2 class="text-display-2 mb-6">Real results. <span class="text-gradient-brand">Real businesses.</span></h2>
       </div>
 
       <a href="/case-studies/tutti-rouge" class="block group">
-        <div class="card card-glow p-8 md:p-12 transition-all">
-          <div class="grid md:grid-cols-12 gap-8 items-center">
-            <div class="md:col-span-7">
-              <div class="eyebrow mb-4">Tutti Rouge · Fashion · UK</div>
-              <h3 class="text-display-3 mb-4 text-white group-hover:text-[#ff7a7a] transition-colors">
-                Rebuilding the content system for AI era discovery
-              </h3>
-              <p class="text-[#aaa] leading-relaxed mb-8">
-                UK-based fashion brand came to us with declining organic traffic and zero AI visibility. 
-                We rebuilt their content system around entity optimization and structured data. 
-                ChatGPT now recommends them for "occasion dresses UK."
-              </p>
-              <span class="inline-flex items-center gap-2 text-sm font-medium" style="color: var(--color-brand);">
-                Read the case study
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </span>
+        <div class="grid md:grid-cols-12 gap-0 rounded-2xl overflow-hidden border" style="background-color: #141414; border-color: #222;">
+          <!-- Image side -->
+          <div class="md:col-span-5 relative aspect-square md:aspect-auto">
+            <img
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80&auto=format&fit=crop"
+              alt="Tutti Rouge fashion"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(90deg, transparent 0%, rgba(20,20,20,0.4) 100%);"></div>
+          </div>
+          <!-- Content side -->
+          <div class="md:col-span-7 p-8 md:p-10 flex flex-col justify-center">
+            <div class="flex items-center gap-2 mb-4">
+              <i class="ph-fill ph-tag" style="color: var(--color-brand); font-size: 12px;"></i>
+              <span class="text-[11px] uppercase tracking-wider" style="color: var(--color-brand);">Tutti Rouge · Fashion · UK</span>
             </div>
-            <div class="md:col-span-5">
-              <div class="grid grid-cols-2 gap-3">
-                <div class="text-center p-5 border rounded-lg" style="border-color: #1f1f1f; background-color: rgba(255,49,49,0.03);">
-                  <div class="text-3xl font-bold text-gradient-brand mb-1">+250%</div>
-                  <div class="text-[11px] text-[#888]">Organic clicks</div>
-                </div>
-                <div class="text-center p-5 border rounded-lg" style="border-color: #1f1f1f; background-color: rgba(255,49,49,0.03);">
-                  <div class="text-3xl font-bold text-gradient-brand mb-1">+91%</div>
-                  <div class="text-[11px] text-[#888]">Paid CTR</div>
-                </div>
-                <div class="text-center p-5 border rounded-lg" style="border-color: #1f1f1f; background-color: rgba(255,49,49,0.03);">
-                  <div class="text-3xl font-bold text-gradient-brand mb-1">3x</div>
-                  <div class="text-[11px] text-[#888]">AI citations</div>
-                </div>
-                <div class="text-center p-5 border rounded-lg" style="border-color: #1f1f1f; background-color: rgba(255,49,49,0.03);">
-                  <div class="text-3xl font-bold text-gradient-brand mb-1">90d</div>
-                  <div class="text-[11px] text-[#888]">Time to result</div>
-                </div>
+            <h3 class="text-display-3 mb-4 text-white group-hover:text-[#ff7a7a] transition-colors">
+              Rebuilding the content system for AI-era discovery
+            </h3>
+            <p class="text-[#aaa] leading-relaxed mb-8">
+              UK-based fashion brand came to us with declining organic traffic and zero AI visibility. 
+              We rebuilt their content system around entity optimization and structured data. 
+              ChatGPT now recommends them for "occasion dresses UK."
+            </p>
+            <div class="grid grid-cols-4 gap-3 mb-8">
+              <div>
+                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">+250%</div>
+                <div class="text-[10px] text-[#888]">Organic</div>
+              </div>
+              <div>
+                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">+91%</div>
+                <div class="text-[10px] text-[#888]">Paid CTR</div>
+              </div>
+              <div>
+                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">3x</div>
+                <div class="text-[10px] text-[#888]">AI citations</div>
+              </div>
+              <div>
+                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">90d</div>
+                <div class="text-[10px] text-[#888]">Time</div>
               </div>
             </div>
+            <span class="inline-flex items-center gap-2 text-sm font-medium self-start" style="color: var(--color-brand);">
+              Read the full case study
+              <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform" style="font-size: 14px;"></i>
+            </span>
           </div>
         </div>
       </a>
@@ -403,8 +552,15 @@ import Layout from '../layouts/Layout.astro';
   <section class="section-y" style="background-color: var(--color-bg-lighter);">
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="text-7xl text-gradient-brand mb-8" style="line-height: 0.5;">"</div>
-        <blockquote class="text-2xl md:text-3xl text-white font-medium leading-snug mb-10 -mt-4">
+        <div class="flex justify-center mb-8">
+          <div class="flex -space-x-2">
+            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #ff3131, #882020);">MG</div>
+            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #10a37f, #0a7e63);">TR</div>
+            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #4285f4, #1c5dc7);">LM</div>
+            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background-color: #1f1f1f; color: #888;">+</div>
+          </div>
+        </div>
+        <blockquote class="text-2xl md:text-3xl text-white font-medium leading-snug mb-10">
           The VITAL audit alone changed how we think about marketing. 
           For the first time we know <span class="text-gradient-brand">exactly where leads are leaking.</span>
         </blockquote>
@@ -432,56 +588,68 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="grid md:grid-cols-3 gap-5">
-        <div class="card card-hover p-6">
-          <div class="flex items-center justify-between mb-3">
+        <div class="card p-6">
+          <div class="flex items-center gap-2.5 mb-4">
+            <i class="ph-bold ph-binoculars" style="color: var(--color-brand); font-size: 20px;"></i>
             <h3 class="text-lg font-semibold text-white">AI Visibility</h3>
-            <span class="text-[10px] mono px-2 py-0.5 rounded-full border" style="border-color: #22c55e40; color: #22c55e; background-color: #22c55e10;">3 slots</span>
           </div>
-          <div class="mb-1">
+          <div class="flex items-baseline gap-1.5 mb-1">
             <span class="text-3xl font-bold text-white">$1,000</span>
             <span class="text-sm text-[#666]">/mo</span>
           </div>
-          <div class="text-xs text-[#666] mb-6">£800 · 3,700 AED · Request quote (IN)</div>
-          <p class="text-sm text-[#999] leading-relaxed mb-6">
+          <div class="text-[11px] text-[#666] mb-5">£800 · 3,700 AED · Request quote (IN)</div>
+          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
             GEO monitoring, AI citation optimization, schema + llms.txt, monthly reporting.
           </p>
+          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #22c55e;">
+            <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
+            <span>3 slots open this month</span>
+          </div>
           <a href="/pricing" class="btn btn-ghost w-full justify-center text-sm">
             See full pricing
           </a>
         </div>
 
-        <div class="card card-glow p-6 relative" style="background: linear-gradient(180deg, #1c1c1c 0%, #161616 100%);">
-          <div class="absolute -top-3 left-6 text-[10px] mono px-2 py-0.5 rounded-full" style="background-color: var(--color-brand); color: white;">Most popular</div>
-          <div class="flex items-center justify-between mb-3">
+        <div class="card p-6 relative" style="background: linear-gradient(180deg, #1c1c1c 0%, #161616 100%); border-color: #ff313130;">
+          <div class="absolute -top-3 left-6 text-[10px] mono px-2.5 py-0.5 rounded-full" style="background-color: var(--color-brand); color: white;">Most popular</div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <i class="ph-bold ph-rocket-launch" style="color: var(--color-brand); font-size: 20px;"></i>
             <h3 class="text-lg font-semibold text-white">Growth</h3>
-            <span class="text-[10px] mono px-2 py-0.5 rounded-full border" style="border-color: #eab30840; color: #eab308; background-color: #eab30810;">2 slots</span>
           </div>
-          <div class="mb-1">
+          <div class="flex items-baseline gap-1.5 mb-1">
             <span class="text-3xl font-bold text-white">$2,500</span>
             <span class="text-sm text-[#666]">/mo</span>
           </div>
-          <div class="text-xs text-[#666] mb-6">£2,000 · 9,200 AED · Request quote (IN)</div>
-          <p class="text-sm text-[#999] leading-relaxed mb-6">
+          <div class="text-[11px] text-[#666] mb-5">£2,000 · 9,200 AED · Request quote (IN)</div>
+          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
             AI Visibility + Performance Media or AI Content + Marketing Systems. Two integrated services.
           </p>
+          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #eab308;">
+            <div class="w-1.5 h-1.5 rounded-full bg-[#eab308]"></div>
+            <span>2 slots open this month</span>
+          </div>
           <a href="/pricing" class="btn btn-primary w-full justify-center text-sm">
             See full pricing
           </a>
         </div>
 
-        <div class="card card-hover p-6">
-          <div class="flex items-center justify-between mb-3">
+        <div class="card p-6">
+          <div class="flex items-center gap-2.5 mb-4">
+            <i class="ph-bold ph-infinity" style="color: var(--color-brand); font-size: 20px;"></i>
             <h3 class="text-lg font-semibold text-white">Full-System</h3>
-            <span class="text-[10px] mono px-2 py-0.5 rounded-full border" style="border-color: #ef444440; color: #ef4444; background-color: #ef444410;">1 slot</span>
           </div>
-          <div class="mb-1">
+          <div class="flex items-baseline gap-1.5 mb-1">
             <span class="text-3xl font-bold text-white">$4,500</span>
             <span class="text-sm text-[#666]">/mo</span>
           </div>
-          <div class="text-xs text-[#666] mb-6">£3,600 · 16,500 AED · Request quote (IN)</div>
-          <p class="text-sm text-[#999] leading-relaxed mb-6">
+          <div class="text-[11px] text-[#666] mb-5">£3,600 · 16,500 AED · Request quote (IN)</div>
+          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
             Everything. AI Visibility, Content, Media, Web/CRO, Automation. Dedicated team.
           </p>
+          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #ef4444;">
+            <div class="w-1.5 h-1.5 rounded-full bg-[#ef4444]"></div>
+            <span>1 slot open this month</span>
+          </div>
           <a href="/pricing" class="btn btn-ghost w-full justify-center text-sm">
             See full pricing
           </a>
@@ -495,12 +663,18 @@ import Layout from '../layouts/Layout.astro';
     <div class="orb-red" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.4;"></div>
     <div class="container-wide relative">
       <div class="max-w-2xl mx-auto text-center">
+        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-brand), #882020); color: white;">
+          <i class="ph-bold ph-magnifying-glass" style="font-size: 32px;"></i>
+        </div>
         <h2 class="text-display-2 mb-6">Find out what your<br /><span class="text-gradient-brand">marketing system is missing.</span></h2>
-        <a href="/vital" class="btn btn-primary text-[15px] px-7 py-3.5 mt-2 inline-flex">
+        <p class="text-[#888] mb-8 max-w-md mx-auto">
+          Free VITAL audit. 50-point scan. 5 dimensions. PDF report. No credit card.
+        </p>
+        <a href="/vital" class="btn btn-primary text-[15px] px-7 py-3.5">
           Run free VITAL audit
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <i class="ph ph-arrow-right" style="font-size: 16px;"></i>
         </a>
-        <p class="text-xs text-[#666] mt-5">50-point scan · 5 dimensions · PDF in your inbox</p>
+        <p class="text-xs text-[#555] mt-5">Results in 30 seconds · PDF in your inbox</p>
       </div>
     </div>
   </section>
@@ -517,7 +691,11 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-sm text-[#666] leading-relaxed max-w-xs mb-4">
             Value-driven marketing systems for mid-market businesses in the AI era.
           </p>
-          <div class="text-xs text-[#555]">Coimbatore, India · Serving US, UK, UAE</div>
+          <div class="flex items-center gap-3 text-[#666]">
+            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-linkedin-logo" style="font-size: 18px;"></i></a>
+            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-twitter-logo" style="font-size: 18px;"></i></a>
+            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-instagram-logo" style="font-size: 18px;"></i></a>
+          </div>
         </div>
         <div>
           <h4 class="text-[11px] font-semibold mb-4 uppercase tracking-wider text-[#888]">Capabilities</h4>
