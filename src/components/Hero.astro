@@ -8,21 +8,21 @@ const {
   secondaryCta = null, // { label, href, icon }
   meta = null, // string[] of trust signals
   align = 'left', // 'left' | 'center'
-  visual = null, // slot name in caller? for now keep simple
+  compact = false, // smaller bottom padding for pages with content directly below
 } = Astro.props;
 ---
 
-<section class="hero-section relative">
+<section class:list={[compact ? 'pt-24 pb-12 md:pt-28 md:pb-14' : 'hero-section', 'relative']}>
   <div class="container-wide relative">
-    <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+    <div class:list={['max-w-4xl', align === 'center' && 'mx-auto text-center']}>
       {eyebrow && (
-        <div class="eyebrow mb-3">{eyebrow}</div>
+        <div class="eyebrow mb-4">{eyebrow}</div>
       )}
       <h1 class="text-display-1 text-white mb-5">
         {title}{highlight && (<><br/><span class="text-gradient-brand">{highlight}</span></>)}
       </h1>
       {description && (
-        <p class:list={['text-lg text-[#a0a0a0] leading-relaxed mb-8', align === 'center' ? 'max-w-xl mx-auto' : 'max-w-2xl']}>
+        <p class:list={['text-[17px] text-[#a8a8a8] leading-[1.6] mb-7', align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-2xl']}>
           {description}
         </p>
       )}
@@ -43,9 +43,10 @@ const {
         </div>
       )}
       {meta && (
-        <div class:list={['mt-8 flex flex-wrap items-center gap-5 text-xs mono text-[#666]', align === 'center' && 'justify-center']}>
-          {meta.map((m) => (
-            <div class="flex items-center gap-2">
+        <div class:list={['mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px] mono text-[#888]', align === 'center' && 'justify-center']}>
+          {meta.map((m, i) => (
+            <div class="flex items-center gap-1.5 whitespace-nowrap">
+              {i > 0 && <span class="text-[#333] mr-3" aria-hidden="true">·</span>}
               <i class="ph-bold ph-check-circle text-emerald-500"></i>
               <span>{m}</span>
             </div>

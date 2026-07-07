@@ -9,28 +9,112 @@ const links = [
 ];
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-[#1a1a1a]">
-  <div class="container-wide flex items-center justify-between h-16">
-    <a href="/" class="flex items-center gap-2 group">
-      <div class="w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm group-hover:scale-105 transition">H</div>
-      <span class="font-bold text-white tracking-tight">Happyranks</span>
-    </a>
-    <nav class="hidden md:flex items-center gap-1">
+<header class="site-header sticky top-0 z-50">
+  <div class="container-wide">
+    <div class="flex items-center justify-between h-[68px]">
+      <a href="/" class="flex items-center gap-2.5 group" aria-label="Happyranks home">
+        <div class="logo-mark w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm group-hover:scale-105 transition-transform">H</div>
+        <span class="font-bold text-white tracking-tight text-[15px]">Happyranks</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class:list={[
+              'nav-link px-3.5 py-2 text-[13.5px] font-medium rounded-md transition',
+              active === l.href ? 'is-active' : ''
+            ]}
+          >{l.label}</a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="/contact" class="hidden sm:inline-flex btn btn-primary">
+          Book a call
+          <i class="ph-bold ph-arrow-right text-base"></i>
+        </a>
+        <button
+          type="button"
+          class="mobile-trigger md:hidden w-10 h-10 rounded-md flex items-center justify-center text-white hover:bg-[#1a1a1a] transition"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <i class="ph-bold ph-list text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__backdrop" data-close></div>
+  <aside class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div class="flex items-center justify-between h-[68px] px-6 border-b border-[#1a1a1a]">
+      <a href="/" class="flex items-center gap-2.5" data-close>
+        <div class="w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm">H</div>
+        <span class="font-bold text-white tracking-tight text-[15px]">Happyranks</span>
+      </a>
+      <button
+        type="button"
+        class="w-10 h-10 rounded-md flex items-center justify-center text-white hover:bg-[#1a1a1a] transition"
+        aria-label="Close menu"
+        data-close
+      >
+        <i class="ph-bold ph-x text-2xl"></i>
+      </button>
+    </div>
+    <nav class="px-6 py-8 space-y-1" aria-label="Mobile">
       {links.map((l) => (
         <a
           href={l.href}
+          data-close
           class:list={[
-            'px-3 py-2 text-sm font-medium rounded-md transition',
-            active === l.href
-              ? 'text-white bg-[#1a1a1a]'
-              : 'text-[#a0a0a0] hover:text-white hover:bg-[#141414]'
+            'flex items-center justify-between py-4 text-[17px] font-semibold border-b border-[#161616]',
+            active === l.href ? 'text-white' : 'text-[#c5c5c5]'
           ]}
-        >{l.label}</a>
+        >
+          <span>{l.label}</span>
+          <i class="ph-bold ph-arrow-right text-[#666] text-base"></i>
+        </a>
       ))}
     </nav>
-    <a href="/contact" class="btn btn-primary">
-      Book a call
-      <i class="ph-bold ph-arrow-right text-base"></i>
-    </a>
-  </div>
-</header>
+    <div class="px-6 pt-4 pb-8">
+      <a href="/contact" data-close class="btn btn-primary btn-large w-full justify-center">
+        Book a call
+        <i class="ph-bold ph-arrow-right text-base"></i>
+      </a>
+      <p class="mt-6 text-xs text-[#666] text-center">45-min strategy call · No pressure</p>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('.mobile-trigger');
+  const menu = document.getElementById('mobile-menu');
+  const closeButtons = document.querySelectorAll<HTMLElement>('[data-close]');
+
+  function openMenu() {
+    if (!menu || !trigger) return;
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    trigger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    if (!menu || !trigger) return;
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  trigger?.addEventListener('click', openMenu);
+  closeButtons.forEach((btn) => btn.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+</script>

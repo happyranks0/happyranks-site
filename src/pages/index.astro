@@ -27,11 +27,11 @@ const faqSchema = {
     description="The full marketing engine — visibility, conversion, automation, analytics — built around the VITAL framework. One audit. One plan. Measurable growth."
     primaryCta={{ label: 'Get my free VITAL audit', href: '/vital-audit', icon: 'ph-lightning' }}
     secondaryCta={{ label: 'See the work', href: '/work', icon: 'ph-arrow-up-right' }}
-    meta={['No contract', 'Report in 90s', 'Built for AI search', '30-day money-back']}
+    meta={['No contract', '90-second report', 'AI-search ready', '30-day money-back']}
   />
 
   <!-- ─── VITAL PREVIEW STRIP ─── -->
-  <section class="pb-12 -mt-4">
+  <section class="pb-12">
     <div class="container-wide">
       <div class="card p-6 lg:p-8 max-w-5xl mx-auto">
         <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
@@ -44,11 +44,11 @@ const faqSchema = {
             <div class="text-[10px] mono text-emerald-500">312 audits this month</div>
           </div>
         </div>
-        <div class="grid md:grid-cols-[180px_1fr] gap-8 items-center">
-          <div class="text-center md:text-left">
+        <div class="grid md:grid-cols-[140px_1fr] gap-6 lg:gap-10 items-center">
+          <div class="text-center md:text-left md:border-r md:border-[#1a1a1a] md:pr-8">
             <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">VITAL Score</div>
-            <div class="text-6xl font-black text-white">62<span class="text-xl text-[#666]">/100</span></div>
-            <div class="text-xs text-[#666] mt-2">+2.4x revenue if fixes ship</div>
+            <div class="text-5xl font-black text-white leading-none">62<span class="text-lg text-[#666] font-bold">/100</span></div>
+            <div class="text-[11px] text-emerald-500 mono mt-2">+2.4x revenue if fixes ship</div>
           </div>
           <div class="space-y-2.5">
             {[
@@ -58,9 +58,9 @@ const faqSchema = {
               { l: 'A', name: 'Automation', s: 38 },
               { l: 'L', name: 'Learning', s: 81 },
             ].map((d) => (
-              <div class="grid grid-cols-[20px_100px_1fr_36px] items-center gap-3">
+              <div class="grid grid-cols-[16px_88px_1fr_28px] items-center gap-3">
                 <div class="text-xs font-black text-white mono">{d.l}</div>
-                <div class="text-xs text-[#a0a0a0]">{d.name}</div>
+                <div class="text-xs text-[#a8a8a8]">{d.name}</div>
                 <div class="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
                   <div class="h-full bg-[var(--color-brand)] rounded-full" style={`width: ${d.s}%`}></div>
                 </div>
@@ -77,12 +77,12 @@ const faqSchema = {
   <section class="border-y border-[#1a1a1a] bg-[#0a0a0a] py-10">
     <div class="container-wide">
       <div class="text-center eyebrow mb-6">Trusted by growth-focused teams</div>
-      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60">
-        <span class="text-lg font-bold tracking-tight text-white">Tutti Rouge</span>
-        <span class="text-lg font-serif italic text-white">Lotus Mahal</span>
-        <span class="text-lg font-bold text-white">THINK</span>
-        <span class="text-lg font-light tracking-widest text-white">VIRUKSHA</span>
-        <span class="text-lg font-bold text-white">efficy</span>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-4 items-center justify-items-center opacity-60">
+        <span class="text-base font-bold tracking-tight text-white">Tutti Rouge</span>
+        <span class="text-base font-serif italic text-white">Lotus Mahal</span>
+        <span class="text-base font-bold text-white">THINK</span>
+        <span class="text-base font-light tracking-widest text-white">VIRUKSHA</span>
+        <span class="text-base font-bold text-white">efficy</span>
       </div>
     </div>
   </section>
@@ -90,7 +90,7 @@ const faqSchema = {
   <!-- ─── THE FRAMEWORK (5 dimensions, tight grid) ─── -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">The VITAL framework</div>
         <h2 class="text-display-2 text-white mb-6">
           Five dimensions.<br/>
@@ -102,7 +102,7 @@ const faqSchema = {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-5 gap-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
         {[
           { letter: 'V', name: 'Visibility', desc: 'Can the right people find you — in Google, in ChatGPT, in Perplexity?', icon: 'ph-binoculars', score: 68 },
           { letter: 'I', name: 'Impression', desc: 'Do they trust you in 3 seconds? Speed, clarity, design quality.', icon: 'ph-eye', score: 74 },
@@ -110,13 +110,13 @@ const faqSchema = {
           { letter: 'A', name: 'Automation', desc: 'What happens after they engage? Email, CRM, retargeting.', icon: 'ph-robot', score: 31 },
           { letter: 'L', name: 'Learning', desc: 'Do you measure what works? Analytics, conversion tracking.', icon: 'ph-chart-line-up', score: 58 },
         ].map((d) => (
-          <div class="card card-hover p-6">
+          <div class="card card-hover p-6 flex flex-col h-full">
             <div class="flex items-center gap-3 mb-4">
               <i class={`ph-bold ${d.icon} text-2xl text-[var(--color-brand)]`}></i>
               <div class="text-xl font-black text-white">{d.letter}</div>
             </div>
             <div class="text-base font-bold text-white mb-2">{d.name}</div>
-            <div class="text-xs text-[#888] leading-relaxed mb-5 min-h-[3rem]">{d.desc}</div>
+            <div class="text-xs text-[#888] leading-relaxed mb-5 flex-1">{d.desc}</div>
             <div class="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
               <div class="h-full bg-[var(--color-brand)] rounded-full" style={`width: ${d.score}%`}></div>
             </div>
@@ -136,7 +136,7 @@ const faqSchema = {
   <!-- ─── WHAT WE DO (3 pillars with images, kept tight) ─── -->
   <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
-      <div class="max-w-2xl mb-20">
+      <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">What we do</div>
         <h2 class="text-display-2 text-white mb-6">
           Not just traffic.<br/>
@@ -145,7 +145,7 @@ const faqSchema = {
       </div>
 
       <!-- Pillar 1 -->
-      <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div>
           <div class="eyebrow mb-3 flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
@@ -186,7 +186,7 @@ const faqSchema = {
       </div>
 
       <!-- Pillar 2 -->
-      <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
         <div class="order-2 md:order-1 relative">
           <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85" alt="Analytics dashboard" class="w-full h-full object-cover" loading="lazy" />
@@ -268,7 +268,7 @@ const faqSchema = {
   <!-- ─── HOW IT WORKS (timeline) ─── -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">How it works</div>
         <h2 class="text-display-2 text-white mb-6">
           From audit to<br/>

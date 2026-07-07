@@ -124,19 +124,21 @@ const dimensions = [
   <section class="section-y">
     <div class="container-wide space-y-24">
       {dimensions.map((d) => (
-        <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+        <div class="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start">
           <div class="md:sticky md:top-24">
-            <div class={`w-20 h-20 rounded-2xl bg-gradient-to-br ${d.color} flex items-center justify-center mb-6 shadow-2xl`}>
-              <i class={`ph-bold ${d.icon} text-4xl text-white`}></i>
+            <div class="flex items-center gap-3 mb-5">
+              <div class={`w-11 h-11 rounded-xl bg-gradient-to-br ${d.color} flex items-center justify-center shadow-lg`}>
+                <i class={`ph-bold ${d.icon} text-xl text-white`}></i>
+              </div>
+              <div class="text-3xl font-black text-[#222] mono leading-none">{d.letter}</div>
             </div>
-            <div class="text-7xl font-black text-[#1a1a1a] mono mb-4">{d.letter}</div>
             <h2 class="text-display-3 text-white mb-3">{d.name}</h2>
-            <p class="text-[#a0a0a0] text-lg leading-relaxed mb-4">{d.headline}</p>
+            <p class="text-[#a0a0a0] text-[15px] leading-relaxed mb-4">{d.headline}</p>
             <p class="text-sm text-[#888] leading-relaxed mb-6">{d.desc}</p>
-            <div class="text-xs mono text-[#666] mb-2">TOOLS WE USE</div>
-            <div class="flex flex-wrap gap-2">
+            <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-3">Tools we use</div>
+            <div class="flex flex-wrap gap-1.5">
               {d.tools.map((t) => (
-                <span class="px-2 py-1 text-[10px] mono bg-[#1a1a1a] border border-[#2a2a2a] rounded text-[#a0a0a0]">{t}</span>
+                <span class="px-2 py-1 text-[10.5px] mono bg-[#161616] border border-[#262626] rounded text-[#a8a8a8]">{t}</span>
               ))}
             </div>
           </div>
@@ -164,7 +166,7 @@ const dimensions = [
   <!-- AUDIT PROCESS -->
   <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">How the audit works</div>
         <h2 class="text-display-2 text-white mb-6">
           From URL to report<br/>
@@ -199,7 +201,7 @@ const dimensions = [
   <!-- INDUSTRY APPLICATIONS -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">Where it applies</div>
         <h2 class="text-display-2 text-white mb-6">
           Every industry. <span class="text-gradient-light">Same rigor.</span>
