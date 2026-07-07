@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — Book a strategy call"
+  description="Book a 45-minute strategy call. We'll walk through your VITAL audit results, talk about your goals, and see if we're a good fit. Response within 4 working hours."
+  active="/contact"
+>
+  <!-- HERO + FORM -->
+  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
+    <div class="orb-red -top-40 -right-40"></div>
+    <div class="container-wide relative">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="eyebrow mb-4">Contact</div>
+          <h1 class="text-display-1 text-white mb-6">
+            Book a<br/>
+            <span class="text-gradient-brand">strategy call</span>
+          </h1>
+          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-10">
+            45 minutes. We walk through your VITAL audit, talk about your goals, and see if
+            we\'re a good fit. No pitch deck, no pressure. If we\'re not the right team for
+            you, we\'ll tell you — and refer you to someone who is.
+          </p>
+
+          <div class="space-y-6 mb-10">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
+                <i class="ph-bold ph-calendar-check text-xl"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-white mb-1">What to expect</div>
+                <p class="text-sm text-[#888]">15 min — your business + goals. 15 min — VITAL findings + recommendations. 15 min — fit assessment + Q&A. Bring questions; we\'ll bring answers.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
+                <i class="ph-bold ph-clock text-xl"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-white mb-1">Response time</div>
+                <p class="text-sm text-[#888]">We reply within 4 working hours, usually faster. If you reach out at 2am IST, you\'ll hear back by 7am. If you reach out at 5pm EST, you\'ll hear back by 9pm EST.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
+                <i class="ph-bold ph-shield-check text-xl"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-white mb-1">No-pressure call</div>
+                <p class="text-sm text-[#888]">If we\'re not the right fit, we\'ll tell you. We\'ve referred clients to competitors when the fit wasn\'t right. Your success matters more than our roster.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
+                <i class="ph-bold ph-video-camera text-xl"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-white mb-1">Format</div>
+                <p class="text-sm text-[#888]">Google Meet by default. Zoom or Microsoft Teams on request. We screen-share the VITAL audit and walk through it together.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p-6">
+            <div class="eyebrow mb-3">Or skip the call</div>
+            <p class="text-sm text-[#a0a0a0] mb-4">Just want the audit? Run it for free in 90 seconds — no call required. If you want help acting on it, that\'s what we do.</p>
+            <a href="/vital-audit" class="btn btn-ghost w-full justify-center">
+              <i class="ph-bold ph-lightning"></i>
+              Get free VITAL audit
+            </a>
+          </div>
+        </div>
+
+        <!-- FORM CARD -->
+        <div class="card p-8 lg:p-10 card-glow lg:sticky lg:top-24">
+          <div class="eyebrow mb-2">Book a call</div>
+          <h2 class="text-2xl font-bold text-white mb-2">Tell us about your business</h2>
+          <p class="text-sm text-[#888] mb-8">We read every submission. Reply within 4 working hours.</p>
+
+          <form id="contact-form" class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-white mb-2">Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Doe" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-semibold text-white mb-2">Company</label>
+                <input type="text" id="company" name="company" placeholder="Acme Inc" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-white mb-2">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+            </div>
+            <div>
+              <label for="website" class="block text-sm font-semibold text-white mb-2">Website <span class="text-[#666] font-normal">(if any)</span></label>
+              <input type="url" id="website" name="website" placeholder="https://yoursite.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+            </div>
+            <div>
+              <label for="budget" class="block text-sm font-semibold text-white mb-2">Monthly budget</label>
+              <select id="budget" name="budget" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white focus:border-[var(--color-brand)] focus:outline-none transition">
+                <option value="">Select range</option>
+                <option value="1.5-3k">$1,500 – $3,000</option>
+                <option value="3-6k">$3,000 – $6,000</option>
+                <option value="6-10k">$6,000 – $10,000</option>
+                <option value="10k+">$10,000+</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-semibold text-white mb-2">What are you trying to solve? *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve. Specific numbers welcome." class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition resize-none"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large w-full justify-center">
+              <i class="ph-bold ph-calendar-check"></i>
+              Request a call
+            </button>
+            <div class="text-[10px] text-[#666] text-center">
+              We respect your inbox. No spam, no marketing list trades, no selling your data.
+            </div>
+          </form>
+
+          <div id="contact-success" class="hidden mt-6 p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
+            <i class="ph-bold ph-check-circle text-emerald-500 text-3xl mb-2"></i>
+            <div class="font-semibold text-white mb-1">Request received</div>
+            <p class="text-sm text-[#a0a0a0]">We\'ll be in touch within 4 working hours. Usually faster.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide max-w-3xl">
+      <div class="text-center mb-12">
+        <div class="eyebrow mb-4">FAQ</div>
+        <h2 class="text-display-2 text-white">
+          Common <span class="text-gradient-brand">questions</span>
+        </h2>
+      </div>
+      <div class="space-y-3">
+        {[
+          { q: 'What happens after I submit this form?', a: 'A real person on our team reads your submission (not a bot, not a triage algorithm). We reply within 4 working hours with either: 1) a Calendly link to book the strategy call, 2) a quick clarifying question, or 3) an honest "we\'re not the right fit, here\'s who is."' },
+          { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free. It\'s 45 minutes of senior time. If we end up working together, great. If not, you walk away with a clearer picture of what to do next.' },
+          { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. We read everything. The form is for booking a call; the inbox is for everything else.' },
+          { q: 'Can I send you materials before the call?', a: 'Yes. After you book, you\'ll get a prep email with a link to share any documents (decks, audits, current metrics, etc.). We\'ll review them before the call so we don\'t waste your time.' },
+          { q: 'What timezone will the call be in?', a: 'We work across US, UK, UAE, and India timezones. We\'ll find a slot that works for both. Most US-based clients prefer 8-10am EST, which is 5:30-7:30pm IST. Most UK clients prefer 4-6pm GMT. We\'re flexible.' },
+          { q: 'Will there be a follow-up if I don\'t engage?', a: 'No. We send one or two follow-up emails max. If you don\'t reply, we leave you alone. We don\'t believe in aggressive sales follow-up — it doesn\'t work and it makes everyone\'s life worse.' },
+        ].map((f) => (
+          <details class="card p-6 group">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-semibold text-white pr-4">{f.q}</span>
+              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
+            </summary>
+            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVE WAYS TO REACH US -->
+  <section class="section-y">
+    <div class="container-wide max-w-3xl">
+      <div class="text-center mb-12">
+        <div class="eyebrow mb-4">Other ways to reach us</div>
+        <h2 class="text-display-2 text-white">
+          Pick your <span class="text-gradient-brand">channel</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        {[
+          { icon: 'ph-envelope-simple', title: 'Email', detail: 'hello@happyranks.com', sub: 'Best for general questions, partnerships, press' },
+          { icon: 'ph-linkedin-logo', title: 'LinkedIn', detail: 'linkedin.com/in/sanjeev', sub: 'Best for professional intros and content updates' },
+          { icon: 'ph-twitter-logo', title: 'X / Twitter', detail: '@happyranks', sub: 'Best for quick takes and conversations' },
+        ].map((c) => (
+          <div class="card p-6 text-center">
+            <div class="w-12 h-12 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
+              <i class={`ph-bold ${c.icon} text-2xl`}></i>
+            </div>
+            <div class="font-bold text-white mb-1">{c.title}</div>
+            <div class="text-sm text-[var(--color-brand)] mono mb-2">{c.detail}</div>
+            <div class="text-xs text-[#888]">{c.sub}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('contact-success');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="ph-bold ph-circle-notch animate-spin"></i> Sending...';
+    btn.disabled = true;
+    try {
+      const body = new URLSearchParams();
+      body.append('form-name', 'contact');
+      formData.forEach((v, k) => body.append(k, v.toString()));
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    } catch (err) {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      alert('Failed to send. Please email hello@happyranks.com directly.');
+    }
+  });
+</script>

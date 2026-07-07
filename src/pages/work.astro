@@ -1,0 +1,239 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const cases = [
+  {
+    slug: 'tutti-rouge',
+    name: 'Tutti Rouge',
+    industry: 'Fashion resale',
+    location: 'United Kingdom',
+    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80',
+    summary: 'From invisible to market leader in UK fashion resale. We rebuilt the entire acquisition engine around GEO and conversion.',
+    metrics: [
+      { v: '+187%', l: 'organic traffic' },
+      { v: '4.2x', l: 'lead-to-customer' },
+      { v: '£2.1M', l: 'attributed pipeline' },
+    ],
+    vitalLift: '42 → 78',
+    tags: ['SEO', 'GEO', 'Conversion'],
+    problem: 'Tutti Rouge had a great product and a decent site, but organic traffic had been flat for 18 months. They were paying 3 different agencies, none of whom were talking to each other.',
+    approach: 'We consolidated everything under one VITAL-based plan, rebuilt the homepage and category pages for AI-overview citation, and instrumented the entire funnel with proper attribution.',
+  },
+  {
+    slug: 'lotus-mahal',
+    name: 'Lotus Mahal',
+    industry: 'Wedding venue',
+    location: 'India',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+    summary: 'Inbound booking engine for a premium wedding venue in Coimbatore. We rebuilt the entire booking experience.',
+    metrics: [
+      { v: '3.4x', l: 'qualified leads' },
+      { v: '+94%', l: 'site speed score' },
+      { v: '12', l: 'bookings / month' },
+    ],
+    vitalLift: '38 → 71',
+    tags: ['Local SEO', 'Booking flow', 'Photography'],
+    problem: 'Lotus Mahal had a beautiful venue but a website that was built in 2018 and never updated. Bookings came almost entirely from Instagram DMs and word of mouth — a fragile dependency.',
+    approach: 'We rebuilt the site as a booking-first experience, added a virtual tour, integrated Calendly for venue visits, and set up a nurture sequence for couples researching 6-12 months out.',
+  },
+  {
+    slug: 'think-accounting',
+    name: 'Think Accounting',
+    industry: 'B2B professional services',
+    location: 'United Kingdom',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80',
+    summary: 'AI-search-optimized site that wins on intent, not just keywords. The first accounting firm showing up in ChatGPT answers.',
+    metrics: [
+      { v: '+312%', l: 'AI citations' },
+      { v: '8.4%', l: 'conversion rate' },
+      { v: '£890K', l: 'new pipeline' },
+    ],
+    vitalLift: '51 → 84',
+    tags: ['GEO', 'Lead funnel', 'Analytics'],
+    problem: 'Think Accounting had a strong brand and good word-of-mouth, but their online presence was anemic. They were invisible in the AI search results where their ideal clients were researching.',
+    approach: 'We rebuilt their site with Generative Engine Optimization at the core — every page structured to be cited by ChatGPT, Perplexity, and Google AI Overviews. Plus a full conversion tracking overhaul.',
+  },
+  {
+    slug: 'viruksha-gardens',
+    name: 'Viruksha Gardens',
+    industry: 'Event venue & hospitality',
+    location: 'India',
+    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
+    summary: 'A brand refresh and conversion system for a destination venue. Made them the go-to for destination weddings in South India.',
+    metrics: [
+      { v: '+221%', l: 'enquiries' },
+      { v: '5.2x', l: 'event bookings' },
+      { v: '4.7★', l: 'avg. review' },
+    ],
+    vitalLift: '33 → 76',
+    tags: ['Brand', 'Conversion', 'Reviews'],
+    problem: 'Viruksha Gardens had stunning grounds but a brand that didn\'t match. Their website looked like a budget venue, their social was inconsistent, and they had no review strategy.',
+    approach: 'Full brand refresh (typography, color, photography direction), new conversion-focused site, review generation system that produces 4.7★ average across Google, WeddingWire, and VenueMonk.',
+  },
+];
+
+const industries = [
+  { name: 'All', count: cases.length, icon: 'ph-squares-four' },
+  { name: 'Fashion', count: 1, icon: 'ph-tag' },
+  { name: 'Wedding & events', count: 2, icon: 'ph-heart' },
+  { name: 'B2B services', count: 1, icon: 'ph-briefcase' },
+];
+---
+
+<Layout
+  title="Case Studies — Real growth, measured numbers"
+  description="Selected work: Tutti Rouge, Lotus Mahal, Think Accounting, Viruksha Gardens. Real metrics, real lift, real revenue. Every case study is scored with the VITAL audit framework before and after."
+  active="/work"
+>
+  <!-- HERO -->
+  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
+    <div class="orb-red -top-40 -left-40"></div>
+    <div class="container-wide relative">
+      <div class="max-w-3xl">
+        <div class="eyebrow mb-4">Case studies</div>
+        <h1 class="text-display-1 text-white mb-6">
+          Selected work.<br/>
+          <span class="text-gradient-brand">Measurable numbers.</span>
+        </h1>
+        <p class="text-lg text-[#a0a0a0] max-w-2xl leading-relaxed mb-6">
+          Real engagements with real businesses. Every case study is scored with the VITAL
+          audit framework before and after — so you can see the actual delta, not vanity metrics.
+        </p>
+        <p class="text-base text-[#888] leading-relaxed">
+          We've worked with 80+ businesses since 2014 across real estate, service businesses,
+          wedding and events, and B2B SaaS. The four highlighted below represent the range of
+          what we do.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE GRID -->
+  <section class="pb-24">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 gap-6">
+        {cases.map((c) => (
+          <a href={`/work/${c.slug}`} class="card card-hover overflow-hidden group p-0 block">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 bg-[#0a0a0a]/80 backdrop-blur border border-[#2a2a2a] rounded-full">
+                <div class="text-[10px] mono text-[#888]">VITAL</div>
+                <div class="text-sm font-bold text-white">{c.vitalLift}</div>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex items-center gap-2 mb-2 flex-wrap">
+                  {c.tags.map((t) => (
+                    <span class="px-2 py-0.5 bg-[#1a1a1a]/80 backdrop-blur border border-[#2a2a2a] text-[10px] mono text-[#a0a0a0] rounded">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="p-8">
+              <div class="flex items-center gap-3 mb-3 text-xs mono text-[#888]">
+                <span>{c.industry}</span>
+                <span>·</span>
+                <span>{c.location}</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-[var(--color-brand)] transition">{c.name}</h3>
+              <p class="text-[#a0a0a0] leading-relaxed mb-4">{c.summary}</p>
+              <p class="text-sm text-[#666] leading-relaxed mb-6 italic">{c.problem}</p>
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#1a1a1a]">
+                {c.metrics.map((m) => (
+                  <div>
+                    <div class="text-xl font-black text-white">{m.v}</div>
+                    <div class="text-[10px] mono text-[#666] uppercase tracking-wider">{m.l}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all">
+                Read full case study
+                <i class="ph-bold ph-arrow-up-right text-[var(--color-brand)]"></i>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BY INDUSTRY -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-12">
+        <div class="eyebrow mb-4">By industry</div>
+        <h2 class="text-display-2 text-white mb-6">
+          We've worked across<br/>
+          <span class="text-gradient-light">four core verticals</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          We focus on four verticals where the VITAL framework produces the most predictable results.
+          Within each, we know the channels that work, the benchmarks that matter, and the
+          mistakes that waste money.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {industries.map((i) => (
+          <div class="card p-6">
+            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+              <i class={`ph-bold ${i.icon} text-xl`}></i>
+            </div>
+            <div class="font-bold text-white mb-1">{i.name}</div>
+            <div class="text-xs mono text-[#666]">{i.count} case stud{i.count === 1 ? 'y' : 'ies'}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS WE USED -->
+  <section class="section-y">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-12">
+        <div class="eyebrow mb-4">The pattern</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Every case study<br/>
+          <span class="text-gradient-brand">follows the same shape</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          Despite different industries, every successful engagement we've run has followed the
+          same three-phase shape. Here's the pattern — and why it works.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        {[
+          { phase: '01', title: 'Measure', desc: 'We start with a VITAL audit — a real number across 5 dimensions × 10 checks. No opinions, no consultant-speak. Just measurable signals that show where you stand.' },
+          { phase: '02', title: 'Prioritize', desc: 'We score each potential fix by impact and effort. Then we ship the top 20% of fixes that produce 80% of the result. No busy work, no scope creep.' },
+          { phase: '03', title: 'Iterate', desc: 'We re-measure every 30 days. Winners get rolled out, losers get documented. The system compounds — every month gets easier than the last.' },
+        ].map((p) => (
+          <div class="card p-6">
+            <div class="text-5xl font-black text-[#222] mono mb-3">{p.phase}</div>
+            <div class="text-xl font-bold text-white mb-2">{p.title}</div>
+            <p class="text-sm text-[#888] leading-relaxed">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-y relative overflow-hidden">
+    <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="container-wide relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-display-2 text-white mb-6">
+          Your numbers <span class="text-gradient-brand">next?</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] mb-10">
+          Get a free VITAL audit and see exactly where you stand today. No call required.
+        </p>
+        <a href="/vital-audit" class="btn btn-primary btn-large">
+          <i class="ph-bold ph-lightning"></i>
+          Get my free VITAL audit
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

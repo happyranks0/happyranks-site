@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const serviceSchema = {
+  '@type': 'Service',
+  serviceType: 'Marketing Audit and Optimization',
+  provider: { '@type': 'Organization', name: 'Happyranks' },
+  areaServed: ['US', 'GB', 'AE', 'IN'],
+  description: 'VITAL framework marketing audit and optimization across 5 dimensions: Visibility, Impression, Transition, Automation, Learning. Includes Generative Engine Optimization (GEO), conversion rate optimization, marketing automation setup, and analytics implementation.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    description: 'Free 90-second VITAL audit with 10-page PDF report',
+  },
+};
+
+const dimensions = [
+  {
+    letter: 'V',
+    name: 'Visibility',
+    headline: 'Can the right people find you?',
+    desc: 'In 2026, "find you" means Google, ChatGPT, Perplexity, Gemini, and Claude. We engineer your site to show up in all of them — for the queries that bring you customers, not just traffic.',
+    icon: 'ph-binoculars',
+    color: 'from-blue-500 to-cyan-500',
+    checks: [
+      { name: 'Technical SEO audit', detail: 'Crawlability, indexation, site architecture, Core Web Vitals, mobile-first indexing compliance, hreflang, canonicalization.' },
+      { name: 'Generative Engine Optimization (GEO)', detail: 'LLM-friendly content structure, entity definitions, citation-worthy formatting, source attribution, freshness signals.' },
+      { name: 'Knowledge graph presence', detail: 'Wikidata, Google Knowledge Panel, schema markup (Organization, Person, Product, Service, FAQ, HowTo), entity authority building.' },
+      { name: 'Search intent mapping', detail: 'Right keywords mapped to right pages with right format. Informational vs. transactional vs. commercial intent — matched to your funnel stage.' },
+      { name: 'AI-overview citation tracking', detail: 'Weekly monitoring of how often your brand is cited in ChatGPT, Perplexity, Gemini, and Google AI Overviews. Tracked as a KPI, not a vanity metric.' },
+      { name: 'Backlink profile analysis', detail: 'Domain authority, referring domains, anchor text distribution, toxic link identification, competitor gap analysis.' },
+    ],
+    tools: ['Ahrefs', 'Semrush', 'Screaming Frog', 'Google Search Console', 'Schema.org validator', 'Perplexity API'],
+  },
+  {
+    letter: 'I',
+    name: 'Impression',
+    headline: 'Do they trust you in 3 seconds?',
+    desc: 'Speed, design, copy clarity, social proof. The first impression determines whether the visitor stays, scrolls, and converts — or bounces to your competitor. We make sure they stay.',
+    icon: 'ph-eye',
+    color: 'from-purple-500 to-pink-500',
+    checks: [
+      { name: 'Core Web Vitals optimization', detail: 'LCP under 2.5s, INP under 200ms, CLS under 0.1. Measured on real-user data (field metrics), not just lab tests. Mobile and desktop separately.' },
+      { name: 'Hero clarity & value proposition', detail: 'Above-the-fold message in plain English. Visitor knows what you do, who it\'s for, and why it matters — in under 5 seconds.' },
+      { name: 'Visual hierarchy & typography', detail: 'Reading flow, scanability, weight balance, whitespace rhythm, color contrast. WCAG AA minimum, AAA where possible.' },
+      { name: 'Mobile responsiveness', detail: 'Pixel-perfect across all breakpoints. Touch targets ≥ 44px, no horizontal scroll, no zoom required, fast 3G test pass.' },
+      { name: 'Social proof placement', detail: 'Testimonials, logos, case studies, ratings, certifications, press mentions — placed where buying decisions actually happen, not buried in a footer.' },
+      { name: 'Brand consistency', detail: 'Colors, fonts, voice, photography style — consistent across every page. Recognizable in 3 seconds, memorable after one visit.' },
+    ],
+    tools: ['PageSpeed Insights', 'Chrome UX Report', 'WebPageTest', 'Hotjar heatmaps', 'Microsoft Clarity', 'Figma'],
+  },
+  {
+    letter: 'T',
+    name: 'Transition',
+    headline: 'Can they become a lead, easily?',
+    desc: 'The path from "interested" to "booked call." Friction here is the most expensive leak in most marketing funnels. We eliminate it with psychology-backed design, copy, and flow.',
+    icon: 'ph-arrow-right',
+    color: 'from-orange-500 to-red-500',
+    checks: [
+      { name: 'CTA placement & copy', detail: 'Above-fold, contextually embedded throughout, action-oriented language. Multiple CTA types matched to visitor intent (book, download, chat, call).' },
+      { name: 'Form design & friction reduction', detail: 'Fewer fields, multi-step where appropriate, inline validation, social proof at the form, mobile-optimized input types (tel, email, date).' },
+      { name: 'Booking & calendar integration', detail: 'Calendly, Cal.com, HubSpot Meetings — direct booking without back-and-forth. Round-robin assignment, buffer times, timezone handling.' },
+      { name: 'Lead magnet funnels', detail: 'PDFs, templates, tools, audits that capture emails. Value-first, ungated where possible, gated only when the content is genuinely worth it.' },
+      { name: 'Conversion path audits', detail: 'Heatmaps, session recordings, funnel analysis. We find where visitors drop off and fix the specific page, step, or copy that\'s causing it.' },
+      { name: 'A/B test programs', detail: 'Headlines, CTAs, layouts, offers. Statistical significance, not vibes. Every test produces a learning whether it wins or loses.' },
+    ],
+    tools: ['Calendly', 'Cal.com', 'HubSpot', 'Typeform', 'Hotjar', 'Google Optimize alternatives'],
+  },
+  {
+    letter: 'A',
+    name: 'Automation',
+    headline: 'What happens after they engage?',
+    desc: 'A visitor who doesn\'t convert today is a lead for tomorrow — if your system is set up to nurture them. We wire up the full stack so no engagement falls through the cracks.',
+    icon: 'ph-robot',
+    color: 'from-emerald-500 to-teal-500',
+    checks: [
+      { name: 'CRM setup & integration', detail: 'Mautic, HubSpot, Pipedrive, Salesforce — whichever you use (or should use). Contact properties, deal stages, lead scoring, automation workflows.' },
+      { name: 'Email nurture sequences', detail: 'Welcome series, educational content, conversion nudges, re-engagement. Behavior-triggered, not just time-based. 20%+ open rates as the baseline.' },
+      { name: 'Retargeting pixel deployment', detail: 'Meta, Google, LinkedIn, TikTok — all major platforms. Custom audiences built from site behavior, lookalikes for acquisition, exclusion lists to avoid waste.' },
+      { name: 'Lead scoring & routing', detail: 'Hot leads to sales in real-time, warm leads to nurture, cold leads to long-term sequences. Round-robin or rule-based assignment.' },
+      { name: 'WhatsApp & SMS automation', detail: 'For high-intent, time-sensitive offers. Click-to-WhatsApp ads, automated replies, broadcast sequences (compliance-checked per region).' },
+      { name: 'Sales handoff automation', detail: 'When a lead hits threshold → instant notification to sales, meeting link, contact card, full behavioral history. Sales calls within 5 minutes, not 5 hours.' },
+    ],
+    tools: ['Mautic', 'HubSpot', 'ActiveCampaign', 'Make.com', 'n8n', 'WhatsApp Business API'],
+  },
+  {
+    letter: 'L',
+    name: 'Learning',
+    headline: 'Do you measure what works?',
+    desc: 'You can\'t improve what you don\'t measure. We set up the full attribution stack so you know exactly where every dollar came from — and where the next dollar should go.',
+    icon: 'ph-chart-line-up',
+    color: 'from-yellow-500 to-orange-500',
+    checks: [
+      { name: 'GA4 + server-side tracking', detail: 'Cookie-proof, GDPR-compliant, future-proof. Server-side GTM for accurate data even with Safari ITP and ad blockers. Custom event taxonomy.' },
+      { name: 'Conversion attribution modeling', detail: 'First-touch, last-touch, linear, time-decay, position-based, data-driven. Pick the model that matches your sales cycle, not the default.' },
+      { name: 'Tag manager architecture', detail: 'GTM container, naming conventions, version control, environment separation (dev/staging/prod). Cleanup of legacy tags and duplicate pixels.' },
+      { name: 'Custom dashboards', detail: 'Looker Studio, WhatGraph, or your BI of choice. Real-time views of traffic, leads, conversion rate, pipeline, CAC, LTV. Email summaries on schedule.' },
+      { name: 'Weekly performance reports', detail: 'What changed, what worked, what didn\'t, what to do next. Plain English, not data dumps. Sent every Monday morning before your team starts the week.' },
+      { name: 'Experimentation framework', detail: 'Hypothesis → test → measure → learn → ship. Every change is measured. Winners get rolled out, losers get documented so we don\'t repeat them.' },
+    ],
+    tools: ['GA4', 'Google Tag Manager', 'Looker Studio', 'Mixpanel', 'Hotjar', 'Microsoft Clarity'],
+  },
+];
+---
+
+<Layout
+  title="Capabilities — The VITAL framework in detail"
+  description="Five dimensions of marketing done right: Visibility, Impression, Transition, Automation, Learning. Each audited across ~10 specific checks. Built into every engagement."
+  active="/capabilities"
+  schema={serviceSchema}
+>
+  <!-- HERO -->
+  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
+    <div class="orb-red -top-40 left-1/2 -translate-x-1/2"></div>
+    <div class="container-wide relative">
+      <div class="max-w-3xl">
+        <div class="eyebrow mb-4">Our capabilities</div>
+        <h1 class="text-display-1 text-white mb-6">
+          The <span class="text-gradient-brand">VITAL framework</span> —<br/>
+          every dimension, in detail
+        </h1>
+        <p class="text-lg text-[#a0a0a0] max-w-2xl leading-relaxed mb-6">
+          VITAL is the system we use to audit every website we work on, and the lens through which
+          we plan every engagement. It scores websites across 5 dimensions × ~10 checks each —
+          50 measurable signals that determine whether your marketing makes money.
+        </p>
+        <p class="text-base text-[#888] leading-relaxed mb-10">
+          Below: the full rubric, the tools we use, and what "good" looks like in each dimension.
+          The free audit gives you a real number across all 5 in 90 seconds.
+        </p>
+        <a href="/vital-audit" class="btn btn-primary btn-large">
+          <i class="ph-bold ph-lightning"></i>
+          See how your site scores
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIMENSIONS -->
+  <section class="section-y">
+    <div class="container-wide space-y-24">
+      {dimensions.map((d) => (
+        <div class="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
+          <div class="md:sticky md:top-24">
+            <div class={`w-20 h-20 rounded-2xl bg-gradient-to-br ${d.color} flex items-center justify-center mb-6 shadow-2xl`}>
+              <i class={`ph-bold ${d.icon} text-4xl text-white`}></i>
+            </div>
+            <div class="text-7xl font-black text-[#1a1a1a] mono mb-4">{d.letter}</div>
+            <h2 class="text-display-3 text-white mb-3">{d.name}</h2>
+            <p class="text-[#a0a0a0] text-lg leading-relaxed mb-4">{d.headline}</p>
+            <p class="text-sm text-[#888] leading-relaxed mb-6">{d.desc}</p>
+            <div class="text-xs mono text-[#666] mb-2">TOOLS WE USE</div>
+            <div class="flex flex-wrap gap-2">
+              {d.tools.map((t) => (
+                <span class="px-2 py-1 text-[10px] mono bg-[#1a1a1a] border border-[#2a2a2a] rounded text-[#a0a0a0]">{t}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div class="card p-6">
+              <div class="eyebrow mb-4">What we audit</div>
+              <div class="space-y-4">
+                {d.checks.map((c) => (
+                  <div class="flex items-start gap-4 pb-4 border-b border-[#1a1a1a] last:border-0 last:pb-0">
+                    <i class="ph-bold ph-check-circle text-[var(--color-brand)] text-xl mt-0.5 shrink-0"></i>
+                    <div>
+                      <div class="font-semibold text-white mb-1">{c.name}</div>
+                      <div class="text-sm text-[#888]">{c.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- AUDIT PROCESS -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-16">
+        <div class="eyebrow mb-4">How the audit works</div>
+        <h2 class="text-display-2 text-white mb-6">
+          From URL to report<br/>
+          <span class="text-gradient-brand">in 90 seconds</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          The free VITAL audit runs a custom-built Python engine against your site. It pulls
+          ~50 measurable signals, scores them against a weighted rubric, and produces a
+          10-page PDF report. Here's exactly what happens under the hood.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {[
+          { n: '1', title: 'Crawl & fetch', detail: 'We hit your homepage with proper user-agent, fetch HTML, parse meta tags, headers, schema, links, and asset structure. Sub-2s timeout with retries.' },
+          { n: '2', title: 'Run 50+ checks', detail: 'Each of the 5 dimensions runs ~10 specific checks. Page speed via Lighthouse-style signals. SEO via meta + schema parsing. Conversion via form + CTA detection. Automation via pixel + DNS lookups. Analytics via tag detection.' },
+          { n: '3', title: 'Score & weight', detail: 'Each check returns 0–100. Dimension score is weighted average. Final VITAL score is average of the 5 dimensions. A site with all 90s scores 90. A site with 3 perfects and 2 zeros scores ~54.' },
+          { n: '4', title: 'Generate report', detail: 'PDF includes: cover page with overall score, executive summary, estimated revenue impact, dimension deep-dives, SWOT analysis, prioritized 90-day action plan. Emailed within 2 minutes.' },
+        ].map((s) => (
+          <div class="card p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-10 h-10 rounded-full bg-[var(--color-brand)] text-white flex items-center justify-center font-bold">{s.n}</div>
+              <h3 class="text-xl font-bold text-white">{s.title}</h3>
+            </div>
+            <p class="text-[#a0a0a0] leading-relaxed text-sm">{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRY APPLICATIONS -->
+  <section class="section-y">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-16">
+        <div class="eyebrow mb-4">Where it applies</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Every industry. <span class="text-gradient-light">Same rigor.</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          The VITAL framework works the same way regardless of industry — what changes is
+          which dimensions matter most for your specific business. A wedding venue obsesses
+          over Impression and Transition. A B2B SaaS company obsesses over Visibility and
+          Learning. We map it to your model.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { industry: 'Real estate', priority: 'V → T → I → A → L', focus: 'Visibility (local SEO), Transition (lead forms, IDX), Automation (instant lead alerts).' },
+          { industry: 'Wedding & events', priority: 'I → T → V → A → L', focus: 'Impression (portfolio showcase), Transition (inquiry flow), Visibility (local search).' },
+          { industry: 'B2B SaaS', priority: 'V → L → A → T → I', focus: 'Visibility (GEO + SEO), Learning (attribution), Automation (lead scoring, CRM).' },
+          { industry: 'Service business', priority: 'T → A → V → I → L', focus: 'Transition (booking, calls), Automation (follow-up sequences), Visibility (local SEO).' },
+        ].map((i) => (
+          <div class="card p-6">
+            <div class="font-bold text-white mb-3">{i.industry}</div>
+            <div class="text-xs mono text-[var(--color-brand)] mb-3">Priority: {i.priority}</div>
+            <p class="text-sm text-[#888] leading-relaxed">{i.focus}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-y relative overflow-hidden">
+    <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="container-wide relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-display-2 text-white mb-6">
+          See how your site <span class="text-gradient-brand">scores today</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] mb-10">
+          A free VITAL audit gives you a real number across all 5 dimensions. No fluff. No call required.
+        </p>
+        <a href="/vital-audit" class="btn btn-primary btn-large">
+          Get my free VITAL audit
+          <i class="ph-bold ph-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

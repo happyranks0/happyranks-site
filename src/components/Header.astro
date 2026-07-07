@@ -1,0 +1,36 @@
+---
+const { active = '' } = Astro.props;
+const links = [
+  { href: '/capabilities', label: 'Capabilities' },
+  { href: '/work', label: 'Work' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/vital-audit', label: 'Free VITAL Audit' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0a0a0a]/80 border-b border-[#1a1a1a]">
+  <div class="container-wide flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm group-hover:scale-105 transition">H</div>
+      <span class="font-bold text-white tracking-tight">Happyranks</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-1">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class:list={[
+            'px-3 py-2 text-sm font-medium rounded-md transition',
+            active === l.href
+              ? 'text-white bg-[#1a1a1a]'
+              : 'text-[#a0a0a0] hover:text-white hover:bg-[#141414]'
+          ]}
+        >{l.label}</a>
+      ))}
+    </nav>
+    <a href="/contact" class="btn btn-primary">
+      Book a call
+      <i class="ph-bold ph-arrow-right text-base"></i>
+    </a>
+  </div>
+</header>

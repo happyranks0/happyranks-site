@@ -1,736 +1,617 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What exactly is the VITAL audit?', acceptedAnswer: { '@type': 'Answer', text: 'A 5-dimension scoring system measuring Visibility, Impression, Transition, Automation, and Learning. Each dimension is scored 0-100 based on 50+ measurable checks.' } },
+    { '@type': 'Question', name: 'How long until I see results?', acceptedAnswer: { '@type': 'Answer', text: 'Most clients see measurable movement in 30 days. Bigger lifts compound over 60-90 days. We re-score with VITAL at day 90.' } },
+    { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, it is month-to-month with 30 days notice. Most clients stay 9-18 months.' } },
+    { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions.' } },
+    { '@type': 'Question', name: 'How is this different from a regular agency?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: 1) We score everything, 2) Senior execution with no handoffs, 3) We cap at 12 active clients for senior attention.' } },
+  ],
+};
+
+const serviceSchema = {
+  '@type': 'Service',
+  serviceType: 'Marketing Services',
+  provider: { '@type': 'Organization', name: 'Happyranks' },
+  areaServed: ['US', 'GB', 'AE', 'IN'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Marketing Engagement Tiers',
+    itemListElement: [
+      { '@type': 'Offer', name: 'Starter', price: '1500', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Growth', price: '4500', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Scale', priceCurrency: 'USD', description: 'Custom pricing' },
+    ],
+  },
+};
 ---
 
-<Layout>
-  <slot name="head">
-    <title>Happyranks — Marketing Systems for the AI Era</title>
-    <meta name="description" content="Get found by AI. Convert humans. Grow with systems." />
-  </slot>
-
-  <!-- Phosphor icons stylesheet (no JS needed) -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
-
-  <!-- ═══ NAV ═══ -->
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b" style="background-color: rgba(10,10,10,0.75); border-color: #161616;">
-    <div class="container-wide flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2.5">
-        <div class="w-7 h-7 rounded-md flex items-center justify-center font-bold text-[13px]" style="background-color: var(--color-brand);">H</div>
-        <span class="font-semibold text-[15px]">happyranks</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-[#888]">
-        <a href="/services" class="hover:text-white transition-colors">Services</a>
-        <a href="/case-studies" class="hover:text-white transition-colors">Work</a>
-        <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
-        <a href="/about" class="hover:text-white transition-colors">About</a>
-      </div>
-      <a href="/vital" class="btn btn-primary text-sm">
-        Get VITAL Score
-      </a>
-    </div>
-  </nav>
-
-  <!-- ═══ HERO ═══ -->
-  <section class="relative pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden">
-    <div class="absolute inset-0 bg-grid bg-grid-mask opacity-50"></div>
-    <div class="orb-red" style="top: -250px; left: 50%; transform: translateX(-50%); opacity: 0.5;"></div>
-
-    <div class="container-wide relative">
-      <div class="grid lg:grid-cols-12 gap-10 items-center">
-        <!-- LEFT: Copy -->
-        <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-[13px] mb-8 border" style="background-color: rgba(255,49,49,0.06); border-color: rgba(255,49,49,0.25); color: #ff7a7a;">
-            <span class="w-1.5 h-1.5 rounded-full pulse-dot" style="background-color: var(--color-brand);"></span>
-            Built for the AI era
+<Layout
+  title="Happyranks — Marketing systems that grow revenue"
+  description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the VITAL framework: Visibility, Impression, Transition, Automation, Learning. Free 90-second audit."
+  active=""
+  schema={[faqSchema, serviceSchema]}
+>
+  <!-- ─── HERO ─── -->
+  <section class="relative overflow-hidden bg-grid bg-grid-mask">
+    <div class="orb-red -top-40 -left-40"></div>
+    <div class="orb-red top-40 -right-40 opacity-60"></div>
+    <div class="container-wide section-y relative">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a2a2a] bg-[#141414] mb-6 text-xs mono text-[#a0a0a0]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"></span>
+          <span>Now auditing sites in 90 seconds — free, no call required</span>
+        </div>
+        <h1 class="text-display-1 text-white mb-6">
+          Marketing systems that<br/>
+          <span class="text-gradient-brand">actually grow revenue</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[#a0a0a0] max-w-2xl leading-relaxed mb-10">
+          We build the full marketing engine — visibility, conversion, automation, analytics —
+          around the VITAL framework. One audit. One plan. Measurable growth.
+        </p>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="/vital-audit" class="btn btn-primary btn-large">
+            <i class="ph-bold ph-lightning"></i>
+            Get my free VITAL audit
+          </a>
+          <a href="/work" class="btn btn-ghost btn-large">
+            See the work
+            <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </div>
+        <div class="mt-12 flex flex-wrap items-center gap-6 text-xs mono text-[#666]">
+          <div class="flex items-center gap-2">
+            <i class="ph-bold ph-check-circle text-emerald-500"></i>
+            <span>No contract</span>
           </div>
+          <div class="flex items-center gap-2">
+            <i class="ph-bold ph-check-circle text-emerald-500"></i>
+            <span>Report in 90s</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="ph-bold ph-check-circle text-emerald-500"></i>
+            <span>Built for AI search</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="ph-bold ph-check-circle text-emerald-500"></i>
+            <span>30-day money-back</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <h1 class="text-display-1 mb-7">
-            <span class="text-gradient-light">Marketing that</span><br />
-            <span class="text-gradient-light">AI can find.</span><br />
-            <span class="text-gradient-brand">Humans can trust.</span>
-          </h1>
+  <!-- ─── TRUST LOGOS ─── -->
+  <section class="border-y border-[#1a1a1a] bg-[#0a0a0a] py-10">
+    <div class="container-wide">
+      <div class="text-center eyebrow mb-6">Trusted by growth-focused teams</div>
+      <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60">
+        <span class="text-lg font-bold tracking-tight text-white">Tutti Rouge</span>
+        <span class="text-lg font-serif italic text-white">Lotus Mahal</span>
+        <span class="text-lg font-bold text-white">THINK</span>
+        <span class="text-lg font-light tracking-widest text-white">VIRUKSHA</span>
+        <span class="text-lg font-bold text-white">efficy</span>
+      </div>
+    </div>
+  </section>
 
-          <p class="text-lg md:text-xl text-[#999] max-w-xl mb-9 leading-relaxed">
-            We build marketing systems for mid-market businesses — 
-            engineered to be cited by AI, optimized for human conversion, 
-            and automated to scale.
+  <!-- ─── THE PROBLEM (Why most marketing fails) ─── -->
+  <section class="section-y relative">
+    <div class="container-wide">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div>
+          <div class="eyebrow mb-4">Why most marketing fails</div>
+          <h2 class="text-display-2 text-white mb-6">
+            You're paying for traffic.<br/>
+            <span class="text-gradient-light">You're not paying for revenue.</span>
+          </h2>
+          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
+            Most agencies sell you a tactic — SEO, ads, content, social. They show you vanity
+            metrics: impressions, clicks, follower counts. None of those things pay your rent.
           </p>
-
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-10">
-            <a href="/vital" class="btn btn-primary text-[15px] px-6 py-3.5">
-              Run a free VITAL audit
-              <i class="ph ph-arrow-right" style="font-size: 16px;"></i>
-            </a>
-            <a href="/services" class="btn btn-ghost text-[15px] px-6 py-3.5">
-              <i class="ph ph-play" style="font-size: 16px;"></i>
-              See how it works
-            </a>
-          </div>
-
-          <!-- Quick stats with icons -->
-          <div class="flex flex-wrap items-center gap-6 text-sm">
-            <div class="flex items-center gap-2 text-[#888]">
-              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
-              <span>No long-term contract</span>
-            </div>
-            <div class="flex items-center gap-2 text-[#888]">
-              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
-              <span>Full-system reporting</span>
-            </div>
-            <div class="flex items-center gap-2 text-[#888]">
-              <i class="ph-fill ph-check-circle" style="color: #22c55e; font-size: 18px;"></i>
-              <span>Built for AI era</span>
-            </div>
-          </div>
+          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
+            The businesses that grow reliably have a system. They measure the right things, they
+            fix the leaks, and they ship improvements every week. The VITAL framework is the
+            operating system for that approach.
+          </p>
+          <p class="text-base text-[#888] leading-relaxed">
+            We use it to audit every website we touch. It's how we know which fixes will move
+            the number that matters — revenue — and which ones will just make a chart look good.
+          </p>
         </div>
-
-        <!-- RIGHT: Visual dashboard mock -->
-        <div class="lg:col-span-5">
-          <div class="relative">
-            <!-- Floating visual element behind -->
-            <div class="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-30" style="background: radial-gradient(circle, #ff3131, transparent 70%); filter: blur(30px);"></div>
-
-            <div class="card card-glow p-6 relative">
-              <!-- Window chrome -->
-              <div class="flex items-center gap-1.5 mb-5 pb-4 border-b" style="border-color: #1f1f1f;">
-                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #ef4444;"></div>
-                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #eab308;"></div>
-                <div class="w-2.5 h-2.5 rounded-full" style="background-color: #22c55e;"></div>
-                <div class="flex-1 mx-3">
-                  <div class="text-[11px] mono text-[#666] text-center">happyranks.com/audit</div>
-                </div>
-                <i class="ph ph-arrow-square-out" style="color: #555; font-size: 14px;"></i>
-              </div>
-
-              <!-- Big score -->
-              <div class="flex items-center justify-between mb-6">
-                <div>
-                  <div class="text-xs text-[#666] uppercase tracking-wider mb-1">VITAL Score</div>
-                  <div class="flex items-baseline gap-1.5">
-                    <span class="text-6xl font-bold text-gradient-brand leading-none">54</span>
-                    <span class="text-xl text-[#444]">/100</span>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <div class="text-[10px] text-[#555] uppercase tracking-wider mb-1">Grade</div>
-                  <div class="text-2xl font-bold" style="color: var(--color-brand);">C+</div>
-                </div>
-              </div>
-
-              <!-- Dimension bars -->
-              <div class="space-y-3 mb-5">
-                <div>
-                  <div class="flex justify-between text-[12px] mb-1.5">
-                    <span class="text-[#aaa] flex items-center gap-1.5">
-                      <i class="ph ph-eye" style="font-size: 14px;"></i>
-                      Visibility
-                    </span>
-                    <span class="mono text-[#888]">80</span>
-                  </div>
-                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 80%; background-color: #22c55e;"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[12px] mb-1.5">
-                    <span class="text-[#aaa] flex items-center gap-1.5">
-                      <i class="ph ph-paint-brush" style="font-size: 14px;"></i>
-                      Impression
-                    </span>
-                    <span class="mono text-[#888]">46</span>
-                  </div>
-                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 46%; background-color: #eab308;"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[12px] mb-1.5">
-                    <span class="text-[#aaa] flex items-center gap-1.5">
-                      <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
-                      Transition
-                    </span>
-                    <span class="mono" style="color: var(--color-brand);">33</span>
-                  </div>
-                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 33%; background-color: var(--color-brand);"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[12px] mb-1.5">
-                    <span class="text-[#aaa] flex items-center gap-1.5">
-                      <i class="ph ph-robot" style="font-size: 14px;"></i>
-                      Automation
-                    </span>
-                    <span class="mono text-[#888]">42</span>
-                  </div>
-                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 42%; background-color: #eab308;"></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-[12px] mb-1.5">
-                    <span class="text-[#aaa] flex items-center gap-1.5">
-                      <i class="ph ph-chart-line-up" style="font-size: 14px;"></i>
-                      Learning
-                    </span>
-                    <span class="mono text-[#888]">68</span>
-                  </div>
-                  <div class="h-1 rounded-full overflow-hidden" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 68%; background-color: #22c55e;"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Bottom alert -->
-              <div class="pt-4 border-t flex items-center gap-3" style="border-color: #1f1f1f;">
-                <div class="w-8 h-8 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
-                  <i class="ph-fill ph-warning" style="font-size: 16px;"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[12px] font-medium text-white">Biggest leak: Transition</div>
-                  <div class="text-[11px] text-[#666] truncate">No primary CTA above the fold</div>
-                </div>
-                <a href="/vital" class="text-[12px] font-semibold whitespace-nowrap" style="color: var(--color-brand);">Fix →</a>
-              </div>
-            </div>
-
-            <!-- Floating badge -->
-            <div class="absolute -bottom-4 -left-4 card px-4 py-3 hidden md:flex items-center gap-2.5 float">
-              <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: rgba(34,197,94,0.15); color: #22c55e;">
-                <i class="ph-fill ph-trend-up" style="font-size: 16px;"></i>
-              </div>
+        <div class="space-y-4">
+          {[
+            { sym: '✕', title: 'Vanity metrics', desc: '"We got 50K impressions this month" — so what? Impressions don\'t pay invoices.' },
+            { sym: '✕', title: 'Tactic-first thinking', desc: 'SEO, ads, email, social — treated as separate projects instead of one system.' },
+            { sym: '✕', title: 'Slow feedback loops', desc: '90 days to find out whether anything worked. By then, the budget is gone.' },
+            { sym: '✕', title: 'No measurement layer', desc: 'Running campaigns with no conversion tracking. Flying blind, paying for the privilege.' },
+            { sym: '✕', title: 'Junior handoffs', desc: 'Senior pitch, junior execution. The person who scoped your work is never the one doing it.' },
+          ].map((p) => (
+            <div class="card p-5 flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-[var(--color-brand)] shrink-0 text-sm">{p.sym}</div>
               <div>
-                <div class="text-[10px] text-[#666] uppercase tracking-wider">Avg client lift</div>
-                <div class="text-sm font-semibold text-white">3.2x leads</div>
+                <div class="font-bold text-white mb-1">{p.title}</div>
+                <p class="text-sm text-[#888] leading-relaxed">{p.desc}</p>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ LOGO STRIP ═══ -->
-  <section class="py-12 border-y" style="border-color: #141414;">
+  <!-- ─── THE FRAMEWORK (VITAL) ─── -->
+  <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
-      <p class="text-center text-xs text-[#555] mb-8 uppercase tracking-[0.15em]">Trusted by growing businesses</p>
-      <div class="flex flex-wrap items-center justify-center gap-x-14 gap-y-3">
-        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Tutti Rouge</span>
-        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Lotus Mahal</span>
-        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Think Accounting</span>
-        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Viruksha Gardens</span>
-        <span class="text-[14px] font-medium text-[#555] hover:text-white transition-colors">Efficy</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ WHAT WE DO — Three big rows with custom visuals ═══ -->
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-2xl mb-20">
-        <p class="eyebrow mb-5">What we do</p>
-        <h2 class="text-display-2 mb-6">One system. <span class="text-gradient-brand">Three pillars.</span></h2>
-        <p class="text-lg text-[#888] leading-relaxed">
-          Seven capabilities. Three core outcomes. 
-          Every engagement is built to be found, to convert, and to run without you.
+      <div class="max-w-2xl mb-16">
+        <div class="eyebrow mb-4">The VITAL framework</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Five dimensions.<br/>
+          <span class="text-gradient-light">One score.</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
+          The VITAL audit measures your website across the five things that actually determine
+          whether your marketing makes money or burns it. Each dimension is scored 0–100 based
+          on a weighted rubric of measurable signals — not opinions.
+        </p>
+        <p class="text-base text-[#888] leading-relaxed">
+          Most websites score between 40 and 65. The ones that score above 75 are typically
+          generating 3–5x more pipeline than their direct competitors — for the same ad spend.
         </p>
       </div>
 
-      <!-- PILLAR 1: Be found by AI -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-10 mb-20 items-center">
-        <div class="md:col-span-5 md:order-2">
-          <div class="relative">
-            <!-- Visual: AI search results mockup with real Unsplash image -->
-            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
-              <img
-                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop"
-                alt="AI search interface"
-                class="w-full h-full object-cover opacity-50"
-                loading="lazy"
-              />
-              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
-              <!-- Overlay UI -->
-              <div class="absolute inset-0 p-5 flex flex-col justify-end">
-                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
-                  <div class="flex items-center gap-2 mb-2">
-                    <div class="w-5 h-5 rounded" style="background-color: #10a37f;"></div>
-                    <span class="text-[10px] mono text-[#888]">ChatGPT</span>
-                    <span class="text-[10px] mono text-[#22c55e] ml-auto">cited</span>
-                  </div>
-                  <div class="text-[12px] text-white">"Best marketing agency for AI visibility"</div>
-                  <div class="text-[10px] text-[#666] mt-1">→ happyranks.com/services/ai-visibility</div>
-                </div>
-              </div>
+      <div class="grid md:grid-cols-5 gap-4">
+        {[
+          { letter: 'V', name: 'Visibility', desc: 'Can the right people find you — in Google, in ChatGPT, in Perplexity, in Gemini? We measure technical SEO, AI-overview citation potential, knowledge-graph presence, and search-intent coverage.', icon: 'ph-binoculars', score: 68 },
+          { letter: 'I', name: 'Impression', desc: 'Do they trust you in 3 seconds? Core Web Vitals, mobile responsiveness, hero-clarity, visual hierarchy, social-proof placement. The first impression determines everything that follows.', icon: 'ph-eye', score: 74 },
+          { letter: 'T', name: 'Transition', desc: 'Can they become a lead, easily? CTA placement, form friction, booking flow, lead-magnet architecture. Friction here is the most expensive leak in most funnels.', icon: 'ph-arrow-right', score: 42 },
+          { letter: 'A', name: 'Automation', desc: 'What happens after they engage? CRM setup, email capture, retargeting pixels, lead scoring, WhatsApp/SMS flows. A visitor who doesn\'t convert today is a lead for tomorrow — if the system is wired.', icon: 'ph-robot', score: 31 },
+          { letter: 'L', name: 'Learning', desc: 'Do you measure what works? GA4, conversion attribution, server-side tracking, custom dashboards, weekly reporting. You can\'t improve what you don\'t measure.', icon: 'ph-chart-line-up', score: 58 },
+        ].map((d) => (
+          <div class="card card-hover p-6">
+            <div class="flex items-center justify-between mb-4">
+              <i class={`ph-bold ${d.icon} text-3xl text-[var(--color-brand)]`}></i>
+              <div class="text-2xl font-black text-white">{d.letter}</div>
             </div>
-            <!-- Floating stat -->
-            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
-              <div class="flex items-center gap-2">
-                <i class="ph-fill ph-sparkle" style="color: var(--color-brand); font-size: 14px;"></i>
-                <span class="text-[11px] font-medium text-white">+3.2x AI citations</span>
-              </div>
+            <div class="text-sm font-bold text-white mb-2">{d.name}</div>
+            <div class="text-xs text-[#888] leading-relaxed mb-4">{d.desc}</div>
+            <div class="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+              <div class="h-full bg-[var(--color-brand)] rounded-full" style={`width: ${d.score}%`}></div>
             </div>
+            <div class="mt-2 text-[10px] mono text-[#666]">avg. client score: {d.score}/100</div>
           </div>
-        </div>
-        <div class="md:col-span-7 md:order-1">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
-              <i class="ph-bold ph-binoculars" style="font-size: 22px;"></i>
-            </div>
-            <span class="mono text-sm text-[#555]">01</span>
-          </div>
-          <h3 class="text-display-3 mb-4 text-white">Be found by AI</h3>
-          <p class="text-[#999] leading-relaxed mb-5">
-            51% of B2B buyers now start vendor research in ChatGPT or Perplexity. 
-            If AI doesn't recommend you, you don't exist in the buyer's first research pass. 
-            We make sure it does — with structured data, entity optimization, and citation engineering.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">ChatGPT</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Perplexity</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Gemini</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">AI Overviews</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Schema + llms.txt</span>
-          </div>
-          <a href="/services/ai-visibility" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See AI Visibility in detail
-            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
-          </a>
-        </div>
+        ))}
       </div>
 
-      <!-- PILLAR 2: Convert humans -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-10 mb-20 items-center">
-        <div class="md:col-span-5">
-          <div class="relative">
-            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format&fit=crop"
-                alt="Conversion optimization"
-                class="w-full h-full object-cover opacity-50"
-                loading="lazy"
-              />
-              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
-              <div class="absolute inset-0 p-5 flex flex-col justify-end">
-                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
-                  <div class="text-[10px] text-[#666] uppercase tracking-wider mb-2">Conversion rate</div>
-                  <div class="flex items-baseline gap-2">
-                    <span class="text-2xl font-bold text-gradient-brand">1.8%</span>
-                    <span class="text-xs text-[#22c55e]">→ 4.7%</span>
-                  </div>
-                  <div class="h-1 rounded-full mt-2" style="background-color: #1a1a1a;">
-                    <div class="h-full rounded-full" style="width: 65%; background-color: var(--color-brand);"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
-              <div class="flex items-center gap-2">
-                <i class="ph-fill ph-target" style="color: var(--color-brand); font-size: 14px;"></i>
-                <span class="text-[11px] font-medium text-white">+161% conv rate</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="md:col-span-7">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
-              <i class="ph-bold ph-target" style="font-size: 22px;"></i>
-            </div>
-            <span class="mono text-sm text-[#555]">02</span>
-          </div>
-          <h3 class="text-display-3 mb-4 text-white">Convert humans</h3>
-          <p class="text-[#999] leading-relaxed mb-5">
-            AI gets the right visitors to your site. Your website, content, and offer close them. 
-            We rebuild the conversion path — copy, design, CTAs, forms, follow-up — 
-            so the visitors who matter actually become leads.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Landing pages</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Form optimization</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">CRO + A/B tests</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">WhatsApp flows</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Calendly + chatbots</span>
-          </div>
-          <a href="/services/web-cro" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See Web + CRO in detail
-            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- PILLAR 3: Run on systems -->
-      <div class="grid md:grid-cols-12 gap-8 md:gap-10 items-center">
-        <div class="md:col-span-5 md:order-2">
-          <div class="relative">
-            <div class="aspect-[4/3] rounded-xl overflow-hidden relative" style="background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);">
-              <img
-                src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80&auto=format&fit=crop"
-                alt="Marketing automation"
-                class="w-full h-full object-cover opacity-50"
-                loading="lazy"
-              />
-              <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(255,49,49,0.2) 0%, transparent 60%);"></div>
-              <div class="absolute inset-0 p-5 flex flex-col justify-end">
-                <div class="card border-[#2a2a2a] p-3 backdrop-blur-md" style="background-color: rgba(20,20,20,0.85);">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="text-[10px] text-[#666] uppercase tracking-wider">Mautic flow</span>
-                    <span class="text-[10px] text-[#22c55e] mono">running</span>
-                  </div>
-                  <div class="text-[12px] text-white mb-1">Welcome → Score → Nurture</div>
-                  <div class="flex items-center gap-1.5 mt-2">
-                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-[#444]"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-[#444]"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="absolute -top-3 -right-3 card px-3 py-2 hidden md:block">
-              <div class="flex items-center gap-2">
-                <i class="ph-fill ph-flow-arrow" style="color: var(--color-brand); font-size: 14px;"></i>
-                <span class="text-[11px] font-medium text-white">0 manual work</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="md:col-span-7 md:col-span-7 md:order-1">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-md flex items-center justify-center" style="background-color: rgba(255,49,49,0.12); color: var(--color-brand);">
-              <i class="ph-bold ph-gear-six" style="font-size: 22px;"></i>
-            </div>
-            <span class="mono text-sm text-[#555]">03</span>
-          </div>
-          <h3 class="text-display-3 mb-4 text-white">Run on systems</h3>
-          <p class="text-[#999] leading-relaxed mb-5">
-            Mautic. CRM. Lead scoring. Attribution. Email. SMS. WhatsApp. 
-            We build the automation layer that captures every lead, scores them, 
-            nurtures them, and routes them to sales — without you touching a thing.
-          </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Mautic</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">HubSpot</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">GA4 + GTM</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">WhatsApp API</span>
-            <span class="text-[11px] mono px-2.5 py-1 rounded border" style="border-color: #2a2a2a; color: #888; background-color: #141414;">Custom dashboards</span>
-          </div>
-          <a href="/services/marketing-systems" class="text-sm font-medium inline-flex items-center gap-1.5" style="color: var(--color-brand);">
-            See Marketing Systems in detail
-            <i class="ph ph-arrow-right" style="font-size: 14px;"></i>
-          </a>
-        </div>
+      <div class="mt-10 text-center">
+        <a href="/vital-audit" class="inline-flex items-center gap-2 text-sm text-[var(--color-brand)] font-semibold hover:gap-3 transition-all">
+          See how your site scores across all five <i class="ph-bold ph-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ HOW IT WORKS ═══ -->
-  <section class="section-y" style="background-color: var(--color-bg-lighter);">
+  <!-- ─── WHAT WE DO (3 PILLARS WITH REAL IMAGERY) ─── -->
+  <section class="section-y relative">
     <div class="container-wide">
       <div class="max-w-2xl mb-20">
-        <p class="eyebrow mb-5">How it works</p>
-        <h2 class="text-display-2 mb-6">Three steps. <span class="text-gradient-brand">No fluff.</span></h2>
+        <div class="eyebrow mb-4">What we do</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Not just traffic.<br/>
+          <span class="text-gradient-brand">A revenue engine.</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          Three core capabilities, built around the VITAL framework. Each one stands on its own —
+          together they form a system that compounds month over month.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="card p-6 relative">
-          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
-            1
+      <!-- Pillar 1: AI Search / Visibility -->
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
+        <div>
+          <div class="eyebrow mb-3 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
+            <span>01 — Visibility</span>
           </div>
-          <div class="pt-4">
-            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
-              <i class="ph-bold ph-magnifying-glass" style="font-size: 24px;"></i>
+          <h3 class="text-display-3 text-white mb-4">
+            Get cited by ChatGPT, Perplexity, and Google AI
+          </h3>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
+            Traditional SEO is no longer enough. In 2026, your customers are asking ChatGPT
+            and Perplexity which vendor to use, which product to buy, which agency to hire.
+            We engineer your site to be the one those systems reference.
+          </p>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
+            Generative Engine Optimization (GEO) is the practice of structuring your content,
+            schema, and entity presence so large language models cite you in their answers.
+            It's the next frontier of search — and most of your competitors haven't started.
+          </p>
+          <div class="card p-5 mb-8">
+            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
+            <ul class="space-y-3">
+              {['Generative Engine Optimization (GEO)', 'Structured data & knowledge graphs', 'Entity authority building', 'AI-overview citation tracking', 'Traditional technical SEO'].map((item) => (
+                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
+            Learn more about visibility <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+          </a>
+        </div>
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI search and generative engine optimization" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a]/80 via-transparent to-transparent"></div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
+            <div class="text-[10px] mono text-[#666] mb-1">AI CITATIONS</div>
+            <div class="text-2xl font-black text-white">+312%</div>
+            <div class="text-xs text-emerald-500 mt-1 flex items-center gap-1">
+              <i class="ph-bold ph-trend-up"></i> in 90 days
             </div>
-            <h3 class="text-xl font-semibold mb-2 text-white">Free VITAL audit</h3>
-            <p class="text-sm text-[#999] leading-relaxed mb-3">
-              Submit your URL. We run a 50-point scan across 5 dimensions and email you a full PDF report.
-            </p>
-            <div class="text-[11px] text-[#555] mono">~ 4 minutes · No credit card</div>
           </div>
         </div>
+      </div>
 
-        <div class="card p-6 relative">
-          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
-            2
+      <!-- Pillar 2: Conversion / Transition -->
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
+        <div class="order-2 md:order-1 relative">
+          <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Analytics and conversion tracking dashboard" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-tl from-[#0a0a0a]/80 via-transparent to-transparent"></div>
           </div>
-          <div class="pt-4">
-            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
-              <i class="ph-bold ph-file-text" style="font-size: 24px;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-2 text-white">Tailored proposal</h3>
-            <p class="text-sm text-[#999] leading-relaxed mb-3">
-              We review your audit, identify the biggest leak, and propose a clear scope to fix it.
-            </p>
-            <div class="text-[11px] text-[#555] mono">~ 2 days · Free, no obligation</div>
+          <div class="absolute -top-6 -right-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
+            <div class="text-[10px] mono text-[#666] mb-1">CONVERSION RATE</div>
+            <div class="text-2xl font-black text-white">3.2% → 8.4%</div>
+            <div class="text-xs text-emerald-500 mt-1">+161% in 60 days</div>
           </div>
         </div>
-
-        <div class="card p-6 relative">
-          <div class="absolute -top-3 -left-3 w-12 h-12 rounded-full flex items-center justify-center text-base font-bold" style="background-color: var(--color-brand); color: white;">
-            3
+        <div class="order-1 md:order-2">
+          <div class="eyebrow mb-3 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
+            <span>02 — Transition</span>
           </div>
-          <div class="pt-4">
-            <div class="w-12 h-12 rounded-md flex items-center justify-center mb-4" style="background-color: rgba(255,49,49,0.1); color: var(--color-brand);">
-              <i class="ph-bold ph-rocket-launch" style="font-size: 24px;"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-2 text-white">Build + measure</h3>
-            <p class="text-sm text-[#999] leading-relaxed mb-3">
-              We build the system, run campaigns, and report what moved. VITAL score climbs. 90 days in, we re-audit.
-            </p>
-            <div class="text-[11px] text-[#555] mono">30–90 days · Weekly reporting</div>
+          <h3 class="text-display-3 text-white mb-4">
+            Turn visitors into qualified leads, predictably
+          </h3>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
+            Beautiful sites that don't convert are expensive decoration. We rebuild the path
+            from "interested" to "booked call" with the psychology baked in — clear value
+            proposition, frictionless forms, booking in two clicks.
+          </p>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
+            Our conversion rate optimization program combines heatmap analysis, session
+            recordings, A/B testing, and copy iteration. Most clients see 2–3x conversion
+            rate lifts in the first 60 days — without any new traffic.
+          </p>
+          <div class="card p-5 mb-8">
+            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
+            <ul class="space-y-3">
+              {['Landing page architecture & copy', 'Lead magnet funnels', 'Booking & calendar integration', 'A/B test programs', 'Heatmap + session recording analysis'].map((item) => (
+                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
+            Learn more about conversion <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Automation + Learning -->
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="eyebrow mb-3 flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
+            <span>03 — Automation + Learning</span>
+          </div>
+          <h3 class="text-display-3 text-white mb-4">
+            A system that runs while you sleep — and shows you what worked
+          </h3>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
+            We wire up the full automation and analytics stack — CRM, email, retargeting,
+            conversion tracking — so every visitor interaction is captured, nurtured, and
+            attributed to the channel that brought them in.
+          </p>
+          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
+            No more "we think it's working." You'll know exactly which campaigns produced
+            which leads, which leads became customers, and where to spend the next dollar.
+            That's the difference between marketing as a cost center and marketing as a
+            revenue engine.
+          </p>
+          <div class="card p-5 mb-8">
+            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
+            <ul class="space-y-3">
+              {['Mautic / HubSpot CRM setup & migration', 'Email nurture sequences (welcome, educational, conversion, re-engagement)', 'Meta, Google, LinkedIn retargeting pixels', 'GA4 + server-side tracking + conversion attribution', 'Custom Looker Studio dashboards'].map((item) => (
+                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
+            Learn more about automation <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+          </a>
+        </div>
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80" alt="Marketing automation and CRM workflow" class="w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a]/80 via-transparent to-transparent"></div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
+            <div class="text-[10px] mono text-[#666] mb-1">TIME SAVED</div>
+            <div class="text-2xl font-black text-white">14h/wk</div>
+            <div class="text-xs text-emerald-500 mt-1">via automation</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ CASE STUDY ═══ -->
+  <!-- ─── HOW IT WORKS (TIMELINE) ─── -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-16">
+        <div class="eyebrow mb-4">How it works</div>
+        <h2 class="text-display-2 text-white mb-6">
+          From audit to<br/>
+          <span class="text-gradient-brand">revenue in 90 days</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          A predictable three-step process. Every engagement follows the same structure —
+          so you know exactly what to expect, when to expect it, and what success looks like.
+        </p>
+      </div>
+
+      <div class="max-w-3xl space-y-6">
+        {[
+          {
+            step: '01',
+            title: 'Free VITAL audit',
+            time: 'Day 0 — 90 seconds',
+            desc: 'Submit your URL. We run the VITAL scoring engine across all five dimensions and email you a 10-page PDF report within two minutes. No call required, no sales trap. The audit is yours to keep regardless of whether we ever work together.',
+            icon: 'ph-magnifying-glass',
+          },
+          {
+            step: '02',
+            title: 'Strategy call + 90-day plan',
+            time: 'Week 1 — 45 minutes',
+            desc: 'If the audit shows enough upside to be worth a conversation, we book a 45-minute strategy call. We walk through the findings, prioritize the highest-ROI fixes, and propose a 90-day execution plan with transparent pricing. If we\'re not the right fit, we\'ll say so and refer you to someone who is.',
+            icon: 'ph-handshake',
+          },
+          {
+            step: '03',
+            title: 'Build, ship, measure',
+            time: 'Days 14 — 90',
+            desc: 'We build the system in 2-week sprints. You get a weekly progress report with real numbers — traffic, leads, conversion rate, pipeline. At day 90, we re-run the VITAL audit and show you the delta. Most clients see a 20–40 point VITAL lift in the first quarter.',
+            icon: 'ph-rocket-launch',
+          },
+        ].map((s, i) => (
+          <div class="relative">
+            <div class="card card-hover p-8 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
+              <div class="text-5xl font-black text-[#222] mono">{s.step}</div>
+              <div>
+                <div class="flex items-center gap-3 mb-3">
+                  <div class="w-9 h-9 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)]">
+                    <i class={`ph-bold ${s.icon} text-lg`}></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-white">{s.title}</h3>
+                </div>
+                <p class="text-[#a0a0a0] leading-relaxed">{s.desc}</p>
+              </div>
+              <div class="text-xs mono text-[#666] text-right whitespace-nowrap">{s.time}</div>
+            </div>
+            {i < 2 && (
+              <div class="hidden md:block absolute left-12 top-full h-6 w-px bg-[#2a2a2a]"></div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/vital-audit" class="btn btn-primary btn-large">
+          Start with a free audit
+          <i class="ph-bold ph-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHO WE WORK WITH ─── -->
   <section class="section-y">
     <div class="container-wide">
       <div class="max-w-2xl mb-16">
-        <p class="eyebrow mb-5">Recent work</p>
-        <h2 class="text-display-2 mb-6">Real results. <span class="text-gradient-brand">Real businesses.</span></h2>
+        <div class="eyebrow mb-4">Who we work with</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Built for businesses that<br/>
+          <span class="text-gradient-light">want to grow on purpose</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          We work with a small, focused client roster across four core verticals. We don't take
+          on competitors of active clients, and we cap engagements at 12 to make sure everyone
+          gets senior attention.
+        </p>
       </div>
 
-      <a href="/case-studies/tutti-rouge" class="block group">
-        <div class="grid md:grid-cols-12 gap-0 rounded-2xl overflow-hidden border" style="background-color: #141414; border-color: #222;">
-          <!-- Image side -->
-          <div class="md:col-span-5 relative aspect-square md:aspect-auto">
-            <img
-              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80&auto=format&fit=crop"
-              alt="Tutti Rouge fashion"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <div class="absolute inset-0" style="background: linear-gradient(90deg, transparent 0%, rgba(20,20,20,0.4) 100%);"></div>
-          </div>
-          <!-- Content side -->
-          <div class="md:col-span-7 p-8 md:p-10 flex flex-col justify-center">
-            <div class="flex items-center gap-2 mb-4">
-              <i class="ph-fill ph-tag" style="color: var(--color-brand); font-size: 12px;"></i>
-              <span class="text-[11px] uppercase tracking-wider" style="color: var(--color-brand);">Tutti Rouge · Fashion · UK</span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { industry: 'Real estate', icon: 'ph-buildings', desc: 'Agents, brokerages, property managers. Lead-gen funnels, listing pages, IDX integration, neighborhood SEO.' },
+          { industry: 'Service businesses', icon: 'ph-wrench', desc: 'HVAC, plumbing, legal, dental, accounting. Local SEO, Google Business Profile, call tracking, booking systems.' },
+          { industry: 'Wedding & events', icon: 'ph-heart', desc: 'Venues, planners, photographers, florists. Portfolio showcases, inquiry funnels, vendor partnerships, Instagram-driven traffic.' },
+          { industry: 'B2B SaaS & services', icon: 'ph-graph', desc: 'Series A–C startups, agencies, consultancies. Pipeline-focused, attribution-heavy, GEO-ready content.' },
+        ].map((i) => (
+          <div class="card card-hover p-6">
+            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+              <i class={`ph-bold ${i.icon} text-xl`}></i>
             </div>
-            <h3 class="text-display-3 mb-4 text-white group-hover:text-[#ff7a7a] transition-colors">
-              Rebuilding the content system for AI-era discovery
-            </h3>
-            <p class="text-[#aaa] leading-relaxed mb-8">
-              UK-based fashion brand came to us with declining organic traffic and zero AI visibility. 
-              We rebuilt their content system around entity optimization and structured data. 
-              ChatGPT now recommends them for "occasion dresses UK."
-            </p>
-            <div class="grid grid-cols-4 gap-3 mb-8">
-              <div>
-                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">+250%</div>
-                <div class="text-[10px] text-[#888]">Organic</div>
-              </div>
-              <div>
-                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">+91%</div>
-                <div class="text-[10px] text-[#888]">Paid CTR</div>
-              </div>
-              <div>
-                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">3x</div>
-                <div class="text-[10px] text-[#888]">AI citations</div>
-              </div>
-              <div>
-                <div class="text-2xl md:text-3xl font-bold text-gradient-brand">90d</div>
-                <div class="text-[10px] text-[#888]">Time</div>
-              </div>
-            </div>
-            <span class="inline-flex items-center gap-2 text-sm font-medium self-start" style="color: var(--color-brand);">
-              Read the full case study
-              <i class="ph ph-arrow-right group-hover:translate-x-1 transition-transform" style="font-size: 14px;"></i>
-            </span>
+            <div class="font-bold text-white mb-2">{i.industry}</div>
+            <p class="text-sm text-[#888] leading-relaxed">{i.desc}</p>
           </div>
-        </div>
-      </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- ═══ TESTIMONIAL ═══ -->
-  <section class="section-y" style="background-color: var(--color-bg-lighter);">
+  <!-- ─── STATS / PROOF ─── -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="eyebrow mb-4">By the numbers</div>
+        <h2 class="text-display-2 text-white">
+          Numbers we track<br/>
+          <span class="text-gradient-light">for ourselves</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        {[
+          { v: '80+', l: 'Clients served since 2014' },
+          { v: '4 continents', l: 'US, UK, UAE, India' },
+          { v: '4.2x avg', l: 'Conversion rate lift in 90 days' },
+          { v: '£12M+', l: 'Attributed pipeline from VITAL fixes' },
+        ].map((s) => (
+          <div class="text-center">
+            <div class="text-display-2 text-white mb-2">{s.v}</div>
+            <div class="text-sm text-[#888]">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CASE STUDY (TUTTI ROUGE) ─── -->
+  <section class="section-y">
+    <div class="container-wide">
+      <div class="eyebrow mb-4">Featured case study</div>
+      <h2 class="text-display-2 text-white mb-12 max-w-2xl">
+        Tutti Rouge — from invisible to <span class="text-gradient-brand">market leader</span> in fashion resale
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/5]">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Tutti Rouge fashion resale case study" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <div class="text-xs mono text-[#a0a0a0] mb-1">VITAL SCORE LIFT</div>
+            <div class="text-4xl font-black text-white">42 → 78</div>
+          </div>
+        </div>
+        <div>
+          <div class="space-y-6 mb-8">
+            {[
+              { metric: '+187%', label: 'organic traffic in 6 months' },
+              { metric: '4.2x', label: 'lead-to-customer conversion' },
+              { metric: '£2.1M', label: 'attributed pipeline from organic' },
+            ].map((m) => (
+              <div class="border-b border-[#1a1a1a] pb-6 last:border-0">
+                <div class="text-3xl font-black text-white mb-1">{m.metric}</div>
+                <div class="text-sm text-[#888]">{m.label}</div>
+              </div>
+            ))}
+          </div>
+          <blockquote class="text-[#e5e5e5] text-lg leading-relaxed italic border-l-2 border-[var(--color-brand)] pl-4 mb-8">
+            "Sanjeev's team rebuilt our entire acquisition engine. We're now showing up in
+            AI search results ahead of brands 10x our size."
+          </blockquote>
+          <a href="/work/tutti-rouge" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
+            Read the full case study <i class="ph-bold ph-arrow-up-right text-[var(--color-brand)]"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIAL ─── -->
+  <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="flex justify-center mb-8">
-          <div class="flex -space-x-2">
-            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #ff3131, #882020);">MG</div>
-            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #10a37f, #0a7e63);">TR</div>
-            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background: linear-gradient(135deg, #4285f4, #1c5dc7);">LM</div>
-            <div class="w-10 h-10 rounded-full border-2 flex items-center justify-center text-[10px] font-bold" style="border-color: #0a0a0a; background-color: #1f1f1f; color: #888;">+</div>
+        <div class="flex justify-center mb-6">
+          <div class="flex -space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 border-2 border-[#0a0a0a]"></div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 border-2 border-[#0a0a0a]"></div>
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-500 border-2 border-[#0a0a0a]"></div>
           </div>
         </div>
-        <blockquote class="text-2xl md:text-3xl text-white font-medium leading-snug mb-10">
-          The VITAL audit alone changed how we think about marketing. 
-          For the first time we know <span class="text-gradient-brand">exactly where leads are leaking.</span>
+        <blockquote class="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-8">
+          "Working with Happyranks felt less like hiring an agency and more like adding a senior
+          marketing leader to our team. They measure everything, ship fast, and the numbers show."
         </blockquote>
         <div class="flex items-center justify-center gap-3">
-          <div class="w-11 h-11 rounded-full" style="background: linear-gradient(135deg, #ff3131, #882020);"></div>
-          <div class="text-left">
-            <div class="text-sm font-medium text-white">Mae Guzman</div>
-            <div class="text-xs text-[#666]">Efficy</div>
+          <div class="text-right">
+            <div class="font-bold text-white">Mae Guzman</div>
+            <div class="text-xs text-[#888]">Head of Growth, Efficy</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ PRICING TEASER ═══ -->
+  <!-- ─── FAQ (AI-OPTIMIZED) ─── -->
   <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-2xl mb-16">
-        <p class="eyebrow mb-5">Pricing</p>
-        <h2 class="text-display-2 mb-6">Transparent. <span class="text-gradient-brand">Limited slots.</span></h2>
-        <p class="text-lg text-[#888] leading-relaxed">
-          We take 3 clients per tier per month. When slots are full, they close. 
-          Local pricing for US, UK, UAE, India.
-        </p>
+    <div class="container-wide max-w-3xl">
+      <div class="text-center mb-12">
+        <div class="eyebrow mb-4">Frequently asked</div>
+        <h2 class="text-display-2 text-white">
+          Common <span class="text-gradient-brand">questions</span>
+        </h2>
       </div>
-
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="card p-6">
-          <div class="flex items-center gap-2.5 mb-4">
-            <i class="ph-bold ph-binoculars" style="color: var(--color-brand); font-size: 20px;"></i>
-            <h3 class="text-lg font-semibold text-white">AI Visibility</h3>
-          </div>
-          <div class="flex items-baseline gap-1.5 mb-1">
-            <span class="text-3xl font-bold text-white">$1,000</span>
-            <span class="text-sm text-[#666]">/mo</span>
-          </div>
-          <div class="text-[11px] text-[#666] mb-5">£800 · 3,700 AED · Request quote (IN)</div>
-          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
-            GEO monitoring, AI citation optimization, schema + llms.txt, monthly reporting.
-          </p>
-          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #22c55e;">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#22c55e]"></div>
-            <span>3 slots open this month</span>
-          </div>
-          <a href="/pricing" class="btn btn-ghost w-full justify-center text-sm">
-            See full pricing
-          </a>
-        </div>
-
-        <div class="card p-6 relative" style="background: linear-gradient(180deg, #1c1c1c 0%, #161616 100%); border-color: #ff313130;">
-          <div class="absolute -top-3 left-6 text-[10px] mono px-2.5 py-0.5 rounded-full" style="background-color: var(--color-brand); color: white;">Most popular</div>
-          <div class="flex items-center gap-2.5 mb-4">
-            <i class="ph-bold ph-rocket-launch" style="color: var(--color-brand); font-size: 20px;"></i>
-            <h3 class="text-lg font-semibold text-white">Growth</h3>
-          </div>
-          <div class="flex items-baseline gap-1.5 mb-1">
-            <span class="text-3xl font-bold text-white">$2,500</span>
-            <span class="text-sm text-[#666]">/mo</span>
-          </div>
-          <div class="text-[11px] text-[#666] mb-5">£2,000 · 9,200 AED · Request quote (IN)</div>
-          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
-            AI Visibility + Performance Media or AI Content + Marketing Systems. Two integrated services.
-          </p>
-          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #eab308;">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#eab308]"></div>
-            <span>2 slots open this month</span>
-          </div>
-          <a href="/pricing" class="btn btn-primary w-full justify-center text-sm">
-            See full pricing
-          </a>
-        </div>
-
-        <div class="card p-6">
-          <div class="flex items-center gap-2.5 mb-4">
-            <i class="ph-bold ph-infinity" style="color: var(--color-brand); font-size: 20px;"></i>
-            <h3 class="text-lg font-semibold text-white">Full-System</h3>
-          </div>
-          <div class="flex items-baseline gap-1.5 mb-1">
-            <span class="text-3xl font-bold text-white">$4,500</span>
-            <span class="text-sm text-[#666]">/mo</span>
-          </div>
-          <div class="text-[11px] text-[#666] mb-5">£3,600 · 16,500 AED · Request quote (IN)</div>
-          <p class="text-[13px] text-[#999] leading-relaxed mb-5">
-            Everything. AI Visibility, Content, Media, Web/CRO, Automation. Dedicated team.
-          </p>
-          <div class="flex items-center gap-1.5 text-[11px] mb-5" style="color: #ef4444;">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#ef4444]"></div>
-            <span>1 slot open this month</span>
-          </div>
-          <a href="/pricing" class="btn btn-ghost w-full justify-center text-sm">
-            See full pricing
-          </a>
-        </div>
+      <div class="space-y-3">
+        {[
+          { q: 'What exactly is the VITAL audit?', a: 'The VITAL audit is a 5-dimension scoring system that measures your website across Visibility, Impression, Transition, Automation, and Learning. Each dimension is scored 0–100 based on ~50 measurable checks — page speed, schema markup, conversion tracking, CTA placement, retargeting pixels, and more. You get a 10-page PDF report with your scores, the top 3 revenue-impacting fixes, and a 90-day action plan. The free audit takes 90 seconds and you receive the report within 2 minutes.' },
+          { q: 'How long until I see results?', a: 'Most clients see measurable movement in the first 30 days — typically a 20–40% lift in conversion rate from friction reduction alone. Bigger lifts (visibility, pipeline attribution) compound over 60–90 days. We re-score with VITAL at day 90 so you can see the delta.' },
+          { q: 'Do you replace my existing team or agency?', a: 'No. We work alongside your existing setup — your in-house team, your freelancers, your other vendors. We\'re the strategic and execution layer for the things that move the needle. Many clients keep us in a "fractional CMO + execution" role.' },
+          { q: 'What\'s the minimum commitment?', a: '3 months. That\'s the minimum needed to ship the system, gather real data, and show measurable movement. After the initial 3 months, it\'s month-to-month and you can cancel any time with 30 days notice.' },
+          { q: 'How is this different from a regular agency?', a: 'Three things: 1) We score everything — you always know what changed and whether it worked. 2) Senior execution, no handoffs — the person scoping your audit is the person building your system. 3) We cap at 12 active clients so you actually get attention. Most agencies run 40+.' },
+          { q: 'Do you do one-off projects?', a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits, the free VITAL audit is the right starting point.' },
+          { q: 'What if I\'m not happy after 30 days?', a: '30-day money-back guarantee. If we\'re not delivering value, you get a full refund for that month. No questions, no friction. We\'ve had to honor this twice in 12 years.' },
+        ].map((f) => (
+          <details class="card p-6 group">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-semibold text-white pr-4">{f.q}</span>
+              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
+            </summary>
+            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ═══ FINAL CTA ═══ -->
+  <!-- ─── FINAL CTA ─── -->
   <section class="section-y relative overflow-hidden">
-    <div class="orb-red" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.4;"></div>
+    <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
     <div class="container-wide relative">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--color-brand), #882020); color: white;">
-          <i class="ph-bold ph-magnifying-glass" style="font-size: 32px;"></i>
-        </div>
-        <h2 class="text-display-2 mb-6">Find out what your<br /><span class="text-gradient-brand">marketing system is missing.</span></h2>
-        <p class="text-[#888] mb-8 max-w-md mx-auto">
-          Free VITAL audit. 50-point scan. 5 dimensions. PDF report. No credit card.
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="eyebrow mb-4">Ready when you are</div>
+        <h2 class="text-display-1 text-white mb-6">
+          Find out what<br/>
+          <span class="text-gradient-brand">your site is leaking.</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">
+          A free VITAL audit takes 90 seconds. No call required. If we find something interesting,
+          we'll show you what fixing it looks like.
         </p>
-        <a href="/vital" class="btn btn-primary text-[15px] px-7 py-3.5">
-          Run free VITAL audit
-          <i class="ph ph-arrow-right" style="font-size: 16px;"></i>
-        </a>
-        <p class="text-xs text-[#555] mt-5">Results in 30 seconds · PDF in your inbox</p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/vital-audit" class="btn btn-primary btn-large">
+            <i class="ph-bold ph-lightning"></i>
+            Get my free VITAL audit
+          </a>
+        </div>
+        <div class="mt-8 text-xs text-[#666] mono">
+          <i class="ph-bold ph-shield-check text-emerald-500"></i>
+          No credit card · 90 seconds · Yours to keep
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer class="border-t py-14" style="border-color: #141414;">
-    <div class="container-wide">
-      <div class="grid md:grid-cols-5 gap-8 mb-10">
-        <div class="md:col-span-2">
-          <div class="flex items-center gap-2.5 mb-4">
-            <div class="w-7 h-7 rounded-md flex items-center justify-center font-bold text-[13px]" style="background-color: var(--color-brand);">H</div>
-            <span class="font-semibold text-[15px]">happyranks</span>
-          </div>
-          <p class="text-sm text-[#666] leading-relaxed max-w-xs mb-4">
-            Value-driven marketing systems for mid-market businesses in the AI era.
-          </p>
-          <div class="flex items-center gap-3 text-[#666]">
-            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-linkedin-logo" style="font-size: 18px;"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-twitter-logo" style="font-size: 18px;"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i class="ph ph-instagram-logo" style="font-size: 18px;"></i></a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-[11px] font-semibold mb-4 uppercase tracking-wider text-[#888]">Capabilities</h4>
-          <ul class="space-y-2 text-[13px] text-[#666]">
-            <li><a href="/services/ai-visibility" class="hover:text-white transition-colors">AI Visibility</a></li>
-            <li><a href="/services/ai-content" class="hover:text-white transition-colors">AI-Ready Content</a></li>
-            <li><a href="/services/performance-media" class="hover:text-white transition-colors">Performance Media</a></li>
-            <li><a href="/services/marketing-systems" class="hover:text-white transition-colors">Marketing Systems</a></li>
-            <li><a href="/services/web-cro" class="hover:text-white transition-colors">Web + CRO</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-[11px] font-semibold mb-4 uppercase tracking-wider text-[#888]">Company</h4>
-          <ul class="space-y-2 text-[13px] text-[#666]">
-            <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-            <li><a href="/case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
-            <li><a href="/pricing" class="hover:text-white transition-colors">Pricing</a></li>
-            <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-[11px] font-semibold mb-4 uppercase tracking-wider text-[#888]">Contact</h4>
-          <ul class="space-y-2 text-[13px] text-[#666]">
-            <li>hello@happyranks.com</li>
-            <li>+91 (Coimbatore)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t pt-6 flex flex-col md:flex-row items-center justify-between gap-3" style="border-color: #141414;">
-        <div class="text-xs text-[#555]">© {new Date().getFullYear()} Happyranks.</div>
-        <div class="flex gap-6 text-xs text-[#555]">
-          <a href="#" class="hover:text-white transition-colors">Privacy</a>
-          <a href="#" class="hover:text-white transition-colors">Terms</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 </Layout>

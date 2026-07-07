@@ -1,0 +1,389 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Are these prices in USD?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We work with clients across the US, UK, UAE, and India. Mention your region on the call and we will quote in your local currency at competitive local pricing.' } },
+    { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, month-to-month with 30 days notice. Most clients stay 9-18 months because the system compounds.' } },
+    { '@type': 'Question', name: 'Do you do one-off projects?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely. We are built for ongoing engagements. For one-off audits, the free VITAL audit is the right starting point.' } },
+    { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions, no friction.' } },
+    { '@type': 'Question', name: 'Do I own the work?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Everything we build is yours on full payment. Code, copy, designs, data. The only thing we retain is our internal frameworks and the VITAL scoring engine.' } },
+  ],
+};
+
+const tiers = [
+  {
+    name: 'Starter',
+    price: 'From $1,500',
+    period: '/ month',
+    desc: 'For businesses that need a working marketing system, fast. A single landing page + lead funnel + analytics. Ships in 30 days.',
+    features: [
+      'Full VITAL audit + 90-day action plan',
+      'Single landing page rebuild (design + copy + build)',
+      'Basic SEO + GEO setup',
+      '1 lead magnet funnel (PDF + landing + email sequence)',
+      'GA4 + retargeting pixels installed',
+      'Monthly performance report',
+      'Email support, 1 business day response',
+    ],
+    cta: 'Get started',
+    href: '/contact?plan=starter',
+    highlight: false,
+    bestFor: 'Solopreneurs and small businesses that need the basics done well. Typically 1-2 person teams with limited marketing bandwidth.',
+    timeline: 'Live in 30 days',
+  },
+  {
+    name: 'Growth',
+    price: 'From $4,500',
+    period: '/ month',
+    desc: 'For businesses ready to scale. Most popular. Multi-page rebuild, GEO optimization, full automation stack, weekly iteration.',
+    features: [
+      'Everything in Starter, plus:',
+      'Up to 5 page rebuilds per quarter',
+      'AI search optimization (GEO) + citation tracking',
+      'Multi-step nurture sequences (welcome, educational, conversion, re-engagement)',
+      'CRM setup + lead scoring + routing',
+      'Conversion rate optimization program (heatmaps, recordings, A/B tests)',
+      'Bi-weekly strategy calls (30 min)',
+      'Priority Slack support, 4-hour response',
+    ],
+    cta: 'Get started',
+    href: '/contact?plan=growth',
+    highlight: true,
+    badge: 'Most popular',
+    bestFor: 'Established businesses doing $500K–$5M/year that want a senior marketing partner, not a junior team. Our sweet spot.',
+    timeline: 'Live in 45 days',
+  },
+  {
+    name: 'Scale',
+    price: 'Custom',
+    period: '',
+    desc: 'For multi-location or high-velocity businesses. Custom systems, dedicated team, deeper integration, white-glove reporting.',
+    features: [
+      'Everything in Growth, plus:',
+      'Unlimited page builds',
+      'Multi-location / multi-brand management',
+      'Custom integrations + API work',
+      'Dedicated growth lead (named person on your account)',
+      'Weekly strategy + monthly business review',
+      'Quarterly business reviews with full leadership team',
+      'Custom SLA on response times',
+      'Co-marketing and case study support',
+    ],
+    cta: 'Request quote',
+    href: '/contact?plan=scale',
+    highlight: false,
+    bestFor: 'Multi-location businesses, agencies, or any business doing $5M+/year that needs a full-stack marketing partner.',
+    timeline: 'Live in 60 days',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Are these prices in USD?',
+    a: 'Yes — the starting prices are in USD. We work with clients across the US, UK, UAE, and India. If you\'re in another region, mention it on the call and we\'ll quote you in your local currency at competitive local pricing. For example, our Indian-market clients see pricing tailored to local budgets — never a direct USD-to-INR conversion that would price out the market.',
+  },
+  {
+    q: 'What\'s the minimum commitment?',
+    a: '3 months. That\'s the minimum needed to ship the system, gather real data, and show measurable movement. After 3 months, it\'s month-to-month with 30 days notice to cancel. Most clients stay 9–18 months because the system compounds — the longer you run it, the better the data, the better the optimization, the better the results.',
+  },
+  {
+    q: 'Do you do one-off projects?',
+    a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits or VITAL reports, the free audit tool is the right starting point. For a one-off website build, we can refer you to trusted partners.',
+  },
+  {
+    q: 'What if I just need a VITAL audit?',
+    a: 'That\'s free. Use the VITAL audit tool — you\'ll get a scored report in 90 seconds, delivered by email within 2 minutes. If you want help acting on it, that\'s what we do. No pressure to engage, no auto-enrollment, no sales trap.',
+  },
+  {
+    q: 'How quickly can you start?',
+    a: 'We take on 3-4 new clients per month. Current availability: 2 slots open for the next 30 days. The discovery call is the first step and can usually happen within a week. The first invoice goes out when the SOW is signed, and work typically begins within 5 business days.',
+  },
+  {
+    q: 'Do you replace my existing team or agency?',
+    a: 'No. We work alongside your existing setup — your in-house team, your freelancers, your other vendors. We\'re the strategic and execution layer for the things that move the needle. Many clients keep us in a "fractional CMO + execution" role. We\'re happy to share access with your team and operate transparently.',
+  },
+  {
+    q: 'What if I\'m not happy after 30 days?',
+    a: '30-day money-back guarantee. If we\'re not delivering value — if you don\'t see real work, real reporting, real progress — you get a full refund for that month. No questions, no friction. We\'ve had to honor this twice in 12 years, both times because the engagement wasn\'t the right fit. We learn from it and refer the client to someone better suited.',
+  },
+  {
+    q: 'Do I own the work?',
+    a: 'Yes. Everything we build for you — landing pages, funnels, email sequences, dashboards — is yours on full payment. You own the code, the copy, the designs, the data. The only thing we retain is our internal frameworks, methodologies, and the VITAL scoring engine itself. You can take everything we build and run it with another team tomorrow.',
+  },
+  {
+    q: 'Can I upgrade or downgrade later?',
+    a: 'Yes. You can move between tiers at any monthly cycle boundary. Most clients start at Growth and either stay there or upgrade to Scale. We\'ve had a few clients start at Starter, prove ROI, and upgrade within 3 months. The reverse also happens — businesses hit a ceiling on spend and step down. No penalties for either.',
+  },
+  {
+    q: 'What if I want to bring this in-house eventually?',
+    a: 'That\'s a great outcome. We build systems to be operable, not black boxes. When you\'re ready to bring things in-house, we document everything, train your team, and do a 30-day handover. We\'re happy to stay on a fractional advisory basis or step away entirely. Your call.',
+  },
+];
+---
+
+<Layout
+  title="Pricing — Transparent monthly engagements"
+  description="Three tiers, transparent starting prices, no surprises. Most engagements start at $4,500/month. Free VITAL audit to start. 30-day money-back guarantee."
+  active="/pricing"
+  schema={faqSchema}
+>
+  <!-- HERO -->
+  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
+    <div class="orb-red -top-40 left-1/2 -translate-x-1/2"></div>
+    <div class="container-wide relative text-center">
+      <div class="eyebrow mb-4">Pricing</div>
+      <h1 class="text-display-1 text-white mb-6 max-w-3xl mx-auto">
+        Transparent pricing.<br/>
+        <span class="text-gradient-brand">No surprises.</span>
+      </h1>
+      <p class="text-lg text-[#a0a0a0] max-w-2xl mx-auto mb-8">
+        Three engagement tiers, transparent starting prices, 30-day money-back guarantee. Most clients
+        start at Growth. We take on 3-4 new clients per month — current availability is below.
+      </p>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+        <span class="font-semibold">2 client slots open for the next 30 days</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="pb-24">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-3 gap-6">
+        {tiers.map((t) => (
+          <div class:list={[
+            'card relative p-8 flex flex-col',
+            t.highlight ? 'border-[var(--color-brand)] bg-gradient-to-b from-[#1a0808] to-[#141414]' : 'card-hover'
+          ]}>
+            {t.badge && (
+              <div class="absolute -top-3 left-8 px-3 py-1 bg-[var(--color-brand)] text-white text-[10px] mono font-bold uppercase tracking-widest rounded">
+                {t.badge}
+              </div>
+            )}
+            <div class="mb-6">
+              <div class="text-sm mono text-[#888] uppercase tracking-widest mb-3">{t.name}</div>
+              <div class="flex items-baseline gap-1 mb-3">
+                <span class="text-4xl font-black text-white">{t.price}</span>
+                <span class="text-[#888] text-sm">{t.period}</span>
+              </div>
+              <p class="text-sm text-[#a0a0a0] leading-relaxed mb-3">{t.desc}</p>
+              <div class="text-xs text-[#666] mono">
+                <i class="ph-bold ph-clock text-[var(--color-brand)]"></i>
+                <span class="ml-1">{t.timeline}</span>
+              </div>
+            </div>
+            <div class="border-t border-[#1a1a1a] -mx-8 px-8 pt-6 mb-6 flex-1">
+              <div class="space-y-3">
+                {t.features.map((f) => (
+                  <div class="flex items-start gap-3 text-sm">
+                    <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                    <span class={f.includes('Everything in') ? 'text-white font-semibold' : 'text-[#e5e5e5]'}>
+                      {f}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div class="mt-6 pt-6 border-t border-[#1a1a1a]">
+                <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-2">Best for</div>
+                <p class="text-xs text-[#888] leading-relaxed">{t.bestFor}</p>
+              </div>
+            </div>
+            <a
+              href={t.href}
+              class:list={[
+                'btn w-full justify-center',
+                t.highlight ? 'btn-primary' : 'btn-ghost'
+              ]}
+            >
+              {t.cta}
+              <i class="ph-bold ph-arrow-right"></i>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 text-center text-xs mono text-[#666]">
+        Prices in USD · 3-month minimum · 30-day money-back guarantee
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-12">
+        <div class="eyebrow mb-4">Detailed comparison</div>
+        <h2 class="text-display-2 text-white mb-6">
+          What you get,<br/>
+          <span class="text-gradient-light">feature by feature</span>
+        </h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[#2a2a2a]">
+              <th class="text-left py-4 px-4 text-white font-semibold">Feature</th>
+              <th class="text-center py-4 px-4 text-white font-semibold">Starter</th>
+              <th class="text-center py-4 px-4 text-[var(--color-brand)] font-semibold">Growth</th>
+              <th class="text-center py-4 px-4 text-white font-semibold">Scale</th>
+            </tr>
+          </thead>
+          <tbody class="text-[#a0a0a0]">
+            {[
+              ['VITAL audit + action plan', '✓', '✓', '✓'],
+              ['Landing pages per quarter', '1', '5', 'Unlimited'],
+              ['Lead magnet funnels', '1', '3+', 'Unlimited'],
+              ['SEO + GEO setup', 'Basic', 'Full', 'Full + custom'],
+              ['AI citation tracking', '—', 'Weekly', 'Real-time dashboard'],
+              ['Email nurture sequences', 'Welcome only', 'Multi-step', 'Multi-step + behavioral'],
+              ['CRM setup + lead scoring', '—', '✓', '✓ + custom routing'],
+              ['A/B testing program', '—', '✓', '✓ + multivariate'],
+              ['Strategy calls', '—', 'Bi-weekly', 'Weekly + monthly review'],
+              ['Support response time', '1 business day', '4 hours', '1 hour SLA'],
+              ['Dedicated growth lead', '—', '—', '✓'],
+              ['Custom integrations', '—', '—', '✓'],
+              ['Quarterly business reviews', '—', '—', '✓'],
+            ].map((row, i) => (
+              <tr class={`border-b border-[#1a1a1a] ${i % 2 === 0 ? 'bg-[#0f0f0f]' : ''}`}>
+                <td class="py-3 px-4 text-white font-medium">{row[0]}</td>
+                <td class="py-3 px-4 text-center">{row[1]}</td>
+                <td class="py-3 px-4 text-center">{row[2]}</td>
+                <td class="py-3 px-4 text-center">{row[3]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI EXPECTATIONS -->
+  <section class="section-y">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-12">
+        <div class="eyebrow mb-4">Realistic ROI expectations</div>
+        <h2 class="text-display-2 text-white mb-6">
+          What our clients<br/>
+          <span class="text-gradient-brand">actually see</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          We don't promise unicorns. Here's what a typical Growth-tier client experiences over
+          the first 90 days, based on our last 24 months of client data.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        {[
+          { metric: '+30-60%', label: 'Conversion rate lift', detail: 'From friction reduction in forms, CTAs, and booking flow. Most clients see this within 30 days.' },
+          { metric: '+50-200%', label: 'Qualified leads', detail: 'From SEO + GEO + paid + email combined. Compounds over 90 days as the system matures.' },
+          { metric: '20-40 pts', label: 'VITAL score lift', detail: 'Measured by re-auditing at day 90. The metric that matters most for long-term growth.' },
+        ].map((r) => (
+          <div class="card p-6">
+            <div class="text-4xl font-black text-[var(--color-brand)] mb-2">{r.metric}</div>
+            <div class="text-white font-semibold mb-2">{r.label}</div>
+            <p class="text-sm text-[#888] leading-relaxed">{r.detail}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-sm text-[#666] max-w-2xl">
+        Past performance is not a guarantee of future results. Marketing outcomes depend on your
+        market, your offer, your sales team, and a hundred other variables. What we can guarantee
+        is the work, the measurement, and the reporting.
+      </p>
+    </div>
+  </section>
+
+  <!-- INCLUDED IN EVERY ENGAGEMENT -->
+  <section class="section-y bg-[#0c0c0c]">
+    <div class="container-wide">
+      <div class="max-w-2xl mb-12">
+        <div class="eyebrow mb-4">Always included</div>
+        <h2 class="text-display-2 text-white mb-6">
+          The full system,<br/>
+          <span class="text-gradient-light">one monthly fee</span>
+        </h2>
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          Every engagement — Starter, Growth, or Scale — includes the four foundational pieces.
+          The tiers scale the depth, not the categories.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { icon: 'ph-magnifying-glass', title: 'Strategy & Audit', items: ['VITAL audit', '90-day plan', 'Monthly reviews', 'Competitor tracking'] },
+          { icon: 'ph-paint-brush-broad', title: 'Design & Build', items: ['Landing pages', 'Funnels', 'Email templates', 'Brand assets'] },
+          { icon: 'ph-graph', title: 'Channels', items: ['SEO + GEO', 'Paid ads', 'Email nurture', 'Retargeting'] },
+          { icon: 'ph-gear-six', title: 'Operations', items: ['CRM setup', 'Analytics stack', 'Reporting', 'Integrations'] },
+        ].map((c) => (
+          <div class="card p-6">
+            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+              <i class={`ph-bold ${c.icon} text-xl`}></i>
+            </div>
+            <div class="font-bold text-white mb-3">{c.title}</div>
+            <ul class="space-y-2">
+              {c.items.map((item) => (
+                <li class="text-sm text-[#888] flex items-center gap-2">
+                  <i class="ph-bold ph-dot text-[var(--color-brand)]"></i>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-y">
+    <div class="container-wide max-w-3xl">
+      <div class="text-center mb-12">
+        <div class="eyebrow mb-4">FAQ</div>
+        <h2 class="text-display-2 text-white">
+          Common <span class="text-gradient-brand">questions</span>
+        </h2>
+        <p class="text-lg text-[#888] mt-6">
+          Don't see your question? Email <a href="mailto:hello@happyranks.com" class="text-[var(--color-brand)]">hello@happyranks.com</a> directly.
+        </p>
+      </div>
+      <div class="space-y-3">
+        {faqs.map((f) => (
+          <details class="card p-6 group">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <span class="font-semibold text-white pr-4">{f.q}</span>
+              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
+            </summary>
+            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-y relative overflow-hidden">
+    <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="container-wide relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-display-2 text-white mb-6">
+          Not sure which tier?
+        </h2>
+        <p class="text-lg text-[#a0a0a0] mb-10">
+          Start with a free VITAL audit. We'll show you what we found and what fixing it looks like.
+          No call required. The audit is yours to keep regardless of whether we work together.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="/vital-audit" class="btn btn-primary btn-large">
+            <i class="ph-bold ph-lightning"></i>
+            Get my free VITAL audit
+          </a>
+          <a href="/contact" class="btn btn-ghost btn-large">
+            Book a call
+            <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

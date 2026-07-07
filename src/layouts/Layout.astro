@@ -1,20 +1,58 @@
 ---
 import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = 'Happyranks — Marketing systems that grow revenue',
+  description = 'The marketing system for businesses that want measurable growth. Free VITAL audit, transparent pricing, and a 5-dimension framework that actually moves numbers.',
+  active = '',
+  ogImage = '/og-default.png',
+  schema = null,
+} = Astro.props;
+
+// Default Organization schema for all pages
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Happyranks',
+  url: 'https://happyranks.com',
+  logo: 'https://happyranks.com/favicon.svg',
+  description: 'Marketing systems for businesses that want measurable revenue growth. Built around the VITAL framework.',
+  founder: { '@type': 'Person', name: 'Sanjeev' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Coimbatore', addressCountry: 'IN' },
+  areaServed: ['US', 'GB', 'AE', 'IN'],
+  knowsAbout: ['Marketing', 'SEO', 'Generative Engine Optimization', 'Conversion Rate Optimization', 'Marketing Automation', 'Analytics'],
+};
+const allSchemas = schema ? [defaultSchema, ...(Array.isArray(schema) ? schema : [schema])] : [defaultSchema];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <meta name="generator" content={Astro.generator} />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {allSchemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
     <slot name="head" />
   </head>
-  <body>
-    <slot />
+  <body class="bg-[#0a0a0a] text-[#e5e5e5]">
+    <Header active={active} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
