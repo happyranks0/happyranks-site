@@ -5,87 +5,97 @@ const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
     { '@type': 'Question', name: 'What exactly is the VITAL audit?', acceptedAnswer: { '@type': 'Answer', text: 'A 5-dimension scoring system measuring Visibility, Impression, Transition, Automation, and Learning. Each dimension is scored 0-100 based on 50+ measurable checks.' } },
-    { '@type': 'Question', name: 'How long until I see results?', acceptedAnswer: { '@type': 'Answer', text: 'Most clients see measurable movement in 30 days. Bigger lifts compound over 60-90 days. We re-score with VITAL at day 90.' } },
-    { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, it is month-to-month with 30 days notice. Most clients stay 9-18 months.' } },
+    { '@type': 'Question', name: 'How long until I see results?', acceptedAnswer: { '@type': 'Answer', text: 'Most clients see measurable movement in 30 days. Bigger lifts compound over 60-90 days.' } },
+    { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, it is month-to-month. Most clients stay 9-18 months.' } },
     { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions.' } },
-    { '@type': 'Question', name: 'How is this different from a regular agency?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: 1) We score everything, 2) Senior execution with no handoffs, 3) We cap at 12 active clients for senior attention.' } },
   ],
-};
-
-const serviceSchema = {
-  '@type': 'Service',
-  serviceType: 'Marketing Services',
-  provider: { '@type': 'Organization', name: 'Happyranks' },
-  areaServed: ['US', 'GB', 'AE', 'IN'],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Marketing Engagement Tiers',
-    itemListElement: [
-      { '@type': 'Offer', name: 'Starter', price: '1500', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Growth', price: '4500', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Scale', priceCurrency: 'USD', description: 'Custom pricing' },
-    ],
-  },
 };
 ---
 
 <Layout
   title="Happyranks — Marketing systems that grow revenue"
-  description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the VITAL framework: Visibility, Impression, Transition, Automation, Learning. Free 90-second audit."
+  description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the VITAL framework. Free 90-second audit."
   active=""
-  schema={[faqSchema, serviceSchema]}
+  schema={faqSchema}
 >
   <!-- ─── HERO ─── -->
   <section class="relative overflow-hidden bg-grid bg-grid-mask">
     <div class="orb-red -top-40 -left-40"></div>
     <div class="orb-red top-40 -right-40 opacity-60"></div>
-    <div class="container-wide section-y relative">
-      <div class="max-w-4xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a2a2a] bg-[#141414] mb-6 text-xs mono text-[#a0a0a0]">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"></span>
-          <span>Now auditing sites in 90 seconds — free, no call required</span>
+    <div class="container-wide pt-20 md:pt-32 pb-20 md:pb-32 relative">
+      <div class="grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a2a2a] bg-[#141414] mb-6 text-xs mono text-[#a0a0a0]">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot"></span>
+            <span>Now auditing sites in 90 seconds — free</span>
+          </div>
+          <h1 class="text-display-1 text-white mb-6">
+            Marketing systems that<br/>
+            <span class="text-gradient-brand">actually grow revenue</span>
+          </h1>
+          <p class="text-lg md:text-xl text-[#a0a0a0] max-w-xl leading-relaxed mb-10">
+            The full marketing engine — visibility, conversion, automation, analytics —
+            built around the VITAL framework. One audit. One plan. Measurable growth.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="/vital-audit" class="btn btn-primary btn-large">
+              <i class="ph-bold ph-lightning"></i>
+              Get my free VITAL audit
+            </a>
+            <a href="/work" class="btn btn-ghost btn-large">
+              See the work
+              <i class="ph-bold ph-arrow-up-right"></i>
+            </a>
+          </div>
         </div>
-        <h1 class="text-display-1 text-white mb-6">
-          Marketing systems that<br/>
-          <span class="text-gradient-brand">actually grow revenue</span>
-        </h1>
-        <p class="text-lg md:text-xl text-[#a0a0a0] max-w-2xl leading-relaxed mb-10">
-          We build the full marketing engine — visibility, conversion, automation, analytics —
-          around the VITAL framework. One audit. One plan. Measurable growth.
-        </p>
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="/vital-audit" class="btn btn-primary btn-large">
-            <i class="ph-bold ph-lightning"></i>
-            Get my free VITAL audit
-          </a>
-          <a href="/work" class="btn btn-ghost btn-large">
-            See the work
-            <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
-        </div>
-        <div class="mt-12 flex flex-wrap items-center gap-6 text-xs mono text-[#666]">
-          <div class="flex items-center gap-2">
-            <i class="ph-bold ph-check-circle text-emerald-500"></i>
-            <span>No contract</span>
+
+        <!-- HERO VISUAL: Live VITAL score preview -->
+        <div class="relative">
+          <div class="card p-6 lg:p-8 card-glow">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#1a1a1a]">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                <span class="text-xs mono text-[#888]">vital.happyranks.com/live</span>
+              </div>
+              <div class="text-[10px] mono text-[#666]">scanning...</div>
+            </div>
+            <div class="text-center mb-6">
+              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-2">Your VITAL score</div>
+              <div class="text-7xl font-black text-white">62<span class="text-2xl text-[#666]">/100</span></div>
+            </div>
+            <div class="space-y-3">
+              {[
+                { l: 'V', name: 'Visibility', s: 78, color: 'bg-[var(--color-brand)]' },
+                { l: 'I', name: 'Impression', s: 71, color: 'bg-[var(--color-brand)]' },
+                { l: 'T', name: 'Transition', s: 42, color: 'bg-[var(--color-brand)]' },
+                { l: 'A', name: 'Automation', s: 38, color: 'bg-[var(--color-brand)]' },
+                { l: 'L', name: 'Learning', s: 81, color: 'bg-[var(--color-brand)]' },
+              ].map((d) => (
+                <div class="grid grid-cols-[24px_100px_1fr_40px] items-center gap-3">
+                  <div class="text-sm font-black text-white mono">{d.l}</div>
+                  <div class="text-xs text-[#a0a0a0]">{d.name}</div>
+                  <div class="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
+                    <div class={`h-full ${d.color} rounded-full`} style={`width: ${d.s}%`}></div>
+                  </div>
+                  <div class="text-right text-xs mono text-white">{d.s}</div>
+                </div>
+              ))}
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1a1a1a] text-center">
+              <div class="text-[10px] mono text-[#666]">Estimated revenue lift if fixes ship in 90 days</div>
+              <div class="text-2xl font-black text-[var(--color-brand)] mt-1">+2.4x</div>
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <i class="ph-bold ph-check-circle text-emerald-500"></i>
-            <span>Report in 90s</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="ph-bold ph-check-circle text-emerald-500"></i>
-            <span>Built for AI search</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i class="ph-bold ph-check-circle text-emerald-500"></i>
-            <span>30-day money-back</span>
+          <div class="absolute -bottom-4 -right-4 bg-[#141414] border border-[#2a2a2a] rounded-xl p-3 float shadow-2xl hidden lg:block">
+            <div class="text-[10px] mono text-[#666]">312 audits</div>
+            <div class="text-xs text-white">this month</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── TRUST LOGOS ─── -->
+  <!-- ─── TRUST ─── -->
   <section class="border-y border-[#1a1a1a] bg-[#0a0a0a] py-10">
     <div class="container-wide">
       <div class="text-center eyebrow mb-6">Trusted by growth-focused teams</div>
@@ -99,53 +109,8 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- ─── THE PROBLEM (Why most marketing fails) ─── -->
-  <section class="section-y relative">
-    <div class="container-wide">
-      <div class="grid lg:grid-cols-2 gap-16 items-start">
-        <div>
-          <div class="eyebrow mb-4">Why most marketing fails</div>
-          <h2 class="text-display-2 text-white mb-6">
-            You're paying for traffic.<br/>
-            <span class="text-gradient-light">You're not paying for revenue.</span>
-          </h2>
-          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
-            Most agencies sell you a tactic — SEO, ads, content, social. They show you vanity
-            metrics: impressions, clicks, follower counts. None of those things pay your rent.
-          </p>
-          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
-            The businesses that grow reliably have a system. They measure the right things, they
-            fix the leaks, and they ship improvements every week. The VITAL framework is the
-            operating system for that approach.
-          </p>
-          <p class="text-base text-[#888] leading-relaxed">
-            We use it to audit every website we touch. It's how we know which fixes will move
-            the number that matters — revenue — and which ones will just make a chart look good.
-          </p>
-        </div>
-        <div class="space-y-4">
-          {[
-            { sym: '✕', title: 'Vanity metrics', desc: '"We got 50K impressions this month" — so what? Impressions don\'t pay invoices.' },
-            { sym: '✕', title: 'Tactic-first thinking', desc: 'SEO, ads, email, social — treated as separate projects instead of one system.' },
-            { sym: '✕', title: 'Slow feedback loops', desc: '90 days to find out whether anything worked. By then, the budget is gone.' },
-            { sym: '✕', title: 'No measurement layer', desc: 'Running campaigns with no conversion tracking. Flying blind, paying for the privilege.' },
-            { sym: '✕', title: 'Junior handoffs', desc: 'Senior pitch, junior execution. The person who scoped your work is never the one doing it.' },
-          ].map((p) => (
-            <div class="card p-5 flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-[var(--color-brand)] shrink-0 text-sm">{p.sym}</div>
-              <div>
-                <div class="font-bold text-white mb-1">{p.title}</div>
-                <p class="text-sm text-[#888] leading-relaxed">{p.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── THE FRAMEWORK (VITAL) ─── -->
-  <section class="section-y bg-[#0c0c0c]">
+  <!-- ─── THE FRAMEWORK (5 dimensions, tight grid) ─── -->
+  <section class="section-y">
     <div class="container-wide">
       <div class="max-w-2xl mb-16">
         <div class="eyebrow mb-4">The VITAL framework</div>
@@ -153,32 +118,27 @@ const serviceSchema = {
           Five dimensions.<br/>
           <span class="text-gradient-light">One score.</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6">
-          The VITAL audit measures your website across the five things that actually determine
-          whether your marketing makes money or burns it. Each dimension is scored 0–100 based
-          on a weighted rubric of measurable signals — not opinions.
-        </p>
-        <p class="text-base text-[#888] leading-relaxed">
-          Most websites score between 40 and 65. The ones that score above 75 are typically
-          generating 3–5x more pipeline than their direct competitors — for the same ad spend.
+        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+          We measure your site across the five things that actually determine whether your
+          marketing makes money. Each dimension is scored 0–100 based on 50+ measurable signals.
         </p>
       </div>
 
       <div class="grid md:grid-cols-5 gap-4">
         {[
-          { letter: 'V', name: 'Visibility', desc: 'Can the right people find you — in Google, in ChatGPT, in Perplexity, in Gemini? We measure technical SEO, AI-overview citation potential, knowledge-graph presence, and search-intent coverage.', icon: 'ph-binoculars', score: 68 },
-          { letter: 'I', name: 'Impression', desc: 'Do they trust you in 3 seconds? Core Web Vitals, mobile responsiveness, hero-clarity, visual hierarchy, social-proof placement. The first impression determines everything that follows.', icon: 'ph-eye', score: 74 },
-          { letter: 'T', name: 'Transition', desc: 'Can they become a lead, easily? CTA placement, form friction, booking flow, lead-magnet architecture. Friction here is the most expensive leak in most funnels.', icon: 'ph-arrow-right', score: 42 },
-          { letter: 'A', name: 'Automation', desc: 'What happens after they engage? CRM setup, email capture, retargeting pixels, lead scoring, WhatsApp/SMS flows. A visitor who doesn\'t convert today is a lead for tomorrow — if the system is wired.', icon: 'ph-robot', score: 31 },
-          { letter: 'L', name: 'Learning', desc: 'Do you measure what works? GA4, conversion attribution, server-side tracking, custom dashboards, weekly reporting. You can\'t improve what you don\'t measure.', icon: 'ph-chart-line-up', score: 58 },
+          { letter: 'V', name: 'Visibility', desc: 'Can the right people find you — in Google, in ChatGPT, in Perplexity?', icon: 'ph-binoculars', score: 68 },
+          { letter: 'I', name: 'Impression', desc: 'Do they trust you in 3 seconds? Speed, clarity, design quality.', icon: 'ph-eye', score: 74 },
+          { letter: 'T', name: 'Transition', desc: 'Can they become a lead without friction? CTAs, forms, booking.', icon: 'ph-arrow-right', score: 42 },
+          { letter: 'A', name: 'Automation', desc: 'What happens after they engage? Email, CRM, retargeting.', icon: 'ph-robot', score: 31 },
+          { letter: 'L', name: 'Learning', desc: 'Do you measure what works? Analytics, conversion tracking.', icon: 'ph-chart-line-up', score: 58 },
         ].map((d) => (
           <div class="card card-hover p-6">
-            <div class="flex items-center justify-between mb-4">
-              <i class={`ph-bold ${d.icon} text-3xl text-[var(--color-brand)]`}></i>
-              <div class="text-2xl font-black text-white">{d.letter}</div>
+            <div class="flex items-center gap-3 mb-4">
+              <i class={`ph-bold ${d.icon} text-2xl text-[var(--color-brand)]`}></i>
+              <div class="text-xl font-black text-white">{d.letter}</div>
             </div>
-            <div class="text-sm font-bold text-white mb-2">{d.name}</div>
-            <div class="text-xs text-[#888] leading-relaxed mb-4">{d.desc}</div>
+            <div class="text-base font-bold text-white mb-2">{d.name}</div>
+            <div class="text-xs text-[#888] leading-relaxed mb-5 min-h-[3rem]">{d.desc}</div>
             <div class="h-1.5 bg-[#1a1a1a] rounded-full overflow-hidden">
               <div class="h-full bg-[var(--color-brand)] rounded-full" style={`width: ${d.score}%`}></div>
             </div>
@@ -195,8 +155,8 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- ─── WHAT WE DO (3 PILLARS WITH REAL IMAGERY) ─── -->
-  <section class="section-y relative">
+  <!-- ─── WHAT WE DO (3 pillars with images, kept tight) ─── -->
+  <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
       <div class="max-w-2xl mb-20">
         <div class="eyebrow mb-4">What we do</div>
@@ -204,13 +164,9 @@ const serviceSchema = {
           Not just traffic.<br/>
           <span class="text-gradient-brand">A revenue engine.</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          Three core capabilities, built around the VITAL framework. Each one stands on its own —
-          together they form a system that compounds month over month.
-        </p>
       </div>
 
-      <!-- Pillar 1: AI Search / Visibility -->
+      <!-- Pillar 1 -->
       <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
         <div>
           <div class="eyebrow mb-3 flex items-center gap-2">
@@ -221,33 +177,24 @@ const serviceSchema = {
             Get cited by ChatGPT, Perplexity, and Google AI
           </h3>
           <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
-            Traditional SEO is no longer enough. In 2026, your customers are asking ChatGPT
-            and Perplexity which vendor to use, which product to buy, which agency to hire.
-            We engineer your site to be the one those systems reference.
+            Traditional SEO isn't enough. In 2026, your customers are asking AI assistants
+            which vendor to use. We engineer your site to be the one they reference.
           </p>
-          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
-            Generative Engine Optimization (GEO) is the practice of structuring your content,
-            schema, and entity presence so large language models cite you in their answers.
-            It's the next frontier of search — and most of your competitors haven't started.
-          </p>
-          <div class="card p-5 mb-8">
-            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
-            <ul class="space-y-3">
-              {['Generative Engine Optimization (GEO)', 'Structured data & knowledge graphs', 'Entity authority building', 'AI-overview citation tracking', 'Traditional technical SEO'].map((item) => (
-                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
-                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul class="space-y-3 mb-8">
+            {['Generative Engine Optimization (GEO)', 'Structured data & knowledge graphs', 'AI-overview citation tracking'].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
             Learn more about visibility <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
         <div class="relative">
           <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" alt="AI search and generative engine optimization" class="w-full h-full object-cover" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=85" alt="AI search" class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a]/80 via-transparent to-transparent"></div>
           </div>
           <div class="absolute -bottom-6 -left-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
@@ -260,11 +207,11 @@ const serviceSchema = {
         </div>
       </div>
 
-      <!-- Pillar 2: Conversion / Transition -->
+      <!-- Pillar 2 -->
       <div class="grid md:grid-cols-2 gap-12 items-center mb-32">
         <div class="order-2 md:order-1 relative">
           <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Analytics and conversion tracking dashboard" class="w-full h-full object-cover" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=85" alt="Analytics dashboard" class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-tl from-[#0a0a0a]/80 via-transparent to-transparent"></div>
           </div>
           <div class="absolute -top-6 -right-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
@@ -283,32 +230,23 @@ const serviceSchema = {
           </h3>
           <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
             Beautiful sites that don't convert are expensive decoration. We rebuild the path
-            from "interested" to "booked call" with the psychology baked in — clear value
-            proposition, frictionless forms, booking in two clicks.
+            from "interested" to "booked call" with the psychology baked in.
           </p>
-          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
-            Our conversion rate optimization program combines heatmap analysis, session
-            recordings, A/B testing, and copy iteration. Most clients see 2–3x conversion
-            rate lifts in the first 60 days — without any new traffic.
-          </p>
-          <div class="card p-5 mb-8">
-            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
-            <ul class="space-y-3">
-              {['Landing page architecture & copy', 'Lead magnet funnels', 'Booking & calendar integration', 'A/B test programs', 'Heatmap + session recording analysis'].map((item) => (
-                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
-                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul class="space-y-3 mb-8">
+            {['Landing page architecture & copy', 'Lead magnet funnels', 'A/B test programs'].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
             Learn more about conversion <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
       </div>
 
-      <!-- Pillar 3: Automation + Learning -->
+      <!-- Pillar 3 -->
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <div class="eyebrow mb-3 flex items-center gap-2">
@@ -319,34 +257,24 @@ const serviceSchema = {
             A system that runs while you sleep — and shows you what worked
           </h3>
           <p class="text-[#a0a0a0] text-lg leading-relaxed mb-6">
-            We wire up the full automation and analytics stack — CRM, email, retargeting,
-            conversion tracking — so every visitor interaction is captured, nurtured, and
-            attributed to the channel that brought them in.
+            We wire up CRM, email, retargeting, and analytics so every visitor interaction
+            is captured, nurtured, and attributed. No more "we think it's working."
           </p>
-          <p class="text-[#a0a0a0] text-lg leading-relaxed mb-8">
-            No more "we think it's working." You'll know exactly which campaigns produced
-            which leads, which leads became customers, and where to spend the next dollar.
-            That's the difference between marketing as a cost center and marketing as a
-            revenue engine.
-          </p>
-          <div class="card p-5 mb-8">
-            <div class="text-xs mono text-[#888] mb-2">WHAT WE DO</div>
-            <ul class="space-y-3">
-              {['Mautic / HubSpot CRM setup & migration', 'Email nurture sequences (welcome, educational, conversion, re-engagement)', 'Meta, Google, LinkedIn retargeting pixels', 'GA4 + server-side tracking + conversion attribution', 'Custom Looker Studio dashboards'].map((item) => (
-                <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
-                  <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul class="space-y-3 mb-8">
+            {['Mautic / HubSpot CRM setup', 'Email nurture sequences', 'GA4 + conversion attribution'].map((item) => (
+              <li class="flex items-start gap-3 text-sm text-[#e5e5e5]">
+                <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
             Learn more about automation <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
         <div class="relative">
           <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/3]">
-            <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80" alt="Marketing automation and CRM workflow" class="w-full h-full object-cover" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1200&q=85" alt="Marketing automation" class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-tr from-[#0a0a0a]/80 via-transparent to-transparent"></div>
           </div>
           <div class="absolute -bottom-6 -right-6 bg-[#141414] border border-[#2a2a2a] rounded-xl p-4 float shadow-2xl">
@@ -359,8 +287,8 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- ─── HOW IT WORKS (TIMELINE) ─── -->
-  <section class="section-y bg-[#0c0c0c]">
+  <!-- ─── HOW IT WORKS (timeline) ─── -->
+  <section class="section-y">
     <div class="container-wide">
       <div class="max-w-2xl mb-16">
         <div class="eyebrow mb-4">How it works</div>
@@ -368,10 +296,6 @@ const serviceSchema = {
           From audit to<br/>
           <span class="text-gradient-brand">revenue in 90 days</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          A predictable three-step process. Every engagement follows the same structure —
-          so you know exactly what to expect, when to expect it, and what success looks like.
-        </p>
       </div>
 
       <div class="max-w-3xl space-y-6">
@@ -380,21 +304,21 @@ const serviceSchema = {
             step: '01',
             title: 'Free VITAL audit',
             time: 'Day 0 — 90 seconds',
-            desc: 'Submit your URL. We run the VITAL scoring engine across all five dimensions and email you a 10-page PDF report within two minutes. No call required, no sales trap. The audit is yours to keep regardless of whether we ever work together.',
+            desc: 'Submit your URL. We score your site across all 5 dimensions and email you a 10-page PDF report within 2 minutes. No call required.',
             icon: 'ph-magnifying-glass',
           },
           {
             step: '02',
-            title: 'Strategy call + 90-day plan',
-            time: 'Week 1 — 45 minutes',
-            desc: 'If the audit shows enough upside to be worth a conversation, we book a 45-minute strategy call. We walk through the findings, prioritize the highest-ROI fixes, and propose a 90-day execution plan with transparent pricing. If we\'re not the right fit, we\'ll say so and refer you to someone who is.',
+            title: 'Strategy call + plan',
+            time: 'Week 1 — 45 min',
+            desc: 'We walk through the findings, prioritize the highest-ROI fixes, and propose a 90-day plan. Transparent pricing, no surprises.',
             icon: 'ph-handshake',
           },
           {
             step: '03',
             title: 'Build, ship, measure',
             time: 'Days 14 — 90',
-            desc: 'We build the system in 2-week sprints. You get a weekly progress report with real numbers — traffic, leads, conversion rate, pipeline. At day 90, we re-run the VITAL audit and show you the delta. Most clients see a 20–40 point VITAL lift in the first quarter.',
+            desc: 'We build the system. You get weekly progress reports with real numbers. At day 90, we re-score with VITAL and show the delta.',
             icon: 'ph-rocket-launch',
           },
         ].map((s, i) => (
@@ -402,7 +326,7 @@ const serviceSchema = {
             <div class="card card-hover p-8 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
               <div class="text-5xl font-black text-[#222] mono">{s.step}</div>
               <div>
-                <div class="flex items-center gap-3 mb-3">
+                <div class="flex items-center gap-3 mb-2">
                   <div class="w-9 h-9 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)]">
                     <i class={`ph-bold ${s.icon} text-lg`}></i>
                   </div>
@@ -428,69 +352,8 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- ─── WHO WE WORK WITH ─── -->
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-2xl mb-16">
-        <div class="eyebrow mb-4">Who we work with</div>
-        <h2 class="text-display-2 text-white mb-6">
-          Built for businesses that<br/>
-          <span class="text-gradient-light">want to grow on purpose</span>
-        </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          We work with a small, focused client roster across four core verticals. We don't take
-          on competitors of active clients, and we cap engagements at 12 to make sure everyone
-          gets senior attention.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { industry: 'Real estate', icon: 'ph-buildings', desc: 'Agents, brokerages, property managers. Lead-gen funnels, listing pages, IDX integration, neighborhood SEO.' },
-          { industry: 'Service businesses', icon: 'ph-wrench', desc: 'HVAC, plumbing, legal, dental, accounting. Local SEO, Google Business Profile, call tracking, booking systems.' },
-          { industry: 'Wedding & events', icon: 'ph-heart', desc: 'Venues, planners, photographers, florists. Portfolio showcases, inquiry funnels, vendor partnerships, Instagram-driven traffic.' },
-          { industry: 'B2B SaaS & services', icon: 'ph-graph', desc: 'Series A–C startups, agencies, consultancies. Pipeline-focused, attribution-heavy, GEO-ready content.' },
-        ].map((i) => (
-          <div class="card card-hover p-6">
-            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
-              <i class={`ph-bold ${i.icon} text-xl`}></i>
-            </div>
-            <div class="font-bold text-white mb-2">{i.industry}</div>
-            <p class="text-sm text-[#888] leading-relaxed">{i.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── STATS / PROOF ─── -->
+  <!-- ─── CASE STUDY (Tutti Rouge) ─── -->
   <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <div class="eyebrow mb-4">By the numbers</div>
-        <h2 class="text-display-2 text-white">
-          Numbers we track<br/>
-          <span class="text-gradient-light">for ourselves</span>
-        </h2>
-      </div>
-      <div class="grid md:grid-cols-4 gap-6">
-        {[
-          { v: '80+', l: 'Clients served since 2014' },
-          { v: '4 continents', l: 'US, UK, UAE, India' },
-          { v: '4.2x avg', l: 'Conversion rate lift in 90 days' },
-          { v: '£12M+', l: 'Attributed pipeline from VITAL fixes' },
-        ].map((s) => (
-          <div class="text-center">
-            <div class="text-display-2 text-white mb-2">{s.v}</div>
-            <div class="text-sm text-[#888]">{s.l}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CASE STUDY (TUTTI ROUGE) ─── -->
-  <section class="section-y">
     <div class="container-wide">
       <div class="eyebrow mb-4">Featured case study</div>
       <h2 class="text-display-2 text-white mb-12 max-w-2xl">
@@ -499,7 +362,7 @@ const serviceSchema = {
 
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="relative rounded-2xl overflow-hidden border border-[#222] aspect-[4/5]">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Tutti Rouge fashion resale case study" class="w-full h-full object-cover" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=85" alt="Tutti Rouge fashion" class="w-full h-full object-cover" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6">
             <div class="text-xs mono text-[#a0a0a0] mb-1">VITAL SCORE LIFT</div>
@@ -532,7 +395,7 @@ const serviceSchema = {
   </section>
 
   <!-- ─── TESTIMONIAL ─── -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y">
     <div class="container-wide">
       <div class="max-w-3xl mx-auto text-center">
         <div class="flex justify-center mb-6">
@@ -546,43 +409,10 @@ const serviceSchema = {
           "Working with Happyranks felt less like hiring an agency and more like adding a senior
           marketing leader to our team. They measure everything, ship fast, and the numbers show."
         </blockquote>
-        <div class="flex items-center justify-center gap-3">
-          <div class="text-right">
-            <div class="font-bold text-white">Mae Guzman</div>
-            <div class="text-xs text-[#888]">Head of Growth, Efficy</div>
-          </div>
+        <div class="text-sm">
+          <div class="font-bold text-white">Mae Guzman</div>
+          <div class="text-[#888]">Head of Growth, Efficy</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── FAQ (AI-OPTIMIZED) ─── -->
-  <section class="section-y">
-    <div class="container-wide max-w-3xl">
-      <div class="text-center mb-12">
-        <div class="eyebrow mb-4">Frequently asked</div>
-        <h2 class="text-display-2 text-white">
-          Common <span class="text-gradient-brand">questions</span>
-        </h2>
-      </div>
-      <div class="space-y-3">
-        {[
-          { q: 'What exactly is the VITAL audit?', a: 'The VITAL audit is a 5-dimension scoring system that measures your website across Visibility, Impression, Transition, Automation, and Learning. Each dimension is scored 0–100 based on ~50 measurable checks — page speed, schema markup, conversion tracking, CTA placement, retargeting pixels, and more. You get a 10-page PDF report with your scores, the top 3 revenue-impacting fixes, and a 90-day action plan. The free audit takes 90 seconds and you receive the report within 2 minutes.' },
-          { q: 'How long until I see results?', a: 'Most clients see measurable movement in the first 30 days — typically a 20–40% lift in conversion rate from friction reduction alone. Bigger lifts (visibility, pipeline attribution) compound over 60–90 days. We re-score with VITAL at day 90 so you can see the delta.' },
-          { q: 'Do you replace my existing team or agency?', a: 'No. We work alongside your existing setup — your in-house team, your freelancers, your other vendors. We\'re the strategic and execution layer for the things that move the needle. Many clients keep us in a "fractional CMO + execution" role.' },
-          { q: 'What\'s the minimum commitment?', a: '3 months. That\'s the minimum needed to ship the system, gather real data, and show measurable movement. After the initial 3 months, it\'s month-to-month and you can cancel any time with 30 days notice.' },
-          { q: 'How is this different from a regular agency?', a: 'Three things: 1) We score everything — you always know what changed and whether it worked. 2) Senior execution, no handoffs — the person scoping your audit is the person building your system. 3) We cap at 12 active clients so you actually get attention. Most agencies run 40+.' },
-          { q: 'Do you do one-off projects?', a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits, the free VITAL audit is the right starting point.' },
-          { q: 'What if I\'m not happy after 30 days?', a: '30-day money-back guarantee. If we\'re not delivering value, you get a full refund for that month. No questions, no friction. We\'ve had to honor this twice in 12 years.' },
-        ].map((f) => (
-          <details class="card p-6 group">
-            <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-white pr-4">{f.q}</span>
-              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
-            </summary>
-            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
-          </details>
-        ))}
       </div>
     </div>
   </section>
