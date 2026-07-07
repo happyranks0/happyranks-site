@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -29,46 +30,17 @@ const serviceSchema = {
   schema={[faqSchema, serviceSchema]}
 >
   <!-- HERO + FORM -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 -right-40"></div>
-    <div class="container-wide relative">
+  <section class="section-y">
+    <div class="container-wide">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#2a2a2a] bg-[#141414] mb-6 text-xs mono text-[#a0a0a0]">
-            <i class="ph-bold ph-lightning text-[var(--color-brand)]"></i>
-            <span>Free · No call required · 90 seconds</span>
-          </div>
-          <h1 class="text-display-1 text-white mb-6">
-            Score your website<br/>
-            <span class="text-gradient-brand">in 90 seconds</span>
-          </h1>
-          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-8">
-            The VITAL audit measures your site across the five dimensions that actually drive revenue.
-            You get a real score, a real report, and real recommendations — emailed to you instantly.
-            No call required, no sales trap, no auto-enrollment. The audit is yours to keep.
-          </p>
-
-          <div class="space-y-4 mb-10">
-            {[
-              { icon: 'ph-magnifying-glass', text: '5 dimensions scored — Visibility, Impression, Transition, Automation, Learning' },
-              { icon: 'ph-list-checks', text: '50+ individual checks weighted and scored' },
-              { icon: 'ph-file-pdf', text: 'A 10-page PDF report with prioritized fixes' },
-              { icon: 'ph-envelope-simple', text: 'Delivered to your inbox within 2 minutes' },
-              { icon: 'ph-shield-check', text: 'No sales call. No catch. Yours to keep.' },
-            ].map((b) => (
-              <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
-                  <i class={`ph-bold ${b.icon}`}></i>
-                </div>
-                <span class="text-[#e5e5e5]">{b.text}</span>
-              </div>
-            ))}
-          </div>
-
-          <div class="flex items-center gap-3 text-xs mono text-[#666]">
-            <i class="ph-bold ph-users-three text-emerald-500"></i>
-            <span>312 audits run this month</span>
-          </div>
+          <Hero
+            eyebrow="FREE VITAL AUDIT — 90 SECONDS"
+            title="Score your website"
+            highlight="in 90 seconds"
+            description="The VITAL audit measures your site across 5 dimensions that actually drive revenue. Real score, real report, real recommendations — emailed to you within 2 minutes. No call required."
+            meta={['No credit card', 'No sales call', '50+ checks', 'PDF in inbox']}
+          />
         </div>
 
         <!-- FORM CARD -->

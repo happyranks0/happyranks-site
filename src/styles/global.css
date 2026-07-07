@@ -32,27 +32,27 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── Background grid pattern ─── */
+/* ─── Background grid pattern (very subtle, only on hero) ─── */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
 .bg-grid-mask {
-  mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 30%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 30%, transparent 70%);
+  mask-image: radial-gradient(ellipse 50% 40% at 50% 0%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 40% at 50% 0%, black 20%, transparent 70%);
 }
 
-/* ─── Gradient orbs ─── */
+/* ─── Gradient orbs (softer, smaller, only used sparingly) ─── */
 .orb-red {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,49,49,0.18) 0%, rgba(255,49,49,0) 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(255,49,49,0.10) 0%, rgba(255,49,49,0) 70%);
+  filter: blur(60px);
   pointer-events: none;
 }
 
@@ -64,24 +64,24 @@ body {
 }
 
 .text-display-1 {
-  font-size: clamp(3rem, 7vw, 5.75rem);
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem);
   font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
 }
 
 .text-display-2 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .text-display-3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .eyebrow {
@@ -207,10 +207,18 @@ body {
 
 /* ─── Section spacing ─── */
 .section-y {
-  padding: 6rem 0;
+  padding: 4rem 0;
 }
 @media (min-width: 768px) {
-  .section-y { padding: 8rem 0; }
+  .section-y { padding: 5rem 0; }
+}
+
+/* Hero-specific tighter padding */
+.hero-section {
+  padding: 5rem 0 4rem;
+}
+@media (min-width: 768px) {
+  .hero-section { padding: 6rem 0 5rem; }
 }
 
 .container-wide {

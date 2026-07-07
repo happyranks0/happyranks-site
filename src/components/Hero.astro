@@ -1,0 +1,57 @@
+---
+const {
+  eyebrow = '',
+  title = '',
+  highlight = '',
+  description = '',
+  primaryCta = null, // { label, href, icon }
+  secondaryCta = null, // { label, href, icon }
+  meta = null, // string[] of trust signals
+  align = 'left', // 'left' | 'center'
+  visual = null, // slot name in caller? for now keep simple
+} = Astro.props;
+---
+
+<section class="hero-section relative">
+  <div class="container-wide relative">
+    <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+      {eyebrow && (
+        <div class="eyebrow mb-3">{eyebrow}</div>
+      )}
+      <h1 class="text-display-1 text-white mb-5">
+        {title}{highlight && (<><br/><span class="text-gradient-brand">{highlight}</span></>)}
+      </h1>
+      {description && (
+        <p class:list={['text-lg text-[#a0a0a0] leading-relaxed mb-8', align === 'center' ? 'max-w-xl mx-auto' : 'max-w-2xl']}>
+          {description}
+        </p>
+      )}
+      {(primaryCta || secondaryCta) && (
+        <div class:list={['flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
+          {primaryCta && (
+            <a href={primaryCta.href} class="btn btn-primary btn-large">
+              {primaryCta.icon && <i class={`ph-bold ${primaryCta.icon}`}></i>}
+              {primaryCta.label}
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="btn btn-ghost btn-large">
+              {secondaryCta.label}
+              {secondaryCta.icon && <i class={`ph-bold ${secondaryCta.icon}`}></i>}
+            </a>
+          )}
+        </div>
+      )}
+      {meta && (
+        <div class:list={['mt-8 flex flex-wrap items-center gap-5 text-xs mono text-[#666]', align === 'center' && 'justify-center']}>
+          {meta.map((m) => (
+            <div class="flex items-center gap-2">
+              <i class="ph-bold ph-check-circle text-emerald-500"></i>
+              <span>{m}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 
 const cases = [
   {
@@ -86,27 +87,13 @@ const industries = [
   active="/work"
 >
   <!-- HERO -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 -left-40"></div>
-    <div class="container-wide relative">
-      <div class="max-w-3xl">
-        <div class="eyebrow mb-4">Case studies</div>
-        <h1 class="text-display-1 text-white mb-6">
-          Selected work.<br/>
-          <span class="text-gradient-brand">Measurable numbers.</span>
-        </h1>
-        <p class="text-lg text-[#a0a0a0] max-w-2xl leading-relaxed mb-6">
-          Real engagements with real businesses. Every case study is scored with the VITAL
-          audit framework before and after — so you can see the actual delta, not vanity metrics.
-        </p>
-        <p class="text-base text-[#888] leading-relaxed">
-          We've worked with 80+ businesses since 2014 across real estate, service businesses,
-          wedding and events, and B2B SaaS. The four highlighted below represent the range of
-          what we do.
-        </p>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="CASE STUDIES"
+    title="Selected work."
+    highlight="Measurable numbers."
+    description="Real engagements with real businesses. Every case study is scored with the VITAL audit framework before and after — so you can see the actual delta, not vanity metrics."
+    primaryCta={{ label: 'Get a free VITAL audit', href: '/vital-audit', icon: 'ph-lightning' }}
+  />
 
   <!-- CASE GRID -->
   <section class="pb-24">

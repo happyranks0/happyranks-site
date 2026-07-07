@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 
 const serviceSchema = {
   '@type': 'Service',
@@ -111,31 +112,13 @@ const dimensions = [
   schema={serviceSchema}
 >
   <!-- HERO -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative">
-      <div class="max-w-3xl">
-        <div class="eyebrow mb-4">Our capabilities</div>
-        <h1 class="text-display-1 text-white mb-6">
-          The <span class="text-gradient-brand">VITAL framework</span> —<br/>
-          every dimension, in detail
-        </h1>
-        <p class="text-lg text-[#a0a0a0] max-w-2xl leading-relaxed mb-6">
-          VITAL is the system we use to audit every website we work on, and the lens through which
-          we plan every engagement. It scores websites across 5 dimensions × ~10 checks each —
-          50 measurable signals that determine whether your marketing makes money.
-        </p>
-        <p class="text-base text-[#888] leading-relaxed mb-10">
-          Below: the full rubric, the tools we use, and what "good" looks like in each dimension.
-          The free audit gives you a real number across all 5 in 90 seconds.
-        </p>
-        <a href="/vital-audit" class="btn btn-primary btn-large">
-          <i class="ph-bold ph-lightning"></i>
-          See how your site scores
-        </a>
-      </div>
-    </div>
-  </section>
+  <Hero
+    eyebrow="OUR CAPABILITIES"
+    title="The VITAL framework —"
+    highlight="every dimension, in detail"
+    description="We measure your site across 5 dimensions × 10+ checks each — 50 measurable signals that determine whether your marketing makes money. Here's the full rubric, the tools we use, and what good looks like in each dimension."
+    primaryCta={{ label: 'See how your site scores', href: '/vital-audit', icon: 'ph-lightning' }}
+  />
 
   <!-- DIMENSIONS -->
   <section class="section-y">

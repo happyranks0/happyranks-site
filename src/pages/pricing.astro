@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -130,18 +131,19 @@ const faqs = [
   schema={faqSchema}
 >
   <!-- HERO -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative text-center">
-      <div class="eyebrow mb-4">Pricing</div>
-      <h1 class="text-display-1 text-white mb-6 max-w-3xl mx-auto">
-        Transparent pricing.<br/>
-        <span class="text-gradient-brand">No surprises.</span>
-      </h1>
-      <p class="text-lg text-[#a0a0a0] max-w-2xl mx-auto mb-8">
-        Three engagement tiers, transparent starting prices, 30-day money-back guarantee. Most clients
-        start at Growth. We take on 3-4 new clients per month — current availability is below.
-      </p>
+  <Hero
+    align="center"
+    eyebrow="PRICING"
+    title="Transparent pricing."
+    highlight="No surprises."
+    description="Three engagement tiers, transparent starting prices, 30-day money-back guarantee. Most clients start at Growth. Current availability is below."
+    primaryCta={{ label: 'Start with a free audit', href: '/vital-audit', icon: 'ph-lightning' }}
+    secondaryCta={{ label: 'Book a call', href: '/contact', icon: 'ph-arrow-up-right' }}
+  />
+
+  <!-- AVAILABILITY BANNER -->
+  <section class="pb-12 -mt-6">
+    <div class="container-wide text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm">
         <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
         <span class="font-semibold">2 client slots open for the next 30 days</span>

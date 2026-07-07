@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout
@@ -8,35 +9,32 @@ import Layout from '../layouts/Layout.astro';
   active="/about"
 >
   <!-- HERO -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative">
+  <section class="hero-section relative">
+    <div class="container-wide">
       <div class="grid lg:grid-cols-[2fr_1fr] gap-16 items-start">
         <div>
-          <div class="eyebrow mb-4">About Happyranks</div>
-          <h1 class="text-display-1 text-white mb-8">
+          <div class="eyebrow mb-3">About Happyranks</div>
+          <h1 class="text-display-1 text-white mb-6">
             Senior marketing execution,<br/>
             <span class="text-gradient-brand">without the agency overhead</span>
           </h1>
-          <div class="prose prose-invert max-w-none space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
-            <p>
-              Happyranks was built around a simple observation: most businesses don\'t need
-              another agency. They need a senior marketing operator who can build the system,
-              ship the work, and show them the numbers.
-            </p>
-            <p>
-              We work with a small, focused client roster — usually 8-12 active engagements at
-              any time. That means the person scoping your audit is the person building your
-              system. No account managers. No junior handoffs. No 200-slide decks.
-            </p>
-            <p>
-              The VITAL framework was built because we got tired of audits that told clients
-              what they already knew. A real audit gives you a number, a delta, and a plan.
-            </p>
-          </div>
+          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6 max-w-2xl">
+            Happyranks was built around a simple observation: most businesses don't need another
+            agency. They need a senior marketing operator who can build the system, ship the work,
+            and show them the numbers.
+          </p>
+          <p class="text-base text-[#888] leading-relaxed mb-8 max-w-2xl">
+            We work with a small, focused client roster — 8-12 active engagements at any time.
+            The person scoping your audit is the person building your system. No account managers.
+            No junior handoffs. The VITAL framework is the lens for every engagement.
+          </p>
+          <a href="/vital-audit" class="btn btn-primary btn-large">
+            <i class="ph-bold ph-lightning"></i>
+            Get my free VITAL audit
+          </a>
         </div>
 
-        <div class="card p-8 sticky top-24">
+        <div class="card p-8 lg:sticky lg:top-24">
           <div class="aspect-square rounded-xl bg-gradient-to-br from-[#1a0808] to-[#0a0a0a] border border-[#2a2a2a] flex items-center justify-center mb-6">
             <div class="w-32 h-32 rounded-full bg-gradient-to-br from-[var(--color-brand)] to-[#7a0a0a] flex items-center justify-center text-6xl font-black text-white">S</div>
           </div>

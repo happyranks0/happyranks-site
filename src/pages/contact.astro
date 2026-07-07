@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout
@@ -8,68 +9,35 @@ import Layout from '../layouts/Layout.astro';
   active="/contact"
 >
   <!-- HERO + FORM -->
-  <section class="section-y relative overflow-hidden bg-grid bg-grid-mask">
-    <div class="orb-red -top-40 -right-40"></div>
-    <div class="container-wide relative">
+  <section class="section-y">
+    <div class="container-wide">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <div>
-          <div class="eyebrow mb-4">Contact</div>
-          <h1 class="text-display-1 text-white mb-6">
-            Book a<br/>
-            <span class="text-gradient-brand">strategy call</span>
-          </h1>
-          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-10">
-            45 minutes. We walk through your VITAL audit, talk about your goals, and see if
-            we\'re a good fit. No pitch deck, no pressure. If we\'re not the right team for
-            you, we\'ll tell you — and refer you to someone who is.
-          </p>
+          <Hero
+            eyebrow="CONTACT"
+            title="Book a"
+            highlight="strategy call"
+            description="45 minutes. We walk through your VITAL audit, talk about your goals, and see if we're a good fit. No pitch deck, no pressure. If we're not right for you, we'll tell you and refer you to someone who is."
+            primaryCta={{ label: 'Skip the call — just give me the audit', href: '/vital-audit', icon: 'ph-lightning' }}
+          />
 
-          <div class="space-y-6 mb-10">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
-                <i class="ph-bold ph-calendar-check text-xl"></i>
-              </div>
-              <div>
-                <div class="font-semibold text-white mb-1">What to expect</div>
-                <p class="text-sm text-[#888]">15 min — your business + goals. 15 min — VITAL findings + recommendations. 15 min — fit assessment + Q&A. Bring questions; we\'ll bring answers.</p>
-              </div>
+          <div class="mt-10 grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="card p-4">
+              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Response time</div>
+              <div class="text-white font-semibold">4 working hours</div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
-                <i class="ph-bold ph-clock text-xl"></i>
-              </div>
-              <div>
-                <div class="font-semibold text-white mb-1">Response time</div>
-                <p class="text-sm text-[#888]">We reply within 4 working hours, usually faster. If you reach out at 2am IST, you\'ll hear back by 7am. If you reach out at 5pm EST, you\'ll hear back by 9pm EST.</p>
-              </div>
+            <div class="card p-4">
+              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Format</div>
+              <div class="text-white font-semibold">Google Meet</div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
-                <i class="ph-bold ph-shield-check text-xl"></i>
-              </div>
-              <div>
-                <div class="font-semibold text-white mb-1">No-pressure call</div>
-                <p class="text-sm text-[#888]">If we\'re not the right fit, we\'ll tell you. We\'ve referred clients to competitors when the fit wasn\'t right. Your success matters more than our roster.</p>
-              </div>
+            <div class="card p-4">
+              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Cost</div>
+              <div class="text-white font-semibold">Always free</div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] shrink-0">
-                <i class="ph-bold ph-video-camera text-xl"></i>
-              </div>
-              <div>
-                <div class="font-semibold text-white mb-1">Format</div>
-                <p class="text-sm text-[#888]">Google Meet by default. Zoom or Microsoft Teams on request. We screen-share the VITAL audit and walk through it together.</p>
-              </div>
+            <div class="card p-4">
+              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Pressure</div>
+              <div class="text-white font-semibold">Zero</div>
             </div>
-          </div>
-
-          <div class="card p-6">
-            <div class="eyebrow mb-3">Or skip the call</div>
-            <p class="text-sm text-[#a0a0a0] mb-4">Just want the audit? Run it for free in 90 seconds — no call required. If you want help acting on it, that\'s what we do.</p>
-            <a href="/vital-audit" class="btn btn-ghost w-full justify-center">
-              <i class="ph-bold ph-lightning"></i>
-              Get free VITAL audit
-            </a>
           </div>
         </div>
 
