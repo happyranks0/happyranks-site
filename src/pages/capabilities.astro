@@ -130,7 +130,7 @@ const dimensions = [
               <div class={`w-11 h-11 rounded-xl bg-gradient-to-br ${d.color} flex items-center justify-center shadow-lg`}>
                 <i class={`ph-bold ${d.icon} text-xl text-fg`}></i>
               </div>
-              <div class="text-3xl font-black text-ink-4 mono leading-none">{d.letter}</div>
+              <div class="text-3xl font-black text-ink-3 mono leading-none">{d.letter}</div>
             </div>
             <h2 class="text-display-3 text-fg mb-3">{d.name}</h2>
             <p class="text-fg-secondary text-[15px] leading-relaxed mb-4">{d.headline}</p>
@@ -143,15 +143,15 @@ const dimensions = [
             </div>
           </div>
           <div>
-            <div class="card p-6">
-              <div class="eyebrow mb-4">What we audit</div>
+            <div class="panel panel-pad">
+              <p class="kicker mb-4">What we audit</p>
               <div class="space-y-4">
                 {d.checks.map((c) => (
                   <div class="flex items-start gap-4 pb-4 border-b border-border last:border-0 last:pb-0">
-                    <i class="ph-bold ph-check-circle text-[var(--color-brand)] text-xl mt-0.5 shrink-0"></i>
+                    <i class="ph-bold ph-check-circle text-accent text-xl mt-0.5 shrink-0"></i>
                     <div>
                       <div class="font-semibold text-fg mb-1">{c.name}</div>
-                      <div class="text-sm text-fg-muted">{c.detail}</div>
+                      <div class="body-sm-muted">{c.detail}</div>
                     </div>
                   </div>
                 ))}
