@@ -6,7 +6,7 @@ const pages = [
   { name: 'capabilities', url: 'http://localhost:4321/capabilities', width: 1440, height: 900, fullPage: true },
   { name: 'pricing', url: 'http://localhost:4321/pricing', width: 1440, height: 900, fullPage: true },
   { name: 'work', url: 'http://localhost:4321/work', width: 1440, height: 900, fullPage: true },
-  { name: 'vital-audit', url: 'http://localhost:4321/vital-audit', width: 1440, height: 900, fullPage: true },
+  { name: 'pulse-audit', url: 'http://localhost:4321/pulse-audit', width: 1440, height: 900, fullPage: true },
   { name: 'about', url: 'http://localhost:4321/about', width: 1440, height: 900, fullPage: true },
   { name: 'contact', url: 'http://localhost:4321/contact', width: 1440, height: 900, fullPage: true },
   { name: 'case-tutti', url: 'http://localhost:4321/work/tutti-rouge', width: 1440, height: 900, fullPage: true },

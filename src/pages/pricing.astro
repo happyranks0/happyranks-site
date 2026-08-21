@@ -7,9 +7,9 @@ const faqSchema = {
   mainEntity: [
     { '@type': 'Question', name: 'Are these prices in USD?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We work with clients across the US, UK, UAE, and India. Mention your region on the call and we will quote in your local currency at competitive local pricing.' } },
     { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, month-to-month with 30 days notice. Most clients stay 9-18 months because the system compounds.' } },
-    { '@type': 'Question', name: 'Do you do one-off projects?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely. We are built for ongoing engagements. For one-off audits, the free VITAL audit is the right starting point.' } },
+    { '@type': 'Question', name: 'Do you do one-off projects?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely. We are built for ongoing engagements. For one-off audits, the free PULSE audit is the right starting point.' } },
     { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions, no friction.' } },
-    { '@type': 'Question', name: 'Do I own the work?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Everything we build is yours on full payment. Code, copy, designs, data. The only thing we retain is our internal frameworks and the VITAL scoring engine.' } },
+    { '@type': 'Question', name: 'Do I own the work?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Everything we build is yours on full payment. Code, copy, designs, data. The only thing we retain is our internal frameworks and the PULSE scoring engine.' } },
   ],
 };
 
@@ -20,7 +20,7 @@ const tiers = [
     period: '/ month',
     desc: 'For businesses that need a working marketing system, fast. A single landing page + lead funnel + analytics. Ships in 30 days.',
     features: [
-      'Full VITAL audit + 90-day action plan',
+      'Full PULSE audit + 90-day action plan',
       'Single landing page rebuild (design + copy + build)',
       'Basic SEO + GEO setup',
       '1 lead magnet funnel (PDF + landing + email sequence)',
@@ -91,11 +91,11 @@ const faqs = [
   },
   {
     q: 'Do you do one-off projects?',
-    a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits or VITAL reports, the free audit tool is the right starting point. For a one-off website build, we can refer you to trusted partners.',
+    a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits or PULSE reports, the free audit tool is the right starting point. For a one-off website build, we can refer you to trusted partners.',
   },
   {
-    q: 'What if I just need a VITAL audit?',
-    a: 'That\'s free. Use the VITAL audit tool — you\'ll get a scored report in 90 seconds, delivered by email within 2 minutes. If you want help acting on it, that\'s what we do. No pressure to engage, no auto-enrollment, no sales trap.',
+    q: 'What if I just need a PULSE audit?',
+    a: 'That\'s free. Use the PULSE audit tool — you\'ll get a scored report in 90 seconds, delivered by email within 2 minutes. If you want help acting on it, that\'s what we do. No pressure to engage, no auto-enrollment, no sales trap.',
   },
   {
     q: 'How quickly can you start?',
@@ -111,7 +111,7 @@ const faqs = [
   },
   {
     q: 'Do I own the work?',
-    a: 'Yes. Everything we build for you — landing pages, funnels, email sequences, dashboards — is yours on full payment. You own the code, the copy, the designs, the data. The only thing we retain is our internal frameworks, methodologies, and the VITAL scoring engine itself. You can take everything we build and run it with another team tomorrow.',
+    a: 'Yes. Everything we build for you — landing pages, funnels, email sequences, dashboards — is yours on full payment. You own the code, the copy, the designs, the data. The only thing we retain is our internal frameworks, methodologies, and the PULSE scoring engine itself. You can take everything we build and run it with another team tomorrow.',
   },
   {
     q: 'Can I upgrade or downgrade later?',
@@ -126,7 +126,7 @@ const faqs = [
 
 <Layout
   title="Pricing — Transparent monthly engagements"
-  description="Three tiers, transparent starting prices, no surprises. Most engagements start at $4,500/month. Free VITAL audit to start. 30-day money-back guarantee."
+  description="Three tiers, transparent starting prices, no surprises. Most engagements start at $4,500/month. Free PULSE audit to start. 30-day money-back guarantee."
   active="/pricing"
   schema={faqSchema}
 >
@@ -137,7 +137,7 @@ const faqs = [
     title="Transparent pricing."
     highlight="No surprises."
     description="Three engagement tiers, transparent starting prices, 30-day money-back guarantee. Most clients start at Growth. Current availability is below."
-    primaryCta={{ label: 'Start with a free audit', href: '/vital-audit', icon: 'ph-lightning' }}
+    primaryCta={{ label: 'Start with a free audit', href: '/pulse-audit', icon: 'ph-lightning' }}
     secondaryCta={{ label: 'Book a call', href: '/contact', icon: 'ph-arrow-up-right' }}
   />
 
@@ -235,7 +235,7 @@ const faqs = [
           </thead>
           <tbody class="text-[#a0a0a0]">
             {[
-              ['VITAL audit + action plan', '✓', '✓', '✓'],
+              ['PULSE audit + action plan', '✓', '✓', '✓'],
               ['Landing pages per quarter', '1', '5', 'Unlimited'],
               ['Lead magnet funnels', '1', '3+', 'Unlimited'],
               ['SEO + GEO setup', 'Basic', 'Full', 'Full + custom'],
@@ -280,7 +280,7 @@ const faqs = [
         {[
           { metric: '+30-60%', label: 'Conversion rate lift', detail: 'From friction reduction in forms, CTAs, and booking flow. Most clients see this within 30 days.' },
           { metric: '+50-200%', label: 'Qualified leads', detail: 'From SEO + GEO + paid + email combined. Compounds over 90 days as the system matures.' },
-          { metric: '20-40 pts', label: 'VITAL score lift', detail: 'Measured by re-auditing at day 90. The metric that matters most for long-term growth.' },
+          { metric: '20-40 pts', label: 'PULSE score lift', detail: 'Measured by re-auditing at day 90. The metric that matters most for long-term growth.' },
         ].map((r) => (
           <div class="card p-6">
             <div class="text-4xl font-black text-[var(--color-brand)] mb-2">{r.metric}</div>
@@ -313,7 +313,7 @@ const faqs = [
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { icon: 'ph-magnifying-glass', title: 'Strategy & Audit', items: ['VITAL audit', '90-day plan', 'Monthly reviews', 'Competitor tracking'] },
+          { icon: 'ph-magnifying-glass', title: 'Strategy & Audit', items: ['PULSE audit', '90-day plan', 'Monthly reviews', 'Competitor tracking'] },
           { icon: 'ph-paint-brush-broad', title: 'Design & Build', items: ['Landing pages', 'Funnels', 'Email templates', 'Brand assets'] },
           { icon: 'ph-graph', title: 'Channels', items: ['SEO + GEO', 'Paid ads', 'Email nurture', 'Retargeting'] },
           { icon: 'ph-gear-six', title: 'Operations', items: ['CRM setup', 'Analytics stack', 'Reporting', 'Integrations'] },
@@ -372,13 +372,13 @@ const faqs = [
           Not sure which tier?
         </h2>
         <p class="text-lg text-[#a0a0a0] mb-10">
-          Start with a free VITAL audit. We'll show you what we found and what fixing it looks like.
+          Start with a free PULSE audit. We'll show you what we found and what fixing it looks like.
           No call required. The audit is yours to keep regardless of whether we work together.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="/vital-audit" class="btn btn-primary btn-large">
+          <a href="/pulse-audit" class="btn btn-primary btn-large">
             <i class="ph-bold ph-lightning"></i>
-            Get my free VITAL audit
+            Get my free PULSE audit
           </a>
           <a href="/contact" class="btn btn-ghost btn-large">
             Book a call

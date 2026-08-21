@@ -5,7 +5,7 @@ import Hero from '../components/Hero.astro';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What exactly is the VITAL audit?', acceptedAnswer: { '@type': 'Answer', text: 'A 5-dimension scoring system measuring Visibility, Impression, Transition, Automation, and Learning. Each dimension is scored 0-100 based on 50+ measurable checks.' } },
+    { '@type': 'Question', name: 'What exactly is the PULSE audit?', acceptedAnswer: { '@type': 'Answer', text: 'A 5-dimension scoring system measuring Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. Each dimension is scored 0-100 based on 50+ measurable checks.' } },
     { '@type': 'Question', name: 'How long until I see results?', acceptedAnswer: { '@type': 'Answer', text: 'Most clients see measurable movement in 30 days. Bigger lifts compound over 60-90 days.' } },
     { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, it is month-to-month. Most clients stay 9-18 months.' } },
     { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions.' } },
@@ -15,29 +15,29 @@ const faqSchema = {
 
 <Layout
   title="Happyranks — Marketing systems that grow revenue"
-  description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the VITAL framework. Free 90-second audit."
+  description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the PULSE framework. Free 90-second audit."
   active=""
   schema={faqSchema}
 >
   <!-- ─── HERO ─── -->
   <Hero
-    eyebrow="VITAL AUDIT — FREE, 90 SECONDS"
+    eyebrow="PULSE AUDIT — FREE, 90 SECONDS"
     title="Marketing systems that"
     highlight="actually grow revenue"
-    description="The full marketing engine — visibility, conversion, automation, analytics — built around the VITAL framework. One audit. One plan. Measurable growth."
-    primaryCta={{ label: 'Get my free VITAL audit', href: '/vital-audit', icon: 'ph-lightning' }}
+    description="The full marketing engine — visibility, conversion, automation, analytics — built around the PULSE framework. One audit. One plan. Measurable growth."
+    primaryCta={{ label: 'Get my free PULSE audit', href: '/pulse-audit', icon: 'ph-lightning' }}
     secondaryCta={{ label: 'See the work', href: '/work', icon: 'ph-arrow-up-right' }}
     meta={['No contract', '90-second report', 'AI-search ready', '30-day money-back']}
   />
 
-  <!-- ─── VITAL PREVIEW STRIP ─── -->
+  <!-- ─── PULSE PREVIEW STRIP ─── -->
   <section class="pb-12">
     <div class="container-wide">
       <div class="card p-6 lg:p-8 max-w-5xl mx-auto">
         <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></div>
-            <span class="text-xs mono text-[#888]">vital.happyranks.com/live</span>
+            <span class="text-xs mono text-[#888]">pulse.happyranks.com/live</span>
           </div>
           <div class="flex items-center gap-4">
             <div class="text-[10px] mono text-[#666] uppercase tracking-widest">Sample report</div>
@@ -46,17 +46,17 @@ const faqSchema = {
         </div>
         <div class="grid md:grid-cols-[140px_1fr] gap-6 lg:gap-10 items-center">
           <div class="text-center md:text-left md:border-r md:border-[#1a1a1a] md:pr-8">
-            <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">VITAL Score</div>
+            <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">PULSE Score</div>
             <div class="text-5xl font-black text-white leading-none">62<span class="text-lg text-[#666] font-bold">/100</span></div>
             <div class="text-[11px] text-emerald-500 mono mt-2">+2.4x revenue if fixes ship</div>
           </div>
           <div class="space-y-2.5">
             {[
-              { l: 'V', name: 'Visibility', s: 78 },
-              { l: 'I', name: 'Impression', s: 71 },
-              { l: 'T', name: 'Transition', s: 42 },
-              { l: 'A', name: 'Automation', s: 38 },
-              { l: 'L', name: 'Learning', s: 81 },
+              { l: 'P', name: 'Presence', s: 78 },
+              { l: 'U', name: 'Understanding', s: 71 },
+              { l: 'L', name: 'Lead capture', s: 42 },
+              { l: 'S', name: 'Sales follow-up', s: 38 },
+              { l: 'E', name: 'Evaluation', s: 81 },
             ].map((d) => (
               <div class="grid grid-cols-[16px_88px_1fr_28px] items-center gap-3">
                 <div class="text-xs font-black text-white mono">{d.l}</div>
@@ -91,7 +91,7 @@ const faqSchema = {
   <section class="section-y">
     <div class="container-wide">
       <div class="max-w-3xl mb-12">
-        <div class="eyebrow mb-4">The VITAL framework</div>
+        <div class="eyebrow mb-4">The PULSE framework</div>
         <h2 class="text-display-2 text-white mb-6">
           Five dimensions.<br/>
           <span class="text-gradient-light">One score.</span>
@@ -104,11 +104,11 @@ const faqSchema = {
 
       <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
         {[
-          { letter: 'V', name: 'Visibility', desc: 'Can the right people find you — in Google, in ChatGPT, in Perplexity?', icon: 'ph-binoculars', score: 68 },
-          { letter: 'I', name: 'Impression', desc: 'Do they trust you in 3 seconds? Speed, clarity, design quality.', icon: 'ph-eye', score: 74 },
-          { letter: 'T', name: 'Transition', desc: 'Can they become a lead without friction? CTAs, forms, booking.', icon: 'ph-arrow-right', score: 42 },
-          { letter: 'A', name: 'Automation', desc: 'What happens after they engage? Email, CRM, retargeting.', icon: 'ph-robot', score: 31 },
-          { letter: 'L', name: 'Learning', desc: 'Do you measure what works? Analytics, conversion tracking.', icon: 'ph-chart-line-up', score: 58 },
+          { letter: 'P', name: 'Presence', desc: 'Can the right people find the business?', icon: 'ph-binoculars', score: 68 },
+          { letter: 'U', name: 'Understanding', desc: 'Do they quickly understand what you do and why it matters?', icon: 'ph-eye', score: 74 },
+          { letter: 'L', name: 'Lead capture', desc: 'Can an interested visitor become an enquiry easily?', icon: 'ph-arrow-right', score: 42 },
+          { letter: 'S', name: 'Sales follow-up', desc: 'What happens after the enquiry arrives?', icon: 'ph-robot', score: 31 },
+          { letter: 'E', name: 'Evaluation', desc: 'Does the business measure results and improve the system?', icon: 'ph-chart-line-up', score: 58 },
         ].map((d) => (
           <div class="card card-hover p-6 flex flex-col h-full">
             <div class="flex items-center gap-3 mb-4">
@@ -126,7 +126,7 @@ const faqSchema = {
       </div>
 
       <div class="mt-10 text-center">
-        <a href="/vital-audit" class="inline-flex items-center gap-2 text-sm text-[var(--color-brand)] font-semibold hover:gap-3 transition-all">
+        <a href="/pulse-audit" class="inline-flex items-center gap-2 text-sm text-[var(--color-brand)] font-semibold hover:gap-3 transition-all">
           See how your site scores across all five <i class="ph-bold ph-arrow-right"></i>
         </a>
       </div>
@@ -149,7 +149,7 @@ const faqSchema = {
         <div>
           <div class="eyebrow mb-3 flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
-            <span>01 — Visibility</span>
+            <span>01 — Presence</span>
           </div>
           <h3 class="text-display-3 text-white mb-4">
             Get cited by ChatGPT, Perplexity, and Google AI
@@ -167,7 +167,7 @@ const faqSchema = {
             ))}
           </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
-            Learn more about visibility <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+            Learn more about presence <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
         <div class="relative">
@@ -201,7 +201,7 @@ const faqSchema = {
         <div class="order-1 md:order-2">
           <div class="eyebrow mb-3 flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
-            <span>02 — Transition</span>
+            <span>02 — Lead capture</span>
           </div>
           <h3 class="text-display-3 text-white mb-4">
             Turn visitors into qualified leads, predictably
@@ -219,7 +219,7 @@ const faqSchema = {
             ))}
           </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
-            Learn more about conversion <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+            Learn more about lead capture <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
       </div>
@@ -229,7 +229,7 @@ const faqSchema = {
         <div>
           <div class="eyebrow mb-3 flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-[var(--color-brand)]"></span>
-            <span>03 — Automation + Learning</span>
+            <span>03 — Sales follow-up + Evaluation</span>
           </div>
           <h3 class="text-display-3 text-white mb-4">
             A system that runs while you sleep — and shows you what worked
@@ -247,7 +247,7 @@ const faqSchema = {
             ))}
           </ul>
           <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all">
-            Learn more about automation <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+            Learn more about follow-up & measurement <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
           </a>
         </div>
         <div class="relative">
@@ -280,7 +280,7 @@ const faqSchema = {
         {[
           {
             step: '01',
-            title: 'Free VITAL audit',
+            title: 'Free PULSE audit',
             time: 'Day 0 — 90 seconds',
             desc: 'Submit your URL. We score your site across all 5 dimensions and email you a 10-page PDF report within 2 minutes. No call required.',
             icon: 'ph-magnifying-glass',
@@ -296,7 +296,7 @@ const faqSchema = {
             step: '03',
             title: 'Build, ship, measure',
             time: 'Days 14 — 90',
-            desc: 'We build the system. You get weekly progress reports with real numbers. At day 90, we re-score with VITAL and show the delta.',
+            desc: 'We build the system. You get weekly progress reports with real numbers. At day 90, we re-score with PULSE and show the delta.',
             icon: 'ph-rocket-launch',
           },
         ].map((s, i) => (
@@ -322,7 +322,7 @@ const faqSchema = {
       </div>
 
       <div class="mt-12 text-center">
-        <a href="/vital-audit" class="btn btn-primary btn-large">
+        <a href="/pulse-audit" class="btn btn-primary btn-large">
           Start with a free audit
           <i class="ph-bold ph-arrow-right"></i>
         </a>
@@ -343,7 +343,7 @@ const faqSchema = {
           <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=85" alt="Tutti Rouge fashion" class="w-full h-full object-cover" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6">
-            <div class="text-xs mono text-[#a0a0a0] mb-1">VITAL SCORE LIFT</div>
+            <div class="text-xs mono text-[#a0a0a0] mb-1">PULSE SCORE LIFT</div>
             <div class="text-4xl font-black text-white">42 → 78</div>
           </div>
         </div>
@@ -406,13 +406,13 @@ const faqSchema = {
           <span class="text-gradient-brand">your site is leaking.</span>
         </h2>
         <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">
-          A free VITAL audit takes 90 seconds. No call required. If we find something interesting,
+          A free PULSE audit takes 90 seconds. No call required. If we find something interesting,
           we'll show you what fixing it looks like.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="/vital-audit" class="btn btn-primary btn-large">
+          <a href="/pulse-audit" class="btn btn-primary btn-large">
             <i class="ph-bold ph-lightning"></i>
-            Get my free VITAL audit
+            Get my free PULSE audit
           </a>
         </div>
         <div class="mt-8 text-xs text-[#666] mono">

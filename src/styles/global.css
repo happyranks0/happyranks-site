@@ -246,7 +246,7 @@ body {
   background-clip: text;
 }
 
-/* ─── VITAL score gauge ─── */
+/* ─── PULSE score gauge ─── */
 .gauge-ring {
   position: relative;
   width: 120px;
