@@ -2,6 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import PulseScore from '../components/PulseScore.astro';
 import PulseAuditForm from '../components/PulseAuditForm.astro';
+import FeaturesBlock from '@/components/blocks/features-2.astro';
+import FaqsBlock from '@/components/blocks/faqs-1.astro';
+import CtaBlock from '@/components/blocks/cta-7.astro';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Section, SectionContainer } from '@/components/ui/section';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -14,25 +20,17 @@ const faqSchema = {
 };
 
 const faqItems = faqSchema.mainEntity.map((item) => ({
-  q: item.name,
-  a: item.acceptedAnswer.text,
+  id: item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  question: item.name,
+  answer: item.acceptedAnswer.text,
 }));
 
 const pulseDimensions = [
-  { letter: 'P', name: 'Presence', q: 'Can the right people find you?' },
-  { letter: 'U', name: 'Understanding', q: 'Do they get what you do?' },
-  { letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?' },
-  { letter: 'S', name: 'Sales follow-up', q: 'What happens after?' },
-  { letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?' },
-];
-
-const features = [
-  { icon: 'ph-radar', title: 'Presence + GEO', desc: 'Technical SEO and AI-search optimization — show up in Google, ChatGPT, and Perplexity for buyer queries.' },
-  { icon: 'ph-cursor-click', title: 'Conversion systems', desc: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.' },
-  { icon: 'ph-envelope-simple', title: 'Nurture + CRM', desc: 'Email sequences, lead routing, retargeting — wired from first visit to sales handoff.' },
-  { icon: 'ph-chart-line-up', title: 'Measurement', desc: 'GA4, server-side tracking, attribution models — know where every dollar came from.' },
-  { icon: 'ph-arrows-clockwise', title: 'Iteration loop', desc: 'Weekly reports, A/B tests, quarterly re-scores — the system compounds over time.' },
-  { icon: 'ph-shield-check', title: '90-day guarantee', desc: 'Money-back if we are not delivering value in the first 30 days. No friction.' },
+  { letter: 'P', name: 'Presence', q: 'Can the right people find you?', span: 'col-span-12 md:col-span-6 lg:col-span-4' },
+  { letter: 'U', name: 'Understanding', q: 'Do they get what you do?', span: 'col-span-12 md:col-span-6 lg:col-span-4' },
+  { letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?', span: 'col-span-12 md:col-span-6 lg:col-span-4' },
+  { letter: 'S', name: 'Sales follow-up', q: 'What happens after?', span: 'col-span-12 md:col-span-6 lg:col-span-6' },
+  { letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?', span: 'col-span-12 md:col-span-6 lg:col-span-6' },
 ];
 
 const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gardens'];
@@ -44,218 +42,218 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   active=""
   schema={faqSchema}
 >
-  <!-- Hero -->
-  <section class="cf-hero">
-    <div class="wrap cf-hero-grid">
-      <div>
-        <div class="eyebrow-pill mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
-          Free PULSE audit · 90 seconds
+  <!-- Hero bento -->
+  <Section class="page-hero mesh-grid overflow-hidden border-b border-white/5 pt-28 lg:pt-32">
+    <SectionContainer class="site-shell !max-w-7xl relative z-10">
+      <div class="bento-grid items-stretch">
+        <div class="col-span-12 flex flex-col justify-center gap-6 lg:col-span-7">
+          <Badge variant="outline" class="w-fit border-primary/30 bg-primary/10 text-primary gap-2">
+            <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+            Free PULSE audit · 90 seconds
+          </Badge>
+          <h1 class="font-display text-4xl font-bold leading-[1.02] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            Revenue systems for teams who
+            <span class="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"> measure everything.</span>
+          </h1>
+          <p class="max-w-xl text-lg leading-relaxed text-base-content/70">
+            Happyranks scores your marketing across five dimensions that actually drive revenue — then builds the system to lift the score.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <Button as="a" href="#audit" size="lg">
+              Get my free PULSE audit
+              <i class="ph-bold ph-lightning"></i>
+            </Button>
+            <Button as="a" href="/work" variant="outline" size="lg">View case studies</Button>
+          </div>
+          <p class="text-sm text-base-content/50">No contract · PDF in 2 minutes · 30-day guarantee</p>
         </div>
-        <h1 class="display-hero mb-6">
-          Connect, measure, and grow<br />
-          <span class="text-gradient-brand">your revenue stack.</span>
-        </h1>
-        <p class="lead max-w-lg mb-8">
-          Happyranks scores your marketing across five dimensions that actually drive revenue — then builds the system to lift the score. Infrastructure-grade measurement for growth teams.
-        </p>
-        <div class="flex flex-wrap gap-3 mb-8">
-          <a href="#audit" class="btn btn-primary btn-large">
-            Get my free PULSE audit
-            <i class="ph-bold ph-lightning"></i>
-          </a>
-          <a href="/work" class="btn btn-ghost btn-large">View case studies</a>
+        <div class="col-span-12 lg:col-span-5">
+          <PulseScore />
         </div>
-        <p class="text-sm text-ink-3">No contract · PDF in 2 minutes · 30-day guarantee</p>
       </div>
-      <div class="hidden lg:block">
-        <PulseScore />
-      </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
   <!-- Stats -->
-  <div class="stats-strip">
-    {[
-      { v: '50+', l: 'checks per audit' },
-      { v: '90s', l: 'to first score' },
-      { v: '5', l: 'PULSE dimensions' },
-      { v: '2 min', l: 'PDF delivery' },
-    ].map((s) => (
-      <div class="stats-strip-item">
-        <div class="stats-strip-value">{s.v}</div>
-        <div class="stats-strip-label">{s.l}</div>
+  <Section class="border-b border-white/5 bg-base-200/40 py-10">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="stats stats-vertical w-full bg-transparent shadow-none lg:stats-horizontal">
+        {[
+          { v: '50+', l: 'checks per audit' },
+          { v: '90s', l: 'to first score' },
+          { v: '5', l: 'PULSE dimensions' },
+          { v: '2 min', l: 'PDF delivery' },
+        ].map((s) => (
+          <div class="stat place-items-center border-white/5 px-4 py-2 lg:border-l first:lg:border-l-0">
+            <div class="stat-value font-display text-3xl text-base-content">{s.v}</div>
+            <div class="stat-desc text-base-content/50">{s.l}</div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
+    </SectionContainer>
+  </Section>
 
   <!-- Clients -->
-  <section class="section-tight border-b border-line">
-    <div class="wrap text-center">
-      <p class="kicker-muted mb-5">Trusted by growth-focused teams</p>
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-medium text-ink-3">
-        {clients.map((c) => <span>{c}</span>)}
+  <Section class="border-b border-white/5 py-10">
+    <SectionContainer class="site-shell !max-w-7xl text-center">
+      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-base-content/40">Trusted by growth-focused teams</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
+        {clients.map((c) => (
+          <span class="text-sm font-medium text-base-content/50">{c}</span>
+        ))}
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
   <!-- Inline audit -->
-  <section id="audit" class="section section-band">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <Section id="audit" class="border-b border-white/5 bg-base-200/30 py-20 lg:py-28">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p class="kicker mb-4">Run a scan</p>
-          <h2 class="display-lg mb-4">Score your site in 90 seconds.</h2>
-          <p class="lead mb-6">
+          <Badge variant="outline" class="mb-4 border-primary/30 text-primary">Run a scan</Badge>
+          <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Score your site in 90 seconds.</h2>
+          <p class="mt-4 text-lg leading-relaxed text-base-content/70">
             Enter your URL and email. Our engine runs 50+ checks across five dimensions and emails a 10-page PDF with prioritized fixes.
           </p>
-          <ul class="space-y-3 text-sm text-ink-2">
+          <ul class="mt-6 space-y-3 text-sm text-base-content/70">
             {['No credit card', 'No sales call', 'Real numbers, not opinions'].map((t) => (
               <li class="flex items-center gap-2">
-                <i class="ph-bold ph-check-circle text-accent"></i>
+                <i class="ph-bold ph-check-circle text-success"></i>
                 {t}
               </li>
             ))}
           </ul>
         </div>
-        <div class="audit-panel">
+        <div class="glass-panel glow-ring p-6 lg:p-8">
           <PulseAuditForm formId="home-audit-form" showTitle={false} compact={true} />
         </div>
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
-  <!-- PULSE framework -->
-  <section class="section">
-    <div class="wrap">
-      <div class="max-w-2xl mb-12">
-        <p class="kicker mb-3">The PULSE framework</p>
-        <h2 class="display-lg mb-4">Five dimensions. One defensible score.</h2>
-        <p class="lead">Each dimension answers whether your marketing makes money — scored 0–100 from measurable checks, not consultant opinions.</p>
+  <!-- PULSE framework bento -->
+  <Section class="py-20 lg:py-28">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="mb-12 max-w-2xl">
+        <Badge variant="outline" class="mb-4 border-primary/30 text-primary">The PULSE framework</Badge>
+        <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Five dimensions. One defensible score.</h2>
+        <p class="mt-4 text-lg text-base-content/70">
+          Each dimension answers whether your marketing makes money — scored 0–100 from measurable checks, not consultant opinions.
+        </p>
       </div>
-      <div class="pulse-grid">
+      <div class="bento-grid">
         {pulseDimensions.map((d) => (
-          <div class="pulse-card">
-            <div class="pulse-card-letter">{d.letter}</div>
-            <h3 class="font-semibold text-ink mb-2">{d.name}</h3>
-            <p class="body-sm-muted text-sm">{d.q}</p>
+          <div class:list={['pulse-dimension', d.span]}>
+            <div class="font-display text-4xl font-extrabold text-primary">{d.letter}</div>
+            <h3 class="mt-4 text-lg font-semibold">{d.name}</h3>
+            <p class="mt-2 text-sm text-base-content/60">{d.q}</p>
           </div>
         ))}
       </div>
       <div class="mt-8">
-        <a href="/capabilities" class="btn btn-ghost">
+        <Button as="a" href="/capabilities" variant="outline">
           Explore all capabilities
           <i class="ph-bold ph-arrow-right"></i>
-        </a>
+        </Button>
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
-  <!-- Platform features -->
-  <section class="section section-band">
-    <div class="wrap">
-      <div class="max-w-2xl mb-12">
-        <p class="kicker mb-3">What we build</p>
-        <h2 class="display-lg mb-4">The full marketing stack — deployed and measured.</h2>
-        <p class="lead">From findability to follow-up to attribution. One team, one score, one roadmap.</p>
-      </div>
-      <div class="feature-grid">
-        {features.map((f) => (
-          <div class="feature-card">
-            <div class="feature-icon mb-4">
-              <i class={`ph-bold ${f.icon}`}></i>
-            </div>
-            <h3 class="font-semibold text-ink mb-2">{f.title}</h3>
-            <p class="body-sm-muted">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Features -->
+  <FeaturesBlock
+    title="The full marketing stack — deployed and measured."
+    description="From findability to follow-up to attribution. One team, one score, one roadmap."
+    features={[
+      { icon: 'radar', title: 'Presence + GEO', description: 'Technical SEO and AI-search optimization — show up in Google, ChatGPT, and Perplexity for buyer queries.' },
+      { icon: 'mouse-pointer-click', title: 'Conversion systems', description: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.' },
+      { icon: 'mail', title: 'Nurture + CRM', description: 'Email sequences, lead routing, retargeting — wired from first visit to sales handoff.' },
+      { icon: 'chart-line', title: 'Measurement', description: 'GA4, server-side tracking, attribution models — know where every dollar came from.' },
+      { icon: 'refresh-cw', title: 'Iteration loop', description: 'Weekly reports, A/B tests, quarterly re-scores — the system compounds over time.' },
+      { icon: 'shield-check', title: '90-day guarantee', description: 'Money-back if we are not delivering value in the first 30 days. No friction.' },
+    ]}
+    class="border-y border-white/5 bg-base-200/30"
+  />
 
   <!-- Process -->
-  <section class="section">
-    <div class="wrap">
-      <p class="kicker mb-3">How it works</p>
-      <h2 class="display-lg mb-10">Audit → plan → measurable lift in 90 days.</h2>
-      <div class="timeline">
+  <Section class="py-20 lg:py-28">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <Badge variant="outline" class="mb-4 border-primary/30 text-primary">How it works</Badge>
+      <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Audit → plan → measurable lift in 90 days.</h2>
+      <div class="mt-12 grid gap-8 lg:grid-cols-3">
         {[
           { n: '01', t: 'Free PULSE audit', d: 'URL + email. Scored PDF in your inbox within 2 minutes.' },
           { n: '02', t: 'Strategy call', d: 'Prioritize fixes by revenue impact. Agree a 90-day plan.' },
           { n: '03', t: 'Build & measure', d: 'We ship the work. Weekly numbers. Re-score at day 90.' },
         ].map((s) => (
-          <div class="timeline-step">
-            <p class="timeline-step-num">{s.n}</p>
-            <h3 class="display-md mb-3">{s.t}</h3>
-            <p class="body-sm-muted">{s.d}</p>
+          <div class="glass-panel p-6">
+            <p class="font-mono text-sm text-primary">{s.n}</p>
+            <h3 class="mt-3 font-display text-xl font-bold">{s.t}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-base-content/60">{s.d}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
   <!-- Case study -->
-  <section class="section section-band relative overflow-hidden">
-    <div class="orb-red top-0"></div>
-    <div class="wrap relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+  <Section class="border-y border-white/5 bg-base-200/30 py-20 lg:py-28">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="grid items-center gap-12 lg:grid-cols-2">
         <div>
-          <p class="kicker mb-4">Case study</p>
-          <h2 class="display-lg mb-2">Tutti Rouge</h2>
-          <p class="text-accent font-semibold mb-6 mono">PULSE 42 → 78 · 90 days</p>
-          <div class="grid grid-cols-3 gap-6 mb-8">
+          <Badge variant="outline" class="mb-4 border-primary/30 text-primary">Case study</Badge>
+          <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Tutti Rouge</h2>
+          <p class="mt-2 font-mono text-primary">PULSE 42 → 78 · 90 days</p>
+          <div class="mt-8 grid grid-cols-3 gap-4">
             {[
               { v: '+187%', l: 'traffic' },
               { v: '4.2×', l: 'conversion' },
               { v: '£2.1M', l: 'pipeline' },
             ].map((m) => (
-              <div>
-                <div class="stat-tile-value">{m.v}</div>
-                <div class="stat-tile-label">{m.l}</div>
+              <div class="stat-glass">
+                <div class="font-display text-2xl font-bold">{m.v}</div>
+                <div class="mt-1 text-xs text-base-content/50">{m.l}</div>
               </div>
             ))}
           </div>
-          <a href="/work/tutti-rouge" class="btn btn-primary">
+          <Button as="a" href="/work/tutti-rouge" class="mt-8" size="lg">
             Read case study
             <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
+          </Button>
         </div>
-        <div class="rounded-xl overflow-hidden border border-line aspect-[4/3]">
-          <img src="/images/tutti-rouge.jpg" alt="Tutti Rouge" class="w-full h-full object-cover" width="900" height="675" loading="lazy" />
+        <div class="glass-panel aspect-[4/3] overflow-hidden p-0">
+          <div class="flex h-full w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-primary/20 via-base-300 to-base-200 p-8 text-center">
+            <img src="/logos/tutti-rouge.svg" alt="Tutti Rouge" class="h-12 opacity-80" width="160" height="48" />
+            <p class="max-w-xs text-sm text-base-content/60">Full case study with before/after PULSE breakdown and revenue attribution.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
   <!-- FAQ -->
-  <section class="section">
-    <div class="wrap max-w-3xl">
-      <p class="kicker text-center mb-3">FAQ</p>
-      <h2 class="display-lg text-center mb-10">Common questions</h2>
-      <div class="space-y-3">
-        {faqItems.map((f) => (
-          <details class="card group">
-            <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-ink p-5">
-              {f.q}
-              <i class="ph-bold ph-plus text-accent transition-transform group-open:rotate-45 shrink-0 ml-4"></i>
-            </summary>
-            <p class="px-5 pb-5 body-sm-muted border-t border-line pt-4">{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <FaqsBlock
+    title="Common questions"
+    description="Everything you need to know before running your first audit."
+    faqs={faqItems}
+    class="py-20 lg:py-28"
+  />
 
   <!-- CTA -->
-  <section class="section section-cta relative overflow-hidden">
-    <div class="orb-red top-0"></div>
-    <div class="wrap text-center max-w-2xl mx-auto relative z-10">
-      <h2 class="display-lg mb-4">See what your site is leaking.</h2>
-      <p class="lead mb-8">Free PULSE audit. Real numbers. No sales call required.</p>
-      <a href="#audit" class="btn btn-primary btn-large">
-        Get my free PULSE audit
-        <i class="ph-bold ph-lightning"></i>
-      </a>
-    </div>
-  </section>
+  <CtaBlock
+    title="See what your site is leaking."
+    description="Free PULSE audit. Real numbers. No sales call required."
+    buttons={[
+      { label: 'Get my free PULSE audit', href: '#audit' },
+      { label: 'Book a strategy call', href: '/contact', variant: 'outline' },
+    ]}
+    socialProof={{
+      avatars: [
+        { initials: 'TR' },
+        { initials: 'LM' },
+        { initials: 'TA' },
+      ],
+      count: '+40',
+      text: 'teams scored this quarter',
+    }}
+  />
 </Layout>

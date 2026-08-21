@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Section, SectionContainer } from '@/components/ui/section';
+import FaqsBlock from '@/components/blocks/faqs-1.astro';
 
 const planLabels: Record<string, string> = {
   starter: 'Starter',
@@ -31,6 +37,12 @@ const channels = [
     sub: 'Professional intros and updates',
   },
 ];
+
+const contactFaqs = [
+  { id: 'after-submit', question: 'What happens after I submit this form?', answer: 'A real person reads your submission. We reply within 4 working hours with a Calendly link, a clarifying question, or an honest referral if we are not the right fit.' },
+  { id: 'free-call', question: 'Do you charge for the strategy call?', answer: 'No. The first call is always free — 45 minutes of senior time.' },
+  { id: 'quick-question', question: 'What if I just have a quick question?', answer: 'Email hello@happyranks.com directly. The form is for booking a call.' },
+];
 ---
 
 <Layout
@@ -39,160 +51,142 @@ const channels = [
   active="/contact"
   noStickyCta={true}
 >
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div>
-          <Hero
-            compact
-            eyebrow="CONTACT"
-            title="Book a"
-            highlight="strategy call"
-            description="45 minutes. We walk through your PULSE audit, talk about your goals, and see if we're a good fit. No pitch deck, no pressure."
-            primaryCta={{ label: 'Skip the call — get the audit', href: '/pulse-audit', icon: 'ph-lightning' }}
-          />
+  <PageHeader
+    kicker="Contact"
+    title="Book a"
+    highlight="strategy call"
+    description="45 minutes. We walk through your PULSE audit, talk about your goals, and see if we're a good fit. No pitch deck, no pressure."
+    primaryCta={{ label: 'Skip the call — get the audit', href: '/pulse-audit', icon: 'ph-lightning' }}
+    compact={true}
+  />
 
-          <div class="mt-10 grid sm:grid-cols-2 gap-4 text-sm">
-            <div class="card p-4">
-              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Response time</div>
-              <div class="text-fg font-semibold">4 working hours</div>
+  <Section class="pb-20">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { label: 'Response time', value: '4 working hours' },
+            { label: 'Format', value: 'Google Meet' },
+            { label: 'Cost', value: 'Always free' },
+            { label: 'Pressure', value: 'Zero' },
+          ].map((item) => (
+            <div class="stat-glass text-left">
+              <div class="text-[10px] font-mono uppercase tracking-widest text-base-content/40">{item.label}</div>
+              <div class="mt-1 font-semibold">{item.value}</div>
             </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Format</div>
-              <div class="text-fg font-semibold">Google Meet</div>
-            </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Cost</div>
-              <div class="text-fg font-semibold">Always free</div>
-            </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Pressure</div>
-              <div class="text-fg font-semibold">Zero</div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div class="card p-8 lg:p-10 lg:sticky lg:top-24">
-          <div id="plan-banner" class="hidden mb-6 p-4 rounded-xl border border-accent/30 bg-accent/10 text-sm text-ink-2"></div>
+        <Card class="glass-panel glow-ring border-white/10 bg-base-200/80 lg:sticky lg:top-28">
+          <CardHeader>
+            <div id="plan-banner" class="alert alert-info mb-4 hidden text-sm"></div>
+            <CardTitle class="font-display text-2xl">Tell us about your business</CardTitle>
+            <p class="text-sm text-base-content/60">We read every submission. Reply within 4 working hours.</p>
+          </CardHeader>
+          <CardContent>
+            <form
+              id="contact-form"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              class="space-y-5"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="plan" id="plan-field" value="" />
+              <p class="hidden">
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </p>
 
-          <div class="eyebrow mb-2">Book a call</div>
-          <h2 class="text-2xl font-bold text-fg mb-2">Tell us about your business</h2>
-          <p class="text-sm text-fg-muted mb-8">We read every submission. Reply within 4 working hours.</p>
-
-          <form
-            id="contact-form"
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            class="space-y-5"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <input type="hidden" name="plan" id="plan-field" value="" />
-            <p class="hidden">
-              <label>Don’t fill this out: <input name="bot-field" /></label>
-            </p>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="name" class="block text-sm font-semibold text-fg mb-2">Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Doe" class="w-full input-field" />
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-control">
+                  <Label for="name">Name *</Label>
+                  <Input id="name" name="name" required placeholder="Jane Doe" class="mt-2 bg-base-300/50 border-white/10" />
+                </div>
+                <div class="form-control">
+                  <Label for="company">Company</Label>
+                  <Input id="company" name="company" placeholder="Acme Inc" class="mt-2 bg-base-300/50 border-white/10" />
+                </div>
               </div>
+              <div class="form-control">
+                <Label for="email">Email *</Label>
+                <Input type="email" id="email" name="email" required placeholder="you@company.com" class="mt-2 bg-base-300/50 border-white/10" />
+              </div>
+              <div class="form-control">
+                <Label for="website">Website <span class="text-base-content/40 font-normal">(if any)</span></Label>
+                <Input type="url" id="website" name="website" placeholder="https://yoursite.com" class="mt-2 bg-base-300/50 border-white/10" />
+              </div>
+              <div class="form-control">
+                <Label for="budget">Monthly budget</Label>
+                <select id="budget" name="budget" class="select select-bordered mt-2 w-full bg-base-300/50 border-white/10">
+                  <option value="">Select range</option>
+                  <option value="1.5-3k">$1,500 – $3,000</option>
+                  <option value="3-6k">$3,000 – $6,000</option>
+                  <option value="6-10k">$6,000 – $10,000</option>
+                  <option value="10k+">$10,000+</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-control">
+                <Label for="message">What are you trying to solve? *</Label>
+                <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve." class="textarea textarea-bordered mt-2 w-full bg-base-300/50 border-white/10"></textarea>
+              </div>
+              <Button type="submit" class="w-full h-12">
+                <i class="ph-bold ph-calendar-check"></i>
+                Request a call
+              </Button>
+              <p class="text-center text-[10px] text-base-content/40">
+                We respect your inbox. No spam, no marketing list trades.
+              </p>
+            </form>
+
+            <div id="contact-success" class="alert alert-success mt-6 hidden">
+              <i class="ph-bold ph-check-circle text-2xl"></i>
               <div>
-                <label for="company" class="block text-sm font-semibold text-fg mb-2">Company</label>
-                <input type="text" id="company" name="company" placeholder="Acme Inc" class="w-full input-field" />
+                <p class="font-semibold">Request received</p>
+                <p class="text-sm opacity-80">We'll be in touch within 4 working hours. Usually faster.</p>
               </div>
             </div>
-            <div>
-              <label for="email" class="block text-sm font-semibold text-fg mb-2">Email *</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full input-field" />
-            </div>
-            <div>
-              <label for="website" class="block text-sm font-semibold text-fg mb-2">Website <span class="text-fg-muted font-normal">(if any)</span></label>
-              <input type="url" id="website" name="website" placeholder="https://yoursite.com" class="w-full input-field" />
-            </div>
-            <div>
-              <label for="budget" class="block text-sm font-semibold text-fg mb-2">Monthly budget</label>
-              <select id="budget" name="budget" class="w-full bg-canvas border border-border rounded-lg px-4 py-3 text-fg focus:border-[var(--color-brand)] focus:outline-none transition">
-                <option value="">Select range</option>
-                <option value="1.5-3k">$1,500 – $3,000</option>
-                <option value="3-6k">$3,000 – $6,000</option>
-                <option value="6-10k">$6,000 – $10,000</option>
-                <option value="10k+">$10,000+</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
-            </div>
-            <div>
-              <label for="message" class="block text-sm font-semibold text-fg mb-2">What are you trying to solve? *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve." class="w-full input-field resize-none"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-large w-full justify-center">
-              <i class="ph-bold ph-calendar-check"></i>
-              Request a call
-            </button>
-            <div class="text-[10px] text-fg-muted text-center">
-              We respect your inbox. No spam, no marketing list trades.
-            </div>
-          </form>
-
-          <div id="contact-success" class="hidden mt-6 p-6 bg-ok-bg border border-ok/30 rounded-lg text-center">
-            <i class="ph-bold ph-check-circle text-ok text-3xl mb-2"></i>
-            <div class="font-semibold text-fg mb-1">Request received</div>
-            <p class="text-sm text-fg-secondary">We'll be in touch within 4 working hours. Usually faster.</p>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
-  <section class="section-y bg-bg-subtle">
-    <div class="container-wide max-w-3xl">
-      <div class="text-center mb-12">
-        <div class="eyebrow mb-4">FAQ</div>
-        <h2 class="text-display-2 text-fg">
-          Common <span class="text-gradient-brand">questions</span>
-        </h2>
-      </div>
-      <div class="space-y-3">
-        {[
-          { q: 'What happens after I submit this form?', a: 'A real person reads your submission. We reply within 4 working hours with a Calendly link, a clarifying question, or an honest referral if we are not the right fit.' },
-          { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free — 45 minutes of senior time.' },
-          { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. The form is for booking a call.' },
-        ].map((f) => (
-          <details class="card p-6 group">
-            <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-fg pr-4">{f.q}</span>
-              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
-            </summary>
-            <p class="mt-4 text-fg-secondary leading-relaxed">{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <FaqsBlock
+    title="Common questions"
+    description="What to expect after you reach out."
+    faqs={contactFaqs}
+    class="border-t border-white/5 bg-base-200/30 py-20"
+  />
 
-  <section class="section-y">
-    <div class="container-wide max-w-3xl">
-      <div class="text-center mb-12">
-        <div class="eyebrow mb-4">Other ways to reach us</div>
-        <h2 class="text-display-2 text-fg">
+  <Section class="py-20">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="mb-12 text-center">
+        <p class="kicker mb-4">Other ways to reach us</p>
+        <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Pick your <span class="text-gradient-brand">channel</span>
         </h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="grid gap-4 md:grid-cols-3">
         {channels.map((c) => (
-          <a href={c.href} class="card p-6 text-center panel-hover block no-underline" target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-            <div class="w-12 h-12 rounded-lg bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
+          <a
+            href={c.href}
+            class="glass-panel panel-hover block p-6 text-center no-underline"
+            target={c.href.startsWith('http') ? '_blank' : undefined}
+            rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            <div class="mx-auto mb-3 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <i class={`ph-bold ${c.icon} text-2xl`}></i>
             </div>
-            <div class="font-bold text-fg mb-1">{c.title}</div>
-            <div class="text-sm text-[var(--color-brand)] mono mb-2">{c.detail}</div>
-            <div class="text-xs text-fg-muted">{c.sub}</div>
+            <div class="font-bold">{c.title}</div>
+            <div class="my-2 font-mono text-sm text-primary">{c.detail}</div>
+            <div class="text-xs text-base-content/50">{c.sub}</div>
           </a>
         ))}
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 </Layout>
 
 <script define:vars={{ planLabels }}>

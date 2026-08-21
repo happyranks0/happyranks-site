@@ -1,4 +1,8 @@
 ---
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
 const {
   formId = 'pulse-audit-form',
   compact = false,
@@ -8,10 +12,10 @@ const {
 
 <div class="pulse-audit-form-wrap">
   {showTitle && (
-    <div class="mb-5">
-      <p class="kicker mb-2">Free PULSE audit</p>
-      <h2 class="display-md mb-2">URL + email → report in 2 min</h2>
-      <p class="body-sm">50+ checks across five revenue dimensions.</p>
+    <div class="mb-6">
+      <div class="badge badge-outline badge-primary mb-3">Free PULSE audit</div>
+      <h2 class="font-display text-2xl font-bold tracking-tight">URL + email → report in 2 min</h2>
+      <p class="mt-2 text-sm text-base-content/60">50+ checks across five revenue dimensions.</p>
     </div>
   )}
 
@@ -20,45 +24,45 @@ const {
     class:list={['space-y-4', compact && 'space-y-3']}
     data-pulse-audit-form
   >
-    <div>
-      <label for={`${formId}-url`} class="block text-sm font-medium text-ink mb-2">Website URL</label>
-      <input
+    <div class="form-control w-full">
+      <Label for={`${formId}-url`}>Website URL</Label>
+      <Input
         type="url"
         id={`${formId}-url`}
         name="url"
         required
         placeholder="https://yoursite.com"
-        class="input-field"
+        class="mt-2 bg-base-300/50 border-white/10"
       />
     </div>
-    <div>
-      <label for={`${formId}-email`} class="block text-sm font-medium text-ink mb-2">Email</label>
-      <input
+    <div class="form-control w-full">
+      <Label for={`${formId}-email`}>Email</Label>
+      <Input
         type="email"
         id={`${formId}-email`}
         name="email"
         required
         placeholder="you@company.com"
-        class="input-field"
+        class="mt-2 bg-base-300/50 border-white/10"
       />
     </div>
-    <button type="submit" class:list={['btn btn-primary w-full justify-center', compact ? '' : 'btn-large']}>
+    <Button type="submit" class:list={['w-full', !compact && 'h-12']}>
       <i class="ph-bold ph-lightning"></i>
       Run my free PULSE audit
-    </button>
-    <p class="text-[11px] text-ink-3 text-center leading-relaxed">
+    </Button>
+    <p class="text-center text-[11px] leading-relaxed text-base-content/50">
       No credit card. PDF in ~2 minutes.
     </p>
   </form>
 
-  <div id={`${formId}-error`} class="hidden mt-4 p-4 rounded-xl border border-accent/40 bg-accent/10 text-sm text-ink-2" role="alert"></div>
+  <div id={`${formId}-error`} class="alert alert-error mt-4 hidden text-sm" role="alert"></div>
 
-  <div id={`${formId}-success`} class="hidden mt-4 p-5 rounded-xl bg-ok-bg border border-ok/30">
-    <div class="flex items-center gap-2 text-ok font-semibold mb-2">
-      <i class="ph-bold ph-check-circle"></i>
-      Audit queued
+  <div id={`${formId}-success`} class="alert alert-success mt-4 hidden">
+    <i class="ph-bold ph-check-circle text-xl"></i>
+    <div>
+      <p class="font-semibold">Audit queued</p>
+      <p class="text-sm opacity-80">Your report is on its way — check your inbox in the next 2 minutes.</p>
     </div>
-    <p class="body-sm">Your report is on its way — check your inbox in the next 2 minutes.</p>
   </div>
 </div>
 

@@ -8,36 +8,38 @@ const dimensions = [
 ];
 ---
 
-<div class="scorecard">
-  <div class="scorecard-topbar">
-    <span class="flex items-center gap-2">
-      <span class="scorecard-topbar-dot pulse-dot"></span>
+<div class="card bg-base-200/90 border border-white/10 shadow-2xl glow-ring overflow-hidden">
+  <div class="flex items-center justify-between border-b border-white/10 bg-base-300/50 px-4 py-3 text-xs text-base-content/60">
+    <span class="flex items-center gap-2 font-mono">
+      <span class="size-2 rounded-full bg-success animate-pulse"></span>
       pulse.happyranks.com
     </span>
-    <span class="mono">live scan</span>
+    <span class="font-mono uppercase tracking-wider">Live scan</span>
   </div>
-  <div class="scorecard-header">
+
+  <div class="flex items-end justify-between gap-4 border-b border-white/10 p-6">
     <div>
-      <p class="kicker-muted mb-2 mono text-[11px]">PULSE SCORE</p>
-      <div class="scorecard-total">62<span>/100</span></div>
+      <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/80">PULSE score</p>
+      <div class="font-display text-6xl font-bold leading-none tracking-tight">
+        62<span class="text-2xl font-medium text-base-content/40">/100</span>
+      </div>
     </div>
-    <div class="scorecard-meta">
-      <span>Est. revenue lift</span>
-      <strong>+2.4×</strong>
+    <div class="text-right text-xs text-base-content/60">
+      <span class="block">Est. revenue lift</span>
+      <strong class="block text-2xl font-bold text-primary">+2.4×</strong>
       <span>90-day fixes</span>
     </div>
   </div>
-  <div>
+
+  <div class="divide-y divide-white/5">
     {dimensions.map((d) => (
-      <div class="scorecard-row">
-        <span class="scorecard-letter">{d.l}</span>
+      <div class="grid grid-cols-[1.5rem_1fr_2.5rem] items-center gap-3 px-6 py-3 text-sm">
+        <span class="font-bold text-primary">{d.l}</span>
         <div>
-          <div class="text-ink-2 mb-1.5 truncate">{d.name}</div>
-          <div class="scorecard-bar">
-            <div class="scorecard-bar-fill" style={`width: ${d.s}%`}></div>
-          </div>
+          <div class="mb-1.5 truncate text-base-content/80">{d.name}</div>
+          <progress class="progress progress-primary h-1.5 w-full" value={d.s} max="100"></progress>
         </div>
-        <span class="scorecard-val">{d.s}</span>
+        <span class="text-right font-mono text-base-content/70">{d.s}</span>
       </div>
     ))}
   </div>

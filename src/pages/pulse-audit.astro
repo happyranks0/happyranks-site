@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import PulseScore from '../components/PulseScore.astro';
 import PulseAuditForm from '../components/PulseAuditForm.astro';
+import FaqsBlock from '@/components/blocks/faqs-1.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { Badge } from '@/components/ui/badge';
+import { Section, SectionContainer } from '@/components/ui/section';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -18,6 +22,12 @@ const serviceSchema = {
   provider: { '@type': 'Organization', name: 'Happyranks' },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
+
+const faqItems = faqSchema.mainEntity.map((item) => ({
+  id: item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  question: item.name,
+  answer: item.acceptedAnswer.text,
+}));
 ---
 
 <Layout
@@ -26,64 +36,50 @@ const serviceSchema = {
   active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
-  <section class="cf-hero min-h-0 py-28 lg:py-32">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-        <div class="relative z-10">
-          <div class="eyebrow-pill mb-6">Free · 90 seconds · No call required</div>
-          <h1 class="display-hero mb-6">
-            Score your site<br />
-            <span class="text-gradient-brand">in 90 seconds.</span>
-          </h1>
-          <p class="lead max-w-lg mb-8">
-            Five dimensions. Fifty-plus checks. A 10-page PDF with prioritized fixes — delivered to your inbox in 2 minutes.
-          </p>
+  <PageHeader
+    kicker="Free · 90 seconds · No call required"
+    title="Score your site"
+    highlight="in 90 seconds."
+    description="Five dimensions. Fifty-plus checks. A 10-page PDF with prioritized fixes — delivered to your inbox in 2 minutes."
+    compact={true}
+  />
+
+  <Section class="border-b border-white/5 pb-20">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="glass-panel glow-ring p-6 lg:p-8 lg:sticky lg:top-28" id="pulse-form-panel">
+          <PulseAuditForm formId="pulse-form" />
         </div>
-        <div class="relative z-10 lg:sticky lg:top-24">
-          <div class="audit-panel mb-6" id="pulse-form-panel">
-            <PulseAuditForm formId="pulse-form" />
-          </div>
-          <div class="hidden lg:block">
-            <PulseScore />
-          </div>
+        <div class="hidden lg:block">
+          <PulseScore />
         </div>
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
-  <section class="section section-band">
-    <div class="wrap">
-      <p class="kicker mb-8">Under the hood</p>
-      <div class="timeline">
+  <Section class="border-b border-white/5 bg-base-200/30 py-20">
+    <SectionContainer class="site-shell !max-w-7xl">
+      <Badge variant="outline" class="mb-8 border-primary/30 text-primary">Under the hood</Badge>
+      <div class="grid gap-6 md:grid-cols-3">
         {[
           { n: '01', t: 'Submit URL', d: 'Homepage URL and email. That is all we need.' },
           { n: '02', t: 'Engine crawls', d: 'HTML, meta, schema, scripts — 50+ measurable signals.' },
           { n: '03', t: 'Score & report', d: 'Weighted rubric across 5 dimensions. PDF with 90-day plan.' },
         ].map((s) => (
-          <div class="timeline-step">
-            <p class="timeline-step-num">{s.n}</p>
-            <h3 class="display-md mb-2">{s.t}</h3>
-            <p class="body-sm-muted">{s.d}</p>
+          <div class="glass-panel p-6">
+            <p class="font-mono text-sm text-primary">{s.n}</p>
+            <h3 class="mt-3 font-display text-xl font-bold">{s.t}</h3>
+            <p class="mt-2 text-sm text-base-content/60">{s.d}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
+    </SectionContainer>
+  </Section>
 
-  <section class="section">
-    <div class="wrap max-w-3xl">
-      <h2 class="display-lg text-center mb-10">Questions</h2>
-      <div class="space-y-3">
-        {faqSchema.mainEntity.map((f) => (
-          <details class="card group">
-            <summary class="flex justify-between cursor-pointer list-none font-semibold text-ink p-5">
-              {f.name}
-              <i class="ph-bold ph-plus text-accent group-open:rotate-45 transition-transform"></i>
-            </summary>
-            <p class="px-5 pb-5 body-sm-muted border-t border-line pt-4">{f.acceptedAnswer.text}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+  <FaqsBlock
+    title="Questions"
+    description="Quick answers about the free PULSE audit."
+    faqs={faqItems}
+    class="py-20"
+  />
 </Layout>
