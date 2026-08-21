@@ -5,10 +5,10 @@ import Hero from '../components/Hero.astro';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is the VITAL audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. No catch. We make money when you hire us to act on what the audit finds.' } },
+    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. No catch. We make money when you hire us to act on what the audit finds.' } },
     { '@type': 'Question', name: 'How long does the audit take?', acceptedAnswer: { '@type': 'Answer', text: 'The audit itself takes 90 seconds. The PDF report is generated and emailed within 2 minutes.' } },
     { '@type': 'Question', name: 'Will I get spammed after?', acceptedAnswer: { '@type': 'Answer', text: 'No. We may send 2-3 follow-up emails with relevant insights, and you can unsubscribe anytime.' } },
-    { '@type': 'Question', name: 'How accurate is the VITAL score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions. A defensible number. Re-run quarterly to track progress.' } },
+    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions. A defensible number. Re-run quarterly to track progress.' } },
     { '@type': 'Question', name: 'Can I use the audit for my clients?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, white-label it. We do not restrict use of the audit report. Just do not resell the report itself.' } },
   ],
 };
@@ -18,15 +18,15 @@ const serviceSchema = {
   serviceType: 'Free Marketing Audit',
   provider: { '@type': 'Organization', name: 'Happyranks' },
   areaServed: ['US', 'GB', 'AE', 'IN'],
-  description: 'Free 90-second VITAL audit scoring websites across 5 dimensions and 50+ checks. Delivers a 10-page PDF report with prioritized fixes and a 90-day action plan.',
+  description: 'Free 90-second PULSE audit scoring websites across 5 dimensions and 50+ checks. Delivers a 10-page PDF report with prioritized fixes and a 90-day action plan.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 ---
 
 <Layout
-  title="Free VITAL Audit — Score your website in 90 seconds"
-  description="Get a free VITAL audit across Visibility, Impression, Transition, Automation, and Learning. 50+ checks, real numbers, real recommendations, no call required."
-  active="/vital-audit"
+  title="Free PULSE Audit — Score your website in 90 seconds"
+  description="Get a free PULSE audit across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. 50+ checks, real numbers, real recommendations, no call required."
+  active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
   <!-- HERO + FORM -->
@@ -35,10 +35,10 @@ const serviceSchema = {
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <Hero
-            eyebrow="FREE VITAL AUDIT — 90 SECONDS"
+            eyebrow="FREE PULSE AUDIT — 90 SECONDS"
             title="Score your website"
             highlight="in 90 seconds"
-            description="The VITAL audit measures your site across 5 dimensions that actually drive revenue. Real score, real report, real recommendations — emailed to you within 2 minutes. No call required."
+            description="The PULSE audit measures your site across 5 dimensions that actually drive revenue. Real score, real report, real recommendations — emailed to you within 2 minutes. No call required."
             meta={['No credit card', 'No sales call', '50+ checks', 'PDF in inbox']}
           />
         </div>
@@ -49,7 +49,7 @@ const serviceSchema = {
           <h2 class="text-2xl font-bold text-white mb-2">Run your audit</h2>
           <p class="text-sm text-[#888] mb-8">Enter your URL and email. We'll send the report within 2 minutes.</p>
 
-          <form id="vital-form" class="space-y-5">
+          <form id="pulse-form" class="space-y-5">
             <div>
               <label for="url" class="block text-sm font-semibold text-white mb-2">Website URL</label>
               <input
@@ -76,7 +76,7 @@ const serviceSchema = {
             </div>
             <button type="submit" class="btn btn-primary btn-large w-full justify-center">
               <i class="ph-bold ph-lightning"></i>
-              Run my free VITAL audit
+              Run my free PULSE audit
             </button>
             <div class="text-[10px] text-[#666] text-center leading-relaxed">
               By submitting, you agree to receive your audit report via email.
@@ -84,7 +84,7 @@ const serviceSchema = {
             </div>
           </form>
 
-          <div id="vital-result" class="hidden mt-6 p-6 bg-[#0a0a0a] border border-emerald-500/30 rounded-lg">
+          <div id="pulse-result" class="hidden mt-6 p-6 bg-[#0a0a0a] border border-emerald-500/30 rounded-lg">
             <div class="flex items-center gap-2 text-emerald-500 font-semibold mb-2">
               <i class="ph-bold ph-check-circle"></i>
               <span>Audit queued</span>
@@ -116,7 +116,7 @@ const serviceSchema = {
         {[
           { n: '1', title: 'Submit URL', desc: 'You enter your homepage URL and email. That\'s it.' },
           { n: '2', title: 'Engine crawls', desc: 'We fetch your HTML, parse meta tags, check headers, detect scripts, look at schema, run DNS lookups.' },
-          { n: '3', title: '50+ checks run', desc: 'Each of the 5 VITAL dimensions runs ~10 specific checks. Speed, SEO, conversion, automation, analytics.' },
+          { n: '3', title: '50+ checks run', desc: 'Each of the 5 PULSE dimensions runs ~10 specific checks. Presence, clarity, lead capture, follow-up, measurement.' },
           { n: '4', title: 'PDF emailed', desc: 'Scores, findings, prioritized fixes, 90-day action plan. In your inbox within 2 minutes.' },
         ].map((s) => (
           <div class="card p-6">
@@ -129,8 +129,36 @@ const serviceSchema = {
     </div>
   </section>
 
-  <!-- WHAT YOU GET -->
+  <!-- PULSE DIMENSIONS -->
   <section class="section-y">
+    <div class="container-wide">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="eyebrow mb-4">The PULSE framework</div>
+        <h2 class="text-display-2 text-white mb-6">
+          Five questions.<br/>
+          <span class="text-gradient-brand">One score.</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+        {[
+          { letter: 'P', name: 'Presence', question: 'Can the right people find the business?' },
+          { letter: 'U', name: 'Understanding', question: 'Do they quickly understand what you do and why it matters?' },
+          { letter: 'L', name: 'Lead capture', question: 'Can an interested visitor become an enquiry easily?' },
+          { letter: 'S', name: 'Sales follow-up', question: 'What happens after the enquiry arrives?' },
+          { letter: 'E', name: 'Evaluation', question: 'Does the business measure results and improve the system?' },
+        ].map((d) => (
+          <div class="card p-5">
+            <div class="text-xl font-black text-white mb-1">{d.letter}</div>
+            <div class="text-sm font-bold text-white mb-2">{d.name}</div>
+            <p class="text-xs text-[#888] leading-relaxed">{d.question}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <div class="eyebrow mb-4">What's inside the report</div>
@@ -146,12 +174,12 @@ const serviceSchema = {
 
       <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {[
-          { p: '01', title: 'Cover & Executive Summary', desc: 'Your overall VITAL score, the top 3 revenue-impacting fixes, and the estimated annual revenue lift if you act on them.' },
-          { p: '02', title: 'Visibility Deep-Dive', desc: 'SEO health, AI-overview citation potential, knowledge graph presence, search intent coverage, backlink profile.' },
-          { p: '03', title: 'Impression Deep-Dive', desc: 'Core Web Vitals, mobile experience, hero clarity, design quality assessment, social proof placement.' },
-          { p: '04', title: 'Transition Deep-Dive', desc: 'CTA placement, form friction, booking flow analysis, conversion path audit, lead magnet quality.' },
-          { p: '05', title: 'Automation Deep-Dive', desc: 'CRM presence, email capture, retargeting setup, lead scoring readiness, sales handoff automation.' },
-          { p: '06', title: 'Learning Deep-Dive', desc: 'Analytics setup, conversion attribution, tracking gaps, measurement maturity, dashboard quality.' },
+          { p: '01', title: 'Cover & Executive Summary', desc: 'Your overall PULSE score, the top 3 revenue-impacting fixes, and the estimated annual revenue lift if you act on them.' },
+          { p: '02', title: 'Presence Deep-Dive', desc: 'SEO health, AI-overview citation potential, knowledge graph presence, search intent coverage, backlink profile.' },
+          { p: '03', title: 'Understanding Deep-Dive', desc: 'Core Web Vitals, mobile experience, hero clarity, design quality assessment, social proof placement.' },
+          { p: '04', title: 'Lead Capture Deep-Dive', desc: 'CTA placement, form friction, booking flow analysis, conversion path audit, lead magnet quality.' },
+          { p: '05', title: 'Sales Follow-up Deep-Dive', desc: 'CRM presence, email capture, retargeting setup, lead scoring readiness, sales handoff automation.' },
+          { p: '06', title: 'Evaluation Deep-Dive', desc: 'Analytics setup, conversion attribution, tracking gaps, measurement maturity, dashboard quality.' },
           { p: '07', title: 'SWOT Analysis', desc: 'Strengths, weaknesses, opportunities, threats — across all 5 dimensions. Strategic context, not just numbers.' },
           { p: '08', title: '90-Day Action Plan', desc: 'Prioritized fixes with effort and impact estimates. Ready to execute in-house or hand to a team like ours.' },
         ].map((r) => (
@@ -168,13 +196,13 @@ const serviceSchema = {
   </section>
 
   <!-- SAMPLE SCORE -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y">
     <div class="container-wide">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12">
           <div class="eyebrow mb-4">Sample report preview</div>
           <h2 class="text-display-3 text-white mb-4">
-            Here's what a VITAL score looks like
+            Here's what a PULSE score looks like
           </h2>
           <p class="text-[#888]">Sample site: acme-corp.com (fictional example)</p>
         </div>
@@ -182,7 +210,7 @@ const serviceSchema = {
         <div class="card p-10">
           <div class="flex items-center justify-between mb-10 flex-wrap gap-6">
             <div>
-              <div class="eyebrow mb-2">VITAL SCORE</div>
+              <div class="eyebrow mb-2">PULSE SCORE</div>
               <div class="text-7xl font-black text-white">62<span class="text-3xl text-[#666]">/100</span></div>
             </div>
             <div class="text-right">
@@ -193,11 +221,11 @@ const serviceSchema = {
           </div>
           <div class="space-y-4">
             {[
-              { l: 'V', name: 'Visibility', s: 78, color: 'bg-blue-500' },
-              { l: 'I', name: 'Impression', s: 71, color: 'bg-purple-500' },
-              { l: 'T', name: 'Transition', s: 42, color: 'bg-orange-500' },
-              { l: 'A', name: 'Automation', s: 38, color: 'bg-emerald-500' },
-              { l: 'L', name: 'Learning', s: 81, color: 'bg-yellow-500' },
+              { l: 'P', name: 'Presence', s: 78, color: 'bg-blue-500' },
+              { l: 'U', name: 'Understanding', s: 71, color: 'bg-purple-500' },
+              { l: 'L', name: 'Lead capture', s: 42, color: 'bg-orange-500' },
+              { l: 'S', name: 'Sales follow-up', s: 38, color: 'bg-emerald-500' },
+              { l: 'E', name: 'Evaluation', s: 81, color: 'bg-yellow-500' },
             ].map((d) => (
               <div class="grid grid-cols-[40px_120px_1fr_60px] items-center gap-4">
                 <div class="text-2xl font-black text-white">{d.l}</div>
@@ -215,7 +243,7 @@ const serviceSchema = {
   </section>
 
   <!-- WHY FREE -->
-  <section class="section-y">
+  <section class="section-y bg-[#0c0c0c]">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">Why is this free?</div>
@@ -231,7 +259,7 @@ const serviceSchema = {
           to fix what it finds — that's what has value.
         </p>
         <p>
-          The VITAL audit engine is fully automated. It costs us effectively nothing to run.
+          The PULSE audit engine is fully automated. It costs us effectively nothing to run.
           Giving you the report is the cheapest way for us to demonstrate that we know what
           we're doing. If you see value in the audit, you'll see value in the work that
           improves the score.
@@ -245,7 +273,7 @@ const serviceSchema = {
   </section>
 
   <!-- FAQ -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">FAQ</div>
@@ -286,17 +314,17 @@ const serviceSchema = {
       <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">
         90 seconds. One URL. A real report. Free, no call required.
       </p>
-      <a href="#vital-form" class="btn btn-primary btn-large">
+      <a href="#pulse-form" class="btn btn-primary btn-large">
         <i class="ph-bold ph-lightning"></i>
-        Run my free VITAL audit
+        Run my free PULSE audit
       </a>
     </div>
   </section>
 </Layout>
 
 <script>
-  const form = document.getElementById('vital-form') as HTMLFormElement | null;
-  const result = document.getElementById('vital-result');
+  const form = document.getElementById('pulse-form') as HTMLFormElement | null;
+  const result = document.getElementById('pulse-result');
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -307,8 +335,7 @@ const serviceSchema = {
     btn.innerHTML = '<i class="ph-bold ph-circle-notch animate-spin"></i> Running audit...';
     btn.disabled = true;
     try {
-      // VITAL API on VPS — proxied via Netlify Function in production
-      const apiBase = (window as any).VITAL_API_URL || 'https://vital.gohappyranks.com';
+      const apiBase = (window as any).PULSE_API_URL || (window as any).VITAL_API_URL || 'https://vital.gohappyranks.com';
       const resp = await fetch(`${apiBase}/api/vital/scan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

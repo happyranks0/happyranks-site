@@ -7,20 +7,20 @@ const serviceSchema = {
   serviceType: 'Marketing Audit and Optimization',
   provider: { '@type': 'Organization', name: 'Happyranks' },
   areaServed: ['US', 'GB', 'AE', 'IN'],
-  description: 'VITAL framework marketing audit and optimization across 5 dimensions: Visibility, Impression, Transition, Automation, Learning. Includes Generative Engine Optimization (GEO), conversion rate optimization, marketing automation setup, and analytics implementation.',
+  description: 'PULSE framework marketing audit and optimization across 5 dimensions: Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. Includes Generative Engine Optimization (GEO), conversion rate optimization, marketing automation setup, and analytics implementation.',
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Free 90-second VITAL audit with 10-page PDF report',
+    description: 'Free 90-second PULSE audit with 10-page PDF report',
   },
 };
 
 const dimensions = [
   {
-    letter: 'V',
-    name: 'Visibility',
-    headline: 'Can the right people find you?',
+    letter: 'P',
+    name: 'Presence',
+    headline: 'Can the right people find the business?',
     desc: 'In 2026, "find you" means Google, ChatGPT, Perplexity, Gemini, and Claude. We engineer your site to show up in all of them — for the queries that bring you customers, not just traffic.',
     icon: 'ph-binoculars',
     color: 'from-blue-500 to-cyan-500',
@@ -35,9 +35,9 @@ const dimensions = [
     tools: ['Ahrefs', 'Semrush', 'Screaming Frog', 'Google Search Console', 'Schema.org validator', 'Perplexity API'],
   },
   {
-    letter: 'I',
-    name: 'Impression',
-    headline: 'Do they trust you in 3 seconds?',
+    letter: 'U',
+    name: 'Understanding',
+    headline: 'Do they quickly understand what you do and why it matters?',
     desc: 'Speed, design, copy clarity, social proof. The first impression determines whether the visitor stays, scrolls, and converts — or bounces to your competitor. We make sure they stay.',
     icon: 'ph-eye',
     color: 'from-purple-500 to-pink-500',
@@ -52,9 +52,9 @@ const dimensions = [
     tools: ['PageSpeed Insights', 'Chrome UX Report', 'WebPageTest', 'Hotjar heatmaps', 'Microsoft Clarity', 'Figma'],
   },
   {
-    letter: 'T',
-    name: 'Transition',
-    headline: 'Can they become a lead, easily?',
+    letter: 'L',
+    name: 'Lead capture',
+    headline: 'Can an interested visitor become an enquiry easily?',
     desc: 'The path from "interested" to "booked call." Friction here is the most expensive leak in most marketing funnels. We eliminate it with psychology-backed design, copy, and flow.',
     icon: 'ph-arrow-right',
     color: 'from-orange-500 to-red-500',
@@ -69,9 +69,9 @@ const dimensions = [
     tools: ['Calendly', 'Cal.com', 'HubSpot', 'Typeform', 'Hotjar', 'Google Optimize alternatives'],
   },
   {
-    letter: 'A',
-    name: 'Automation',
-    headline: 'What happens after they engage?',
+    letter: 'S',
+    name: 'Sales follow-up',
+    headline: 'What happens after the enquiry arrives?',
     desc: 'A visitor who doesn\'t convert today is a lead for tomorrow — if your system is set up to nurture them. We wire up the full stack so no engagement falls through the cracks.',
     icon: 'ph-robot',
     color: 'from-emerald-500 to-teal-500',
@@ -86,9 +86,9 @@ const dimensions = [
     tools: ['Mautic', 'HubSpot', 'ActiveCampaign', 'Make.com', 'n8n', 'WhatsApp Business API'],
   },
   {
-    letter: 'L',
-    name: 'Learning',
-    headline: 'Do you measure what works?',
+    letter: 'E',
+    name: 'Evaluation',
+    headline: 'Does the business measure results and improve the system?',
     desc: 'You can\'t improve what you don\'t measure. We set up the full attribution stack so you know exactly where every dollar came from — and where the next dollar should go.',
     icon: 'ph-chart-line-up',
     color: 'from-yellow-500 to-orange-500',
@@ -106,18 +106,18 @@ const dimensions = [
 ---
 
 <Layout
-  title="Capabilities — The VITAL framework in detail"
-  description="Five dimensions of marketing done right: Visibility, Impression, Transition, Automation, Learning. Each audited across ~10 specific checks. Built into every engagement."
+  title="Capabilities — The PULSE framework in detail"
+  description="Five dimensions of marketing done right: Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. Each audited across ~10 specific checks. Built into every engagement."
   active="/capabilities"
   schema={serviceSchema}
 >
   <!-- HERO -->
   <Hero
     eyebrow="OUR CAPABILITIES"
-    title="The VITAL framework —"
+    title="The PULSE framework —"
     highlight="every dimension, in detail"
     description="We measure your site across 5 dimensions × 10+ checks each — 50 measurable signals that determine whether your marketing makes money. Here's the full rubric, the tools we use, and what good looks like in each dimension."
-    primaryCta={{ label: 'See how your site scores', href: '/vital-audit', icon: 'ph-lightning' }}
+    primaryCta={{ label: 'See how your site scores', href: '/pulse-audit', icon: 'ph-lightning' }}
   />
 
   <!-- DIMENSIONS -->
@@ -173,7 +173,7 @@ const dimensions = [
           <span class="text-gradient-brand">in 90 seconds</span>
         </h2>
         <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          The free VITAL audit runs a custom-built Python engine against your site. It pulls
+          The free PULSE audit runs a custom-built Python engine against your site. It pulls
           ~50 measurable signals, scores them against a weighted rubric, and produces a
           10-page PDF report. Here's exactly what happens under the hood.
         </p>
@@ -182,8 +182,8 @@ const dimensions = [
       <div class="grid md:grid-cols-2 gap-6">
         {[
           { n: '1', title: 'Crawl & fetch', detail: 'We hit your homepage with proper user-agent, fetch HTML, parse meta tags, headers, schema, links, and asset structure. Sub-2s timeout with retries.' },
-          { n: '2', title: 'Run 50+ checks', detail: 'Each of the 5 dimensions runs ~10 specific checks. Page speed via Lighthouse-style signals. SEO via meta + schema parsing. Conversion via form + CTA detection. Automation via pixel + DNS lookups. Analytics via tag detection.' },
-          { n: '3', title: 'Score & weight', detail: 'Each check returns 0–100. Dimension score is weighted average. Final VITAL score is average of the 5 dimensions. A site with all 90s scores 90. A site with 3 perfects and 2 zeros scores ~54.' },
+          { n: '2', title: 'Run 50+ checks', detail: 'Each of the 5 PULSE dimensions runs ~10 specific checks. Presence via SEO + schema. Understanding via hero clarity + speed. Lead capture via forms + CTAs. Sales follow-up via CRM + pixels. Evaluation via analytics tags.' },
+          { n: '3', title: 'Score & weight', detail: 'Each check returns 0–100. Dimension score is weighted average. Final PULSE score is average of the 5 dimensions. A site with all 90s scores 90. A site with 3 perfects and 2 zeros scores ~54.' },
           { n: '4', title: 'Generate report', detail: 'PDF includes: cover page with overall score, executive summary, estimated revenue impact, dimension deep-dives, SWOT analysis, prioritized 90-day action plan. Emailed within 2 minutes.' },
         ].map((s) => (
           <div class="card p-6">
@@ -207,19 +207,19 @@ const dimensions = [
           Every industry. <span class="text-gradient-light">Same rigor.</span>
         </h2>
         <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          The VITAL framework works the same way regardless of industry — what changes is
+          The PULSE framework works the same way regardless of industry — what changes is
           which dimensions matter most for your specific business. A wedding venue obsesses
-          over Impression and Transition. A B2B SaaS company obsesses over Visibility and
-          Learning. We map it to your model.
+          over Understanding and Lead capture. A B2B SaaS company obsesses over Presence and
+          Evaluation. We map it to your model.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { industry: 'Real estate', priority: 'V → T → I → A → L', focus: 'Visibility (local SEO), Transition (lead forms, IDX), Automation (instant lead alerts).' },
-          { industry: 'Wedding & events', priority: 'I → T → V → A → L', focus: 'Impression (portfolio showcase), Transition (inquiry flow), Visibility (local search).' },
-          { industry: 'B2B SaaS', priority: 'V → L → A → T → I', focus: 'Visibility (GEO + SEO), Learning (attribution), Automation (lead scoring, CRM).' },
-          { industry: 'Service business', priority: 'T → A → V → I → L', focus: 'Transition (booking, calls), Automation (follow-up sequences), Visibility (local SEO).' },
+          { industry: 'Real estate', priority: 'P → L → U → S → E', focus: 'Presence (local SEO), Lead capture (lead forms, IDX), Sales follow-up (instant lead alerts).' },
+          { industry: 'Wedding & events', priority: 'U → L → P → S → E', focus: 'Understanding (portfolio showcase), Lead capture (inquiry flow), Presence (local search).' },
+          { industry: 'B2B SaaS', priority: 'P → E → S → L → U', focus: 'Presence (GEO + SEO), Evaluation (attribution), Sales follow-up (lead scoring, CRM).' },
+          { industry: 'Service business', priority: 'L → S → P → U → E', focus: 'Lead capture (booking, calls), Sales follow-up (nurture sequences), Presence (local SEO).' },
         ].map((i) => (
           <div class="card p-6">
             <div class="font-bold text-white mb-3">{i.industry}</div>
@@ -240,10 +240,10 @@ const dimensions = [
           See how your site <span class="text-gradient-brand">scores today</span>
         </h2>
         <p class="text-lg text-[#a0a0a0] mb-10">
-          A free VITAL audit gives you a real number across all 5 dimensions. No fluff. No call required.
+          A free PULSE audit gives you a real number across all 5 dimensions. No fluff. No call required.
         </p>
-        <a href="/vital-audit" class="btn btn-primary btn-large">
-          Get my free VITAL audit
+        <a href="/pulse-audit" class="btn btn-primary btn-large">
+          Get my free PULSE audit
           <i class="ph-bold ph-arrow-right"></i>
         </a>
       </div>

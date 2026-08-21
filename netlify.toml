@@ -1,3 +1,8 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[redirects]]
+  from = "/vital-audit"
+  to = "/pulse-audit"
+  status = 301
