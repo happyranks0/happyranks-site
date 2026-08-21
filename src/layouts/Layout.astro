@@ -48,7 +48,7 @@ const allSchemas = schema ? [defaultSchema, ...(Array.isArray(schema) ? schema :
     ))}
     <slot name="head" />
   </head>
-  <body class="bg-[#0a0a0a] text-[#e5e5e5]">
+  <body class="bg-bg text-fg-secondary antialiased">
     <Header active={active} />
     <main>
       <slot />

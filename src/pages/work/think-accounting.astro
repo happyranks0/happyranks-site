@@ -16,10 +16,10 @@ const timeline = [
 >
   <section class="hero-section relative">
     <div class="container-wide">
-      <a href="/work" class="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white mb-6">
+      <a href="/work" class="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg mb-6">
         <i class="ph-bold ph-arrow-left"></i> All case studies
       </a>
-      <div class="flex items-center gap-3 mb-4 text-xs mono text-[#888]">
+      <div class="flex items-center gap-3 mb-4 text-xs mono text-fg-muted">
         <span>B2B professional services</span>
         <span>·</span>
         <span>United Kingdom</span>
@@ -27,10 +27,10 @@ const timeline = [
         <span>2025</span>
       </div>
       <div class="max-w-3xl">
-        <h1 class="text-display-1 text-white mb-5">
+        <h1 class="text-display-1 text-fg mb-5">
           Think Accounting — the first firm <span class="text-gradient-brand">cited by ChatGPT</span>
         </h1>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6 max-w-2xl">
+        <p class="text-lg text-fg-secondary leading-relaxed mb-6 max-w-2xl">
           A UK-based B2B accounting firm rebuilt their content and authority strategy around
           Generative Engine Optimization. The result: +312% AI citations, 8.4% conversion rate,
           £890K attributed pipeline. They\'re now the first firm ChatGPT recommends for
@@ -38,7 +38,7 @@ const timeline = [
         </p>
         <div class="flex flex-wrap gap-2">
           {['GEO', 'SEO', 'Authority', 'Attribution'].map((t) => (
-            <span class="px-3 py-1 bg-[#1a1a1a] border border-[#2a2a2a] text-xs mono text-[#a0a0a0] rounded">{t}</span>
+            <span class="px-3 py-1 bg-bg-muted border border-border text-xs mono text-fg-secondary rounded">{t}</span>
           ))}
         </div>
       </div>
@@ -48,10 +48,10 @@ const timeline = [
   <section class="pb-16">
     <div class="container-wide">
       <div class="card p-10 grid md:grid-cols-4 gap-8">
-        <div><div class="eyebrow mb-2">PULSE Score</div><div class="text-5xl font-black text-white mb-1">51 → 84</div><div class="text-xs text-emerald-500">+33 points in 90 days</div></div>
-        <div><div class="eyebrow mb-2">AI citations</div><div class="text-5xl font-black text-white mb-1">+312%</div><div class="text-xs text-[#666]">across ChatGPT/Perplexity/Gemini</div></div>
-        <div><div class="eyebrow mb-2">Conversion</div><div class="text-5xl font-black text-white mb-1">8.4%</div><div class="text-xs text-[#666]">visitor to lead</div></div>
-        <div><div class="eyebrow mb-2">Pipeline</div><div class="text-5xl font-black text-[var(--color-brand)] mb-1">£890K</div><div class="text-xs text-[#666]">attributed in 6 months</div></div>
+        <div><div class="eyebrow mb-2">PULSE Score</div><div class="text-5xl font-black text-fg mb-1">51 → 84</div><div class="text-xs text-emerald-500">+33 points in 90 days</div></div>
+        <div><div class="eyebrow mb-2">AI citations</div><div class="text-5xl font-black text-fg mb-1">+312%</div><div class="text-xs text-fg-muted">across ChatGPT/Perplexity/Gemini</div></div>
+        <div><div class="eyebrow mb-2">Conversion</div><div class="text-5xl font-black text-fg mb-1">8.4%</div><div class="text-xs text-fg-muted">visitor to lead</div></div>
+        <div><div class="eyebrow mb-2">Pipeline</div><div class="text-5xl font-black text-[var(--color-brand)] mb-1">£890K</div><div class="text-xs text-fg-muted">attributed in 6 months</div></div>
       </div>
     </div>
   </section>
@@ -60,9 +60,9 @@ const timeline = [
     <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Background</div>
-        <h2 class="text-display-3 text-white">A great firm, invisible online</h2>
+        <h2 class="text-display-3 text-fg">A great firm, invisible online</h2>
       </div>
-      <div class="space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
+      <div class="space-y-4 text-lg text-fg-secondary leading-relaxed">
         <p>
           Think Accounting is a boutique UK accounting firm specializing in SaaS startups and
           tech scale-ups. They have 6 partners, 40 staff, and a roster of 200+ clients. Their
@@ -81,29 +81,29 @@ const timeline = [
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">The problem</div>
-        <h2 class="text-display-3 text-white">Invisible in the new search</h2>
+        <h2 class="text-display-3 text-fg">Invisible in the new search</h2>
       </div>
       <div class="space-y-6">
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-fg-secondary leading-relaxed">
           The PULSE audit surfaced a 38/100 Presence score — by far the weakest dimension.
           Three specific issues:
         </p>
         <div class="space-y-3">
           <div class="card p-5">
-            <div class="font-bold text-white mb-2">1. No entity presence in knowledge graphs</div>
-            <p class="text-sm text-[#888]">No Wikidata entry. No Wikipedia references. Schema markup was incomplete — only basic Organization schema on the homepage. LLMs couldn\'t confidently attribute information to the firm.</p>
+            <div class="font-bold text-fg mb-2">1. No entity presence in knowledge graphs</div>
+            <p class="text-sm text-fg-muted">No Wikidata entry. No Wikipedia references. Schema markup was incomplete — only basic Organization schema on the homepage. LLMs couldn\'t confidently attribute information to the firm.</p>
           </div>
           <div class="card p-5">
-            <div class="font-bold text-white mb-2">2. Service pages were written for humans, not LLMs</div>
-            <p class="text-sm text-[#888]">Long-form sales copy, no FAQ schema, no clear entity definitions, no citations. A 2,000-word "About our R&D tax credit services" page that LLMs couldn\'t extract clean facts from.</p>
+            <div class="font-bold text-fg mb-2">2. Service pages were written for humans, not LLMs</div>
+            <p class="text-sm text-fg-muted">Long-form sales copy, no FAQ schema, no clear entity definitions, no citations. A 2,000-word "About our R&D tax credit services" page that LLMs couldn\'t extract clean facts from.</p>
           </div>
           <div class="card p-5">
-            <div class="font-bold text-white mb-2">3. No topical authority in the SaaS accounting niche</div>
-            <p class="text-sm text-[#888]">Generic accounting content, no original research, no proprietary frameworks. LLMs cite sources with authority — and Think Accounting had none in the new landscape.</p>
+            <div class="font-bold text-fg mb-2">3. No topical authority in the SaaS accounting niche</div>
+            <p class="text-sm text-fg-muted">Generic accounting content, no original research, no proprietary frameworks. LLMs cite sources with authority — and Think Accounting had none in the new landscape.</p>
           </div>
         </div>
       </div>
@@ -114,9 +114,9 @@ const timeline = [
     <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Our approach</div>
-        <h2 class="text-display-3 text-white">Built for AI-overview citation</h2>
+        <h2 class="text-display-3 text-fg">Built for AI-overview citation</h2>
       </div>
-      <div class="space-y-6 text-lg text-[#a0a0a0] leading-relaxed">
+      <div class="space-y-6 text-lg text-fg-secondary leading-relaxed">
         <p>
           We treated this as a Generative Engine Optimization project from day one. Every
           piece of content was structured to be extractable, citable, and authoritative.
@@ -125,30 +125,30 @@ const timeline = [
         <div class="card p-6">
           <div class="eyebrow mb-3">What we did</div>
           <ul class="space-y-3 text-base">
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Rewrote 18 service pages</strong> using GEO principles: clear entity definitions, FAQ schema, citations to authoritative sources, author markup, freshness signals.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Created the "SaaS Accounting Maturity Model"</strong> — a proprietary framework that became the firm\'s signature content. Now cited by industry publications.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Got the firm listed on Wikidata</strong> with full entity data. Two Wikipedia references via a published industry survey they co-authored.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Built 5 detailed case study pages</strong> showing real PULSE lifts for SaaS clients. These became the highest-converting pages on the site.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Set up a weekly AI-citation monitoring system</strong> using the Perplexity API. Tracked ChatGPT, Perplexity, Gemini, and Google AI Overview mentions as a KPI.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-white">Rebuilt the conversion funnel</strong> with proper attribution — every lead tracked from source to closed-won revenue. The MD could finally see ROI by channel.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Rewrote 18 service pages</strong> using GEO principles: clear entity definitions, FAQ schema, citations to authoritative sources, author markup, freshness signals.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Created the "SaaS Accounting Maturity Model"</strong> — a proprietary framework that became the firm\'s signature content. Now cited by industry publications.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Got the firm listed on Wikidata</strong> with full entity data. Two Wikipedia references via a published industry survey they co-authored.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Built 5 detailed case study pages</strong> showing real PULSE lifts for SaaS clients. These became the highest-converting pages on the site.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Set up a weekly AI-citation monitoring system</strong> using the Perplexity API. Tracked ChatGPT, Perplexity, Gemini, and Google AI Overview mentions as a KPI.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span><strong class="text-fg">Rebuilt the conversion funnel</strong> with proper attribution — every lead tracked from source to closed-won revenue. The MD could finally see ROI by channel.</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Timeline</div>
-        <h2 class="text-display-2 text-white">13 weeks from <span class="text-gradient-brand">invisible to cited</span></h2>
+        <h2 class="text-display-2 text-fg">13 weeks from <span class="text-gradient-brand">invisible to cited</span></h2>
       </div>
       <div class="space-y-4">
         {timeline.map((t) => (
           <div class="card p-6 grid md:grid-cols-[120px_1fr_2fr] gap-6">
             <div class="text-xs mono text-[var(--color-brand)]">{t.week}</div>
-            <div><div class="font-bold text-white">{t.phase}</div></div>
-            <p class="text-sm text-[#888] leading-relaxed">{t.desc}</p>
+            <div><div class="font-bold text-fg">{t.phase}</div></div>
+            <p class="text-sm text-fg-muted leading-relaxed">{t.desc}</p>
           </div>
         ))}
       </div>
@@ -159,54 +159,54 @@ const timeline = [
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The results</div>
-        <h2 class="text-display-2 text-white">Real numbers, <span class="text-gradient-brand">measured honestly</span></h2>
+        <h2 class="text-display-2 text-fg">Real numbers, <span class="text-gradient-brand">measured honestly</span></h2>
       </div>
       <div class="grid md:grid-cols-2 gap-6 mb-12">
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">+312%</div>
-          <div class="font-bold text-white mb-2">AI citations</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From 8 monthly mentions to 33 monthly mentions across ChatGPT, Perplexity, and Gemini. The MD now gets alerts when the firm is cited.</p>
-          <div class="text-xs mono text-[#666]">Verified: Custom monitoring tool, weekly reports</div>
+          <div class="text-3xl font-black text-fg mb-2">+312%</div>
+          <div class="font-bold text-fg mb-2">AI citations</div>
+          <p class="text-sm text-fg-muted leading-relaxed mb-3">From 8 monthly mentions to 33 monthly mentions across ChatGPT, Perplexity, and Gemini. The MD now gets alerts when the firm is cited.</p>
+          <div class="text-xs mono text-fg-muted">Verified: Custom monitoring tool, weekly reports</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">8.4%</div>
-          <div class="font-bold text-white mb-2">Visitor-to-lead</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From 2.7% to 8.4%. Driven by the case study pages, the SaaS Accounting Maturity Model, and a rebuilt lead form.</p>
-          <div class="text-xs mono text-[#666]">Verified: GA4 + HubSpot conversion tracking</div>
+          <div class="text-3xl font-black text-fg mb-2">8.4%</div>
+          <div class="font-bold text-fg mb-2">Visitor-to-lead</div>
+          <p class="text-sm text-fg-muted leading-relaxed mb-3">From 2.7% to 8.4%. Driven by the case study pages, the SaaS Accounting Maturity Model, and a rebuilt lead form.</p>
+          <div class="text-xs mono text-fg-muted">Verified: GA4 + HubSpot conversion tracking</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">£890K</div>
-          <div class="font-bold text-white mb-2">New pipeline</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">Attributed to organic and AI-overview traffic in the 6-month measurement window. Includes both closed-won and qualified opportunities.</p>
-          <div class="text-xs mono text-[#666]">Verified: HubSpot multi-touch attribution</div>
+          <div class="text-3xl font-black text-fg mb-2">£890K</div>
+          <div class="font-bold text-fg mb-2">New pipeline</div>
+          <p class="text-sm text-fg-muted leading-relaxed mb-3">Attributed to organic and AI-overview traffic in the 6-month measurement window. Includes both closed-won and qualified opportunities.</p>
+          <div class="text-xs mono text-fg-muted">Verified: HubSpot multi-touch attribution</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">3 → 14</div>
-          <div class="font-bold text-white mb-2">Wikipedia/Wikidata entries</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From a thin entity profile to a fully established presence in the knowledge graph. The foundation of long-term AI-search authority.</p>
-          <div class="text-xs mono text-[#666]">Verified: Wikidata query, Wikipedia citation tracker</div>
+          <div class="text-3xl font-black text-fg mb-2">3 → 14</div>
+          <div class="font-bold text-fg mb-2">Wikipedia/Wikidata entries</div>
+          <p class="text-sm text-fg-muted leading-relaxed mb-3">From a thin entity profile to a fully established presence in the knowledge graph. The foundation of long-term AI-search authority.</p>
+          <div class="text-xs mono text-fg-muted">Verified: Wikidata query, Wikipedia citation tracker</div>
         </div>
       </div>
 
       <blockquote class="card p-8 border-l-4 border-[var(--color-brand)] max-w-3xl">
-        <p class="text-xl text-white leading-relaxed mb-4 italic">
+        <p class="text-xl text-fg leading-relaxed mb-4 italic">
           "We\'re now the firm that ChatGPT recommends. Our competitors are still figuring
           out what GEO means. The maturity model we built with Happyranks has become our
           calling card — we get cited in pitches, podcasts, and now AI answers."
         </p>
         <div class="text-sm">
-          <div class="font-bold text-white">James Thornton</div>
-          <div class="text-[#888]">Managing Director, Think Accounting</div>
+          <div class="font-bold text-fg">James Thornton</div>
+          <div class="text-fg-muted">Managing Director, Think Accounting</div>
         </div>
       </blockquote>
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide max-w-3xl">
       <div class="eyebrow mb-4">What we learned</div>
-      <h2 class="text-display-2 text-white mb-6">The takeaway</h2>
-      <div class="prose prose-invert max-w-none space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
+      <h2 class="text-display-2 text-fg mb-6">The takeaway</h2>
+      <div class="prose prose-invert max-w-none space-y-4 text-lg text-fg-secondary leading-relaxed">
         <p>
           Think Accounting is the case study we use to explain why GEO matters. They didn\'t
           have a traffic problem, or a conversion problem, or a brand problem. They had an
@@ -230,8 +230,8 @@ const timeline = [
   <section class="section-y relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
     <div class="container-wide relative text-center">
-      <h2 class="text-display-2 text-white mb-6">Could this be <span class="text-gradient-brand">your business?</span></h2>
-      <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">Find out with a free PULSE audit. 90 seconds. Real numbers.</p>
+      <h2 class="text-display-2 text-fg mb-6">Could this be <span class="text-gradient-brand">your business?</span></h2>
+      <p class="text-lg text-fg-secondary mb-10 max-w-xl mx-auto">Find out with a free PULSE audit. 90 seconds. Real numbers.</p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a href="/pulse-audit" class="btn btn-primary btn-large"><i class="ph-bold ph-lightning"></i>Get my free PULSE audit</a>
         <a href="/work" class="btn btn-ghost btn-large">Read another case study <i class="ph-bold ph-arrow-up-right"></i></a>

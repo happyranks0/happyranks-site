@@ -24,20 +24,20 @@ import Hero from '../components/Hero.astro';
 
           <div class="mt-10 grid sm:grid-cols-2 gap-4 text-sm">
             <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Response time</div>
-              <div class="text-white font-semibold">4 working hours</div>
+              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Response time</div>
+              <div class="text-fg font-semibold">4 working hours</div>
             </div>
             <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Format</div>
-              <div class="text-white font-semibold">Google Meet</div>
+              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Format</div>
+              <div class="text-fg font-semibold">Google Meet</div>
             </div>
             <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Cost</div>
-              <div class="text-white font-semibold">Always free</div>
+              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Cost</div>
+              <div class="text-fg font-semibold">Always free</div>
             </div>
             <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Pressure</div>
-              <div class="text-white font-semibold">Zero</div>
+              <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-1">Pressure</div>
+              <div class="text-fg font-semibold">Zero</div>
             </div>
           </div>
         </div>
@@ -45,31 +45,31 @@ import Hero from '../components/Hero.astro';
         <!-- FORM CARD -->
         <div class="card p-8 lg:p-10 card-glow lg:sticky lg:top-24">
           <div class="eyebrow mb-2">Book a call</div>
-          <h2 class="text-2xl font-bold text-white mb-2">Tell us about your business</h2>
-          <p class="text-sm text-[#888] mb-8">We read every submission. Reply within 4 working hours.</p>
+          <h2 class="text-2xl font-bold text-fg mb-2">Tell us about your business</h2>
+          <p class="text-sm text-fg-muted mb-8">We read every submission. Reply within 4 working hours.</p>
 
           <form id="contact-form" class="space-y-5">
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label for="name" class="block text-sm font-semibold text-white mb-2">Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Doe" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+                <label for="name" class="block text-sm font-semibold text-fg mb-2">Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Doe" class="w-full input-field" />
               </div>
               <div>
-                <label for="company" class="block text-sm font-semibold text-white mb-2">Company</label>
-                <input type="text" id="company" name="company" placeholder="Acme Inc" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+                <label for="company" class="block text-sm font-semibold text-fg mb-2">Company</label>
+                <input type="text" id="company" name="company" placeholder="Acme Inc" class="w-full input-field" />
               </div>
             </div>
             <div>
-              <label for="email" class="block text-sm font-semibold text-white mb-2">Email *</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+              <label for="email" class="block text-sm font-semibold text-fg mb-2">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full input-field" />
             </div>
             <div>
-              <label for="website" class="block text-sm font-semibold text-white mb-2">Website <span class="text-[#666] font-normal">(if any)</span></label>
-              <input type="url" id="website" name="website" placeholder="https://yoursite.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
+              <label for="website" class="block text-sm font-semibold text-fg mb-2">Website <span class="text-fg-muted font-normal">(if any)</span></label>
+              <input type="url" id="website" name="website" placeholder="https://yoursite.com" class="w-full input-field" />
             </div>
             <div>
-              <label for="budget" class="block text-sm font-semibold text-white mb-2">Monthly budget</label>
-              <select id="budget" name="budget" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white focus:border-[var(--color-brand)] focus:outline-none transition">
+              <label for="budget" class="block text-sm font-semibold text-fg mb-2">Monthly budget</label>
+              <select id="budget" name="budget" class="w-full bg-[#0a0a0a] border border-border rounded-lg px-4 py-3 text-fg focus:border-[var(--color-brand)] focus:outline-none transition">
                 <option value="">Select range</option>
                 <option value="1.5-3k">$1,500 – $3,000</option>
                 <option value="3-6k">$3,000 – $6,000</option>
@@ -79,22 +79,22 @@ import Hero from '../components/Hero.astro';
               </select>
             </div>
             <div>
-              <label for="message" class="block text-sm font-semibold text-white mb-2">What are you trying to solve? *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve. Specific numbers welcome." class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition resize-none"></textarea>
+              <label for="message" class="block text-sm font-semibold text-fg mb-2">What are you trying to solve? *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve. Specific numbers welcome." class="w-full input-field resize-none"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-large w-full justify-center">
               <i class="ph-bold ph-calendar-check"></i>
               Request a call
             </button>
-            <div class="text-[10px] text-[#666] text-center">
+            <div class="text-[10px] text-fg-muted text-center">
               We respect your inbox. No spam, no marketing list trades, no selling your data.
             </div>
           </form>
 
           <div id="contact-success" class="hidden mt-6 p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
             <i class="ph-bold ph-check-circle text-emerald-500 text-3xl mb-2"></i>
-            <div class="font-semibold text-white mb-1">Request received</div>
-            <p class="text-sm text-[#a0a0a0]">We\'ll be in touch within 4 working hours. Usually faster.</p>
+            <div class="font-semibold text-fg mb-1">Request received</div>
+            <p class="text-sm text-fg-secondary">We\'ll be in touch within 4 working hours. Usually faster.</p>
           </div>
         </div>
       </div>
@@ -102,11 +102,11 @@ import Hero from '../components/Hero.astro';
   </section>
 
   <!-- FAQ -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">FAQ</div>
-        <h2 class="text-display-2 text-white">
+        <h2 class="text-display-2 text-fg">
           Common <span class="text-gradient-brand">questions</span>
         </h2>
       </div>
@@ -121,10 +121,10 @@ import Hero from '../components/Hero.astro';
         ].map((f) => (
           <details class="card p-6 group">
             <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-white pr-4">{f.q}</span>
+              <span class="font-semibold text-fg pr-4">{f.q}</span>
               <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
             </summary>
-            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+            <p class="mt-4 text-fg-secondary leading-relaxed">{f.a}</p>
           </details>
         ))}
       </div>
@@ -136,7 +136,7 @@ import Hero from '../components/Hero.astro';
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">Other ways to reach us</div>
-        <h2 class="text-display-2 text-white">
+        <h2 class="text-display-2 text-fg">
           Pick your <span class="text-gradient-brand">channel</span>
         </h2>
       </div>
@@ -147,12 +147,12 @@ import Hero from '../components/Hero.astro';
           { icon: 'ph-twitter-logo', title: 'X / Twitter', detail: '@happyranks', sub: 'Best for quick takes and conversations' },
         ].map((c) => (
           <div class="card p-6 text-center">
-            <div class="w-12 h-12 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
+            <div class="w-12 h-12 rounded-lg bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
               <i class={`ph-bold ${c.icon} text-2xl`}></i>
             </div>
-            <div class="font-bold text-white mb-1">{c.title}</div>
+            <div class="font-bold text-fg mb-1">{c.title}</div>
             <div class="text-sm text-[var(--color-brand)] mono mb-2">{c.detail}</div>
-            <div class="text-xs text-[#888]">{c.sub}</div>
+            <div class="text-xs text-fg-muted">{c.sub}</div>
           </div>
         ))}
       </div>

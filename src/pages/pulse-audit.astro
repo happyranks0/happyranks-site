@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -30,66 +29,76 @@ const serviceSchema = {
   schema={[faqSchema, serviceSchema]}
 >
   <!-- HERO + FORM -->
-  <section class="section-y">
+  <section class="mesh-hero section-y relative">
     <div class="container-wide">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <Hero
-            eyebrow="FREE PULSE AUDIT — 90 SECONDS"
-            title="Score your website"
-            highlight="in 90 seconds"
-            description="The PULSE audit measures your site across 5 dimensions that actually drive revenue. Real score, real report, real recommendations — emailed to you within 2 minutes. No call required."
-            meta={['No credit card', 'No sales call', '50+ checks', 'PDF in inbox']}
-          />
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="max-w-xl pt-4">
+          <div class="eyebrow-pill mb-6">Free PULSE audit — 90 seconds</div>
+          <h1 class="text-display-1 mb-5">
+            Score your website<br/>
+            <span class="text-gradient-brand">in 90 seconds</span>
+          </h1>
+          <p class="text-lg text-fg-secondary leading-relaxed mb-8">
+            The PULSE audit measures your site across 5 dimensions that actually drive revenue.
+            Real score, real report — emailed within 2 minutes. No call required.
+          </p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-fg-muted">
+            {['No credit card', 'No sales call', '50+ checks', 'PDF in inbox'].map((m) => (
+              <span class="flex items-center gap-1.5">
+                <i class="ph-bold ph-check-circle text-success"></i>
+                {m}
+              </span>
+            ))}
+          </div>
         </div>
 
         <!-- FORM CARD -->
-        <div class="card p-8 lg:p-10 card-glow sticky top-24">
+        <div class="card p-8 lg:p-10 card-glow lg:sticky lg:top-24">
           <div class="eyebrow mb-2">Step 1 of 1</div>
-          <h2 class="text-2xl font-bold text-white mb-2">Run your audit</h2>
-          <p class="text-sm text-[#888] mb-8">Enter your URL and email. We'll send the report within 2 minutes.</p>
+          <h2 class="text-2xl font-bold text-fg mb-2">Run your audit</h2>
+          <p class="text-sm text-fg-muted mb-8">Enter your URL and email. We'll send the report within 2 minutes.</p>
 
           <form id="pulse-form" class="space-y-5">
             <div>
-              <label for="url" class="block text-sm font-semibold text-white mb-2">Website URL</label>
+              <label for="url" class="block text-sm font-semibold text-fg mb-2">Website URL</label>
               <input
                 type="url"
                 id="url"
                 name="url"
                 required
                 placeholder="https://yoursite.com"
-                class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition"
+                class="input-field"
               />
-              <div class="text-xs text-[#666] mt-2">We'll crawl your homepage and key sub-pages</div>
+              <div class="text-xs text-fg-muted mt-2">We'll crawl your homepage and key sub-pages</div>
             </div>
             <div>
-              <label for="email" class="block text-sm font-semibold text-white mb-2">Email for the report</label>
+              <label for="email" class="block text-sm font-semibold text-fg mb-2">Email for the report</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 placeholder="you@company.com"
-                class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition"
+                class="input-field"
               />
-              <div class="text-xs text-[#666] mt-2">We may send 2-3 follow-up emails with insights. Unsubscribe anytime.</div>
+              <div class="text-xs text-fg-muted mt-2">We may send 2-3 follow-up emails with insights. Unsubscribe anytime.</div>
             </div>
             <button type="submit" class="btn btn-primary btn-large w-full justify-center">
               <i class="ph-bold ph-lightning"></i>
               Run my free PULSE audit
             </button>
-            <div class="text-[10px] text-[#666] text-center leading-relaxed">
+            <div class="text-[10px] text-fg-muted text-center leading-relaxed">
               By submitting, you agree to receive your audit report via email.
               We may send follow-up insights. No spam, unsubscribe anytime.
             </div>
           </form>
 
-          <div id="pulse-result" class="hidden mt-6 p-6 bg-[#0a0a0a] border border-emerald-500/30 rounded-lg">
+          <div id="pulse-result" class="hidden mt-6 p-6 bg-success-bg border border-emerald-200 rounded-xl">
             <div class="flex items-center gap-2 text-emerald-500 font-semibold mb-2">
               <i class="ph-bold ph-check-circle"></i>
               <span>Audit queued</span>
             </div>
-            <p class="text-sm text-[#a0a0a0]">Your report is on its way. Check your inbox in the next 2 minutes.</p>
+            <p class="text-sm text-fg-secondary">Your report is on its way. Check your inbox in the next 2 minutes.</p>
           </div>
         </div>
       </div>
@@ -97,15 +106,15 @@ const serviceSchema = {
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <div class="eyebrow mb-4">How the audit works</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           90 seconds from URL<br/>
           <span class="text-gradient-brand">to a real report</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0]">
+        <p class="text-lg text-fg-secondary">
           A custom Python engine crawls your site, runs 50+ measurable checks, scores them
           against our weighted rubric, and produces a 10-page PDF. No human bias. No
           opinion-based scores. Just measurable signals.
@@ -120,9 +129,9 @@ const serviceSchema = {
           { n: '4', title: 'PDF emailed', desc: 'Scores, findings, prioritized fixes, 90-day action plan. In your inbox within 2 minutes.' },
         ].map((s) => (
           <div class="card p-6">
-            <div class="w-10 h-10 rounded-full bg-[var(--color-brand)] text-white flex items-center justify-center font-bold mb-4">{s.n}</div>
-            <div class="font-bold text-white mb-2">{s.title}</div>
-            <p class="text-sm text-[#888] leading-relaxed">{s.desc}</p>
+            <div class="w-10 h-10 rounded-full bg-[var(--color-brand)] text-fg flex items-center justify-center font-bold mb-4">{s.n}</div>
+            <div class="font-bold text-fg mb-2">{s.title}</div>
+            <p class="text-sm text-fg-muted leading-relaxed">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -134,7 +143,7 @@ const serviceSchema = {
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <div class="eyebrow mb-4">The PULSE framework</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Five questions.<br/>
           <span class="text-gradient-brand">One score.</span>
         </h2>
@@ -148,9 +157,9 @@ const serviceSchema = {
           { letter: 'E', name: 'Evaluation', question: 'Does the business measure results and improve the system?' },
         ].map((d) => (
           <div class="card p-5">
-            <div class="text-xl font-black text-white mb-1">{d.letter}</div>
-            <div class="text-sm font-bold text-white mb-2">{d.name}</div>
-            <p class="text-xs text-[#888] leading-relaxed">{d.question}</p>
+            <div class="text-xl font-black text-fg mb-1">{d.letter}</div>
+            <div class="text-sm font-bold text-fg mb-2">{d.name}</div>
+            <p class="text-xs text-fg-muted leading-relaxed">{d.question}</p>
           </div>
         ))}
       </div>
@@ -158,15 +167,15 @@ const serviceSchema = {
   </section>
 
   <!-- WHAT YOU GET -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <div class="eyebrow mb-4">What's inside the report</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           A real audit, not<br/>
           <span class="text-gradient-brand">a vanity score</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0]">
+        <p class="text-lg text-fg-secondary">
           10 pages of measurement + recommendation. Built for a CEO who wants the truth, not
           a marketer who wants to sell you something.
         </p>
@@ -186,8 +195,8 @@ const serviceSchema = {
           <div class="card p-6 flex gap-5">
             <div class="text-4xl font-black text-[#222] mono shrink-0">{r.p}</div>
             <div>
-              <div class="font-bold text-white mb-2">{r.title}</div>
-              <p class="text-sm text-[#888] leading-relaxed">{r.desc}</p>
+              <div class="font-bold text-fg mb-2">{r.title}</div>
+              <p class="text-sm text-fg-muted leading-relaxed">{r.desc}</p>
             </div>
           </div>
         ))}
@@ -201,22 +210,22 @@ const serviceSchema = {
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12">
           <div class="eyebrow mb-4">Sample report preview</div>
-          <h2 class="text-display-3 text-white mb-4">
+          <h2 class="text-display-3 text-fg mb-4">
             Here's what a PULSE score looks like
           </h2>
-          <p class="text-[#888]">Sample site: acme-corp.com (fictional example)</p>
+          <p class="text-fg-muted">Sample site: acme-corp.com (fictional example)</p>
         </div>
 
         <div class="card p-10">
           <div class="flex items-center justify-between mb-10 flex-wrap gap-6">
             <div>
               <div class="eyebrow mb-2">PULSE SCORE</div>
-              <div class="text-7xl font-black text-white">62<span class="text-3xl text-[#666]">/100</span></div>
+              <div class="text-7xl font-black text-fg">62<span class="text-3xl text-fg-muted">/100</span></div>
             </div>
             <div class="text-right">
               <div class="eyebrow mb-2">ESTIMATED REVENUE LIFT</div>
               <div class="text-4xl font-black text-[var(--color-brand)]">+2.4x</div>
-              <div class="text-xs text-[#888] mt-1">if prioritized fixes ship in 90 days</div>
+              <div class="text-xs text-fg-muted mt-1">if prioritized fixes ship in 90 days</div>
             </div>
           </div>
           <div class="space-y-4">
@@ -228,12 +237,12 @@ const serviceSchema = {
               { l: 'E', name: 'Evaluation', s: 81, color: 'bg-yellow-500' },
             ].map((d) => (
               <div class="grid grid-cols-[40px_120px_1fr_60px] items-center gap-4">
-                <div class="text-2xl font-black text-white">{d.l}</div>
-                <div class="text-sm font-semibold text-white">{d.name}</div>
-                <div class="h-2 bg-[#1a1a1a] rounded-full overflow-hidden">
+                <div class="text-2xl font-black text-fg">{d.l}</div>
+                <div class="text-sm font-semibold text-fg">{d.name}</div>
+                <div class="h-2 bg-bg-muted rounded-full overflow-hidden">
                   <div class={`h-full ${d.color} rounded-full`} style={`width: ${d.s}%`}></div>
                 </div>
-                <div class="text-right text-sm mono text-white">{d.s}</div>
+                <div class="text-right text-sm mono text-fg">{d.s}</div>
               </div>
             ))}
           </div>
@@ -243,16 +252,16 @@ const serviceSchema = {
   </section>
 
   <!-- WHY FREE -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">Why is this free?</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Because the audit<br/>
           <span class="text-gradient-brand">shouldn't be the gate</span>
         </h2>
       </div>
-      <div class="space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
+      <div class="space-y-4 text-lg text-fg-secondary leading-relaxed">
         <p>
           Most agencies charge $2K–$5K for an audit that takes 2 weeks and is full of
           consultant-speak. We think that's backwards. The audit should be free. The work
@@ -277,7 +286,7 @@ const serviceSchema = {
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
         <div class="eyebrow mb-4">FAQ</div>
-        <h2 class="text-display-2 text-white">
+        <h2 class="text-display-2 text-fg">
           Common <span class="text-gradient-brand">questions</span>
         </h2>
       </div>
@@ -293,10 +302,10 @@ const serviceSchema = {
         ].map((f) => (
           <details class="card p-6 group">
             <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-white pr-4">{f.q}</span>
+              <span class="font-semibold text-fg pr-4">{f.q}</span>
               <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
             </summary>
-            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+            <p class="mt-4 text-fg-secondary leading-relaxed">{f.a}</p>
           </details>
         ))}
       </div>
@@ -307,11 +316,11 @@ const serviceSchema = {
   <section class="section-y relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
     <div class="container-wide relative text-center">
-      <h2 class="text-display-2 text-white mb-6">
+      <h2 class="text-display-2 text-fg mb-6">
         Ready to see your<br/>
         <span class="text-gradient-brand">real numbers?</span>
       </h2>
-      <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">
+      <p class="text-lg text-fg-secondary mb-10 max-w-xl mx-auto">
         90 seconds. One URL. A real report. Free, no call required.
       </p>
       <a href="#pulse-form" class="btn btn-primary btn-large">

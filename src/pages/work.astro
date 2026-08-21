@@ -104,36 +104,36 @@ const industries = [
             <div class="relative aspect-[16/10] overflow-hidden">
               <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
-              <div class="absolute top-4 right-4 px-3 py-1.5 bg-[#0a0a0a]/80 backdrop-blur border border-[#2a2a2a] rounded-full">
-                <div class="text-[10px] mono text-[#888]">PULSE</div>
-                <div class="text-sm font-bold text-white">{c.vitalLift}</div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 bg-[#0a0a0a]/80 backdrop-blur border border-border rounded-full">
+                <div class="text-[10px] mono text-fg-muted">PULSE</div>
+                <div class="text-sm font-bold text-fg">{c.vitalLift}</div>
               </div>
               <div class="absolute bottom-4 left-4 right-4">
                 <div class="flex items-center gap-2 mb-2 flex-wrap">
                   {c.tags.map((t) => (
-                    <span class="px-2 py-0.5 bg-[#1a1a1a]/80 backdrop-blur border border-[#2a2a2a] text-[10px] mono text-[#a0a0a0] rounded">{t}</span>
+                    <span class="px-2 py-0.5 bg-bg-muted/80 backdrop-blur border border-border text-[10px] mono text-fg-secondary rounded">{t}</span>
                   ))}
                 </div>
               </div>
             </div>
             <div class="p-8">
-              <div class="flex items-center gap-3 mb-3 text-xs mono text-[#888]">
+              <div class="flex items-center gap-3 mb-3 text-xs mono text-fg-muted">
                 <span>{c.industry}</span>
                 <span>·</span>
                 <span>{c.location}</span>
               </div>
-              <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-[var(--color-brand)] transition">{c.name}</h3>
-              <p class="text-[#a0a0a0] leading-relaxed mb-4">{c.summary}</p>
-              <p class="text-sm text-[#666] leading-relaxed mb-6 italic">{c.problem}</p>
-              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#1a1a1a]">
+              <h3 class="text-2xl font-bold text-fg mb-3 group-hover:text-[var(--color-brand)] transition">{c.name}</h3>
+              <p class="text-fg-secondary leading-relaxed mb-4">{c.summary}</p>
+              <p class="text-sm text-fg-muted leading-relaxed mb-6 italic">{c.problem}</p>
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-border">
                 {c.metrics.map((m) => (
                   <div>
-                    <div class="text-xl font-black text-white">{m.v}</div>
-                    <div class="text-[10px] mono text-[#666] uppercase tracking-wider">{m.l}</div>
+                    <div class="text-xl font-black text-fg">{m.v}</div>
+                    <div class="text-[10px] mono text-fg-muted uppercase tracking-wider">{m.l}</div>
                   </div>
                 ))}
               </div>
-              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all">
+              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-fg group-hover:gap-3 transition-all">
                 Read full case study
                 <i class="ph-bold ph-arrow-up-right text-[var(--color-brand)]"></i>
               </div>
@@ -145,15 +145,15 @@ const industries = [
   </section>
 
   <!-- BY INDUSTRY -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">By industry</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           We've worked across<br/>
           <span class="text-gradient-light">four core verticals</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-fg-secondary leading-relaxed">
           We focus on four verticals where the PULSE framework produces the most predictable results.
           Within each, we know the channels that work, the benchmarks that matter, and the
           mistakes that waste money.
@@ -163,11 +163,11 @@ const industries = [
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {industries.map((i) => (
           <div class="card p-6">
-            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+            <div class="w-10 h-10 rounded-lg bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)] mb-4">
               <i class={`ph-bold ${i.icon} text-xl`}></i>
             </div>
-            <div class="font-bold text-white mb-1">{i.name}</div>
-            <div class="text-xs mono text-[#666]">{i.count} case stud{i.count === 1 ? 'y' : 'ies'}</div>
+            <div class="font-bold text-fg mb-1">{i.name}</div>
+            <div class="text-xs mono text-fg-muted">{i.count} case stud{i.count === 1 ? 'y' : 'ies'}</div>
           </div>
         ))}
       </div>
@@ -179,11 +179,11 @@ const industries = [
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The pattern</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Every case study<br/>
           <span class="text-gradient-brand">follows the same shape</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-fg-secondary leading-relaxed">
           Despite different industries, every successful engagement we've run has followed the
           same three-phase shape. Here's the pattern — and why it works.
         </p>
@@ -197,8 +197,8 @@ const industries = [
         ].map((p) => (
           <div class="card p-6">
             <div class="text-5xl font-black text-[#222] mono mb-3">{p.phase}</div>
-            <div class="text-xl font-bold text-white mb-2">{p.title}</div>
-            <p class="text-sm text-[#888] leading-relaxed">{p.desc}</p>
+            <div class="text-xl font-bold text-fg mb-2">{p.title}</div>
+            <p class="text-sm text-fg-muted leading-relaxed">{p.desc}</p>
           </div>
         ))}
       </div>
@@ -210,10 +210,10 @@ const industries = [
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
     <div class="container-wide relative">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Your numbers <span class="text-gradient-brand">next?</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] mb-10">
+        <p class="text-lg text-fg-secondary mb-10">
           Get a free PULSE audit and see exactly where you stand today. No call required.
         </p>
         <a href="/pulse-audit" class="btn btn-primary btn-large">
