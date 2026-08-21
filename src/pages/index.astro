@@ -13,10 +13,34 @@ const faqSchema = {
 };
 
 const stats = [
-  { value: '312+', label: 'audits run this month' },
-  { value: '50+', label: 'measurable checks per site' },
-  { value: '90s', label: 'to your first score' },
-  { value: '4', label: 'continents served' },
+  { value: '312+', label: 'audits this month' },
+  { value: '50+', label: 'checks per site' },
+  { value: '90s', label: 'to first score' },
+  { value: '4', label: 'continents' },
+];
+
+const pillars = [
+  {
+    n: '01',
+    title: 'Presence',
+    headline: 'Be found in Google and AI search',
+    body: 'GEO, technical SEO, entity authority — engineered so ChatGPT, Perplexity, and Google cite you for buyer queries.',
+    icon: 'ph-binoculars',
+  },
+  {
+    n: '02',
+    title: 'Lead capture',
+    headline: 'Turn traffic into enquiries',
+    body: 'Landing pages, forms, and booking flows rebuilt for conversion — not decoration.',
+    icon: 'ph-cursor-click',
+  },
+  {
+    n: '03',
+    title: 'Follow-up + measurement',
+    headline: 'Capture, nurture, and prove ROI',
+    body: 'CRM, email sequences, GA4 attribution — a closed loop from first visit to closed deal.',
+    icon: 'ph-chart-line-up',
+  },
 ];
 ---
 
@@ -26,52 +50,43 @@ const stats = [
   active=""
   schema={faqSchema}
 >
-  <!-- ─── HERO (Stripe split + Cloudflare grid) ─── -->
-  <section class="mesh-hero hero-section relative overflow-hidden">
+  <!-- Hero -->
+  <section class="mesh-hero hero-section">
     <div class="container-wide">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="max-w-xl">
-          <div class="eyebrow-pill mb-6">PULSE Audit — free, 90 seconds</div>
+      <div class="grid lg:grid-cols-[1fr_minmax(0,440px)] gap-12 lg:gap-16 items-center">
+        <div>
+          <div class="eyebrow-pill mb-6">Free PULSE audit · 90 seconds</div>
           <h1 class="text-display-1 mb-6">
-            Marketing infrastructure that<br/>
-            <span class="text-gradient-brand">actually grows revenue</span>
+            Marketing systems that grow revenue — <span class="text-fg-secondary">measured, not guessed.</span>
           </h1>
           <p class="text-lg text-fg-secondary leading-relaxed mb-8 max-w-lg">
-            Presence, lead capture, follow-up, and measurement — scored across 50+ signals.
-            One audit. One plan. Numbers you can defend.
+            We score your site across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation — then build the system to improve it.
           </p>
           <div class="flex flex-wrap items-center gap-3">
             <a href="/pulse-audit" class="btn btn-primary btn-large">
-              <i class="ph-bold ph-lightning"></i>
               Get my free PULSE audit
             </a>
             <a href="/work" class="btn btn-ghost btn-large">
-              See the work
-              <i class="ph-bold ph-arrow-up-right"></i>
+              See case studies
             </a>
           </div>
           <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-fg-muted">
-            {['No contract', '90-second report', 'AI-search ready', '30-day money-back'].map((m) => (
-              <span class="flex items-center gap-1.5">
-                <i class="ph-bold ph-check-circle text-success"></i>
-                {m}
-              </span>
+            {['No contract', 'PDF in 2 minutes', 'AI-search ready', '30-day guarantee'].map((m) => (
+              <span>{m}</span>
             ))}
           </div>
         </div>
-        <div class="relative lg:pl-4">
-          <PulseDashboard />
-        </div>
+        <PulseDashboard />
       </div>
     </div>
   </section>
 
-  <!-- ─── STATS (Cloudflare backbone strip) ─── -->
-  <section class="section-band py-12 md:py-14">
+  <!-- Stats -->
+  <section class="section-band py-10 md:py-12">
     <div class="container-wide">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((s) => (
-          <div class="text-center md:text-left">
+          <div>
             <div class="stat-tile-value">{s.value}</div>
             <div class="stat-tile-label">{s.label}</div>
           </div>
@@ -80,302 +95,157 @@ const stats = [
     </div>
   </section>
 
-  <!-- ─── TRUST ─── -->
+  <!-- Logos -->
   <section class="py-10 border-b border-border">
     <div class="container-wide">
-      <div class="text-center eyebrow mb-6">Trusted by growth-focused teams</div>
-      <div class="logo-strip grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-4 items-center justify-items-center">
-        <span class="text-base tracking-tight">Tutti Rouge</span>
-        <span class="text-base font-serif italic">Lotus Mahal</span>
-        <span class="text-base">THINK</span>
-        <span class="text-base font-light tracking-widest">VIRUKSHA</span>
-        <span class="text-base">efficy</span>
+      <p class="eyebrow text-center mb-6">Trusted by growth-focused teams</p>
+      <div class="logo-strip flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        <span>Tutti Rouge</span>
+        <span class="font-serif italic">Lotus Mahal</span>
+        <span>THINK</span>
+        <span class="tracking-widest">VIRUKSHA</span>
+        <span>efficy</span>
       </div>
     </div>
   </section>
 
-  <!-- ─── PULSE FRAMEWORK ─── -->
+  <!-- PULSE framework -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-14">
-        <div class="eyebrow mb-4">The PULSE framework</div>
-        <h2 class="text-display-2 mb-6">
-          Five questions.<br/>
-          <span class="text-gradient-mesh">One score.</span>
-        </h2>
-        <p class="text-lg text-fg-secondary leading-relaxed">
-          We measure what actually determines whether your marketing makes money —
-          not vanity metrics. Each dimension is scored 0–100 from 50+ measurable signals.
+      <div class="max-w-xl mb-12">
+        <div class="eyebrow mb-3">The PULSE framework</div>
+        <h2 class="text-display-2 mb-4">Five dimensions. One defensible score.</h2>
+        <p class="text-fg-secondary text-lg leading-relaxed">
+          Each dimension answers one question about whether your marketing actually makes money.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {[
-          { letter: 'P', name: 'Presence', desc: 'Can the right people find the business?', icon: 'ph-binoculars', score: 68 },
-          { letter: 'U', name: 'Understanding', desc: 'Do they quickly understand what you do and why it matters?', icon: 'ph-eye', score: 74 },
-          { letter: 'L', name: 'Lead capture', desc: 'Can an interested visitor become an enquiry easily?', icon: 'ph-arrow-right', score: 42 },
-          { letter: 'S', name: 'Sales follow-up', desc: 'What happens after the enquiry arrives?', icon: 'ph-robot', score: 31 },
-          { letter: 'E', name: 'Evaluation', desc: 'Does the business measure results and improve the system?', icon: 'ph-chart-line-up', score: 58 },
+          { letter: 'P', name: 'Presence', q: 'Can the right people find you?' },
+          { letter: 'U', name: 'Understanding', q: 'Do they get what you do?' },
+          { letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?' },
+          { letter: 'S', name: 'Sales follow-up', q: 'What happens after?' },
+          { letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?' },
         ].map((d) => (
-          <div class="card card-hover p-6 flex flex-col h-full">
-            <div class="flex items-center justify-between mb-4">
-              <i class={`ph-bold ${d.icon} text-2xl text-[var(--color-brand)]`}></i>
-              <span class="text-2xl font-bold text-fg-muted mono">{d.letter}</span>
-            </div>
-            <div class="text-base font-semibold text-fg mb-2">{d.name}</div>
-            <div class="text-sm text-fg-secondary leading-relaxed mb-5 flex-1">{d.desc}</div>
-            <div class="progress-track">
-              <div class="progress-fill" style={`width: ${d.score}%`}></div>
-            </div>
-            <div class="mt-2 text-[10px] mono text-fg-muted">avg. client: {d.score}/100</div>
+          <div class="card p-5">
+            <div class="text-sm font-semibold text-fg-muted mono mb-3">{d.letter}</div>
+            <div class="font-semibold text-fg mb-2">{d.name}</div>
+            <p class="text-sm text-fg-secondary leading-relaxed">{d.q}</p>
           </div>
         ))}
       </div>
 
-      <div class="mt-10 text-center">
-        <a href="/pulse-audit" class="inline-flex items-center gap-2 text-sm text-[var(--color-brand)] font-semibold hover:gap-3 transition-all">
-          See how your site scores <i class="ph-bold ph-arrow-right"></i>
+      <div class="mt-8">
+        <a href="/pulse-audit" class="text-sm font-medium text-fg-secondary hover:text-fg transition-colors inline-flex items-center gap-2">
+          Run a free audit <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ─── WHAT WE DO ─── -->
+  <!-- What we do -->
   <section class="section-y section-band">
     <div class="container-wide">
-      <div class="max-w-2xl mb-14">
-        <div class="eyebrow mb-4">What we do</div>
-        <h2 class="text-display-2 mb-4">
-          Not just traffic.<br/>
-          <span class="text-gradient-brand">A revenue engine.</span>
-        </h2>
+      <div class="max-w-xl mb-12">
+        <div class="eyebrow mb-3">What we build</div>
+        <h2 class="text-display-2">The full stack — not just one channel.</h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-        <div>
-          <div class="eyebrow mb-3">01 — Presence</div>
-          <h3 class="text-display-3 mb-4">Get cited by ChatGPT, Perplexity, and Google AI</h3>
-          <p class="text-fg-secondary text-lg leading-relaxed mb-6">
-            Traditional SEO isn't enough. We engineer your site to be the answer AI assistants reference — for queries that bring customers, not clicks.
-          </p>
-          <ul class="space-y-3 mb-8">
-            {['Generative Engine Optimization (GEO)', 'Structured data & knowledge graphs', 'AI-overview citation tracking'].map((item) => (
-              <li class="flex items-start gap-3 text-sm text-fg">
-                <i class="ph-bold ph-check text-[var(--color-brand)] mt-0.5 shrink-0"></i>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-fg hover:gap-3 transition-all">
-            Learn more <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
-          </a>
-        </div>
-        <div class="relative">
-          <div class="card-inset p-6 float">
-            <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-2">AI citations</div>
-            <div class="stat-tile-value text-[var(--color-brand)]">+312%</div>
-            <div class="text-sm text-success mt-1 flex items-center gap-1">
-              <i class="ph-bold ph-trend-up"></i> in 90 days
+      <div class="grid md:grid-cols-3 gap-6">
+        {pillars.map((p) => (
+          <div class="card card-hover p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="feature-icon">
+                <i class={`ph-bold ${p.icon}`}></i>
+              </div>
+              <span class="text-xs mono text-fg-muted">{p.n} · {p.title}</span>
             </div>
-            <div class="mt-6 h-24 rounded-lg bg-gradient-to-r from-[#635bff]/10 via-[#00d4ff]/10 to-[#ff3131]/10 border border-border flex items-end gap-1 p-3">
-              {[40, 55, 48, 72, 68, 95].map((h) => (
-                <div class="flex-1 rounded-sm bg-[var(--color-brand)]/80" style={`height: ${h}%`}></div>
-              ))}
-            </div>
+            <h3 class="text-lg font-semibold text-fg mb-3">{p.headline}</h3>
+            <p class="text-sm text-fg-secondary leading-relaxed">{p.body}</p>
           </div>
-        </div>
+        ))}
       </div>
 
-      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-        <div class="order-2 md:order-1">
-          <div class="card-inset p-6 float">
-            <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-2">Conversion rate</div>
-            <div class="stat-tile-value">3.2% → 8.4%</div>
-            <div class="text-sm text-success mt-1">+161% in 60 days</div>
-            <div class="mt-6 grid grid-cols-2 gap-3">
-              <div class="stat-tile p-3">
-                <div class="text-lg font-bold text-fg">847</div>
-                <div class="text-[10px] text-fg-muted">leads / month</div>
-              </div>
-              <div class="stat-tile p-3">
-                <div class="text-lg font-bold text-fg">8.4%</div>
-                <div class="text-[10px] text-fg-muted">close rate</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="order-1 md:order-2">
-          <div class="eyebrow mb-3">02 — Lead capture</div>
-          <h3 class="text-display-3 mb-4">Turn visitors into qualified leads, predictably</h3>
-          <p class="text-fg-secondary text-lg leading-relaxed mb-6">
-            Beautiful sites that don't convert are expensive decoration. We rebuild the path from interested to booked call — psychology baked in.
-          </p>
-          <ul class="space-y-3 mb-8">
-            {['Landing page architecture & copy', 'Lead magnet funnels', 'A/B test programs'].map((item) => (
-              <li class="flex items-start gap-3 text-sm text-fg">
-                <i class="ph-bold ph-check text-[var(--color-brand)] mt-0.5 shrink-0"></i>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-fg hover:gap-3 transition-all">
-            Learn more <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
-          </a>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <div class="eyebrow mb-3">03 — Sales follow-up + Evaluation</div>
-          <h3 class="text-display-3 mb-4">A system that runs while you sleep — and proves what worked</h3>
-          <p class="text-fg-secondary text-lg leading-relaxed mb-6">
-            CRM, email, retargeting, and analytics wired so every interaction is captured, nurtured, and attributed.
-          </p>
-          <ul class="space-y-3 mb-8">
-            {['Mautic / HubSpot CRM setup', 'Email nurture sequences', 'GA4 + conversion attribution'].map((item) => (
-              <li class="flex items-start gap-3 text-sm text-fg">
-                <i class="ph-bold ph-check text-[var(--color-brand)] mt-0.5 shrink-0"></i>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="/capabilities" class="inline-flex items-center gap-2 text-sm font-semibold text-fg hover:gap-3 transition-all">
-            Learn more <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
-          </a>
-        </div>
-        <div class="card-inset p-6 float">
-          <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-2">Time saved</div>
-          <div class="stat-tile-value">14h/wk</div>
-          <div class="text-sm text-fg-muted mt-1">via automation</div>
-          <div class="mt-6 space-y-2">
-            {['Lead routed to sales', 'Welcome email sent', 'GA4 event fired', 'Retargeting audience updated'].map((line, i) => (
-              <div class="flex items-center gap-2 text-xs mono text-fg-secondary card p-2.5 !shadow-none">
-                <i class="ph-bold ph-check-circle text-success"></i>
-                <span>{line}</span>
-                <span class="ml-auto text-fg-muted">{i + 1}s</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div class="mt-10">
+        <a href="/capabilities" class="text-sm font-medium text-fg-secondary hover:text-fg transition-colors inline-flex items-center gap-2">
+          Full capabilities <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ─── HOW IT WORKS ─── -->
+  <!-- How it works -->
   <section class="section-y">
     <div class="container-wide">
-      <div class="max-w-2xl mb-14">
-        <div class="eyebrow mb-4">How it works</div>
-        <h2 class="text-display-2">
-          From audit to<br/>
-          <span class="text-gradient-brand">revenue in 90 days</span>
-        </h2>
+      <div class="max-w-xl mb-12">
+        <div class="eyebrow mb-3">How it works</div>
+        <h2 class="text-display-2">Audit → plan → measurable lift in 90 days.</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
         {[
-          { step: '01', title: 'Free PULSE audit', time: 'Day 0 — 90s', desc: 'Submit your URL. Scored across 5 dimensions. PDF in your inbox within 2 minutes.', icon: 'ph-magnifying-glass' },
-          { step: '02', title: 'Strategy call', time: 'Week 1 — 45 min', desc: 'We walk findings, prioritize ROI fixes, and propose a 90-day plan. Transparent pricing.', icon: 'ph-handshake' },
-          { step: '03', title: 'Build, ship, measure', time: 'Days 14 — 90', desc: 'We build the system. Weekly reports with real numbers. Re-score at day 90.', icon: 'ph-rocket-launch' },
+          { step: '01', title: 'Free PULSE audit', meta: 'Day 0', desc: 'URL + email. Scored report in your inbox within 2 minutes.' },
+          { step: '02', title: 'Strategy call', meta: 'Week 1', desc: 'We prioritize fixes by revenue impact and agree a 90-day plan.' },
+          { step: '03', title: 'Build & measure', meta: 'Days 14–90', desc: 'We ship the work. Weekly numbers. Re-score at day 90.' },
         ].map((s) => (
-          <div class="card card-hover p-6 h-full">
-            <div class="flex items-center justify-between mb-6">
-              <span class="text-3xl font-bold text-fg-muted mono">{s.step}</span>
-              <div class="w-10 h-10 rounded-full bg-bg-subtle border border-border flex items-center justify-center text-[var(--color-brand)]">
-                <i class={`ph-bold ${s.icon}`}></i>
-              </div>
+          <div class="card p-6 border-t-2 border-[color-mix(in_srgb,var(--color-brand)_35%,transparent)]">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-2xl font-semibold text-fg-muted mono">{s.step}</span>
+              <span class="text-xs mono text-fg-muted">{s.meta}</span>
             </div>
-            <h3 class="text-lg font-semibold text-fg mb-2">{s.title}</h3>
-            <p class="text-sm text-fg-secondary leading-relaxed mb-4">{s.desc}</p>
-            <div class="text-xs mono text-fg-muted">{s.time}</div>
+            <h3 class="font-semibold text-fg mb-2">{s.title}</h3>
+            <p class="text-sm text-fg-secondary leading-relaxed">{s.desc}</p>
           </div>
         ))}
       </div>
-
-      <div class="mt-12 text-center">
-        <a href="/pulse-audit" class="btn btn-primary btn-large">
-          Start with a free audit
-          <i class="ph-bold ph-arrow-right"></i>
-        </a>
-      </div>
     </div>
   </section>
 
-  <!-- ─── CASE STUDY ─── -->
+  <!-- Case study -->
   <section class="section-y section-band">
     <div class="container-wide">
-      <div class="eyebrow mb-4">Featured case study</div>
-      <h2 class="text-display-2 mb-12 max-w-2xl">
-        Tutti Rouge — from invisible to <span class="text-gradient-brand">market leader</span>
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="card p-0 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=85" alt="Tutti Rouge fashion" class="w-full aspect-[4/5] object-cover" loading="lazy" />
-          <div class="p-6 border-t border-border bg-bg">
-            <div class="text-xs mono text-fg-muted mb-1">PULSE score lift</div>
-            <div class="text-3xl font-bold text-fg">42 → 78</div>
-          </div>
-        </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+          <div class="eyebrow mb-3">Case study</div>
+          <h2 class="text-display-2 mb-6">Tutti Rouge — PULSE 42 → 78 in 90 days</h2>
+          <div class="grid grid-cols-3 gap-4 mb-8">
             {[
-              { metric: '+187%', label: 'organic traffic' },
-              { metric: '4.2x', label: 'lead-to-customer' },
-              { metric: '£2.1M', label: 'pipeline' },
+              { v: '+187%', l: 'traffic' },
+              { v: '4.2x', l: 'conversion' },
+              { v: '£2.1M', l: 'pipeline' },
             ].map((m) => (
-              <div class="stat-tile">
-                <div class="text-2xl font-bold text-fg">{m.metric}</div>
-                <div class="text-xs text-fg-muted mt-1">{m.label}</div>
+              <div>
+                <div class="text-xl font-semibold text-fg">{m.v}</div>
+                <div class="text-xs text-fg-muted mt-1">{m.l}</div>
               </div>
             ))}
           </div>
-          <blockquote class="text-fg text-lg leading-relaxed border-l-2 border-[var(--color-brand)] pl-4 mb-8">
-            "Sanjeev's team rebuilt our entire acquisition engine. We're now showing up in AI search results ahead of brands 10x our size."
+          <blockquote class="text-fg-secondary leading-relaxed border-l border-[var(--color-brand)] pl-4 mb-6">
+            "We're now showing up in AI search results ahead of brands 10x our size."
           </blockquote>
-          <a href="/work/tutti-rouge" class="inline-flex items-center gap-2 text-sm font-semibold text-fg hover:gap-3 transition-all">
-            Read the full case study <i class="ph-bold ph-arrow-up-right text-[var(--color-brand)]"></i>
+          <a href="/work/tutti-rouge" class="text-sm font-medium text-fg hover:text-fg-secondary transition-colors inline-flex items-center gap-2">
+            Read case study <i class="ph-bold ph-arrow-up-right"></i>
           </a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── TESTIMONIAL ─── -->
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-3xl mx-auto text-center card p-10 md:p-14">
-        <blockquote class="text-2xl md:text-[1.75rem] text-fg font-medium leading-snug mb-8">
-          "Working with Happyranks felt less like hiring an agency and more like adding a senior marketing leader to our team. They measure everything, ship fast, and the numbers show."
-        </blockquote>
-        <div class="text-sm">
-          <div class="font-semibold text-fg">Mae Guzman</div>
-          <div class="text-fg-muted">Head of Growth, Efficy</div>
+        <div class="card p-0 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Tutti Rouge" class="w-full aspect-[4/3] object-cover" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── FINAL CTA (Stripe dark band) ─── -->
-  <section class="section-y section-band-dark relative">
-    <div class="container-wide relative">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="eyebrow mb-4 !text-[#8792a2]">Ready when you are</div>
-        <h2 class="text-display-2 text-white mb-6">
-          Find out what<br/>
-          <span class="text-gradient-brand">your site is leaking.</span>
-        </h2>
-        <p class="text-lg text-fg-secondary mb-10 max-w-lg mx-auto">
-          A free PULSE audit takes 90 seconds. No call required. Real numbers, yours to keep.
+  <!-- CTA -->
+  <section class="section-y section-cta">
+    <div class="container-wide">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="text-display-2 mb-4">See what your site is leaking.</h2>
+        <p class="text-fg-secondary text-lg mb-8">
+          Free PULSE audit. 90 seconds. Real numbers — no sales call required.
         </p>
         <a href="/pulse-audit" class="btn btn-primary btn-large">
-          <i class="ph-bold ph-lightning"></i>
           Get my free PULSE audit
         </a>
-        <div class="mt-8 text-xs text-fg-muted mono flex items-center justify-center gap-2">
-          <i class="ph-bold ph-shield-check text-emerald-400"></i>
-          No credit card · 90 seconds · Yours to keep
-        </div>
       </div>
     </div>
   </section>
