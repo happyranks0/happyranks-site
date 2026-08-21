@@ -1,0 +1,130 @@
+---
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+const {
+  formId = 'pulse-audit-form',
+  compact = false,
+  showTitle = true,
+} = Astro.props;
+---
+
+<div class="pulse-audit-form-wrap">
+  {showTitle && (
+    <div class="mb-6">
+      <div class="badge badge-outline badge-primary mb-3">Free PULSE audit</div>
+      <h2 class="font-display text-2xl font-bold tracking-tight">URL + email → report in 2 min</h2>
+      <p class="mt-2 text-sm text-base-content/60">50+ checks across five revenue dimensions.</p>
+    </div>
+  )}
+
+  <form
+    id={formId}
+    class:list={['space-y-4', compact && 'space-y-3']}
+    data-pulse-audit-form
+  >
+    <div class="form-control w-full">
+      <Label for={`${formId}-url`}>Website URL</Label>
+      <Input
+        type="url"
+        id={`${formId}-url`}
+        name="url"
+        required
+        placeholder="https://yoursite.com"
+        class="mt-2 bg-base-300/50 border-white/10"
+      />
+    </div>
+    <div class="form-control w-full">
+      <Label for={`${formId}-email`}>Email</Label>
+      <Input
+        type="email"
+        id={`${formId}-email`}
+        name="email"
+        required
+        placeholder="you@company.com"
+        class="mt-2 bg-base-300/50 border-white/10"
+      />
+    </div>
+    <Button type="submit" class:list={['w-full', !compact && 'h-12']}>
+      <i class="ph-bold ph-lightning"></i>
+      Run my free PULSE audit
+    </Button>
+    <p class="text-center text-[11px] leading-relaxed text-base-content/50">
+      No credit card. PDF in ~2 minutes.
+    </p>
+  </form>
+
+  <div id={`${formId}-error`} class="alert alert-error mt-4 hidden text-sm" role="alert"></div>
+
+  <div id={`${formId}-success`} class="alert alert-success mt-4 hidden">
+    <i class="ph-bold ph-check-circle text-xl"></i>
+    <div>
+      <p class="font-semibold">Audit queued</p>
+      <p class="text-sm opacity-80">Your report is on its way — check your inbox in the next 2 minutes.</p>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ formId }}>
+  const form = document.getElementById(formId);
+  const success = document.getElementById(`${formId}-success`);
+  const errorBox = document.getElementById(`${formId}-error`);
+
+  async function submitAudit(url, email) {
+    const endpoints = ['/api/pulse/scan', 'https://vital.gohappyranks.com/api/vital/scan'];
+    let lastError = null;
+
+    for (const endpoint of endpoints) {
+      try {
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, email }),
+        });
+        if (resp.ok) return true;
+        if (endpoint === '/api/pulse/scan' && resp.status === 404) continue;
+        const text = await resp.text();
+        lastError = text || `HTTP ${resp.status}`;
+      } catch (err) {
+        lastError = err instanceof Error ? err.message : 'Network error';
+        if (endpoint === '/api/pulse/scan') continue;
+      }
+    }
+
+    throw new Error(lastError || 'Audit failed');
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    errorBox?.classList.add('hidden');
+    const formData = new FormData(form);
+    const url = formData.get('url')?.toString().trim();
+    const email = formData.get('email')?.toString().trim();
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn?.innerHTML;
+    if (btn) {
+      btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Running audit...';
+      btn.disabled = true;
+    }
+
+    try {
+      await submitAudit(url, email);
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    } catch (err) {
+      if (btn) {
+        btn.innerHTML = original || 'Run my free PULSE audit';
+        btn.disabled = false;
+      }
+      if (errorBox) {
+        errorBox.textContent =
+          'Audit failed. Try again or email hello@happyranks.com — we can run it manually.';
+        errorBox.classList.remove('hidden');
+      }
+      console.error(err);
+    }
+  });
+</script>

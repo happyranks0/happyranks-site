@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://happyranks.com/sitemap-index.xml

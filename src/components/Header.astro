@@ -1,120 +1,122 @@
 ---
+import { Button } from '@/components/ui/button';
+import { Header as SiteHeader, HeaderContainer, HeaderGroup } from '@/components/ui/header';
+import { Icon } from '@/components/ui/icon';
+import { Logo, LogoText } from '@/components/ui/logo';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+
 const { active = '' } = Astro.props;
+
 const links = [
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/work', label: 'Work' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/vital-audit', label: 'Free VITAL Audit' },
   { href: '/about', label: 'About' },
 ];
+
+const auditFocus = active === '' || active === '/pulse-audit';
 ---
 
-<header class="site-header sticky top-0 z-50">
-  <div class="container-wide">
-    <div class="flex items-center justify-between h-[68px]">
-      <a href="/" class="flex items-center gap-2.5 group" aria-label="Happyranks home">
-        <div class="logo-mark w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm group-hover:scale-105 transition-transform">H</div>
-        <span class="font-bold text-white tracking-tight text-[15px]">Happyranks</span>
-      </a>
+<SiteHeader class="fixed top-0 z-50 border-b border-white/5 bg-base-100/80 backdrop-blur-xl">
+  <HeaderContainer class="site-shell !max-w-7xl items-center justify-between gap-4 py-3">
+    <HeaderGroup>
+      <Logo href="/" class="gap-2.5">
+        <span class="flex size-9 items-center justify-center rounded-xl bg-primary text-sm font-extrabold text-primary-content glow-ring">H</span>
+        <LogoText class="font-display text-base font-bold tracking-tight">Happyranks</LogoText>
+      </Logo>
+    </HeaderGroup>
 
-      <nav class="hidden md:flex items-center gap-1" aria-label="Main">
-        {links.map((l) => (
-          <a
-            href={l.href}
-            class:list={[
-              'nav-link px-3.5 py-2 text-[13.5px] font-medium rounded-md transition',
-              active === l.href ? 'is-active' : ''
-            ]}
-          >{l.label}</a>
+    <NavigationMenu class="hidden flex-none lg:flex">
+      <NavigationMenuList>
+        {links.map((link, index) => (
+          <NavigationMenuItem value={`nav-${index}`}>
+            <NavigationMenuLink href={link.href} active={active === link.href}>
+              {link.label}
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         ))}
-      </nav>
+      </NavigationMenuList>
+    </NavigationMenu>
 
-      <div class="flex items-center gap-2">
-        <a href="/contact" class="hidden sm:inline-flex btn btn-primary">
-          Book a call
-          <i class="ph-bold ph-arrow-right text-base"></i>
-        </a>
-        <button
-          type="button"
-          class="mobile-trigger md:hidden w-10 h-10 rounded-md flex items-center justify-center text-white hover:bg-[#1a1a1a] transition"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <i class="ph-bold ph-list text-2xl"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
+    <HeaderGroup class="ml-auto hidden flex-1 justify-end gap-2 lg:flex">
+      {auditFocus ? (
+        <>
+          <Button as="a" href="/contact" variant="ghost" size="sm">Book a call</Button>
+          <Button as="a" href="/pulse-audit" size="sm">
+            Free audit
+            <Icon name="zap" class="size-4" />
+          </Button>
+        </>
+      ) : (
+        <>
+          <Button as="a" href="/pulse-audit" variant="ghost" size="sm">Free audit</Button>
+          <Button as="a" href="/contact" size="sm">
+            Book a call
+            <Icon name="arrow-up-right" class="size-4" />
+          </Button>
+        </>
+      )}
+    </HeaderGroup>
 
-<!-- Mobile drawer -->
-<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-  <div class="mobile-menu__backdrop" data-close></div>
-  <aside class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Site navigation">
-    <div class="flex items-center justify-between h-[68px] px-6 border-b border-[#1a1a1a]">
-      <a href="/" class="flex items-center gap-2.5" data-close>
-        <div class="w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-white text-sm">H</div>
-        <span class="font-bold text-white tracking-tight text-[15px]">Happyranks</span>
-      </a>
-      <button
-        type="button"
-        class="w-10 h-10 rounded-md flex items-center justify-center text-white hover:bg-[#1a1a1a] transition"
-        aria-label="Close menu"
-        data-close
-      >
-        <i class="ph-bold ph-x text-2xl"></i>
-      </button>
-    </div>
-    <nav class="px-6 py-8 space-y-1" aria-label="Mobile">
-      {links.map((l) => (
-        <a
-          href={l.href}
-          data-close
-          class:list={[
-            'flex items-center justify-between py-4 text-[17px] font-semibold border-b border-[#161616]',
-            active === l.href ? 'text-white' : 'text-[#c5c5c5]'
-          ]}
-        >
-          <span>{l.label}</span>
-          <i class="ph-bold ph-arrow-right text-[#666] text-base"></i>
-        </a>
-      ))}
-    </nav>
-    <div class="px-6 pt-4 pb-8">
-      <a href="/contact" data-close class="btn btn-primary btn-large w-full justify-center">
-        Book a call
-        <i class="ph-bold ph-arrow-right text-base"></i>
-      </a>
-      <p class="mt-6 text-xs text-[#666] text-center">45-min strategy call · No pressure</p>
-    </div>
-  </aside>
-</div>
-
-<script>
-  const trigger = document.querySelector<HTMLButtonElement>('.mobile-trigger');
-  const menu = document.getElementById('mobile-menu');
-  const closeButtons = document.querySelectorAll<HTMLElement>('[data-close]');
-
-  function openMenu() {
-    if (!menu || !trigger) return;
-    menu.classList.add('is-open');
-    menu.setAttribute('aria-hidden', 'false');
-    trigger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    if (!menu || !trigger) return;
-    menu.classList.remove('is-open');
-    menu.setAttribute('aria-hidden', 'true');
-    trigger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  trigger?.addEventListener('click', openMenu);
-  closeButtons.forEach((btn) => btn.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
-</script>
+    <Sheet class="lg:hidden">
+      <SheetTrigger variant="ghost" size="icon-sm" class="ml-auto" aria-label="Open menu">
+        <Icon name="menu" />
+      </SheetTrigger>
+      <SheetContent side="right" class="border-white/10 bg-base-200 p-0">
+        <SheetHeader class="sr-only">
+          <SheetTitle>Menu</SheetTitle>
+          <SheetDescription>Site navigation and actions.</SheetDescription>
+        </SheetHeader>
+        <div class="flex h-full flex-col gap-6 px-5 py-10">
+          <Logo href="/" class="gap-2.5">
+            <span class="flex size-9 items-center justify-center rounded-xl bg-primary text-sm font-extrabold text-primary-content">H</span>
+            <LogoText class="font-display font-bold">Happyranks</LogoText>
+          </Logo>
+          <nav aria-label="Mobile navigation" class="flex flex-col gap-1">
+            {links.map((link) => (
+              <a
+                href={link.href}
+                class:list={[
+                  'rounded-xl px-3 py-3 text-lg font-medium transition-colors',
+                  active === link.href ? 'bg-primary/10 text-primary' : 'text-base-content/80 hover:bg-base-300',
+                ]}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a href="/pulse-audit" class="rounded-xl px-3 py-3 text-lg font-medium text-base-content/80 hover:bg-base-300">
+              Free PULSE audit
+            </a>
+          </nav>
+          <div class="mt-auto flex flex-col gap-2">
+            {auditFocus ? (
+              <>
+                <Button as="a" href="/pulse-audit" size="lg" class="w-full">Get free audit</Button>
+                <Button as="a" href="/contact" variant="outline" size="lg" class="w-full">Book a call</Button>
+              </>
+            ) : (
+              <>
+                <Button as="a" href="/contact" size="lg" class="w-full">Book a call</Button>
+                <Button as="a" href="/pulse-audit" variant="outline" size="lg" class="w-full">Get free audit</Button>
+              </>
+            )}
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  </HeaderContainer>
+</SiteHeader>

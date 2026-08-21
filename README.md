@@ -14,7 +14,7 @@ npm run preview # preview the build
 
 - Astro 7 (SSG)
 - Tailwind CSS v4
-- VITAL API on VPS port 8099
+- PULSE API on VPS port 8099
 - Mautic for email/automation
 - Netlify for hosting
 
@@ -23,4 +23,4 @@ npm run preview # preview the build
 - Dark theme (#141414 bg, #ff3131 accent)
 - Zapier-inspired structural design
 - 7 capability cards (not legacy "services")
-- VITAL audit as primary lead gen
+- PULSE audit as primary lead gen

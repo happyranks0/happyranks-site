@@ -1,12 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+
+const personSchema = {
+  '@type': 'Person',
+  name: 'Sanjeev',
+  jobTitle: 'Founder & Senior Marketing Strategist',
+  worksFor: { '@type': 'Organization', name: 'Happyranks' },
+  url: 'https://happyranks.com/about',
+  sameAs: ['https://www.linkedin.com/in/sanjeev/'],
+  knowsAbout: ['Marketing Strategy', 'SEO', 'Generative Engine Optimization', 'Marketing Automation'],
+};
 ---
 
 <Layout
   title="About — Senior marketing, without the agency overhead"
   description="Happyranks is led by Sanjeev, a senior marketing operator with 12+ years building marketing systems for businesses across the US, UK, UAE, and India."
   active="/about"
+  schema={personSchema}
 >
   <!-- HERO -->
   <section class="hero-section relative">
@@ -14,45 +25,45 @@ import Hero from '../components/Hero.astro';
       <div class="grid lg:grid-cols-[2fr_1fr] gap-16 items-start">
         <div>
           <div class="eyebrow mb-3">About Happyranks</div>
-          <h1 class="text-display-1 text-white mb-6">
+          <h1 class="text-display-1 text-fg mb-6">
             Senior marketing execution,<br/>
             <span class="text-gradient-brand">without the agency overhead</span>
           </h1>
-          <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6 max-w-2xl">
+          <p class="text-lg text-fg-secondary leading-relaxed mb-6 max-w-2xl">
             Happyranks was built around a simple observation: most businesses don't need another
             agency. They need a senior marketing operator who can build the system, ship the work,
             and show them the numbers.
           </p>
-          <p class="text-base text-[#888] leading-relaxed mb-8 max-w-2xl">
+          <p class="text-base text-fg-muted leading-relaxed mb-8 max-w-2xl">
             We work with a small, focused client roster — 8-12 active engagements at any time.
             The person scoping your audit is the person building your system. No account managers.
-            No junior handoffs. The VITAL framework is the lens for every engagement.
+            No junior handoffs. The PULSE framework is the lens for every engagement.
           </p>
-          <a href="/vital-audit" class="btn btn-primary btn-large">
+          <a href="/pulse-audit" class="btn btn-primary btn-large">
             <i class="ph-bold ph-lightning"></i>
-            Get my free VITAL audit
+            Get my free PULSE audit
           </a>
         </div>
 
         <div class="card p-8 lg:sticky lg:top-24">
-          <div class="aspect-square rounded-xl bg-gradient-to-br from-[#1a0808] to-[#0a0a0a] border border-[#2a2a2a] flex items-center justify-center mb-6">
-            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-[var(--color-brand)] to-[#7a0a0a] flex items-center justify-center text-6xl font-black text-white">S</div>
+          <div class="aspect-square rounded-xl bg-gradient-to-br from-canvas-2 to-canvas border border-border flex items-center justify-center mb-6">
+            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-[var(--color-brand)] to-[#7a0a0a] flex items-center justify-center text-6xl font-black text-fg">S</div>
           </div>
           <div class="text-center">
-            <div class="text-xl font-bold text-white">Sanjeev</div>
-            <div class="text-sm text-[#888] mono">Founder · Senior Strategist</div>
-            <div class="mt-6 pt-6 border-t border-[#1a1a1a] grid grid-cols-3 gap-4 text-center">
+            <div class="text-xl font-bold text-fg">Sanjeev</div>
+            <div class="text-sm text-fg-muted mono">Founder · Senior Strategist</div>
+            <div class="mt-6 pt-6 border-t border-border grid grid-cols-3 gap-4 text-center">
               <div>
-                <div class="text-2xl font-black text-white">12+</div>
-                <div class="text-[10px] mono text-[#666] uppercase">years</div>
+                <div class="text-2xl font-black text-fg">12+</div>
+                <div class="text-[10px] mono text-fg-muted uppercase">years</div>
               </div>
               <div>
-                <div class="text-2xl font-black text-white">80+</div>
-                <div class="text-[10px] mono text-[#666] uppercase">clients</div>
+                <div class="text-2xl font-black text-fg">80+</div>
+                <div class="text-[10px] mono text-fg-muted uppercase">clients</div>
               </div>
               <div>
-                <div class="text-2xl font-black text-white">4</div>
-                <div class="text-[10px] mono text-[#666] uppercase">continents</div>
+                <div class="text-2xl font-black text-fg">4</div>
+                <div class="text-[10px] mono text-fg-muted uppercase">continents</div>
               </div>
             </div>
           </div>
@@ -65,29 +76,29 @@ import Hero from '../components/Hero.astro';
   <section class="section-y">
     <div class="container-wide max-w-3xl">
       <div class="eyebrow mb-4">Founder story</div>
-      <h2 class="text-display-2 text-white mb-12">
+      <h2 class="text-display-2 text-fg mb-12">
         Why Happyranks exists
       </h2>
       <div class="prose prose-invert max-w-none space-y-6 text-lg leading-relaxed">
-        <p class="text-[#e5e5e5]">
+        <p class="text-fg">
           The agency model is broken for most businesses. You pay retainer fees, get assigned
           a junior team, and wait 90 days to find out whether anything actually worked.
         </p>
-        <p class="text-[#a0a0a0]">
+        <p class="text-fg-secondary">
           I built Happyranks because I kept watching smart business owners get sold tactics
           they didn\'t need, and miss the foundational work they did. They were spending $8K/month
           on Google Ads with no conversion tracking. They were running Facebook campaigns with
           no pixel installed. They were launching lead magnets with no email follow-up.
         </p>
-        <p class="text-[#a0a0a0]">
+        <p class="text-fg-secondary">
           The pattern was always the same: the marketing looked busy, but the business wasn\'t
           growing. Nobody was measuring the right things.
         </p>
-        <p class="text-[#e5e5e5] font-semibold">
-          The VITAL framework was the answer. Score the system, find the leaks, fix them in
+        <p class="text-fg font-semibold">
+          The PULSE framework was the answer. Score the system, find the leaks, fix them in
           order. No theory, no fluff — just the work that moves numbers.
         </p>
-        <p class="text-[#a0a0a0]">
+        <p class="text-fg-secondary">
           We\'re based in Coimbatore, India, and work with clients across the US, UK, UAE, and
           India. The timezone difference is real, but it\'s also an advantage — your site is
           being worked on while you sleep, and you\'ve got fresh insights in your inbox every
@@ -98,11 +109,11 @@ import Hero from '../components/Hero.astro';
   </section>
 
   <!-- VALUES / MANIFESTO -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">How we work</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Four things<br/>
           <span class="text-gradient-brand">we don't compromise on</span>
         </h2>
@@ -112,7 +123,7 @@ import Hero from '../components/Hero.astro';
           {
             n: '01',
             title: 'Measure first, build second',
-            desc: 'Every engagement starts with a VITAL audit. We don\'t ship work we can\'t measure. You always know what we did and whether it worked.',
+            desc: 'Every engagement starts with a PULSE audit. We don\'t ship work we can\'t measure. You always know what we did and whether it worked.',
             icon: 'ph-chart-line-up',
           },
           {
@@ -136,13 +147,13 @@ import Hero from '../components/Hero.astro';
         ].map((v) => (
           <div class="card p-8">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-12 h-12 rounded-xl bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)]">
+              <div class="w-12 h-12 rounded-xl bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)]">
                 <i class={`ph-bold ${v.icon} text-2xl`}></i>
               </div>
-              <div class="text-3xl font-black text-[#222] mono">{v.n}</div>
+              <div class="text-3xl font-black text-ink-4 mono">{v.n}</div>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">{v.title}</h3>
-            <p class="text-[#a0a0a0] leading-relaxed">{v.desc}</p>
+            <h3 class="text-xl font-bold text-fg mb-3">{v.title}</h3>
+            <p class="text-fg-secondary leading-relaxed">{v.desc}</p>
           </div>
         ))}
       </div>
@@ -154,7 +165,7 @@ import Hero from '../components/Hero.astro';
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">What clients say</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Senior execution<br/>
           <span class="text-gradient-light">in their words</span>
         </h2>
@@ -167,10 +178,10 @@ import Hero from '../components/Hero.astro';
         ].map((t) => (
           <div class="card p-6">
             <i class="ph-fill ph-quotes text-[var(--color-brand)] text-3xl mb-4"></i>
-            <p class="text-[#e5e5e5] leading-relaxed mb-6">{t.quote}</p>
-            <div class="border-t border-[#1a1a1a] pt-4">
-              <div class="font-bold text-white text-sm">{t.name}</div>
-              <div class="text-xs text-[#888]">{t.role}</div>
+            <p class="text-fg leading-relaxed mb-6">{t.quote}</p>
+            <div class="border-t border-border pt-4">
+              <div class="font-bold text-fg text-sm">{t.name}</div>
+              <div class="text-xs text-fg-muted">{t.role}</div>
             </div>
           </div>
         ))}
@@ -179,14 +190,14 @@ import Hero from '../components/Hero.astro';
   </section>
 
   <!-- TECH STACK -->
-  <section class="section-y bg-[#0c0c0c]">
+  <section class="section-y bg-bg-subtle">
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The stack</div>
-        <h2 class="text-display-3 text-white">
+        <h2 class="text-display-3 text-fg">
           Tools we'd <span class="text-gradient-brand">actually recommend</span>
         </h2>
-        <p class="text-base text-[#888] mt-4">
+        <p class="text-base text-fg-muted mt-4">
           We use the same tools on our own business that we recommend to clients. Here\'s the
           full stack, broken down by category.
         </p>
@@ -201,10 +212,10 @@ import Hero from '../components/Hero.astro';
           { c: 'Email', items: ['AWS SES', 'Mautic', 'Mailgun', 'Postmark', 'Sendgrid'] },
         ].map((s) => (
           <div class="card p-6">
-            <div class="text-sm font-bold text-white mb-3 mono uppercase tracking-widest">{s.c}</div>
+            <div class="text-sm font-bold text-fg mb-3 mono uppercase tracking-widest">{s.c}</div>
             <ul class="space-y-2">
               {s.items.map((i) => (
-                <li class="text-sm text-[#888] flex items-center gap-2">
+                <li class="text-sm text-fg-muted flex items-center gap-2">
                   <i class="ph-bold ph-dot text-[var(--color-brand)]"></i>
                   {i}
                 </li>
@@ -221,11 +232,11 @@ import Hero from '../components/Hero.astro';
     <div class="container-wide">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Where we work</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="text-display-2 text-fg mb-6">
           Based in India,<br/>
           <span class="text-gradient-light">working globally</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-fg-secondary leading-relaxed">
           Our team is based in Coimbatore, India. Our clients are in the US, UK, UAE, and India.
           We work async-first — your morning is our evening, and the work happens while you
           sleep. Fresh insights in your inbox every morning.
@@ -240,9 +251,9 @@ import Hero from '../components/Hero.astro';
         ].map((l) => (
           <div class="card p-6 text-center">
             <i class="ph-bold ph-map-pin text-[var(--color-brand)] text-2xl mb-3"></i>
-            <div class="font-bold text-white">{l.city}</div>
-            <div class="text-xs text-[#888] mono uppercase tracking-widest mb-2">{l.country}</div>
-            <div class="text-xs text-[#666]">{l.role}</div>
+            <div class="font-bold text-fg">{l.city}</div>
+            <div class="text-xs text-fg-muted mono uppercase tracking-widest mb-2">{l.country}</div>
+            <div class="text-xs text-fg-muted">{l.role}</div>
           </div>
         ))}
       </div>
@@ -253,16 +264,16 @@ import Hero from '../components/Hero.astro';
   <section class="section-y relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
     <div class="container-wide relative text-center">
-      <h2 class="text-display-2 text-white mb-6">
+      <h2 class="text-display-2 text-fg mb-6">
         Let's see<br/>
         <span class="text-gradient-brand">where you stand</span>
       </h2>
-      <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">
-        Free VITAL audit. 90 seconds. Real numbers.
+      <p class="text-lg text-fg-secondary mb-10 max-w-xl mx-auto">
+        Free PULSE audit. 90 seconds. Real numbers.
       </p>
-      <a href="/vital-audit" class="btn btn-primary btn-large">
+      <a href="/pulse-audit" class="btn btn-primary btn-large">
         <i class="ph-bold ph-lightning"></i>
-        Get my free VITAL audit
+        Get my free PULSE audit
       </a>
     </div>
   </section>
