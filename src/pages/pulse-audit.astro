@@ -2,17 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import PulseScore from '../components/PulseScore.astro';
 import PulseAuditForm from '../components/PulseAuditForm.astro';
-import FaqsBlock from '@/components/blocks/faqs-1.astro';
+import FAQ from '../components/cf/FAQ.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { Badge } from '@/components/ui/badge';
-import { Section, SectionContainer } from '@/components/ui/section';
 
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial.' } },
-    { '@type': 'Question', name: 'How long does the audit take?', acceptedAnswer: { '@type': 'Answer', text: '90 seconds to run. PDF emailed within 2 minutes.' } },
-    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions.' } },
+    { '@type': 'Question', name: 'Is the PULSE breakdown really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. A strategist reviews your site and sends a scored breakdown at no cost.' } },
+    { '@type': 'Question', name: 'What do I receive?', acceptedAnswer: { '@type': 'Answer', text: 'Dimension scores across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation — plus the top leaks ranked by revenue impact and a suggested 90-day fix sequence.' } },
+    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable revenue signals, reviewed by a senior strategist — not automated opinions or generic checklists.' } },
   ],
 };
 
@@ -24,62 +22,61 @@ const serviceSchema = {
 };
 
 const faqItems = faqSchema.mainEntity.map((item) => ({
-  id: item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-  question: item.name,
-  answer: item.acceptedAnswer.text,
+  q: item.name,
+  a: item.acceptedAnswer.text,
 }));
 ---
 
 <Layout
-  title="Free PULSE Audit — Score your website in 90 seconds"
-  description="Free PULSE audit across five revenue dimensions. 50+ checks, PDF in 2 minutes, no call required."
+  title="Free PULSE Breakdown — See where your revenue stack is leaking"
+  description="Strategist-reviewed PULSE breakdown across five revenue dimensions. Scored, prioritised, and ranked by revenue impact. No call required."
   active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
   <PageHeader
-    kicker="Free · 90 seconds · No call required"
-    title="Score your site"
-    highlight="in 90 seconds."
-    description="Five dimensions. Fifty-plus checks. A 10-page PDF with prioritized fixes — delivered to your inbox in 2 minutes."
+    kicker="Free PULSE breakdown · Strategist-reviewed"
+    title="Find out what your marketing"
+    highlight="is actually worth."
+    description="Five dimensions. Measurable checks. A scored breakdown with the fixes ranked by revenue impact — reviewed before it reaches you."
     compact={true}
   />
 
-  <Section class="border-b border-white/5 pb-20">
-    <SectionContainer class="site-shell !max-w-7xl">
-      <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-        <div class="glass-panel glow-ring p-6 lg:p-8 lg:sticky lg:top-28" id="pulse-form-panel">
+  <section class="section-tight border-b border-line pb-16">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="audit-panel lg:sticky lg:top-24" id="pulse-form-panel">
           <PulseAuditForm formId="pulse-form" />
         </div>
         <div class="hidden lg:block">
           <PulseScore />
         </div>
       </div>
-    </SectionContainer>
-  </Section>
+    </div>
+  </section>
 
-  <Section class="border-b border-white/5 bg-base-200/30 py-20">
-    <SectionContainer class="site-shell !max-w-7xl">
-      <Badge variant="outline" class="mb-8 border-primary/30 text-primary">Under the hood</Badge>
-      <div class="grid gap-6 md:grid-cols-3">
+  <section class="section section-band">
+    <div class="wrap">
+      <p class="kicker mb-8">What happens next</p>
+      <div class="timeline">
         {[
-          { n: '01', t: 'Submit URL', d: 'Homepage URL and email. That is all we need.' },
-          { n: '02', t: 'Engine crawls', d: 'HTML, meta, schema, scripts — 50+ measurable signals.' },
-          { n: '03', t: 'Score & report', d: 'Weighted rubric across 5 dimensions. PDF with 90-day plan.' },
+          { n: '01', t: 'You submit', d: 'Your homepage URL and email. That is all we need to start.' },
+          { n: '02', t: 'We score', d: 'Your site is measured across five revenue dimensions — presence through evaluation.' },
+          { n: '03', t: 'Strategist review', d: 'A senior strategist reviews the signals, ranks leaks by revenue impact, and sends your breakdown.' },
         ].map((s) => (
-          <div class="glass-panel p-6">
-            <p class="font-mono text-sm text-primary">{s.n}</p>
-            <h3 class="mt-3 font-display text-xl font-bold">{s.t}</h3>
-            <p class="mt-2 text-sm text-base-content/60">{s.d}</p>
+          <div class="timeline-step">
+            <p class="timeline-step-num">{s.n}</p>
+            <h3 class="display-md mb-2">{s.t}</h3>
+            <p class="body-sm-muted">{s.d}</p>
           </div>
         ))}
       </div>
-    </SectionContainer>
-  </Section>
+    </div>
+  </section>
 
-  <FaqsBlock
-    title="Questions"
-    description="Quick answers about the free PULSE audit."
-    faqs={faqItems}
-    class="py-20"
-  />
+  <section class="section">
+    <div class="wrap max-w-3xl">
+      <h2 class="display-lg text-center mb-10">Questions</h2>
+      <FAQ items={faqItems} />
+    </div>
+  </section>
 </Layout>

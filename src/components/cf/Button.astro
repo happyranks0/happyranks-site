@@ -1,0 +1,32 @@
+---
+const {
+  href = '#',
+  variant = 'primary',
+  size = 'default',
+  class: className = '',
+  type = 'button',
+  ...rest
+} = Astro.props;
+
+const variants: Record<string, string> = {
+  primary: 'btn-primary',
+  ghost: 'btn-ghost',
+  text: 'btn-text',
+};
+
+const sizes: Record<string, string> = {
+  default: '',
+  large: 'btn-large',
+};
+
+const Tag = href !== '#' && !type ? 'a' : 'button';
+---
+
+<Tag
+  href={Tag === 'a' ? href : undefined}
+  type={Tag === 'button' ? type : undefined}
+  class:list={['btn', variants[variant], sizes[size], className]}
+  {...rest}
+>
+  <slot />
+</Tag>

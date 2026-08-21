@@ -16,11 +16,11 @@ const timeline = [
 >
   <!-- HERO -->
   <section class="hero-section relative">
-    <div class="container-wide">
-      <a href="/work" class="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg mb-6">
+    <div class="wrap">
+      <a href="/work" class="inline-flex items-center gap-2 text-sm text-ink-3 hover:text-ink mb-6">
         <i class="ph-bold ph-arrow-left"></i> All case studies
       </a>
-      <div class="flex items-center gap-3 mb-4 text-xs mono text-fg-muted">
+      <div class="flex items-center gap-3 mb-4 text-xs mono text-ink-3">
         <span>Fashion resale</span>
         <span>·</span>
         <span>United Kingdom</span>
@@ -28,17 +28,17 @@ const timeline = [
         <span>2025</span>
       </div>
       <div class="max-w-3xl">
-        <h1 class="text-display-1 text-fg mb-5">
-          Tutti Rouge — from invisible to <span class="text-gradient-brand">market leader</span>
+        <h1 class="display-hero text-ink mb-5">
+          Tutti Rouge — from invisible to <span class="text-accent">market leader</span>
         </h1>
-        <p class="text-lg text-fg-secondary leading-relaxed mb-6 max-w-2xl">
+        <p class="text-lg text-ink-2 leading-relaxed mb-6 max-w-2xl">
           A UK-based fashion resale brand rebuilding their entire acquisition engine around
           Generative Engine Optimization and conversion rate optimization. The result: +187%
           organic traffic, 4.2x lead-to-customer conversion, £2.1M attributed pipeline.
         </p>
         <div class="flex flex-wrap gap-2">
           {['SEO', 'GEO', 'Conversion', 'Analytics'].map((t) => (
-            <span class="px-3 py-1 bg-bg-muted border border-border text-xs mono text-fg-secondary rounded">{t}</span>
+            <span class="px-3 py-1 bg-canvas-1-3 border border-line text-xs mono text-ink-2 rounded">{t}</span>
           ))}
         </div>
       </div>
@@ -47,40 +47,40 @@ const timeline = [
 
   <!-- KEY METRICS -->
   <section class="pb-16">
-    <div class="container-wide">
+    <div class="wrap">
       <div class="card p-10 grid md:grid-cols-4 gap-8">
         <div>
           <div class="eyebrow mb-2">PULSE Score</div>
-          <div class="text-5xl font-black text-fg mb-1">42 → 78</div>
+          <div class="text-5xl font-black text-ink mb-1">42 → 78</div>
           <div class="text-xs text-emerald-500">+36 points in 90 days</div>
         </div>
         <div>
           <div class="eyebrow mb-2">Organic traffic</div>
-          <div class="text-5xl font-black text-fg mb-1">+187%</div>
-          <div class="text-xs text-fg-muted">in 6 months</div>
+          <div class="text-5xl font-black text-ink mb-1">+187%</div>
+          <div class="text-xs text-ink-3">in 6 months</div>
         </div>
         <div>
           <div class="eyebrow mb-2">Conversion</div>
-          <div class="text-5xl font-black text-fg mb-1">4.2x</div>
-          <div class="text-xs text-fg-muted">lead-to-customer</div>
+          <div class="text-5xl font-black text-ink mb-1">4.2x</div>
+          <div class="text-xs text-ink-3">lead-to-customer</div>
         </div>
         <div>
           <div class="eyebrow mb-2">Pipeline</div>
-          <div class="text-5xl font-black text-[var(--color-brand)] mb-1">£2.1M</div>
-          <div class="text-xs text-fg-muted">attributed from organic</div>
+          <div class="text-5xl font-black text-accent mb-1">£2.1M</div>
+          <div class="text-xs text-ink-3">attributed from organic</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BACKGROUND -->
-  <section class="section-y">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Background</div>
-        <h2 class="text-display-3 text-fg">Who is Tutti Rouge?</h2>
+        <h2 class="display-md text-ink">Who is Tutti Rouge?</h2>
       </div>
-      <div class="space-y-4 text-lg text-fg-secondary leading-relaxed">
+      <div class="space-y-4 text-lg text-ink-2 leading-relaxed">
         <p>
           Tutti Rouge is a UK-based fashion resale brand specializing in authenticated pre-owned
           luxury and contemporary pieces. Founded in 2019, they grew to £4M annual revenue
@@ -100,27 +100,27 @@ const timeline = [
   </section>
 
   <!-- PROBLEM -->
-  <section class="section-y bg-bg-subtle">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section section-band">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">The problem</div>
-        <h2 class="text-display-3 text-fg">Where the leaks were</h2>
+        <h2 class="display-md text-ink">Where the leaks were</h2>
       </div>
       <div class="space-y-6">
-        <p class="text-lg text-fg-secondary leading-relaxed">
-          The PULSE audit came back at <strong class="text-fg">42/100</strong> — below average
+        <p class="text-lg text-ink-2 leading-relaxed">
+          The PULSE audit came back at <strong class="text-ink">42/100</strong> — below average
           for the vertical. Two dimensions were critically low:
         </p>
         <div class="grid md:grid-cols-2 gap-4">
           <div class="card p-6">
-            <div class="text-3xl font-black text-[var(--color-brand)] mb-1">T: 32/100</div>
-            <div class="font-bold text-fg mb-2">Lead capture</div>
-            <p class="text-sm text-fg-muted">CTAs were buried below the fold. The booking form had 14 fields. Mobile checkout had 7 steps. Estimated 68% lead leakage.</p>
+            <div class="text-3xl font-black text-accent mb-1">T: 32/100</div>
+            <div class="font-bold text-ink mb-2">Lead capture</div>
+            <p class="text-sm text-ink-3">CTAs were buried below the fold. The booking form had 14 fields. Mobile checkout had 7 steps. Estimated 68% lead leakage.</p>
           </div>
           <div class="card p-6">
-            <div class="text-3xl font-black text-[var(--color-brand)] mb-1">A: 28/100</div>
-            <div class="font-bold text-fg mb-2">Sales follow-up</div>
-            <p class="text-sm text-fg-muted">No CRM. No retargeting. Email was a Mailchimp newsletter, not a nurture sequence. Visitors who didn\'t convert were lost forever.</p>
+            <div class="text-3xl font-black text-accent mb-1">A: 28/100</div>
+            <div class="font-bold text-ink mb-2">Sales follow-up</div>
+            <p class="text-sm text-ink-3">No CRM. No retargeting. Email was a Mailchimp newsletter, not a nurture sequence. Visitors who didn\'t convert were lost forever.</p>
           </div>
         </div>
       </div>
@@ -128,13 +128,13 @@ const timeline = [
   </section>
 
   <!-- APPROACH -->
-  <section class="section-y">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Our approach</div>
-        <h2 class="text-display-3 text-fg">What we did, in order</h2>
+        <h2 class="display-md text-ink">What we did, in order</h2>
       </div>
-      <div class="space-y-6 text-lg text-fg-secondary leading-relaxed">
+      <div class="space-y-6 text-lg text-ink-2 leading-relaxed">
         <p>
           We followed the PULSE framework — fix the lowest-scoring dimensions first, then
           compound on the wins. Here\'s the 90-day execution plan we shipped.
@@ -142,28 +142,28 @@ const timeline = [
         <div class="card p-6">
           <div class="eyebrow mb-3">Phase 1: Foundation (Weeks 1-4)</div>
           <ul class="space-y-2 text-base">
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Rebuilt the homepage with a clear value proposition above the fold</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Added Product, Organization, and FAQ schema markup sitewide</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Set up GA4 with proper event taxonomy and conversion tracking</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Installed Meta, Google, and TikTok retargeting pixels</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Rebuilt the homepage with a clear value proposition above the fold</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Added Product, Organization, and FAQ schema markup sitewide</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Set up GA4 with proper event taxonomy and conversion tracking</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Installed Meta, Google, and TikTok retargeting pixels</li>
           </ul>
         </div>
         <div class="card p-6">
           <div class="eyebrow mb-3">Phase 2: Conversion (Weeks 5-8)</div>
           <ul class="space-y-2 text-base">
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Reduced checkout from 7 steps to 3, fields from 14 to 6</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>A/B tested 6 CTA variations — winning variant: "Find your fit"</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Added live chat with a 90-second first-response SLA</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Built a 4-step welcome nurture sequence for new email subscribers</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Reduced checkout from 7 steps to 3, fields from 14 to 6</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>A/B tested 6 CTA variations — winning variant: "Find your fit"</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Added live chat with a strategist-reviewed first-response SLA</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Built a 4-step welcome nurture sequence for new email subscribers</li>
           </ul>
         </div>
         <div class="card p-6">
           <div class="eyebrow mb-3">Phase 3: GEO & Scale (Weeks 9-13)</div>
           <ul class="space-y-2 text-base">
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Restructured 12 category pages for AI-overview citation</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Built a knowledge graph presence via Wikidata and Wikipedia citations</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Set up weekly monitoring for ChatGPT, Perplexity, and Gemini citations</li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i>Rolled out winning CRO variants to 100% of traffic</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Restructured 12 category pages for AI-overview citation</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Built a knowledge graph presence via Wikidata and Wikipedia citations</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Set up weekly monitoring for ChatGPT, Perplexity, and Gemini citations</li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i>Rolled out winning CRO variants to 100% of traffic</li>
           </ul>
         </div>
       </div>
@@ -171,23 +171,23 @@ const timeline = [
   </section>
 
   <!-- TIMELINE -->
-  <section class="section-y bg-bg-subtle">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Timeline</div>
-        <h2 class="text-display-2 text-fg">
+        <h2 class="display-lg text-ink">
           13 weeks from<br/>
-          <span class="text-gradient-brand">audit to scale</span>
+          <span class="text-accent">audit to scale</span>
         </h2>
       </div>
       <div class="space-y-4">
         {timeline.map((t) => (
           <div class="card p-6 grid md:grid-cols-[120px_1fr_2fr] gap-6">
-            <div class="text-xs mono text-[var(--color-brand)]">{t.week}</div>
+            <div class="text-xs mono text-accent">{t.week}</div>
             <div>
-              <div class="font-bold text-fg">{t.phase}</div>
+              <div class="font-bold text-ink">{t.phase}</div>
             </div>
-            <p class="text-sm text-fg-muted leading-relaxed">{t.desc}</p>
+            <p class="text-sm text-ink-3 leading-relaxed">{t.desc}</p>
           </div>
         ))}
       </div>
@@ -195,64 +195,64 @@ const timeline = [
   </section>
 
   <!-- RESULTS -->
-  <section class="section-y">
-    <div class="container-wide">
+  <section class="section">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The results</div>
-        <h2 class="text-display-2 text-fg">
-          Real numbers, <span class="text-gradient-brand">measured honestly</span>
+        <h2 class="display-lg text-ink">
+          Real numbers, <span class="text-accent">measured honestly</span>
         </h2>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 mb-12">
         <div class="card p-6">
-          <div class="text-3xl font-black text-fg mb-2">+187%</div>
-          <div class="font-bold text-fg mb-2">Organic traffic</div>
-          <p class="text-sm text-fg-muted leading-relaxed mb-3">Measured via Google Search Console, comparing Jan 2025 to Jun 2025. Driven by 23 new ranking keywords in top 3 positions and 89 new keywords on page 1.</p>
-          <div class="text-xs mono text-fg-muted">Verified: GSC, SEMrush, Ahrefs cross-reference</div>
+          <div class="text-3xl font-black text-ink mb-2">+187%</div>
+          <div class="font-bold text-ink mb-2">Organic traffic</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">Measured via Google Search Console, comparing Jan 2025 to Jun 2025. Driven by 23 new ranking keywords in top 3 positions and 89 new keywords on page 1.</p>
+          <div class="text-xs mono text-ink-3">Verified: GSC, SEMrush, Ahrefs cross-reference</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-fg mb-2">4.2x</div>
-          <div class="font-bold text-fg mb-2">Lead-to-customer</div>
-          <p class="text-sm text-fg-muted leading-relaxed mb-3">From 2.1% to 8.8% conversion rate. Driven by checkout simplification, CTA testing, and live chat. Same traffic volume, 4x the customers.</p>
-          <div class="text-xs mono text-fg-muted">Verified: GA4 + HubSpot attribution</div>
+          <div class="text-3xl font-black text-ink mb-2">4.2x</div>
+          <div class="font-bold text-ink mb-2">Lead-to-customer</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">From 2.1% to 8.8% conversion rate. Driven by checkout simplification, CTA testing, and live chat. Same traffic volume, 4x the customers.</p>
+          <div class="text-xs mono text-ink-3">Verified: GA4 + HubSpot attribution</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-fg mb-2">£2.1M</div>
-          <div class="font-bold text-fg mb-2">Attributed pipeline</div>
-          <p class="text-sm text-fg-muted leading-relaxed mb-3">Sum of qualified opportunities sourced from organic search in the 6-month measurement window. Verified via multi-touch attribution in HubSpot.</p>
-          <div class="text-xs mono text-fg-muted">Verified: HubSpot multi-touch attribution</div>
+          <div class="text-3xl font-black text-ink mb-2">£2.1M</div>
+          <div class="font-bold text-ink mb-2">Attributed pipeline</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">Sum of qualified opportunities sourced from organic search in the 6-month measurement window. Verified via multi-touch attribution in HubSpot.</p>
+          <div class="text-xs mono text-ink-3">Verified: HubSpot multi-touch attribution</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-fg mb-2">+312%</div>
-          <div class="font-bold text-fg mb-2">AI-overview citations</div>
-          <p class="text-sm text-fg-muted leading-relaxed mb-3">From 8 monthly mentions to 33 monthly mentions across ChatGPT, Perplexity, and Gemini. Tracked weekly via custom monitoring tool.</p>
-          <div class="text-xs mono text-fg-muted">Verified: Custom monitoring tool, weekly reports</div>
+          <div class="text-3xl font-black text-ink mb-2">+312%</div>
+          <div class="font-bold text-ink mb-2">AI-overview citations</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">From 8 monthly mentions to 33 monthly mentions across ChatGPT, Perplexity, and Gemini. Tracked weekly via custom monitoring tool.</p>
+          <div class="text-xs mono text-ink-3">Verified: Custom monitoring tool, weekly reports</div>
         </div>
       </div>
 
-      <blockquote class="card p-8 border-l-4 border-[var(--color-brand)] max-w-3xl">
-        <p class="text-xl text-fg leading-relaxed mb-4 italic">
+      <blockquote class="card p-8 border-l-4 border-accent max-w-3xl">
+        <p class="text-xl text-ink leading-relaxed mb-4 italic">
           "Sanjeev\'s team rebuilt our entire acquisition engine. We\'re now showing up in
           AI search results ahead of brands 10x our size. The PULSE audit told us exactly
           where the leaks were, and the 90-day plan prioritized the fixes that mattered."
         </p>
         <div class="text-sm">
-          <div class="font-bold text-fg">Sarah Mitchell</div>
-          <div class="text-fg-muted">CEO, Tutti Rouge</div>
+          <div class="font-bold text-ink">Sarah Mitchell</div>
+          <div class="text-ink-3">CEO, Tutti Rouge</div>
         </div>
       </blockquote>
     </div>
   </section>
 
   <!-- WHAT WE LEARNED -->
-  <section class="section-y bg-bg-subtle">
-    <div class="container-wide max-w-3xl">
+  <section class="section section-band">
+    <div class="wrap max-w-3xl">
       <div class="eyebrow mb-4">What we learned</div>
-      <h2 class="text-display-2 text-fg mb-6">
+      <h2 class="display-lg text-ink mb-6">
         The takeaway
       </h2>
-      <div class="prose prose-invert max-w-none space-y-4 text-lg text-fg-secondary leading-relaxed">
+      <div class="prose prose-invert max-w-none space-y-4 text-lg text-ink-2 leading-relaxed">
         <p>
           Tutti Rouge is a textbook example of a business with a great product and a leaky
           funnel. The brand was strong, the inventory was real, the customers existed — but
@@ -274,19 +274,19 @@ const timeline = [
   </section>
 
   <!-- CTA -->
-  <section class="section-y relative overflow-hidden">
+  <section class="section relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative text-center">
-      <h2 class="text-display-2 text-fg mb-6">
-        Could this be <span class="text-gradient-brand">your business?</span>
+    <div class="wrap relative text-center">
+      <h2 class="display-lg text-ink mb-6">
+        Could this be <span class="text-accent">your business?</span>
       </h2>
-      <p class="text-lg text-fg-secondary mb-10 max-w-xl mx-auto">
-        Find out with a free PULSE audit. 90 seconds. Real numbers.
+      <p class="text-lg text-ink-2 mb-10 max-w-xl mx-auto">
+        Find out with a free PULSE breakdown. strategist-reviewed. Real numbers.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a href="/pulse-audit" class="btn btn-primary btn-large">
           <i class="ph-bold ph-lightning"></i>
-          Get my free PULSE audit
+          Get my free PULSE breakdown
         </a>
         <a href="/work" class="btn btn-ghost btn-large">
           Read another case study

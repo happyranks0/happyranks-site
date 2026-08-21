@@ -1,8 +1,4 @@
 ---
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Section, SectionContainer } from '@/components/ui/section';
-
 const {
   kicker = '',
   title = '',
@@ -16,54 +12,50 @@ const {
 } = Astro.props;
 ---
 
-<Section class:list={[compact ? 'py-20' : 'page-hero mesh-grid', 'border-b border-white/5']}>
-  <SectionContainer class="site-shell !max-w-7xl relative z-10">
+<section class:list={[compact ? 'page-hero pt-28 pb-12' : 'cf-hero', 'relative']}>
+  <div class="wrap relative z-10">
     <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
-      {kicker && (
-        <Badge variant="outline" class="mb-5 border-primary/30 bg-primary/10 text-primary">
-          {kicker}
-        </Badge>
-      )}
-      <h1 class="font-display text-4xl font-bold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+      {kicker && <p class="kicker mb-4">{kicker}</p>}
+      <h1 class="display-hero mb-5">
         {title}
         {highlight && (
           <>
             <br />
-            <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{highlight}</span>
+            <span class="text-accent">{highlight}</span>
           </>
         )}
       </h1>
       {description && (
-        <p class:list={['mt-6 text-lg leading-relaxed text-base-content/70 text-balance', align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-2xl']}>
+        <p class:list={['lead mb-8', align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-2xl']}>
           {description}
         </p>
       )}
       {(primaryCta || secondaryCta) && (
-        <div class:list={['mt-8 flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
+        <div class:list={['flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
           {primaryCta && (
-            <Button as="a" href={primaryCta.href} size="lg">
+            <a href={primaryCta.href} class="btn btn-primary btn-large">
               {primaryCta.icon && <i class={`ph-bold ${primaryCta.icon}`}></i>}
               {primaryCta.label}
-            </Button>
+            </a>
           )}
           {secondaryCta && (
-            <Button as="a" href={secondaryCta.href} variant="outline" size="lg">
+            <a href={secondaryCta.href} class="btn btn-ghost btn-large">
               {secondaryCta.label}
               {secondaryCta.icon && <i class={`ph-bold ${secondaryCta.icon}`}></i>}
-            </Button>
+            </a>
           )}
         </div>
       )}
       {meta && (
-        <div class:list={['mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-base-content/50', align === 'center' && 'justify-center']}>
-          {meta.map((m) => (
+        <div class:list={['mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-3', align === 'center' && 'justify-center']}>
+          {meta.map((m: string) => (
             <span class="flex items-center gap-1.5">
-              <i class="ph-bold ph-check-circle text-success"></i>
+              <i class="ph-bold ph-check-circle text-ok"></i>
               {m}
             </span>
           ))}
         </div>
       )}
     </div>
-  </SectionContainer>
-</Section>
+  </div>
+</section>

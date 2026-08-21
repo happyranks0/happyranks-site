@@ -1,8 +1,4 @@
 ---
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
 const {
   formId = 'pulse-audit-form',
   compact = false,
@@ -12,10 +8,10 @@ const {
 
 <div class="pulse-audit-form-wrap">
   {showTitle && (
-    <div class="mb-6">
-      <div class="badge badge-outline badge-primary mb-3">Free PULSE audit</div>
-      <h2 class="font-display text-2xl font-bold tracking-tight">URL + email → report in 2 min</h2>
-      <p class="mt-2 text-sm text-base-content/60">50+ checks across five revenue dimensions.</p>
+    <div class="mb-5">
+      <p class="kicker mb-2">Free PULSE breakdown</p>
+      <h2 class="display-md mb-2">Your site, scored across five revenue dimensions</h2>
+      <p class="body-sm">Share your URL — a strategist reviews the signals and sends your ranked breakdown.</p>
     </div>
   )}
 
@@ -24,45 +20,42 @@ const {
     class:list={['space-y-4', compact && 'space-y-3']}
     data-pulse-audit-form
   >
-    <div class="form-control w-full">
-      <Label for={`${formId}-url`}>Website URL</Label>
-      <Input
+    <div>
+      <label for={`${formId}-url`} class="block text-sm font-medium text-ink mb-2">Website URL</label>
+      <input
         type="url"
         id={`${formId}-url`}
         name="url"
         required
         placeholder="https://yoursite.com"
-        class="mt-2 bg-base-300/50 border-white/10"
+        class="input-field"
       />
     </div>
-    <div class="form-control w-full">
-      <Label for={`${formId}-email`}>Email</Label>
-      <Input
+    <div>
+      <label for={`${formId}-email`} class="block text-sm font-medium text-ink mb-2">Email</label>
+      <input
         type="email"
         id={`${formId}-email`}
         name="email"
         required
         placeholder="you@company.com"
-        class="mt-2 bg-base-300/50 border-white/10"
+        class="input-field"
       />
     </div>
-    <Button type="submit" class:list={['w-full', !compact && 'h-12']}>
+    <button type="submit" class:list={['btn btn-primary w-full justify-center', compact ? '' : 'btn-large']}>
       <i class="ph-bold ph-lightning"></i>
-      Run my free PULSE audit
-    </Button>
-    <p class="text-center text-[11px] leading-relaxed text-base-content/50">
-      No credit card. PDF in ~2 minutes.
+      Request my PULSE breakdown
+    </button>
+    <p class="text-[11px] text-ink-3 text-center leading-relaxed">
+      We read every submission. No automated spam. Unsubscribe anytime.
     </p>
   </form>
 
-  <div id={`${formId}-error`} class="alert alert-error mt-4 hidden text-sm" role="alert"></div>
+  <div id={`${formId}-error`} class="alert alert-error hidden mt-4" role="alert"></div>
 
-  <div id={`${formId}-success`} class="alert alert-success mt-4 hidden">
-    <i class="ph-bold ph-check-circle text-xl"></i>
-    <div>
-      <p class="font-semibold">Audit queued</p>
-      <p class="text-sm opacity-80">Your report is on its way — check your inbox in the next 2 minutes.</p>
-    </div>
+  <div id={`${formId}-success`} class="alert alert-success hidden mt-4">
+    <p class="font-semibold text-ink mb-1">Breakdown requested</p>
+    <p class="body-sm">Your breakdown is being prepared. You'll hear from us shortly with your PULSE scores.</p>
   </div>
 </div>
 
@@ -92,7 +85,7 @@ const {
       }
     }
 
-    throw new Error(lastError || 'Audit failed');
+    throw new Error(lastError || 'Request failed');
   }
 
   form?.addEventListener('submit', async (e) => {
@@ -106,7 +99,7 @@ const {
     const btn = form.querySelector('button[type="submit"]');
     const original = btn?.innerHTML;
     if (btn) {
-      btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Running audit...';
+      btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Submitting...';
       btn.disabled = true;
     }
 
@@ -116,12 +109,12 @@ const {
       success?.classList.remove('hidden');
     } catch (err) {
       if (btn) {
-        btn.innerHTML = original || 'Run my free PULSE audit';
+        btn.innerHTML = original || 'Request my PULSE breakdown';
         btn.disabled = false;
       }
       if (errorBox) {
         errorBox.textContent =
-          'Audit failed. Try again or email hello@happyranks.com — we can run it manually.';
+          'Something went wrong. Try again or email hello@happyranks.com — we can run your breakdown manually.';
         errorBox.classList.remove('hidden');
       }
       console.error(err);

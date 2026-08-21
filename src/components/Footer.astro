@@ -1,39 +1,49 @@
 ---
-import FooterBlock from '@/components/blocks/footer-1.astro';
-
 const year = new Date().getFullYear();
 ---
 
-<FooterBlock
-  brandName="Happyranks"
-  brandHref="/"
-  description="Marketing systems measured on PULSE — findability, conversion, nurture, and attribution for growth teams."
-  columns={[
-    {
-      title: 'Product',
-      links: [
-        { label: 'Capabilities', href: '/capabilities' },
-        { label: 'Free audit', href: '/pulse-audit' },
-        { label: 'Pricing', href: '/pricing' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { label: 'Case studies', href: '/work' },
-        { label: 'About', href: '/about' },
-        { label: 'Contact', href: '/contact' },
-      ],
-    },
-    {
-      title: 'Legal',
-      links: [
-        { label: 'Privacy', href: '/privacy' },
-        { label: 'Terms', href: '/terms' },
-        { label: 'hello@happyranks.com', href: 'mailto:hello@happyranks.com' },
-      ],
-    },
-  ]}
-  copyright={`© ${year} Happyranks. All rights reserved.`}
-  class="border-t border-white/5 bg-base-200/50"
-/>
+<footer class="border-t border-line bg-canvas-1">
+  <div class="wrap section-tight">
+    <div class="grid lg:grid-cols-[1.4fr_1fr_1fr] gap-12 pb-12">
+      <div>
+        <a href="/" class="header-mark mb-5">
+          <span class="header-logo">H</span>
+          <span class="header-name">Happyranks</span>
+        </a>
+        <p class="lead max-w-sm mb-4 text-base">
+          Marketing systems measured on PULSE — findability, conversion, nurture, attribution.
+        </p>
+        <p class="text-sm text-ink-3 mb-6">
+          <a href="mailto:hello@happyranks.com" class="text-ink-2 hover:text-ink transition-colors">hello@happyranks.com</a>
+          <span class="mx-2">·</span>
+          <a href="tel:+918248816834" class="text-ink-2 hover:text-ink transition-colors">+91 82488 16834</a>
+        </p>
+        <a href="/pulse-audit" class="btn btn-primary">Request PULSE breakdown</a>
+      </div>
+      <div>
+        <p class="kicker-muted mb-4">Product</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/capabilities" class="text-ink-2 hover:text-ink transition-colors">Capabilities</a></li>
+          <li><a href="/pulse-audit" class="text-ink-2 hover:text-ink transition-colors">Free breakdown</a></li>
+          <li><a href="/pricing" class="text-ink-2 hover:text-ink transition-colors">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="kicker-muted mb-4">Company</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/work" class="text-ink-2 hover:text-ink transition-colors">Case studies</a></li>
+          <li><a href="/about" class="text-ink-2 hover:text-ink transition-colors">About</a></li>
+          <li><a href="/contact" class="text-ink-2 hover:text-ink transition-colors">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rule mb-6"></div>
+    <div class="flex flex-col sm:flex-row justify-between gap-4 text-xs text-ink-3">
+      <span>© {year} Happyranks</span>
+      <div class="flex gap-6">
+        <a href="/privacy" class="hover:text-ink transition-colors">Privacy</a>
+        <a href="/terms" class="hover:text-ink transition-colors">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>

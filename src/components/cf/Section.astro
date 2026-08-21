@@ -1,0 +1,9 @@
+---
+const { class: className = '', band = false, id = undefined } = Astro.props;
+---
+
+<section id={id} class:list={[band && 'section-band', className]}>
+  <div class="wrap">
+    <slot />
+  </div>
+</section>

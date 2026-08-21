@@ -12,7 +12,7 @@ const serviceSchema = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Free 90-second PULSE audit with 10-page PDF report',
+    description: 'Free strategist-reviewed PULSE breakdown with dimension scores and prioritised fix sequence',
   },
 };
 
@@ -121,24 +121,24 @@ const dimensions = [
   />
 
   <!-- DIMENSIONS -->
-  <section class="section-y">
-    <div class="container-wide space-y-24">
+  <section class="section">
+    <div class="wrap space-y-24">
       {dimensions.map((d) => (
         <div class="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-10 lg:gap-14 items-start">
           <div class="md:sticky md:top-24">
             <div class="flex items-center gap-3 mb-5">
               <div class={`w-11 h-11 rounded-xl bg-gradient-to-br ${d.color} flex items-center justify-center shadow-lg`}>
-                <i class={`ph-bold ${d.icon} text-xl text-fg`}></i>
+                <i class={`ph-bold ${d.icon} text-xl text-ink`}></i>
               </div>
               <div class="text-3xl font-black text-ink-3 mono leading-none">{d.letter}</div>
             </div>
-            <h2 class="text-display-3 text-fg mb-3">{d.name}</h2>
-            <p class="text-fg-secondary text-[15px] leading-relaxed mb-4">{d.headline}</p>
-            <p class="text-sm text-fg-muted leading-relaxed mb-6">{d.desc}</p>
-            <div class="text-[10px] mono text-fg-muted uppercase tracking-widest mb-3">Tools we use</div>
+            <h2 class="display-md text-ink mb-3">{d.name}</h2>
+            <p class="text-ink-2 text-[15px] leading-relaxed mb-4">{d.headline}</p>
+            <p class="text-sm text-ink-3 leading-relaxed mb-6">{d.desc}</p>
+            <div class="text-[10px] mono text-ink-3 uppercase tracking-widest mb-3">Tools we use</div>
             <div class="flex flex-wrap gap-1.5">
               {d.tools.map((t) => (
-                <span class="px-2 py-1 text-[10.5px] mono bg-bg-muted border border-border rounded text-fg-secondary">{t}</span>
+                <span class="px-2 py-1 text-[10.5px] mono bg-canvas-1-3 border border-line rounded text-ink-2">{t}</span>
               ))}
             </div>
           </div>
@@ -147,10 +147,10 @@ const dimensions = [
               <p class="kicker mb-4">What we audit</p>
               <div class="space-y-4">
                 {d.checks.map((c) => (
-                  <div class="flex items-start gap-4 pb-4 border-b border-border last:border-0 last:pb-0">
+                  <div class="flex items-start gap-4 pb-4 border-b border-line last:border-0 last:pb-0">
                     <i class="ph-bold ph-check-circle text-accent text-xl mt-0.5 shrink-0"></i>
                     <div>
-                      <div class="font-semibold text-fg mb-1">{c.name}</div>
+                      <div class="font-semibold text-ink mb-1">{c.name}</div>
                       <div class="body-sm-muted">{c.detail}</div>
                     </div>
                   </div>
@@ -164,16 +164,16 @@ const dimensions = [
   </section>
 
   <!-- AUDIT PROCESS -->
-  <section class="section-y bg-bg-subtle">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">How the audit works</div>
-        <h2 class="text-display-2 text-fg mb-6">
+        <h2 class="display-lg text-ink mb-6">
           From URL to report<br/>
-          <span class="text-gradient-brand">in 90 seconds</span>
+          <span class="text-accent">in strategist-reviewed</span>
         </h2>
-        <p class="text-lg text-fg-secondary leading-relaxed">
-          The free PULSE audit runs a custom-built Python engine against your site. It pulls
+        <p class="text-lg text-ink-2 leading-relaxed">
+          The free PULSE breakdown runs a custom-built Python engine against your site. It pulls
           ~50 measurable signals, scores them against a weighted rubric, and produces a
           10-page PDF report. Here's exactly what happens under the hood.
         </p>
@@ -188,10 +188,10 @@ const dimensions = [
         ].map((s) => (
           <div class="card p-6">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-10 h-10 rounded-full bg-[var(--color-brand)] text-fg flex items-center justify-center font-bold">{s.n}</div>
-              <h3 class="text-xl font-bold text-fg">{s.title}</h3>
+              <div class="w-10 h-10 rounded-full bg-accent text-ink flex items-center justify-center font-bold">{s.n}</div>
+              <h3 class="text-xl font-bold text-ink">{s.title}</h3>
             </div>
-            <p class="text-fg-secondary leading-relaxed text-sm">{s.detail}</p>
+            <p class="text-ink-2 leading-relaxed text-sm">{s.detail}</p>
           </div>
         ))}
       </div>
@@ -199,14 +199,14 @@ const dimensions = [
   </section>
 
   <!-- INDUSTRY APPLICATIONS -->
-  <section class="section-y">
-    <div class="container-wide">
+  <section class="section">
+    <div class="wrap">
       <div class="max-w-3xl mb-12">
         <div class="eyebrow mb-4">Where it applies</div>
-        <h2 class="text-display-2 text-fg mb-6">
-          Every industry. <span class="text-gradient-light">Same rigor.</span>
+        <h2 class="display-lg text-ink mb-6">
+          Every industry. <span class="text-ink-2">Same rigor.</span>
         </h2>
-        <p class="text-lg text-fg-secondary leading-relaxed">
+        <p class="text-lg text-ink-2 leading-relaxed">
           The PULSE framework works the same way regardless of industry — what changes is
           which dimensions matter most for your specific business. A wedding venue obsesses
           over Understanding and Lead capture. A B2B SaaS company obsesses over Presence and
@@ -222,9 +222,9 @@ const dimensions = [
           { industry: 'Service business', priority: 'L → S → P → U → E', focus: 'Lead capture (booking, calls), Sales follow-up (nurture sequences), Presence (local SEO).' },
         ].map((i) => (
           <div class="card p-6">
-            <div class="font-bold text-fg mb-3">{i.industry}</div>
-            <div class="text-xs mono text-[var(--color-brand)] mb-3">Priority: {i.priority}</div>
-            <p class="text-sm text-fg-muted leading-relaxed">{i.focus}</p>
+            <div class="font-bold text-ink mb-3">{i.industry}</div>
+            <div class="text-xs mono text-accent mb-3">Priority: {i.priority}</div>
+            <p class="text-sm text-ink-3 leading-relaxed">{i.focus}</p>
           </div>
         ))}
       </div>
@@ -232,18 +232,18 @@ const dimensions = [
   </section>
 
   <!-- CTA -->
-  <section class="section-y relative overflow-hidden">
+  <section class="section relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative">
+    <div class="wrap relative">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-display-2 text-fg mb-6">
-          See how your site <span class="text-gradient-brand">scores today</span>
+        <h2 class="display-lg text-ink mb-6">
+          See how your site <span class="text-accent">scores today</span>
         </h2>
-        <p class="text-lg text-fg-secondary mb-10">
-          A free PULSE audit gives you a real number across all 5 dimensions. No fluff. No call required.
+        <p class="text-lg text-ink-2 mb-10">
+          A free PULSE breakdown gives you a real number across all 5 dimensions. No fluff. No call required.
         </p>
         <a href="/pulse-audit" class="btn btn-primary btn-large">
-          Get my free PULSE audit
+          Get my free PULSE breakdown
           <i class="ph-bold ph-arrow-right"></i>
         </a>
       </div>
