@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PulseScore from '../components/PulseScore.astro';
+import PulseAuditForm from '../components/PulseAuditForm.astro';
+import FAQ from '../components/cf/FAQ.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Is the PULSE breakdown really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. A strategist reviews your site and sends a scored breakdown at no cost.' } },
+    { '@type': 'Question', name: 'What do I receive?', acceptedAnswer: { '@type': 'Answer', text: 'Dimension scores across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation — plus the top leaks ranked by revenue impact and a suggested 90-day fix sequence.' } },
+    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable revenue signals, reviewed by a senior strategist — not automated opinions or generic checklists.' } },
+  ],
+};
+
+const serviceSchema = {
+  '@type': 'Service',
+  serviceType: 'Free Marketing Audit',
+  provider: { '@type': 'Organization', name: 'Happyranks' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
+const faqItems = faqSchema.mainEntity.map((item) => ({
+  q: item.name,
+  a: item.acceptedAnswer.text,
+}));
+---
+
+<Layout
+  title="Free PULSE Breakdown — See where your revenue stack is leaking"
+  description="Strategist-reviewed PULSE breakdown across five revenue dimensions. Scored, prioritised, and ranked by revenue impact. No call required."
+  active="/pulse-audit"
+  schema={[faqSchema, serviceSchema]}
+>
+  <PageHeader
+    kicker="Free PULSE breakdown · Strategist-reviewed"
+    title="Find out what your marketing"
+    highlight="is actually worth."
+    description="Five dimensions. Measurable checks. A scored breakdown with the fixes ranked by revenue impact — reviewed before it reaches you."
+    compact={true}
+  />
+
+  <section class="section-tight border-b border-line pb-16">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="audit-panel lg:sticky lg:top-24" id="pulse-form-panel">
+          <PulseAuditForm formId="pulse-form" />
+        </div>
+        <div class="hidden lg:block">
+          <PulseScore />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="wrap">
+      <p class="kicker mb-8">What happens next</p>
+      <div class="timeline">
+        {[
+          { n: '01', t: 'You submit', d: 'Your homepage URL and email. That is all we need to start.' },
+          { n: '02', t: 'We score', d: 'Your site is measured across five revenue dimensions — presence through evaluation.' },
+          { n: '03', t: 'Strategist review', d: 'A senior strategist reviews the signals, ranks leaks by revenue impact, and sends your breakdown.' },
+        ].map((s) => (
+          <div class="timeline-step">
+            <p class="timeline-step-num">{s.n}</p>
+            <h3 class="display-md mb-2">{s.t}</h3>
+            <p class="body-sm-muted">{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap max-w-3xl">
+      <h2 class="display-lg text-center mb-10">Questions</h2>
+      <FAQ items={faqItems} />
+    </div>
+  </section>
+</Layout>

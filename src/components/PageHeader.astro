@@ -1,0 +1,61 @@
+---
+const {
+  kicker = '',
+  title = '',
+  highlight = '',
+  description = '',
+  primaryCta = null,
+  secondaryCta = null,
+  meta = null,
+  align = 'left',
+  compact = false,
+} = Astro.props;
+---
+
+<section class:list={[compact ? 'page-hero pt-28 pb-12' : 'cf-hero', 'relative']}>
+  <div class="wrap relative z-10">
+    <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+      {kicker && <p class="kicker mb-4">{kicker}</p>}
+      <h1 class="display-hero mb-5">
+        {title}
+        {highlight && (
+          <>
+            <br />
+            <span class="text-accent">{highlight}</span>
+          </>
+        )}
+      </h1>
+      {description && (
+        <p class:list={['lead mb-8', align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-2xl']}>
+          {description}
+        </p>
+      )}
+      {(primaryCta || secondaryCta) && (
+        <div class:list={['flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
+          {primaryCta && (
+            <a href={primaryCta.href} class="btn btn-primary btn-large">
+              {primaryCta.icon && <i class={`ph-bold ${primaryCta.icon}`}></i>}
+              {primaryCta.label}
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="btn btn-ghost btn-large">
+              {secondaryCta.label}
+              {secondaryCta.icon && <i class={`ph-bold ${secondaryCta.icon}`}></i>}
+            </a>
+          )}
+        </div>
+      )}
+      {meta && (
+        <div class:list={['mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-3', align === 'center' && 'justify-center']}>
+          {meta.map((m: string) => (
+            <span class="flex items-center gap-1.5">
+              <i class="ph-bold ph-check-circle text-ok"></i>
+              {m}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

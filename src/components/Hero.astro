@@ -1,58 +1,27 @@
 ---
+import PageHeader from './PageHeader.astro';
+
 const {
   eyebrow = '',
   title = '',
   highlight = '',
   description = '',
-  primaryCta = null, // { label, href, icon }
-  secondaryCta = null, // { label, href, icon }
-  meta = null, // string[] of trust signals
-  align = 'left', // 'left' | 'center'
-  compact = false, // smaller bottom padding for pages with content directly below
+  primaryCta = null,
+  secondaryCta = null,
+  meta = null,
+  align = 'left',
+  compact = false,
 } = Astro.props;
 ---
 
-<section class:list={[compact ? 'pt-24 pb-12 md:pt-28 md:pb-14' : 'hero-section', 'relative']}>
-  <div class="container-wide relative">
-    <div class:list={['max-w-4xl', align === 'center' && 'mx-auto text-center']}>
-      {eyebrow && (
-        <div class="eyebrow mb-4">{eyebrow}</div>
-      )}
-      <h1 class="text-display-1 text-white mb-5">
-        {title}{highlight && (<><br/><span class="text-gradient-brand">{highlight}</span></>)}
-      </h1>
-      {description && (
-        <p class:list={['text-[17px] text-[#a8a8a8] leading-[1.6] mb-7', align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-2xl']}>
-          {description}
-        </p>
-      )}
-      {(primaryCta || secondaryCta) && (
-        <div class:list={['flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
-          {primaryCta && (
-            <a href={primaryCta.href} class="btn btn-primary btn-large">
-              {primaryCta.icon && <i class={`ph-bold ${primaryCta.icon}`}></i>}
-              {primaryCta.label}
-            </a>
-          )}
-          {secondaryCta && (
-            <a href={secondaryCta.href} class="btn btn-ghost btn-large">
-              {secondaryCta.label}
-              {secondaryCta.icon && <i class={`ph-bold ${secondaryCta.icon}`}></i>}
-            </a>
-          )}
-        </div>
-      )}
-      {meta && (
-        <div class:list={['mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px] mono text-[#888]', align === 'center' && 'justify-center']}>
-          {meta.map((m, i) => (
-            <div class="flex items-center gap-1.5 whitespace-nowrap">
-              {i > 0 && <span class="text-[#333] mr-3" aria-hidden="true">·</span>}
-              <i class="ph-bold ph-check-circle text-emerald-500"></i>
-              <span>{m}</span>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  </div>
-</section>
+<PageHeader
+  kicker={eyebrow}
+  title={title}
+  highlight={highlight}
+  description={description}
+  primaryCta={primaryCta}
+  secondaryCta={secondaryCta}
+  meta={meta}
+  align={align}
+  compact={compact}
+/>

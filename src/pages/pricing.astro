@@ -7,9 +7,9 @@ const faqSchema = {
   mainEntity: [
     { '@type': 'Question', name: 'Are these prices in USD?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. We work with clients across the US, UK, UAE, and India. Mention your region on the call and we will quote in your local currency at competitive local pricing.' } },
     { '@type': 'Question', name: 'What is the minimum commitment?', acceptedAnswer: { '@type': 'Answer', text: '3 months. After that, month-to-month with 30 days notice. Most clients stay 9-18 months because the system compounds.' } },
-    { '@type': 'Question', name: 'Do you do one-off projects?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely. We are built for ongoing engagements. For one-off audits, the free VITAL audit is the right starting point.' } },
+    { '@type': 'Question', name: 'Do you do one-off projects?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely. We are built for ongoing engagements. For a strategist-reviewed breakdown first, request the free PULSE breakdown.' } },
     { '@type': 'Question', name: 'What if I am not happy after 30 days?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. Full refund for that month, no questions, no friction.' } },
-    { '@type': 'Question', name: 'Do I own the work?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Everything we build is yours on full payment. Code, copy, designs, data. The only thing we retain is our internal frameworks and the VITAL scoring engine.' } },
+    { '@type': 'Question', name: 'Do I own the work?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Everything we build is yours on full payment. Code, copy, designs, data. The only thing we retain is our internal frameworks and the PULSE scoring engine.' } },
   ],
 };
 
@@ -20,7 +20,7 @@ const tiers = [
     period: '/ month',
     desc: 'For businesses that need a working marketing system, fast. A single landing page + lead funnel + analytics. Ships in 30 days.',
     features: [
-      'Full VITAL audit + 90-day action plan',
+      'Full PULSE breakdown + 90-day action plan',
       'Single landing page rebuild (design + copy + build)',
       'Basic SEO + GEO setup',
       '1 lead magnet funnel (PDF + landing + email sequence)',
@@ -91,11 +91,11 @@ const faqs = [
   },
   {
     q: 'Do you do one-off projects?',
-    a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits or VITAL reports, the free audit tool is the right starting point. For a one-off website build, we can refer you to trusted partners.',
+    a: 'Rarely. We\'re built for ongoing engagements because the highest-ROI work happens after launch — optimization, testing, iteration. For one-off audits or PULSE reports, the free audit tool is the right starting point. For a one-off website build, we can refer you to trusted partners.',
   },
   {
-    q: 'What if I just need a VITAL audit?',
-    a: 'That\'s free. Use the VITAL audit tool — you\'ll get a scored report in 90 seconds, delivered by email within 2 minutes. If you want help acting on it, that\'s what we do. No pressure to engage, no auto-enrollment, no sales trap.',
+    q: 'What if I just need a PULSE breakdown?',
+    a: 'That\'s free. Request a strategist-reviewed breakdown — dimension scores, top leaks ranked by revenue impact, and a suggested fix sequence. If you want help acting on it, that\'s what we do. No pressure to engage.',
   },
   {
     q: 'How quickly can you start?',
@@ -111,7 +111,7 @@ const faqs = [
   },
   {
     q: 'Do I own the work?',
-    a: 'Yes. Everything we build for you — landing pages, funnels, email sequences, dashboards — is yours on full payment. You own the code, the copy, the designs, the data. The only thing we retain is our internal frameworks, methodologies, and the VITAL scoring engine itself. You can take everything we build and run it with another team tomorrow.',
+    a: 'Yes. Everything we build for you — landing pages, funnels, email sequences, dashboards — is yours on full payment. You own the code, the copy, the designs, the data. The only thing we retain is our internal frameworks, methodologies, and the PULSE scoring engine itself. You can take everything we build and run it with another team tomorrow.',
   },
   {
     q: 'Can I upgrade or downgrade later?',
@@ -126,7 +126,7 @@ const faqs = [
 
 <Layout
   title="Pricing — Transparent monthly engagements"
-  description="Three tiers, transparent starting prices, no surprises. Most engagements start at $4,500/month. Free VITAL audit to start. 30-day money-back guarantee."
+  description="Three tiers, transparent starting prices, no surprises. Most engagements start at $4,500/month. Start with a free strategist-reviewed PULSE breakdown. 30-day money-back guarantee."
   active="/pricing"
   schema={faqSchema}
 >
@@ -137,15 +137,15 @@ const faqs = [
     title="Transparent pricing."
     highlight="No surprises."
     description="Three engagement tiers, transparent starting prices, 30-day money-back guarantee. Most clients start at Growth. Current availability is below."
-    primaryCta={{ label: 'Start with a free audit', href: '/vital-audit', icon: 'ph-lightning' }}
+    primaryCta={{ label: 'Request free breakdown', href: '/pulse-audit', icon: 'ph-lightning' }}
     secondaryCta={{ label: 'Book a call', href: '/contact', icon: 'ph-arrow-up-right' }}
   />
 
   <!-- AVAILABILITY BANNER -->
   <section class="pb-12 -mt-6">
-    <div class="container-wide text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+    <div class="wrap text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-line bg-accent/10 text-ink-2 text-sm">
+        <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span>
         <span class="font-semibold">2 client slots open for the next 30 days</span>
       </div>
     </div>
@@ -153,44 +153,44 @@ const faqs = [
 
   <!-- TIERS -->
   <section class="pb-24">
-    <div class="container-wide">
+    <div class="wrap">
       <div class="grid md:grid-cols-3 gap-6">
         {tiers.map((t) => (
           <div class:list={[
             'card relative p-8 flex flex-col',
-            t.highlight ? 'border-[var(--color-brand)] bg-gradient-to-b from-[#1a0808] to-[#141414]' : 'card-hover'
+            t.highlight ? 'border-accent/50' : 'panel-hover'
           ]}>
             {t.badge && (
-              <div class="absolute -top-3 left-8 px-3 py-1 bg-[var(--color-brand)] text-white text-[10px] mono font-bold uppercase tracking-widest rounded">
+              <div class="absolute -top-3 left-8 px-3 py-1 bg-accent text-white text-[10px] mono font-bold uppercase tracking-widest rounded">
                 {t.badge}
               </div>
             )}
             <div class="mb-6">
-              <div class="text-sm mono text-[#888] uppercase tracking-widest mb-3">{t.name}</div>
+              <div class="text-sm mono text-ink-3 uppercase tracking-widest mb-3">{t.name}</div>
               <div class="flex items-baseline gap-1 mb-3">
-                <span class="text-4xl font-black text-white">{t.price}</span>
-                <span class="text-[#888] text-sm">{t.period}</span>
+                <span class="text-4xl font-black text-ink">{t.price}</span>
+                <span class="text-ink-3 text-sm">{t.period}</span>
               </div>
-              <p class="text-sm text-[#a0a0a0] leading-relaxed mb-3">{t.desc}</p>
-              <div class="text-xs text-[#666] mono">
-                <i class="ph-bold ph-clock text-[var(--color-brand)]"></i>
+              <p class="text-sm text-ink-2 leading-relaxed mb-3">{t.desc}</p>
+              <div class="text-xs text-ink-3 mono">
+                <i class="ph-bold ph-clock text-accent"></i>
                 <span class="ml-1">{t.timeline}</span>
               </div>
             </div>
-            <div class="border-t border-[#1a1a1a] -mx-8 px-8 pt-6 mb-6 flex-1">
+            <div class="border-t border-line -mx-8 px-8 pt-6 mb-6 flex-1">
               <div class="space-y-3">
                 {t.features.map((f) => (
                   <div class="flex items-start gap-3 text-sm">
-                    <i class="ph-bold ph-check text-[var(--color-brand)] text-base mt-0.5 shrink-0"></i>
-                    <span class={f.includes('Everything in') ? 'text-white font-semibold' : 'text-[#e5e5e5]'}>
+                    <i class="ph-bold ph-check text-accent text-base mt-0.5 shrink-0"></i>
+                    <span class={f.includes('Everything in') ? 'text-ink font-semibold' : 'text-ink'}>
                       {f}
                     </span>
                   </div>
                 ))}
               </div>
-              <div class="mt-6 pt-6 border-t border-[#1a1a1a]">
-                <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-2">Best for</div>
-                <p class="text-xs text-[#888] leading-relaxed">{t.bestFor}</p>
+              <div class="mt-6 pt-6 border-t border-line">
+                <div class="text-[10px] mono text-ink-3 uppercase tracking-widest mb-2">Best for</div>
+                <p class="text-xs text-ink-3 leading-relaxed">{t.bestFor}</p>
               </div>
             </div>
             <a
@@ -207,35 +207,35 @@ const faqs = [
         ))}
       </div>
 
-      <div class="mt-8 text-center text-xs mono text-[#666]">
+      <div class="mt-8 text-center text-xs mono text-ink-3">
         Prices in USD · 3-month minimum · 30-day money-back guarantee
       </div>
     </div>
   </section>
 
   <!-- COMPARISON TABLE -->
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Detailed comparison</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg mb-6">
           What you get,<br/>
-          <span class="text-gradient-light">feature by feature</span>
+          <span class="text-ink-2">feature by feature</span>
         </h2>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-[#2a2a2a]">
-              <th class="text-left py-4 px-4 text-white font-semibold">Feature</th>
-              <th class="text-center py-4 px-4 text-white font-semibold">Starter</th>
-              <th class="text-center py-4 px-4 text-[var(--color-brand)] font-semibold">Growth</th>
-              <th class="text-center py-4 px-4 text-white font-semibold">Scale</th>
+            <tr class="border-b border-line">
+              <th class="text-left py-4 px-4 text-ink font-semibold">Feature</th>
+              <th class="text-center py-4 px-4 text-ink font-semibold">Starter</th>
+              <th class="text-center py-4 px-4 text-accent font-semibold">Growth</th>
+              <th class="text-center py-4 px-4 text-ink font-semibold">Scale</th>
             </tr>
           </thead>
-          <tbody class="text-[#a0a0a0]">
+          <tbody class="text-ink-2">
             {[
-              ['VITAL audit + action plan', '✓', '✓', '✓'],
+              ['PULSE audit + action plan', '✓', '✓', '✓'],
               ['Landing pages per quarter', '1', '5', 'Unlimited'],
               ['Lead magnet funnels', '1', '3+', 'Unlimited'],
               ['SEO + GEO setup', 'Basic', 'Full', 'Full + custom'],
@@ -249,8 +249,8 @@ const faqs = [
               ['Custom integrations', '—', '—', '✓'],
               ['Quarterly business reviews', '—', '—', '✓'],
             ].map((row, i) => (
-              <tr class={`border-b border-[#1a1a1a] ${i % 2 === 0 ? 'bg-[#0f0f0f]' : ''}`}>
-                <td class="py-3 px-4 text-white font-medium">{row[0]}</td>
+              <tr class={`border-b border-line ${i % 2 === 0 ? 'bg-canvas-1' : ''}`}>
+                <td class="py-3 px-4 text-ink font-medium">{row[0]}</td>
                 <td class="py-3 px-4 text-center">{row[1]}</td>
                 <td class="py-3 px-4 text-center">{row[2]}</td>
                 <td class="py-3 px-4 text-center">{row[3]}</td>
@@ -263,15 +263,15 @@ const faqs = [
   </section>
 
   <!-- ROI EXPECTATIONS -->
-  <section class="section-y">
-    <div class="container-wide">
+  <section class="section">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Realistic ROI expectations</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg mb-6">
           What our clients<br/>
-          <span class="text-gradient-brand">actually see</span>
+          <span class="text-accent">actually see</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-ink-2 leading-relaxed">
           We don't promise unicorns. Here's what a typical Growth-tier client experiences over
           the first 90 days, based on our last 24 months of client data.
         </p>
@@ -280,16 +280,16 @@ const faqs = [
         {[
           { metric: '+30-60%', label: 'Conversion rate lift', detail: 'From friction reduction in forms, CTAs, and booking flow. Most clients see this within 30 days.' },
           { metric: '+50-200%', label: 'Qualified leads', detail: 'From SEO + GEO + paid + email combined. Compounds over 90 days as the system matures.' },
-          { metric: '20-40 pts', label: 'VITAL score lift', detail: 'Measured by re-auditing at day 90. The metric that matters most for long-term growth.' },
+          { metric: '20-40 pts', label: 'PULSE score lift', detail: 'Measured by re-auditing at day 90. The metric that matters most for long-term growth.' },
         ].map((r) => (
           <div class="card p-6">
-            <div class="text-4xl font-black text-[var(--color-brand)] mb-2">{r.metric}</div>
-            <div class="text-white font-semibold mb-2">{r.label}</div>
-            <p class="text-sm text-[#888] leading-relaxed">{r.detail}</p>
+            <div class="text-4xl font-black text-accent mb-2">{r.metric}</div>
+            <div class="text-ink font-semibold mb-2">{r.label}</div>
+            <p class="text-sm text-ink-3 leading-relaxed">{r.detail}</p>
           </div>
         ))}
       </div>
-      <p class="mt-8 text-sm text-[#666] max-w-2xl">
+      <p class="mt-8 text-sm text-ink-3 max-w-2xl">
         Past performance is not a guarantee of future results. Marketing outcomes depend on your
         market, your offer, your sales team, and a hundred other variables. What we can guarantee
         is the work, the measurement, and the reporting.
@@ -298,35 +298,35 @@ const faqs = [
   </section>
 
   <!-- INCLUDED IN EVERY ENGAGEMENT -->
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Always included</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg mb-6">
           The full system,<br/>
-          <span class="text-gradient-light">one monthly fee</span>
+          <span class="text-ink-2">one monthly fee</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-ink-2 leading-relaxed">
           Every engagement — Starter, Growth, or Scale — includes the four foundational pieces.
           The tiers scale the depth, not the categories.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { icon: 'ph-magnifying-glass', title: 'Strategy & Audit', items: ['VITAL audit', '90-day plan', 'Monthly reviews', 'Competitor tracking'] },
+          { icon: 'ph-magnifying-glass', title: 'Strategy & Audit', items: ['PULSE audit', '90-day plan', 'Monthly reviews', 'Competitor tracking'] },
           { icon: 'ph-paint-brush-broad', title: 'Design & Build', items: ['Landing pages', 'Funnels', 'Email templates', 'Brand assets'] },
           { icon: 'ph-graph', title: 'Channels', items: ['SEO + GEO', 'Paid ads', 'Email nurture', 'Retargeting'] },
           { icon: 'ph-gear-six', title: 'Operations', items: ['CRM setup', 'Analytics stack', 'Reporting', 'Integrations'] },
         ].map((c) => (
           <div class="card p-6">
-            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+            <div class="w-10 h-10 rounded-lg bg-canvas-3 border border-line flex items-center justify-center text-accent mb-4">
               <i class={`ph-bold ${c.icon} text-xl`}></i>
             </div>
-            <div class="font-bold text-white mb-3">{c.title}</div>
+            <div class="font-bold text-ink mb-3">{c.title}</div>
             <ul class="space-y-2">
               {c.items.map((item) => (
-                <li class="text-sm text-[#888] flex items-center gap-2">
-                  <i class="ph-bold ph-dot text-[var(--color-brand)]"></i>
+                <li class="text-sm text-ink-3 flex items-center gap-2">
+                  <i class="ph-bold ph-dot text-accent"></i>
                   {item}
                 </li>
               ))}
@@ -338,25 +338,25 @@ const faqs = [
   </section>
 
   <!-- FAQ -->
-  <section class="section-y">
-    <div class="container-wide max-w-3xl">
+  <section class="section">
+    <div class="wrap max-w-3xl">
       <div class="text-center mb-12">
-        <div class="eyebrow mb-4">FAQ</div>
-        <h2 class="text-display-2 text-white">
-          Common <span class="text-gradient-brand">questions</span>
+        <div class="kicker mb-4">FAQ</div>
+        <h2 class="display-lg">
+          Common <span class="text-accent">questions</span>
         </h2>
-        <p class="text-lg text-[#888] mt-6">
-          Don't see your question? Email <a href="mailto:hello@happyranks.com" class="text-[var(--color-brand)]">hello@happyranks.com</a> directly.
+        <p class="text-lg text-ink-3 mt-6">
+          Don't see your question? Email <a href="mailto:hello@happyranks.com" class="text-accent">hello@happyranks.com</a> directly.
         </p>
       </div>
       <div class="space-y-3">
         {faqs.map((f) => (
           <details class="card p-6 group">
             <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-white pr-4">{f.q}</span>
-              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
+              <span class="font-semibold text-ink pr-4">{f.q}</span>
+              <i class="ph-bold ph-plus text-accent text-xl group-open:rotate-45 transition-transform shrink-0"></i>
             </summary>
-            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
+            <p class="mt-4 text-ink-2 leading-relaxed">{f.a}</p>
           </details>
         ))}
       </div>
@@ -364,21 +364,21 @@ const faqs = [
   </section>
 
   <!-- CTA -->
-  <section class="section-y relative overflow-hidden">
+  <section class="section section-cta relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative">
+    <div class="wrap relative">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg mb-6">
           Not sure which tier?
         </h2>
-        <p class="text-lg text-[#a0a0a0] mb-10">
-          Start with a free VITAL audit. We'll show you what we found and what fixing it looks like.
-          No call required. The audit is yours to keep regardless of whether we work together.
+        <p class="text-lg text-ink-2 mb-10">
+          Start with a free strategist-reviewed PULSE breakdown. We'll show you what we found and what fixing it looks like.
+          No call required. Yours to keep regardless of whether we work together.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="/vital-audit" class="btn btn-primary btn-large">
+          <a href="/pulse-audit" class="btn btn-primary btn-large">
             <i class="ph-bold ph-lightning"></i>
-            Get my free VITAL audit
+            Request my PULSE breakdown
           </a>
           <a href="/contact" class="btn btn-ghost btn-large">
             Book a call

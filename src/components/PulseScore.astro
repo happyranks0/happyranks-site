@@ -1,0 +1,44 @@
+---
+const dimensions = [
+  { l: 'P', name: 'Presence', s: 78 },
+  { l: 'U', name: 'Understanding', s: 71 },
+  { l: 'L', name: 'Lead capture', s: 42 },
+  { l: 'S', name: 'Sales follow-up', s: 38 },
+  { l: 'E', name: 'Evaluation', s: 81 },
+];
+---
+
+<div class="scorecard">
+  <div class="scorecard-topbar">
+    <span class="flex items-center gap-2">
+      <span class="scorecard-topbar-dot pulse-dot"></span>
+      pulse.happyranks.com
+    </span>
+    <span class="mono">live scan</span>
+  </div>
+  <div class="scorecard-header">
+    <div>
+      <p class="kicker-muted mb-2 mono text-[11px]">PULSE SCORE</p>
+      <div class="scorecard-total">62<span>/100</span></div>
+    </div>
+    <div class="scorecard-meta">
+      <span>Est. revenue lift</span>
+      <strong>+2.4×</strong>
+      <span>90-day fixes</span>
+    </div>
+  </div>
+  <div>
+    {dimensions.map((d) => (
+      <div class="scorecard-row">
+        <span class="scorecard-letter">{d.l}</span>
+        <div>
+          <div class="text-ink-2 mb-1.5 truncate">{d.name}</div>
+          <div class="scorecard-bar">
+            <div class="scorecard-bar-fill" style={`width: ${d.s}%`}></div>
+          </div>
+        </div>
+        <span class="scorecard-val">{d.s}</span>
+      </div>
+    ))}
+  </div>
+</div>

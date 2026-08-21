@@ -7,8 +7,9 @@ const cases = [
     slug: 'tutti-rouge',
     name: 'Tutti Rouge',
     industry: 'Fashion resale',
+    category: 'fashion',
     location: 'United Kingdom',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80',
+    image: '/images/tutti-rouge.jpg',
     summary: 'From invisible to market leader in UK fashion resale. We rebuilt the entire acquisition engine around GEO and conversion.',
     metrics: [
       { v: '+187%', l: 'organic traffic' },
@@ -18,14 +19,15 @@ const cases = [
     vitalLift: '42 → 78',
     tags: ['SEO', 'GEO', 'Conversion'],
     problem: 'Tutti Rouge had a great product and a decent site, but organic traffic had been flat for 18 months. They were paying 3 different agencies, none of whom were talking to each other.',
-    approach: 'We consolidated everything under one VITAL-based plan, rebuilt the homepage and category pages for AI-overview citation, and instrumented the entire funnel with proper attribution.',
+    approach: 'We consolidated everything under one PULSE-based plan, rebuilt the homepage and category pages for AI-overview citation, and instrumented the entire funnel with proper attribution.',
   },
   {
     slug: 'lotus-mahal',
     name: 'Lotus Mahal',
     industry: 'Wedding venue',
+    category: 'wedding',
     location: 'India',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+    image: '/images/lotus-mahal.jpg',
     summary: 'Inbound booking engine for a premium wedding venue in Coimbatore. We rebuilt the entire booking experience.',
     metrics: [
       { v: '3.4x', l: 'qualified leads' },
@@ -41,8 +43,9 @@ const cases = [
     slug: 'think-accounting',
     name: 'Think Accounting',
     industry: 'B2B professional services',
+    category: 'b2b',
     location: 'United Kingdom',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80',
+    image: '/images/think-accounting.jpg',
     summary: 'AI-search-optimized site that wins on intent, not just keywords. The first accounting firm showing up in ChatGPT answers.',
     metrics: [
       { v: '+312%', l: 'AI citations' },
@@ -58,8 +61,9 @@ const cases = [
     slug: 'viruksha-gardens',
     name: 'Viruksha Gardens',
     industry: 'Event venue & hospitality',
+    category: 'wedding',
     location: 'India',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
+    image: '/images/viruksha-gardens.jpg',
     summary: 'A brand refresh and conversion system for a destination venue. Made them the go-to for destination weddings in South India.',
     metrics: [
       { v: '+221%', l: 'enquiries' },
@@ -74,16 +78,16 @@ const cases = [
 ];
 
 const industries = [
-  { name: 'All', count: cases.length, icon: 'ph-squares-four' },
-  { name: 'Fashion', count: 1, icon: 'ph-tag' },
-  { name: 'Wedding & events', count: 2, icon: 'ph-heart' },
-  { name: 'B2B services', count: 1, icon: 'ph-briefcase' },
+  { id: 'all', name: 'All', count: cases.length, icon: 'ph-squares-four' },
+  { id: 'fashion', name: 'Fashion', count: 1, icon: 'ph-tag' },
+  { id: 'wedding', name: 'Wedding & events', count: 2, icon: 'ph-heart' },
+  { id: 'b2b', name: 'B2B services', count: 1, icon: 'ph-briefcase' },
 ];
 ---
 
 <Layout
   title="Case Studies — Real growth, measured numbers"
-  description="Selected work: Tutti Rouge, Lotus Mahal, Think Accounting, Viruksha Gardens. Real metrics, real lift, real revenue. Every case study is scored with the VITAL audit framework before and after."
+  description="Selected work: Tutti Rouge, Lotus Mahal, Think Accounting, Viruksha Gardens. Real metrics, real lift, real revenue. Every case study is scored with the PULSE audit framework before and after."
   active="/work"
 >
   <!-- HERO -->
@@ -91,51 +95,72 @@ const industries = [
     eyebrow="CASE STUDIES"
     title="Selected work."
     highlight="Measurable numbers."
-    description="Real engagements with real businesses. Every case study is scored with the VITAL audit framework before and after — so you can see the actual delta, not vanity metrics."
-    primaryCta={{ label: 'Get a free VITAL audit', href: '/vital-audit', icon: 'ph-lightning' }}
+    description="Real engagements with real businesses. Every case study is scored with the PULSE audit framework before and after — so you can see the actual delta, not vanity metrics."
+    primaryCta={{ label: 'Get a free PULSE breakdown', href: '/pulse-audit', icon: 'ph-lightning' }}
   />
 
   <!-- CASE GRID -->
   <section class="pb-24">
-    <div class="container-wide">
-      <div class="grid md:grid-cols-2 gap-6">
+    <div class="wrap">
+      <div class="flex flex-wrap gap-2 mb-8" id="case-filters" role="tablist" aria-label="Filter case studies">
+        {industries.map((i, idx) => (
+          <button
+            type="button"
+            class:list={[
+              'px-4 py-2 rounded-full text-sm font-medium border transition-colors',
+              idx === 0 ? 'bg-accent text-white border-accent' : 'border-line text-ink-2 hover:text-ink hover:border-line-strong',
+            ]}
+            data-filter={i.id}
+            role="tab"
+            aria-selected={idx === 0}
+          >
+            {i.name} ({i.count})
+          </button>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6" id="case-grid">
         {cases.map((c) => (
-          <a href={`/work/${c.slug}`} class="card card-hover overflow-hidden group p-0 block">
+          <a
+            href={`/work/${c.slug}`}
+            class="case-card card panel-hover overflow-hidden group p-0 block"
+            data-category={c.category}
+          >
             <div class="relative aspect-[16/10] overflow-hidden">
-              <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
-              <div class="absolute top-4 right-4 px-3 py-1.5 bg-[#0a0a0a]/80 backdrop-blur border border-[#2a2a2a] rounded-full">
-                <div class="text-[10px] mono text-[#888]">VITAL</div>
-                <div class="text-sm font-bold text-white">{c.vitalLift}</div>
+              <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width="1200" height="750" />
+              <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/40 to-transparent"></div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 bg-canvas-1/80 backdrop-blur border border-line rounded-full">
+                <div class="text-[10px] mono text-ink-3">PULSE</div>
+                <div class="text-sm font-bold text-ink">{c.vitalLift}</div>
               </div>
               <div class="absolute bottom-4 left-4 right-4">
                 <div class="flex items-center gap-2 mb-2 flex-wrap">
                   {c.tags.map((t) => (
-                    <span class="px-2 py-0.5 bg-[#1a1a1a]/80 backdrop-blur border border-[#2a2a2a] text-[10px] mono text-[#a0a0a0] rounded">{t}</span>
+                    <span class="px-2 py-0.5 bg-canvas-1-3/80 backdrop-blur border border-line text-[10px] mono text-ink-2 rounded">{t}</span>
                   ))}
                 </div>
               </div>
             </div>
             <div class="p-8">
-              <div class="flex items-center gap-3 mb-3 text-xs mono text-[#888]">
+              <div class="flex items-center gap-3 mb-3 text-xs mono text-ink-3">
                 <span>{c.industry}</span>
                 <span>·</span>
                 <span>{c.location}</span>
               </div>
-              <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-[var(--color-brand)] transition">{c.name}</h3>
-              <p class="text-[#a0a0a0] leading-relaxed mb-4">{c.summary}</p>
-              <p class="text-sm text-[#666] leading-relaxed mb-6 italic">{c.problem}</p>
-              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#1a1a1a]">
+              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-accent transition">{c.name}</h3>
+              <p class="text-ink-2 leading-relaxed mb-4">{c.summary}</p>
+              <p class="text-sm text-ink-3 leading-relaxed mb-6 italic">{c.problem}</p>
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-line">
                 {c.metrics.map((m) => (
                   <div>
-                    <div class="text-xl font-black text-white">{m.v}</div>
-                    <div class="text-[10px] mono text-[#666] uppercase tracking-wider">{m.l}</div>
+                    <div class="text-xl font-black text-ink">{m.v}</div>
+                    <div class="text-[10px] mono text-ink-3 uppercase tracking-wider">{m.l}</div>
                   </div>
                 ))}
               </div>
-              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:gap-3 transition-all">
+              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink group-hover:gap-3 transition-all">
                 Read full case study
-                <i class="ph-bold ph-arrow-up-right text-[var(--color-brand)]"></i>
+                <i class="ph-bold ph-arrow-up-right text-accent"></i>
               </div>
             </div>
           </a>
@@ -145,16 +170,16 @@ const industries = [
   </section>
 
   <!-- BY INDUSTRY -->
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">By industry</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg text-ink mb-6">
           We've worked across<br/>
-          <span class="text-gradient-light">four core verticals</span>
+          <span class="text-ink-2">four core verticals</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          We focus on four verticals where the VITAL framework produces the most predictable results.
+        <p class="text-lg text-ink-2 leading-relaxed">
+          We focus on four verticals where the PULSE framework produces the most predictable results.
           Within each, we know the channels that work, the benchmarks that matter, and the
           mistakes that waste money.
         </p>
@@ -163,11 +188,11 @@ const industries = [
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {industries.map((i) => (
           <div class="card p-6">
-            <div class="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mb-4">
+            <div class="w-10 h-10 rounded-lg bg-canvas-1-3 border border-line flex items-center justify-center text-accent mb-4">
               <i class={`ph-bold ${i.icon} text-xl`}></i>
             </div>
-            <div class="font-bold text-white mb-1">{i.name}</div>
-            <div class="text-xs mono text-[#666]">{i.count} case stud{i.count === 1 ? 'y' : 'ies'}</div>
+            <div class="font-bold text-ink mb-1">{i.name}</div>
+            <div class="text-xs mono text-ink-3">{i.count} case stud{i.count === 1 ? 'y' : 'ies'}</div>
           </div>
         ))}
       </div>
@@ -175,15 +200,15 @@ const industries = [
   </section>
 
   <!-- PROCESS WE USED -->
-  <section class="section-y">
-    <div class="container-wide">
+  <section class="section">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The pattern</div>
-        <h2 class="text-display-2 text-white mb-6">
+        <h2 class="display-lg text-ink mb-6">
           Every case study<br/>
-          <span class="text-gradient-brand">follows the same shape</span>
+          <span class="text-accent">follows the same shape</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
+        <p class="text-lg text-ink-2 leading-relaxed">
           Despite different industries, every successful engagement we've run has followed the
           same three-phase shape. Here's the pattern — and why it works.
         </p>
@@ -191,14 +216,14 @@ const industries = [
 
       <div class="grid md:grid-cols-3 gap-4">
         {[
-          { phase: '01', title: 'Measure', desc: 'We start with a VITAL audit — a real number across 5 dimensions × 10 checks. No opinions, no consultant-speak. Just measurable signals that show where you stand.' },
+          { phase: '01', title: 'Measure', desc: 'We start with a PULSE audit — a real number across 5 dimensions × 10 checks. No opinions, no consultant-speak. Just measurable signals that show where you stand.' },
           { phase: '02', title: 'Prioritize', desc: 'We score each potential fix by impact and effort. Then we ship the top 20% of fixes that produce 80% of the result. No busy work, no scope creep.' },
           { phase: '03', title: 'Iterate', desc: 'We re-measure every 30 days. Winners get rolled out, losers get documented. The system compounds — every month gets easier than the last.' },
         ].map((p) => (
           <div class="card p-6">
-            <div class="text-5xl font-black text-[#222] mono mb-3">{p.phase}</div>
-            <div class="text-xl font-bold text-white mb-2">{p.title}</div>
-            <p class="text-sm text-[#888] leading-relaxed">{p.desc}</p>
+            <div class="text-5xl font-black text-ink-4 mono mb-3">{p.phase}</div>
+            <div class="text-xl font-bold text-ink mb-2">{p.title}</div>
+            <p class="text-sm text-ink-3 leading-relaxed">{p.desc}</p>
           </div>
         ))}
       </div>
@@ -206,21 +231,47 @@ const industries = [
   </section>
 
   <!-- CTA -->
-  <section class="section-y relative overflow-hidden">
+  <section class="section relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative">
+    <div class="wrap relative">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-display-2 text-white mb-6">
-          Your numbers <span class="text-gradient-brand">next?</span>
+        <h2 class="display-lg text-ink mb-6">
+          Your numbers <span class="text-accent">next?</span>
         </h2>
-        <p class="text-lg text-[#a0a0a0] mb-10">
-          Get a free VITAL audit and see exactly where you stand today. No call required.
+        <p class="text-lg text-ink-2 mb-10">
+          Get a free PULSE breakdown and see exactly where you stand today. No call required.
         </p>
-        <a href="/vital-audit" class="btn btn-primary btn-large">
+        <a href="/pulse-audit" class="btn btn-primary btn-large">
           <i class="ph-bold ph-lightning"></i>
-          Get my free VITAL audit
+          Get my free PULSE breakdown
         </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const filters = document.getElementById('case-filters');
+  const cards = document.querySelectorAll<HTMLElement>('.case-card');
+
+  filters?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');
+    if (!btn) return;
+
+    const filter = btn.dataset.filter;
+    filters.querySelectorAll('button').forEach((b) => {
+      const active = b === btn;
+      b.classList.toggle('bg-accent', active);
+      b.classList.toggle('text-white', active);
+      b.classList.toggle('border-accent', active);
+      b.classList.toggle('border-line', !active);
+      b.classList.toggle('text-ink-2', !active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    cards.forEach((card) => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('hidden', !show);
+    });
+  });
+</script>

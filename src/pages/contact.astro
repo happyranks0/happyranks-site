@@ -1,190 +1,108 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MauticForm from '../components/MauticForm.astro';
+import FAQ from '../components/cf/FAQ.astro';
+import Card from '../components/cf/Card.astro';
+
+const channels = [
+  {
+    icon: 'ph-envelope-simple',
+    title: 'Email',
+    detail: 'hello@happyranks.com',
+    href: 'mailto:hello@happyranks.com',
+    sub: 'General questions, partnerships, press',
+  },
+  {
+    icon: 'ph-phone',
+    title: 'Phone / WhatsApp',
+    detail: '+91 82488 16834',
+    href: 'tel:+918248816834',
+    sub: 'India & international — venue and hospitality clients',
+  },
+  {
+    icon: 'ph-linkedin-logo',
+    title: 'LinkedIn',
+    detail: 'Sanjeev',
+    href: 'https://www.linkedin.com/in/sanjeev/',
+    sub: 'Professional intros and updates',
+  },
+];
+
+const contactFaqs = [
+  { q: 'What happens after I submit this form?', a: 'A real person reads your submission. We reply within 4 working hours with a Calendly link, a clarifying question, or an honest referral if we are not the right fit.' },
+  { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free — 45 minutes of senior time.' },
+  { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. The form is for booking a call.' },
+];
 ---
 
 <Layout
   title="Contact — Book a strategy call"
-  description="Book a 45-minute strategy call. We'll walk through your VITAL audit results, talk about your goals, and see if we're a good fit. Response within 4 working hours."
+  description="Book a 45-minute strategy call. We'll walk through your PULSE breakdown, talk about your goals, and see if we're a good fit. Response within 4 working hours."
   active="/contact"
+  noStickyCta={true}
 >
-  <!-- HERO + FORM -->
-  <section class="section-y">
-    <div class="container-wide">
+  <PageHeader
+    kicker="Contact"
+    title="Book a"
+    highlight="strategy call"
+    description="45 minutes. We walk through your PULSE breakdown, talk about your goals, and see if we're a good fit. No pitch deck, no pressure."
+    primaryCta={{ label: 'Skip the call — request breakdown', href: '/pulse-audit', icon: 'ph-lightning' }}
+    compact={true}
+  />
+
+  <section class="section-tight">
+    <div class="wrap">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div>
-          <Hero
-            compact
-            eyebrow="CONTACT"
-            title="Book a"
-            highlight="strategy call"
-            description="45 minutes. We walk through your VITAL audit, talk about your goals, and see if we're a good fit. No pitch deck, no pressure."
-            primaryCta={{ label: 'Skip the call — get the audit', href: '/vital-audit', icon: 'ph-lightning' }}
-          />
-
-          <div class="mt-10 grid sm:grid-cols-2 gap-4 text-sm">
-            <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Response time</div>
-              <div class="text-white font-semibold">4 working hours</div>
-            </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Format</div>
-              <div class="text-white font-semibold">Google Meet</div>
-            </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Cost</div>
-              <div class="text-white font-semibold">Always free</div>
-            </div>
-            <div class="card p-4">
-              <div class="text-[10px] mono text-[#666] uppercase tracking-widest mb-1">Pressure</div>
-              <div class="text-white font-semibold">Zero</div>
-            </div>
+          <div class="grid sm:grid-cols-2 gap-4 mb-10">
+            {[
+              { label: 'Response time', value: '4 working hours' },
+              { label: 'Format', value: 'Google Meet' },
+              { label: 'Cost', value: 'Always free' },
+              { label: 'Pressure', value: 'Zero' },
+            ].map((item) => (
+              <Card pad="default">
+                <div class="text-[10px] mono text-ink-3 uppercase tracking-widest mb-1">{item.label}</div>
+                <div class="text-ink font-semibold">{item.value}</div>
+              </Card>
+            ))}
           </div>
         </div>
 
-        <!-- FORM CARD -->
-        <div class="card p-8 lg:p-10 card-glow lg:sticky lg:top-24">
-          <div class="eyebrow mb-2">Book a call</div>
-          <h2 class="text-2xl font-bold text-white mb-2">Tell us about your business</h2>
-          <p class="text-sm text-[#888] mb-8">We read every submission. Reply within 4 working hours.</p>
-
-          <form id="contact-form" class="space-y-5">
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="name" class="block text-sm font-semibold text-white mb-2">Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Jane Doe" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
-              </div>
-              <div>
-                <label for="company" class="block text-sm font-semibold text-white mb-2">Company</label>
-                <input type="text" id="company" name="company" placeholder="Acme Inc" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
-              </div>
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-semibold text-white mb-2">Email *</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
-            </div>
-            <div>
-              <label for="website" class="block text-sm font-semibold text-white mb-2">Website <span class="text-[#666] font-normal">(if any)</span></label>
-              <input type="url" id="website" name="website" placeholder="https://yoursite.com" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition" />
-            </div>
-            <div>
-              <label for="budget" class="block text-sm font-semibold text-white mb-2">Monthly budget</label>
-              <select id="budget" name="budget" class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white focus:border-[var(--color-brand)] focus:outline-none transition">
-                <option value="">Select range</option>
-                <option value="1.5-3k">$1,500 – $3,000</option>
-                <option value="3-6k">$3,000 – $6,000</option>
-                <option value="6-10k">$6,000 – $10,000</option>
-                <option value="10k+">$10,000+</option>
-                <option value="unsure">Not sure yet</option>
-              </select>
-            </div>
-            <div>
-              <label for="message" class="block text-sm font-semibold text-white mb-2">What are you trying to solve? *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve. Specific numbers welcome." class="w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white placeholder:text-[#555] focus:border-[var(--color-brand)] focus:outline-none transition resize-none"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-large w-full justify-center">
-              <i class="ph-bold ph-calendar-check"></i>
-              Request a call
-            </button>
-            <div class="text-[10px] text-[#666] text-center">
-              We respect your inbox. No spam, no marketing list trades, no selling your data.
-            </div>
-          </form>
-
-          <div id="contact-success" class="hidden mt-6 p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
-            <i class="ph-bold ph-check-circle text-emerald-500 text-3xl mb-2"></i>
-            <div class="font-semibold text-white mb-1">Request received</div>
-            <p class="text-sm text-[#a0a0a0]">We\'ll be in touch within 4 working hours. Usually faster.</p>
-          </div>
-        </div>
+        <Card pad="lg" hover={false} class="lg:sticky lg:top-24">
+          <MauticForm formId="contact-form" />
+        </Card>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide max-w-3xl">
-      <div class="text-center mb-12">
-        <div class="eyebrow mb-4">FAQ</div>
-        <h2 class="text-display-2 text-white">
-          Common <span class="text-gradient-brand">questions</span>
-        </h2>
-      </div>
-      <div class="space-y-3">
-        {[
-          { q: 'What happens after I submit this form?', a: 'A real person on our team reads your submission (not a bot, not a triage algorithm). We reply within 4 working hours with either: 1) a Calendly link to book the strategy call, 2) a quick clarifying question, or 3) an honest "we\'re not the right fit, here\'s who is."' },
-          { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free. It\'s 45 minutes of senior time. If we end up working together, great. If not, you walk away with a clearer picture of what to do next.' },
-          { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. We read everything. The form is for booking a call; the inbox is for everything else.' },
-          { q: 'Can I send you materials before the call?', a: 'Yes. After you book, you\'ll get a prep email with a link to share any documents (decks, audits, current metrics, etc.). We\'ll review them before the call so we don\'t waste your time.' },
-          { q: 'What timezone will the call be in?', a: 'We work across US, UK, UAE, and India timezones. We\'ll find a slot that works for both. Most US-based clients prefer 8-10am EST, which is 5:30-7:30pm IST. Most UK clients prefer 4-6pm GMT. We\'re flexible.' },
-          { q: 'Will there be a follow-up if I don\'t engage?', a: 'No. We send one or two follow-up emails max. If you don\'t reply, we leave you alone. We don\'t believe in aggressive sales follow-up — it doesn\'t work and it makes everyone\'s life worse.' },
-        ].map((f) => (
-          <details class="card p-6 group">
-            <summary class="flex items-center justify-between cursor-pointer list-none">
-              <span class="font-semibold text-white pr-4">{f.q}</span>
-              <i class="ph-bold ph-plus text-[var(--color-brand)] text-xl group-open:rotate-45 transition-transform shrink-0"></i>
-            </summary>
-            <p class="mt-4 text-[#a0a0a0] leading-relaxed">{f.a}</p>
-          </details>
-        ))}
-      </div>
+  <section class="section section-band">
+    <div class="wrap max-w-3xl">
+      <p class="kicker text-center mb-3">FAQ</p>
+      <h2 class="display-lg text-center mb-10">Common questions</h2>
+      <FAQ items={contactFaqs} />
     </div>
   </section>
 
-  <!-- ALTERNATIVE WAYS TO REACH US -->
-  <section class="section-y">
-    <div class="container-wide max-w-3xl">
+  <section class="section">
+    <div class="wrap max-w-3xl">
       <div class="text-center mb-12">
-        <div class="eyebrow mb-4">Other ways to reach us</div>
-        <h2 class="text-display-2 text-white">
-          Pick your <span class="text-gradient-brand">channel</span>
-        </h2>
+        <p class="kicker mb-4">Other ways to reach us</p>
+        <h2 class="display-lg">Pick your channel</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-4">
-        {[
-          { icon: 'ph-envelope-simple', title: 'Email', detail: 'hello@happyranks.com', sub: 'Best for general questions, partnerships, press' },
-          { icon: 'ph-linkedin-logo', title: 'LinkedIn', detail: 'linkedin.com/in/sanjeev', sub: 'Best for professional intros and content updates' },
-          { icon: 'ph-twitter-logo', title: 'X / Twitter', detail: '@happyranks', sub: 'Best for quick takes and conversations' },
-        ].map((c) => (
-          <div class="card p-6 text-center">
-            <div class="w-12 h-12 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
+        {channels.map((c) => (
+          <a href={c.href} class="card p-6 text-center panel-hover block no-underline" target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            <div class="w-12 h-12 rounded-lg bg-canvas-3 border border-line flex items-center justify-center text-accent mx-auto mb-3">
               <i class={`ph-bold ${c.icon} text-2xl`}></i>
             </div>
-            <div class="font-bold text-white mb-1">{c.title}</div>
-            <div class="text-sm text-[var(--color-brand)] mono mb-2">{c.detail}</div>
-            <div class="text-xs text-[#888]">{c.sub}</div>
-          </div>
+            <div class="font-bold text-ink mb-1">{c.title}</div>
+            <div class="text-sm text-accent mono mb-2">{c.detail}</div>
+            <div class="text-xs text-ink-3">{c.sub}</div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const success = document.getElementById('contact-success');
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="ph-bold ph-circle-notch animate-spin"></i> Sending...';
-    btn.disabled = true;
-    try {
-      const body = new URLSearchParams();
-      body.append('form-name', 'contact');
-      formData.forEach((v, k) => body.append(k, v.toString()));
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
-      });
-      form.classList.add('hidden');
-      success?.classList.remove('hidden');
-    } catch (err) {
-      btn.innerHTML = original;
-      btn.disabled = false;
-      alert('Failed to send. Please email hello@happyranks.com directly.');
-    }
-  });
-</script>

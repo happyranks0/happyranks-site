@@ -1,0 +1,26 @@
+---
+const { label = 'Free PULSE breakdown · Strategist-reviewed', href = '/pulse-audit' } = Astro.props;
+---
+
+<div id="sticky-cta" class="sticky-cta hidden" aria-hidden="true">
+  <span class="text-sm text-ink-2 whitespace-nowrap hidden sm:inline">{label}</span>
+  <a href={href} class="btn btn-primary text-[13px]">
+    Request breakdown
+    <i class="ph-bold ph-lightning"></i>
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById('sticky-cta');
+  const threshold = 480;
+
+  function toggleSticky() {
+    if (!bar) return;
+    const show = window.scrollY > threshold;
+    bar.classList.toggle('hidden', !show);
+    bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+  }
+
+  toggleSticky();
+  window.addEventListener('scroll', toggleSticky, { passive: true });
+</script>

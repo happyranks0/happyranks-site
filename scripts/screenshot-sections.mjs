@@ -9,8 +9,8 @@ const targets = [
   { name: 'work-grid', url: 'http://localhost:4321/work', y: 600 },
   { name: 'about-top', url: 'http://localhost:4321/about', y: 0 },
   { name: 'about-mid', url: 'http://localhost:4321/about', y: 700 },
-  { name: 'vital-top', url: 'http://localhost:4321/vital-audit', y: 0 },
-  { name: 'vital-mid', url: 'http://localhost:4321/vital-audit', y: 800 },
+  { name: 'pulse-top', url: 'http://localhost:4321/pulse-audit', y: 0 },
+  { name: 'pulse-mid', url: 'http://localhost:4321/pulse-audit', y: 800 },
   { name: 'pricing-tiers', url: 'http://localhost:4321/pricing', y: 600 },
   { name: 'pricing-table', url: 'http://localhost:4321/pricing', y: 1400 },
 ];

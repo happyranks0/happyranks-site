@@ -1,0 +1,13 @@
+---
+const { class: className = '', pad = 'default', hover = false } = Astro.props;
+
+const padMap: Record<string, string> = {
+  default: 'p-6',
+  lg: 'p-8 lg:p-10',
+  none: '',
+};
+---
+
+<div class:list={['card', padMap[pad], hover && 'panel-hover', className]}>
+  <slot />
+</div>

@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 
 const timeline = [
-  { week: 'Week 1-2', phase: 'Audit & strategy', desc: 'VITAL audit scored 38/100. Critical gaps: site speed (Lighthouse 32), no booking flow, no lead capture beyond a contact form.' },
+  { week: 'Week 1-2', phase: 'Audit & strategy', desc: 'PULSE audit scored 38/100. Critical gaps: site speed (Lighthouse 32), no booking flow, no lead capture beyond a contact form.' },
   { week: 'Week 3-5', phase: 'Site rebuild', desc: 'Complete site rebuild on Astro + Tailwind. Image optimization brought Lighthouse from 32 to 94. Mobile-first redesign.' },
   { week: 'Week 6-8', phase: 'Booking flow', desc: 'Calendly integration for venue visits. 4-step inquiry form with conditional fields. WhatsApp button with pre-filled templates.' },
   { week: 'Week 9-13', phase: 'Local SEO + reviews', desc: 'Google Business Profile overhaul, 47 citations built, review generation system (12 → 4.7★ across 89 reviews).' },
@@ -11,15 +11,15 @@ const timeline = [
 
 <Layout
   title="Lotus Mahal — Case study"
-  description="How we helped Lotus Mahal, a premium wedding venue in Coimbatore, go from VITAL 38 to 71 in 90 days. 3.4x qualified leads, 12 bookings/month, +94% site speed."
+  description="How we helped Lotus Mahal, a premium wedding venue in Coimbatore, go from PULSE 38 to 71 in 90 days. 3.4x qualified leads, 12 bookings/month, +94% site speed."
   active="/work"
 >
   <section class="hero-section relative">
-    <div class="container-wide">
-      <a href="/work" class="inline-flex items-center gap-2 text-sm text-[#888] hover:text-white mb-6">
+    <div class="wrap">
+      <a href="/work" class="inline-flex items-center gap-2 text-sm text-ink-3 hover:text-ink mb-6">
         <i class="ph-bold ph-arrow-left"></i> All case studies
       </a>
-      <div class="flex items-center gap-3 mb-4 text-xs mono text-[#888]">
+      <div class="flex items-center gap-3 mb-4 text-xs mono text-ink-3">
         <span>Wedding venue</span>
         <span>·</span>
         <span>India</span>
@@ -27,17 +27,17 @@ const timeline = [
         <span>2025</span>
       </div>
       <div class="max-w-3xl">
-        <h1 class="text-display-1 text-white mb-5">
-          Lotus Mahal — inbound booking engine for a <span class="text-gradient-brand">premium venue</span>
+        <h1 class="display-hero text-ink mb-5">
+          Lotus Mahal — inbound booking engine for a <span class="text-accent">premium venue</span>
         </h1>
-        <p class="text-lg text-[#a0a0a0] leading-relaxed mb-6 max-w-2xl">
+        <p class="text-lg text-ink-2 leading-relaxed mb-6 max-w-2xl">
           A premium wedding venue in Coimbatore rebuilt their website as a booking-first
           experience. Site speed went from Lighthouse 32 to 94. Bookings went from "whenever
           someone DMs" to 12 qualified bookings per month. All on autopilot.
         </p>
         <div class="flex flex-wrap gap-2">
           {['Local SEO', 'Booking flow', 'Performance', 'Reviews'].map((t) => (
-            <span class="px-3 py-1 bg-[#1a1a1a] border border-[#2a2a2a] text-xs mono text-[#a0a0a0] rounded">{t}</span>
+            <span class="px-3 py-1 bg-canvas-1-3 border border-line text-xs mono text-ink-2 rounded">{t}</span>
           ))}
         </div>
       </div>
@@ -45,23 +45,23 @@ const timeline = [
   </section>
 
   <section class="pb-16">
-    <div class="container-wide">
+    <div class="wrap">
       <div class="card p-10 grid md:grid-cols-4 gap-8">
-        <div><div class="eyebrow mb-2">VITAL Score</div><div class="text-5xl font-black text-white mb-1">38 → 71</div><div class="text-xs text-emerald-500">+33 points in 90 days</div></div>
-        <div><div class="eyebrow mb-2">Qualified leads</div><div class="text-5xl font-black text-white mb-1">3.4x</div><div class="text-xs text-[#666]">in 4 months</div></div>
-        <div><div class="eyebrow mb-2">Site speed</div><div class="text-5xl font-black text-white mb-1">+94%</div><div class="text-xs text-[#666]">Lighthouse score</div></div>
-        <div><div class="eyebrow mb-2">Bookings</div><div class="text-5xl font-black text-[var(--color-brand)] mb-1">12/mo</div><div class="text-xs text-[#666]">vs. 3-4 before</div></div>
+        <div><div class="eyebrow mb-2">PULSE Score</div><div class="text-5xl font-black text-ink mb-1">38 → 71</div><div class="text-xs text-emerald-500">+33 points in 90 days</div></div>
+        <div><div class="eyebrow mb-2">Qualified leads</div><div class="text-5xl font-black text-ink mb-1">3.4x</div><div class="text-xs text-ink-3">in 4 months</div></div>
+        <div><div class="eyebrow mb-2">Site speed</div><div class="text-5xl font-black text-ink mb-1">+94%</div><div class="text-xs text-ink-3">Lighthouse score</div></div>
+        <div><div class="eyebrow mb-2">Bookings</div><div class="text-5xl font-black text-accent mb-1">12/mo</div><div class="text-xs text-ink-3">vs. 3-4 before</div></div>
       </div>
     </div>
   </section>
 
-  <section class="section-y">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Background</div>
-        <h2 class="text-display-3 text-white">A venue with a website problem</h2>
+        <h2 class="display-md text-ink">A venue with a website problem</h2>
       </div>
-      <div class="space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
+      <div class="space-y-4 text-lg text-ink-2 leading-relaxed">
         <p>
           Lotus Mahal is a premium wedding venue in Coimbatore, Tamil Nadu. They host 60-80
           weddings a year at price points between ₹15L and ₹50L per event. The venue itself
@@ -81,37 +81,37 @@ const timeline = [
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section section-band">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">The problem</div>
-        <h2 class="text-display-3 text-white">Three critical leaks</h2>
+        <h2 class="display-md text-ink">Three critical leaks</h2>
       </div>
       <div class="space-y-6">
-        <p class="text-lg text-[#a0a0a0] leading-relaxed">
-          The VITAL audit identified three critical issues. Each was killing conversions
+        <p class="text-lg text-ink-2 leading-relaxed">
+          The PULSE audit identified three critical issues. Each was killing conversions
           independently — together, they were a funnel disaster.
         </p>
         <div class="space-y-3">
           <div class="card p-5 flex items-start gap-4">
-            <i class="ph-bold ph-gauge text-[var(--color-brand)] text-2xl shrink-0"></i>
+            <i class="ph-bold ph-gauge text-accent text-2xl shrink-0"></i>
             <div>
-              <div class="font-bold text-white mb-1">8.2 second load time on mobile</div>
-              <p class="text-sm text-[#888]">Unoptimized images, no lazy loading, render-blocking scripts. 64% of couples browse on mobile. Most bounced before the hero loaded.</p>
+              <div class="font-bold text-ink mb-1">8.2 second load time on mobile</div>
+              <p class="text-sm text-ink-3">Unoptimized images, no lazy loading, render-blocking scripts. 64% of couples browse on mobile. Most bounced before the hero loaded.</p>
             </div>
           </div>
           <div class="card p-5 flex items-start gap-4">
-            <i class="ph-bold ph-calendar-x text-[var(--color-brand)] text-2xl shrink-0"></i>
+            <i class="ph-bold ph-calendar-x text-accent text-2xl shrink-0"></i>
             <div>
-              <div class="font-bold text-white mb-1">No booking flow at all</div>
-              <p class="text-sm text-[#888]">Just a contact form. No calendar. No way to schedule a venue visit. Couples had to wait 4-12 hours for a response, then message back and forth to find a time.</p>
+              <div class="font-bold text-ink mb-1">No booking flow at all</div>
+              <p class="text-sm text-ink-3">Just a contact form. No calendar. No way to schedule a venue visit. Couples had to wait 4-12 hours for a response, then message back and forth to find a time.</p>
             </div>
           </div>
           <div class="card p-5 flex items-start gap-4">
-            <i class="ph-bold ph-star text-[var(--color-brand)] text-2xl shrink-0"></i>
+            <i class="ph-bold ph-star text-accent text-2xl shrink-0"></i>
             <div>
-              <div class="font-bold text-white mb-1">3.2 star Google rating with 12 reviews</div>
-              <p class="text-sm text-[#888]">Even though the venue was stunning, the thin review profile made couples hesitate. They\'d read two lukewarm reviews and book the safer competitor.</p>
+              <div class="font-bold text-ink mb-1">3.2 star Google rating with 12 reviews</div>
+              <p class="text-sm text-ink-3">Even though the venue was stunning, the thin review profile made couples hesitate. They\'d read two lukewarm reviews and book the safer competitor.</p>
             </div>
           </div>
         </div>
@@ -119,13 +119,13 @@ const timeline = [
     </div>
   </section>
 
-  <section class="section-y">
-    <div class="container-wide grid lg:grid-cols-[1fr_2fr] gap-12">
+  <section class="section">
+    <div class="wrap grid lg:grid-cols-[1fr_2fr] gap-12">
       <div>
         <div class="eyebrow mb-3">Our approach</div>
-        <h2 class="text-display-3 text-white">Built for booking, not browsing</h2>
+        <h2 class="display-md text-ink">Built for booking, not browsing</h2>
       </div>
-      <div class="space-y-6 text-lg text-[#a0a0a0] leading-relaxed">
+      <div class="space-y-6 text-lg text-ink-2 leading-relaxed">
         <p>
           We rebuilt the site as a booking-first experience. Every page had a clear next step.
           The new site loads in 1.2 seconds, lets couples book a venue visit in under 60 seconds,
@@ -134,115 +134,115 @@ const timeline = [
         <div class="card p-6">
           <div class="eyebrow mb-3">What we shipped</div>
           <ul class="space-y-3 text-base">
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>Complete site rebuild on Astro + Tailwind. Image optimization, lazy loading, preconnect hints. Lighthouse score: 94/100 mobile, 98/100 desktop.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>4-step inquiry form with conditional fields (date, guest count, budget tier). Calendly integration for instant venue visit booking.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>Virtual 360° tour embedded on every package page. Reduces "is this place real?" skepticism before they visit.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>WhatsApp click-to-chat with pre-filled templates. Most Indian couples prefer WhatsApp over email — meeting them where they are.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>Google Business Profile overhaul with new photos, posts, and Q&A. 47 local citations built for Coimbatore wedding venue search terms.</span></li>
-            <li class="flex gap-3"><i class="ph-bold ph-check text-[var(--color-brand)] mt-1 shrink-0"></i><span>Review generation system: post-event email + WhatsApp asking for Google reviews. 12 → 89 reviews at 4.7★ average in 4 months.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>Complete site rebuild on Astro + Tailwind. Image optimization, lazy loading, preconnect hints. Lighthouse score: 94/100 mobile, 98/100 desktop.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>4-step inquiry form with conditional fields (date, guest count, budget tier). Calendly integration for instant venue visit booking.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>Virtual 360° tour embedded on every package page. Reduces "is this place real?" skepticism before they visit.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>WhatsApp click-to-chat with pre-filled templates. Most Indian couples prefer WhatsApp over email — meeting them where they are.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>Google Business Profile overhaul with new photos, posts, and Q&A. 47 local citations built for Coimbatore wedding venue search terms.</span></li>
+            <li class="flex gap-3"><i class="ph-bold ph-check text-accent mt-1 shrink-0"></i><span>Review generation system: post-event email + WhatsApp asking for Google reviews. 12 → 89 reviews at 4.7★ average in 4 months.</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide">
+  <section class="section section-band">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">Timeline</div>
-        <h2 class="text-display-2 text-white">13 weeks from <span class="text-gradient-brand">audit to scale</span></h2>
+        <h2 class="display-lg text-ink">13 weeks from <span class="text-accent">audit to scale</span></h2>
       </div>
       <div class="space-y-4">
         {timeline.map((t) => (
           <div class="card p-6 grid md:grid-cols-[120px_1fr_2fr] gap-6">
-            <div class="text-xs mono text-[var(--color-brand)]">{t.week}</div>
-            <div><div class="font-bold text-white">{t.phase}</div></div>
-            <p class="text-sm text-[#888] leading-relaxed">{t.desc}</p>
+            <div class="text-xs mono text-accent">{t.week}</div>
+            <div><div class="font-bold text-ink">{t.phase}</div></div>
+            <p class="text-sm text-ink-3 leading-relaxed">{t.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section-y">
-    <div class="container-wide">
+  <section class="section">
+    <div class="wrap">
       <div class="max-w-3xl mb-10">
         <div class="eyebrow mb-4">The results</div>
-        <h2 class="text-display-2 text-white">Real numbers, <span class="text-gradient-brand">measured honestly</span></h2>
+        <h2 class="display-lg text-ink">Real numbers, <span class="text-accent">measured honestly</span></h2>
       </div>
       <div class="grid md:grid-cols-2 gap-6 mb-12">
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">12/month</div>
-          <div class="font-bold text-white mb-2">Qualified bookings</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">Up from 3-4/month. Each booking is a venue visit from a couple with a confirmed wedding date. ~40% convert to signed contracts.</p>
-          <div class="text-xs mono text-[#666]">Verified: Calendly + CRM pipeline data</div>
+          <div class="text-3xl font-black text-ink mb-2">12/month</div>
+          <div class="font-bold text-ink mb-2">Qualified bookings</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">Up from 3-4/month. Each booking is a venue visit from a couple with a confirmed wedding date. ~40% convert to signed contracts.</p>
+          <div class="text-xs mono text-ink-3">Verified: Calendly + CRM pipeline data</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">+94%</div>
-          <div class="font-bold text-white mb-2">Lighthouse score</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From 32 to 94 on mobile. Largest single contributor to conversion lift. Mobile bounce rate dropped 47%.</p>
-          <div class="text-xs mono text-[#666]">Verified: Lighthouse CI, field data via CrUX</div>
+          <div class="text-3xl font-black text-ink mb-2">+94%</div>
+          <div class="font-bold text-ink mb-2">Lighthouse score</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">From 32 to 94 on mobile. Largest single contributor to conversion lift. Mobile bounce rate dropped 47%.</p>
+          <div class="text-xs mono text-ink-3">Verified: Lighthouse CI, field data via CrUX</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">3.4x</div>
-          <div class="font-bold text-white mb-2">Qualified leads</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From 9/month to 31/month. Lead quality improved too — fewer tire-kickers, more couples with real budgets and dates.</p>
-          <div class="text-xs mono text-[#666]">Verified: Form submissions + lead scoring in CRM</div>
+          <div class="text-3xl font-black text-ink mb-2">3.4x</div>
+          <div class="font-bold text-ink mb-2">Qualified leads</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">From 9/month to 31/month. Lead quality improved too — fewer tire-kickers, more couples with real budgets and dates.</p>
+          <div class="text-xs mono text-ink-3">Verified: Form submissions + lead scoring in CRM</div>
         </div>
         <div class="card p-6">
-          <div class="text-3xl font-black text-white mb-2">4.7★</div>
-          <div class="font-bold text-white mb-2">Google rating</div>
-          <p class="text-sm text-[#888] leading-relaxed mb-3">From 3.2★ with 12 reviews to 4.7★ with 89 reviews. The single biggest trust signal for high-ticket wedding decisions.</p>
-          <div class="text-xs mono text-[#666]">Verified: Google Business Profile dashboard</div>
+          <div class="text-3xl font-black text-ink mb-2">4.7★</div>
+          <div class="font-bold text-ink mb-2">Google rating</div>
+          <p class="text-sm text-ink-3 leading-relaxed mb-3">From 3.2★ with 12 reviews to 4.7★ with 89 reviews. The single biggest trust signal for high-ticket wedding decisions.</p>
+          <div class="text-xs mono text-ink-3">Verified: Google Business Profile dashboard</div>
         </div>
       </div>
 
-      <blockquote class="card p-8 border-l-4 border-[var(--color-brand)] max-w-3xl">
-        <p class="text-xl text-white leading-relaxed mb-4 italic">
+      <blockquote class="card p-8 border-l-4 border-accent max-w-3xl">
+        <p class="text-xl text-ink leading-relaxed mb-4 italic">
           "Before Happyranks, I was chasing couples on Instagram. Now they book a visit
           themselves, show up ready to sign, and the reviews keep building. The new site
           paid for itself in 6 weeks."
         </p>
         <div class="text-sm">
-          <div class="font-bold text-white">Karthik Raman</div>
-          <div class="text-[#888]">Owner, Lotus Mahal</div>
+          <div class="font-bold text-ink">Karthik Raman</div>
+          <div class="text-ink-3">Owner, Lotus Mahal</div>
         </div>
       </blockquote>
     </div>
   </section>
 
-  <section class="section-y bg-[#0c0c0c]">
-    <div class="container-wide max-w-3xl">
+  <section class="section section-band">
+    <div class="wrap max-w-3xl">
       <div class="eyebrow mb-4">What we learned</div>
-      <h2 class="text-display-2 text-white mb-6">The takeaway</h2>
-      <div class="prose prose-invert max-w-none space-y-4 text-lg text-[#a0a0a0] leading-relaxed">
+      <h2 class="display-lg text-ink mb-6">The takeaway</h2>
+      <div class="prose prose-invert max-w-none space-y-4 text-lg text-ink-2 leading-relaxed">
         <p>
-          Lotus Mahal is a local business case study in how VITAL works. The biggest wins
+          Lotus Mahal is a local business case study in how PULSE works. The biggest wins
           weren\'t sexy — they were fundamentals. Site speed. A booking flow that actually
           booked. A review strategy that built trust.
         </p>
         <p>
-          The lesson: for local businesses, the VITAL dimensions that matter most are
-          Transition (booking) and Learning (knowing which channels produce which leads).
-          Visibility matters, but it doesn\'t matter as much as making the existing traffic
+          The lesson: for local businesses, the PULSE dimensions that matter most are
+          Lead capture (booking) and Evaluation (knowing which channels produce which leads).
+          Presence matters, but it doesn\'t matter as much as making the existing traffic
           convert.
         </p>
         <p>
           Today Lotus Mahal spends 80% of its marketing budget on the channels that produce
-          80% of its bookings — and the VITAL audit re-run at day 90 scored 71, up from 38.
+          80% of its bookings — and the PULSE audit re-run at day 90 scored 71, up from 38.
           That\'s a system that compounds.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section-y relative overflow-hidden">
+  <section class="section relative overflow-hidden">
     <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
-    <div class="container-wide relative text-center">
-      <h2 class="text-display-2 text-white mb-6">Could this be <span class="text-gradient-brand">your business?</span></h2>
-      <p class="text-lg text-[#a0a0a0] mb-10 max-w-xl mx-auto">Find out with a free VITAL audit. 90 seconds. Real numbers.</p>
+    <div class="wrap relative text-center">
+      <h2 class="display-lg text-ink mb-6">Could this be <span class="text-accent">your business?</span></h2>
+      <p class="text-lg text-ink-2 mb-10 max-w-xl mx-auto">Find out with a free PULSE breakdown. strategist-reviewed. Real numbers.</p>
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="/vital-audit" class="btn btn-primary btn-large"><i class="ph-bold ph-lightning"></i>Get my free VITAL audit</a>
+        <a href="/pulse-audit" class="btn btn-primary btn-large"><i class="ph-bold ph-lightning"></i>Get my free PULSE breakdown</a>
         <a href="/work" class="btn btn-ghost btn-large">Read another case study <i class="ph-bold ph-arrow-up-right"></i></a>
       </div>
     </div>

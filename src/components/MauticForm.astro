@@ -1,0 +1,154 @@
+---
+/**
+ * Mautic form — submits to Mautic public form endpoint.
+ * Hermes agent handles segmentation/campaigns server-side.
+ *
+ * Env: PUBLIC_MAUTIC_BASE_URL, PUBLIC_MAUTIC_FORM_CONTACT (form ID)
+ */
+const {
+  formId = 'mautic-form',
+  mauticFormId = import.meta.env.PUBLIC_MAUTIC_FORM_CONTACT || '',
+  mauticBaseUrl = import.meta.env.PUBLIC_MAUTIC_BASE_URL || '',
+  title = 'Tell us about your business',
+  description = 'We read every submission. Reply within 4 working hours.',
+  showPlanField = true,
+} = Astro.props;
+
+const hasMautic = Boolean(mauticBaseUrl && mauticFormId);
+const submitUrl = hasMautic
+  ? `${mauticBaseUrl.replace(/\/$/, '')}/form/submit?formId=${mauticFormId}`
+  : '';
+---
+
+<div class="mautic-form-wrap">
+  <div class="mb-6">
+    <p class="kicker mb-2">Book a call</p>
+    <h2 class="display-md mb-2">{title}</h2>
+    <p class="body-sm">{description}</p>
+  </div>
+
+  {!hasMautic && (
+    <div class="alert alert-info mb-4">
+      Mautic not configured. Set <code class="mono text-xs">PUBLIC_MAUTIC_BASE_URL</code> and{' '}
+      <code class="mono text-xs">PUBLIC_MAUTIC_FORM_CONTACT</code> — Hermes will handle submissions.
+    </div>
+  )}
+
+  <div id={`${formId}-plan-banner`} class="alert alert-info hidden mb-4"></div>
+
+  <form id={formId} class="space-y-5" data-mautic-form data-submit-url={submitUrl}>
+    <input type="hidden" name="plan" id={`${formId}-plan-field`} value="" />
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for={`${formId}-name`} class="block text-sm font-semibold text-ink mb-2">Name *</label>
+        <input type="text" id={`${formId}-name`} name="firstname" required placeholder="Jane Doe" class="input-field" />
+      </div>
+      <div>
+        <label for={`${formId}-company`} class="block text-sm font-semibold text-ink mb-2">Company</label>
+        <input type="text" id={`${formId}-company`} name="company" placeholder="Acme Inc" class="input-field" />
+      </div>
+    </div>
+    <div>
+      <label for={`${formId}-email`} class="block text-sm font-semibold text-ink mb-2">Email *</label>
+      <input type="email" id={`${formId}-email`} name="email" required placeholder="you@company.com" class="input-field" />
+    </div>
+    <div>
+      <label for={`${formId}-website`} class="block text-sm font-semibold text-ink mb-2">
+        Website <span class="text-ink-3 font-normal">(if any)</span>
+      </label>
+      <input type="url" id={`${formId}-website`} name="website" placeholder="https://yoursite.com" class="input-field" />
+    </div>
+    <div>
+      <label for={`${formId}-budget`} class="block text-sm font-semibold text-ink mb-2">Monthly budget</label>
+      <select id={`${formId}-budget`} name="budget_range" class="select-field">
+        <option value="">Select range</option>
+        <option value="1.5-3k">$1,500 – $3,000</option>
+        <option value="3-6k">$3,000 – $6,000</option>
+        <option value="6-10k">$6,000 – $10,000</option>
+        <option value="10k+">$10,000+</option>
+        <option value="unsure">Not sure yet</option>
+      </select>
+    </div>
+    <div>
+      <label for={`${formId}-message`} class="block text-sm font-semibold text-ink mb-2">What are you trying to solve? *</label>
+      <textarea
+        id={`${formId}-message`}
+        name="message"
+        rows="4"
+        required
+        placeholder="A few sentences about your business and what you want to improve."
+        class="input-field resize-none"
+      ></textarea>
+    </div>
+    {showPlanField && <input type="hidden" name="plan_tier" id={`${formId}-plan-tier`} value="" />}
+    <button type="submit" class="btn btn-primary btn-large w-full justify-center">
+      <i class="ph-bold ph-calendar-check"></i>
+      Request a call
+    </button>
+    <p class="text-[10px] text-ink-3 text-center">We respect your inbox. No spam, no marketing list trades.</p>
+  </form>
+
+  <div id={`${formId}-success`} class="alert alert-success hidden mt-6">
+    <p class="font-semibold text-ink mb-1">Request received</p>
+    <p class="body-sm">We'll be in touch within 4 working hours. Usually faster.</p>
+  </div>
+</div>
+
+<script define:vars={{ formId, showPlanField }}>
+  const planLabels = { starter: 'Starter', growth: 'Growth', scale: 'Scale' };
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  const planField = document.getElementById(`${formId}-plan-field`);
+  const planTierField = document.getElementById(`${formId}-plan-tier`);
+  const planBanner = document.getElementById(`${formId}-plan-banner`);
+
+  if (plan) {
+    if (planField) planField.value = plan;
+    if (planTierField) planTierField.value = plan;
+    if (planBanner) {
+      const label = planLabels[plan] || plan;
+      planBanner.textContent = `You're interested in the ${label} plan — we'll tailor the call around that tier.`;
+      planBanner.classList.remove('hidden');
+    }
+  }
+
+  const form = document.getElementById(formId);
+  const success = document.getElementById(`${formId}-success`);
+  const submitUrl = form?.dataset.submitUrl;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn?.innerHTML;
+    if (btn) {
+      btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Sending...';
+      btn.disabled = true;
+    }
+
+    try {
+      if (!submitUrl) {
+        throw new Error('Mautic not configured');
+      }
+
+      const formData = new FormData(form);
+      const response = await fetch(submitUrl, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors',
+      });
+
+      form.classList.add('hidden');
+      success?.classList.remove('hidden');
+    } catch (err) {
+      if (btn) {
+        btn.innerHTML = original;
+        btn.disabled = false;
+      }
+      alert('Failed to send. Please email hello@happyranks.com directly.');
+      console.error(err);
+    }
+  });
+</script>
