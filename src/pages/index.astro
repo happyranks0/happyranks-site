@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PulseDashboard from '../components/PulseDashboard.astro';
+import PulseScore from '../components/PulseScore.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -12,34 +12,53 @@ const faqSchema = {
   ],
 };
 
-const stats = [
-  { value: '312+', label: 'audits this month' },
-  { value: '50+', label: 'checks per site' },
-  { value: '90s', label: 'to first score' },
-  { value: '4', label: 'continents' },
+const marqueeItems = [
+  { stat: '312+', label: 'audits this month' },
+  { stat: '50+', label: 'checks per site' },
+  { stat: '90s', label: 'to first score' },
+  { stat: '4', label: 'continents' },
+  { stat: 'PULSE', label: 'framework' },
+  { stat: '2 min', label: 'PDF delivery' },
 ];
 
-const pillars = [
+const pulseDimensions = [
+  { letter: 'P', name: 'Presence', question: 'Can the right people find you?', detail: 'Google, ChatGPT, Perplexity — engineered visibility for buyer queries.' },
+  { letter: 'U', name: 'Understanding', question: 'Do they get what you do?', detail: 'Hero clarity, speed, design — first impression that converts.' },
+  { letter: 'L', name: 'Lead capture', question: 'Can they enquire easily?', detail: 'Forms, booking flows, CTAs — friction removed from the funnel.' },
+  { letter: 'S', name: 'Sales follow-up', question: 'What happens after?', detail: 'CRM, nurture sequences, retargeting — no lead left behind.' },
+  { letter: 'E', name: 'Evaluation', question: 'Do you measure and improve?', detail: 'Attribution, dashboards, experiments — closed-loop growth.' },
+];
+
+const systems = [
   {
-    n: '01',
-    title: 'Presence',
-    headline: 'Be found in Google and AI search',
-    body: 'GEO, technical SEO, entity authority — engineered so ChatGPT, Perplexity, and Google cite you for buyer queries.',
-    icon: 'ph-binoculars',
+    title: 'Presence engine',
+    desc: 'Technical SEO + GEO so AI search and Google cite you for the queries that bring revenue.',
+    span: 'bento-a',
+    icon: 'ph-radar',
   },
   {
-    n: '02',
-    title: 'Lead capture',
-    headline: 'Turn traffic into enquiries',
-    body: 'Landing pages, forms, and booking flows rebuilt for conversion — not decoration.',
+    title: 'Conversion layer',
+    desc: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.',
+    span: 'bento-b',
     icon: 'ph-cursor-click',
   },
   {
-    n: '03',
-    title: 'Follow-up + measurement',
-    headline: 'Capture, nurture, and prove ROI',
-    body: 'CRM, email sequences, GA4 attribution — a closed loop from first visit to closed deal.',
+    title: 'Nurture stack',
+    desc: 'Email sequences, CRM routing, retargeting pixels — wired to sales handoff.',
+    span: 'bento-c',
+    icon: 'ph-envelope-simple',
+  },
+  {
+    title: 'Measurement core',
+    desc: 'GA4, server-side tracking, attribution models — know where every dollar came from.',
+    span: 'bento-d',
     icon: 'ph-chart-line-up',
+  },
+  {
+    title: 'Iteration loop',
+    desc: 'Weekly reports, A/B tests, quarterly re-scores — the system improves itself.',
+    span: 'bento-e',
+    icon: 'ph-arrows-clockwise',
   },
 ];
 ---
@@ -51,202 +70,238 @@ const pillars = [
   schema={faqSchema}
 >
   <!-- Hero -->
-  <section class="mesh-hero hero-section">
-    <div class="container-wide">
-      <div class="grid lg:grid-cols-[1fr_minmax(0,440px)] gap-12 lg:gap-16 items-center">
-        <div>
-          <div class="eyebrow-pill mb-6">Free PULSE audit · 90 seconds</div>
-          <h1 class="text-display-1 mb-6">
-            Marketing systems that grow revenue — <span class="text-fg-secondary">measured, not guessed.</span>
-          </h1>
-          <p class="text-lg text-fg-secondary leading-relaxed mb-8 max-w-lg">
-            We score your site across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation — then build the system to improve it.
-          </p>
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="/pulse-audit" class="btn btn-primary btn-large">
-              Get my free PULSE audit
-            </a>
-            <a href="/work" class="btn btn-ghost btn-large">
-              See case studies
-            </a>
+  <section class="hero-canvas">
+    <div class="wrap hero-grid pb-16 lg:pb-24">
+      <div class="relative z-10">
+        <p class="kicker kicker-accent mb-5">Free PULSE audit · 90 seconds</p>
+        <h1 class="display-hero mb-6">
+          Your marketing<br />
+          should print money.
+        </h1>
+        <p class="lead max-w-lg mb-8">
+          We score your site across five dimensions that actually drive revenue — then build the system to lift the score. No vanity metrics. No guesswork.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-10">
+          <a href="/pulse-audit" class="btn btn-primary btn-large">
+            Get my free PULSE audit
+            <i class="ph-bold ph-lightning"></i>
+          </a>
+          <a href="/work" class="btn btn-ghost btn-large">
+            See case studies
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-ink-3 mono">
+          <span>No contract</span>
+          <span>PDF in 2 minutes</span>
+          <span>30-day guarantee</span>
+        </div>
+        <div class="lg:hidden mt-10 panel panel-pad flex items-center justify-between gap-4">
+          <div>
+            <p class="kicker mb-1">Sample score</p>
+            <p class="stat-tile-value">62<span class="text-base text-ink-3 font-normal">/100</span></p>
           </div>
-          <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-fg-muted">
-            {['No contract', 'PDF in 2 minutes', 'AI-search ready', '30-day guarantee'].map((m) => (
-              <span>{m}</span>
-            ))}
+          <div class="text-right">
+            <p class="kicker mb-1">Est. lift</p>
+            <p class="stat-tile-value text-accent">+2.4x</p>
           </div>
         </div>
-        <PulseDashboard />
+      </div>
+      <div class="relative z-10 hidden lg:block">
+        <PulseScore />
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="section-band py-10 md:py-12">
-    <div class="container-wide">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((s) => (
-          <div>
-            <div class="stat-tile-value">{s.value}</div>
-            <div class="stat-tile-label">{s.label}</div>
-          </div>
-        ))}
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {marqueeItems.concat(marqueeItems).map((item) => (
+        <span class="marquee-item">
+          <strong>{item.stat}</strong>
+          {item.label}
+          <span class="text-accent">·</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end">
+        <div>
+          <p class="kicker mb-4">The leak</p>
+          <h2 class="display-lg mb-0">
+            Most sites look fine.<br />
+            <span class="text-ink-2">Most funnels are broken.</span>
+          </h2>
+        </div>
+        <div>
+          <p class="lead">
+            Traffic without attribution. Forms without follow-up. SEO without AI visibility. Agencies shipping reports instead of systems. The PULSE audit finds exactly where revenue leaks — in 90 seconds, with numbers you can defend.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Logos -->
-  <section class="py-10 border-b border-border">
-    <div class="container-wide">
-      <p class="eyebrow text-center mb-6">Trusted by growth-focused teams</p>
-      <div class="logo-strip flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-        <span>Tutti Rouge</span>
-        <span class="font-serif italic">Lotus Mahal</span>
-        <span>THINK</span>
-        <span class="tracking-widest">VIRUKSHA</span>
-        <span>efficy</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PULSE framework -->
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-xl mb-12">
-        <div class="eyebrow mb-3">The PULSE framework</div>
-        <h2 class="text-display-2 mb-4">Five dimensions. One defensible score.</h2>
-        <p class="text-fg-secondary text-lg leading-relaxed">
-          Each dimension answers one question about whether your marketing actually makes money.
+  <!-- PULSE bento -->
+  <section class="section-tight bg-canvas-1 border-y border-line">
+    <div class="wrap">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+        <div>
+          <p class="kicker mb-3">The framework</p>
+          <h2 class="display-lg">Five questions.<br />One score.</h2>
+        </div>
+        <p class="lead max-w-md lg:text-right">
+          Each dimension answers whether your marketing makes money — scored 0–100 from 50+ measurable checks.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {[
-          { letter: 'P', name: 'Presence', q: 'Can the right people find you?' },
-          { letter: 'U', name: 'Understanding', q: 'Do they get what you do?' },
-          { letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?' },
-          { letter: 'S', name: 'Sales follow-up', q: 'What happens after?' },
-          { letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?' },
-        ].map((d) => (
-          <div class="card p-5">
-            <div class="text-sm font-semibold text-fg-muted mono mb-3">{d.letter}</div>
-            <div class="font-semibold text-fg mb-2">{d.name}</div>
-            <p class="text-sm text-fg-secondary leading-relaxed">{d.q}</p>
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        {pulseDimensions.slice(0, 2).map((d) => (
+          <div class="bento-cell panel-hover min-h-[220px]">
+            <span class="bento-letter">{d.letter}</span>
+            <p class="kicker mb-2">{d.name}</p>
+            <h3 class="display-md mb-3">{d.question}</h3>
+            <p class="body-sm">{d.detail}</p>
+          </div>
+        ))}
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {pulseDimensions.slice(2).map((d) => (
+          <div class="bento-cell panel-hover min-h-[200px]">
+            <span class="bento-letter">{d.letter}</span>
+            <p class="kicker mb-2">{d.name}</p>
+            <h3 class="display-md mb-3">{d.question}</h3>
+            <p class="body-sm">{d.detail}</p>
           </div>
         ))}
       </div>
 
       <div class="mt-8">
-        <a href="/pulse-audit" class="text-sm font-medium text-fg-secondary hover:text-fg transition-colors inline-flex items-center gap-2">
-          Run a free audit <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+        <a href="/pulse-audit" class="btn btn-text">
+          Run a free audit
+          <i class="ph-bold ph-arrow-right text-accent"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- What we do -->
-  <section class="section-y section-band">
-    <div class="container-wide">
-      <div class="max-w-xl mb-12">
-        <div class="eyebrow mb-3">What we build</div>
-        <h2 class="text-display-2">The full stack — not just one channel.</h2>
+  <!-- Systems bento -->
+  <section class="section">
+    <div class="wrap">
+      <div class="mb-12 max-w-2xl">
+        <p class="kicker mb-3">What we build</p>
+        <h2 class="display-lg mb-4">The full stack —<br />not just one channel.</h2>
+        <p class="lead">We ship interconnected systems: findability, conversion, nurture, measurement, iteration. One team, one score, one roadmap.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        {pillars.map((p) => (
-          <div class="card card-hover p-6">
-            <div class="flex items-center gap-3 mb-5">
-              <div class="feature-icon">
-                <i class={`ph-bold ${p.icon}`}></i>
-              </div>
-              <span class="text-xs mono text-fg-muted">{p.n} · {p.title}</span>
+      <div class="bento">
+        {systems.map((s) => (
+          <div class:list={['bento-cell panel-hover', s.span]}>
+            <div class="feature-icon mb-5">
+              <i class={`ph-bold ${s.icon}`}></i>
             </div>
-            <h3 class="text-lg font-semibold text-fg mb-3">{p.headline}</h3>
-            <p class="text-sm text-fg-secondary leading-relaxed">{p.body}</p>
+            <h3 class="display-md mb-3">{s.title}</h3>
+            <p class="body-sm">{s.desc}</p>
           </div>
         ))}
       </div>
 
       <div class="mt-10">
-        <a href="/capabilities" class="text-sm font-medium text-fg-secondary hover:text-fg transition-colors inline-flex items-center gap-2">
-          Full capabilities <i class="ph-bold ph-arrow-right text-[var(--color-brand)]"></i>
+        <a href="/capabilities" class="btn btn-text">
+          Full capabilities
+          <i class="ph-bold ph-arrow-right text-accent"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- How it works -->
-  <section class="section-y">
-    <div class="container-wide">
-      <div class="max-w-xl mb-12">
-        <div class="eyebrow mb-3">How it works</div>
-        <h2 class="text-display-2">Audit → plan → measurable lift in 90 days.</h2>
+  <!-- Process timeline -->
+  <section class="section-tight bg-canvas-1 border-y border-line">
+    <div class="wrap">
+      <div class="mb-10">
+        <p class="kicker mb-3">How it works</p>
+        <h2 class="display-lg">Audit → plan → lift in 90 days.</h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="timeline">
         {[
-          { step: '01', title: 'Free PULSE audit', meta: 'Day 0', desc: 'URL + email. Scored report in your inbox within 2 minutes.' },
-          { step: '02', title: 'Strategy call', meta: 'Week 1', desc: 'We prioritize fixes by revenue impact and agree a 90-day plan.' },
-          { step: '03', title: 'Build & measure', meta: 'Days 14–90', desc: 'We ship the work. Weekly numbers. Re-score at day 90.' },
+          { n: '01', title: 'Free PULSE audit', meta: 'Day 0', desc: 'URL + email. Scored PDF in your inbox within 2 minutes.' },
+          { n: '02', title: 'Strategy call', meta: 'Week 1', desc: 'Prioritize fixes by revenue impact. Agree a 90-day plan.' },
+          { n: '03', title: 'Build & measure', meta: 'Days 14–90', desc: 'We ship the work. Weekly numbers. Re-score at day 90.' },
         ].map((s) => (
-          <div class="card p-6 border-t-2 border-[color-mix(in_srgb,var(--color-brand)_35%,transparent)]">
-            <div class="flex items-baseline justify-between mb-4">
-              <span class="text-2xl font-semibold text-fg-muted mono">{s.step}</span>
-              <span class="text-xs mono text-fg-muted">{s.meta}</span>
-            </div>
-            <h3 class="font-semibold text-fg mb-2">{s.title}</h3>
-            <p class="text-sm text-fg-secondary leading-relaxed">{s.desc}</p>
+          <div class="timeline-step">
+            <p class="timeline-step-num">{s.n} · {s.meta}</p>
+            <h3 class="display-md mb-3">{s.title}</h3>
+            <p class="body-sm">{s.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Case study -->
-  <section class="section-y section-band">
-    <div class="container-wide">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="eyebrow mb-3">Case study</div>
-          <h2 class="text-display-2 mb-6">Tutti Rouge — PULSE 42 → 78 in 90 days</h2>
-          <div class="grid grid-cols-3 gap-4 mb-8">
-            {[
-              { v: '+187%', l: 'traffic' },
-              { v: '4.2x', l: 'conversion' },
-              { v: '£2.1M', l: 'pipeline' },
-            ].map((m) => (
-              <div>
-                <div class="text-xl font-semibold text-fg">{m.v}</div>
-                <div class="text-xs text-fg-muted mt-1">{m.l}</div>
-              </div>
-            ))}
+  <!-- Featured case study -->
+  <section class="section">
+    <div class="wrap">
+      <div class="panel overflow-hidden">
+        <div class="grid lg:grid-cols-2">
+          <div class="p-8 lg:p-12 lg:pr-8">
+            <p class="kicker mb-4">Case study</p>
+            <h2 class="display-lg mb-6">Tutti Rouge<br /><span class="text-ink-2">PULSE 42 → 78</span></h2>
+            <div class="grid grid-cols-3 gap-6 mb-8">
+              {[
+                { v: '+187%', l: 'traffic' },
+                { v: '4.2x', l: 'conversion' },
+                { v: '£2.1M', l: 'pipeline' },
+              ].map((m) => (
+                <div>
+                  <div class="stat-tile-value">{m.v}</div>
+                  <div class="stat-tile-label">{m.l}</div>
+                </div>
+              ))}
+            </div>
+            <blockquote class="text-ink-2 leading-relaxed border-l-2 border-accent pl-4 mb-8">
+              "We're now showing up in AI search results ahead of brands 10x our size."
+            </blockquote>
+            <a href="/work/tutti-rouge" class="btn btn-ghost">
+              Read case study
+              <i class="ph-bold ph-arrow-up-right"></i>
+            </a>
           </div>
-          <blockquote class="text-fg-secondary leading-relaxed border-l border-[var(--color-brand)] pl-4 mb-6">
-            "We're now showing up in AI search results ahead of brands 10x our size."
-          </blockquote>
-          <a href="/work/tutti-rouge" class="text-sm font-medium text-fg hover:text-fg-secondary transition-colors inline-flex items-center gap-2">
-            Read case study <i class="ph-bold ph-arrow-up-right"></i>
-          </a>
+          <div class="relative min-h-[280px] lg:min-h-full bg-canvas-3 flex items-center justify-center p-8 border-t lg:border-t-0 lg:border-l border-line">
+            <div class="text-center">
+              <p class="kicker mb-3">Fashion resale · UK</p>
+              <p class="display-md text-ink-2 max-w-xs mx-auto">
+                From invisible to market leader in UK fashion resale — GEO, conversion, attribution.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="card p-0 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=80" alt="Tutti Rouge" class="w-full aspect-[4/3] object-cover" loading="lazy" />
-        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap gap-6 text-sm text-ink-3">
+        <span>Tutti Rouge</span>
+        <span>Lotus Mahal</span>
+        <span>Think Accounting</span>
+        <span>Viruksha Gardens</span>
+        <a href="/work" class="text-ink-2 hover:text-ink transition-colors">All case studies →</a>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section-y section-cta">
-    <div class="container-wide">
-      <div class="max-w-xl mx-auto text-center">
-        <h2 class="text-display-2 mb-4">See what your site is leaking.</h2>
-        <p class="text-fg-secondary text-lg mb-8">
-          Free PULSE audit. 90 seconds. Real numbers — no sales call required.
-        </p>
-        <a href="/pulse-audit" class="btn btn-primary btn-large">
-          Get my free PULSE audit
-        </a>
-      </div>
+  <section class="section section-cta">
+    <div class="wrap text-center max-w-2xl mx-auto">
+      <h2 class="display-lg mb-4">See what your site is leaking.</h2>
+      <p class="lead mb-8">
+        Free PULSE audit. 90 seconds. Real numbers — no sales call required.
+      </p>
+      <a href="/pulse-audit" class="btn btn-primary btn-large">
+        Get my free PULSE audit
+        <i class="ph-bold ph-lightning"></i>
+      </a>
     </div>
   </section>
 </Layout>

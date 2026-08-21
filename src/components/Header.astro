@@ -4,49 +4,40 @@ const links = [
   { href: '/capabilities', label: 'Capabilities' },
   { href: '/work', label: 'Work' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/pulse-audit', label: 'Free PULSE Audit' },
   { href: '/about', label: 'About' },
 ];
 ---
 
 <header class="site-header" id="site-header">
-  <div class="container-wide">
-    <div class="flex items-center justify-between h-[64px]">
-      <a href="/" class="flex items-center gap-2.5 group" aria-label="Happyranks home">
-        <div class="logo-mark w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-fg text-sm group-hover:scale-105 transition-transform">H</div>
-        <span class="font-semibold text-fg tracking-tight text-[15px]">Happyranks</span>
+  <div class="wrap header-inner">
+    <a href="/" class="header-mark" aria-label="Happyranks home">
+      <span class="header-logo">H</span>
+      <span class="header-name">Happyranks</span>
+    </a>
+
+    <nav class="nav-desktop hidden md:flex" aria-label="Main">
+      {links.map((l) => (
+        <a href={l.href} class:list={[active === l.href && 'is-active']}>{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-text text-[13px]">
+        Free audit
       </a>
-
-      <nav class="hidden md:flex items-center gap-0.5" aria-label="Main">
-        {links.map((l) => (
-          <a
-            href={l.href}
-            class:list={[
-              'nav-link px-3.5 py-2 text-[13px] font-medium',
-              active === l.href ? 'is-active' : ''
-            ]}
-          >{l.label}</a>
-        ))}
-      </nav>
-
-      <div class="flex items-center gap-2">
-        <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-ghost text-[13px]">
-          Run audit
-        </a>
-        <a href="/contact" class="hidden sm:inline-flex btn btn-primary text-[13px]">
-          Book a call
-          <i class="ph-bold ph-arrow-right text-base"></i>
-        </a>
-        <button
-          type="button"
-          class="mobile-trigger md:hidden w-10 h-10 rounded-full flex items-center justify-center text-fg hover:bg-bg-muted transition"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <i class="ph-bold ph-list text-2xl"></i>
-        </button>
-      </div>
+      <a href="/contact" class="hidden sm:inline-flex btn btn-primary text-[13px]">
+        Book a call
+        <i class="ph-bold ph-arrow-up-right"></i>
+      </a>
+      <button
+        type="button"
+        class="mobile-trigger md:hidden w-10 h-10 rounded-full flex items-center justify-center text-ink hover:bg-canvas-2 transition border border-line"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <i class="ph-bold ph-list text-xl"></i>
+      </button>
     </div>
   </div>
 </header>
@@ -54,33 +45,35 @@ const links = [
 <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
   <div class="mobile-menu__backdrop" data-close></div>
   <aside class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Site navigation">
-    <div class="flex items-center justify-between h-[64px] px-6 border-b border-border">
-      <a href="/" class="flex items-center gap-2.5" data-close>
-        <div class="w-8 h-8 rounded-lg bg-[var(--color-brand)] flex items-center justify-center font-black text-fg text-sm">H</div>
-        <span class="font-semibold text-fg tracking-tight text-[15px]">Happyranks</span>
+    <div class="flex items-center justify-between h-16 px-5 border-b border-line">
+      <a href="/" class="header-mark" data-close>
+        <span class="header-logo">H</span>
+        <span class="header-name">Happyranks</span>
       </a>
-      <button type="button" class="w-10 h-10 rounded-full flex items-center justify-center text-fg hover:bg-bg-muted transition" aria-label="Close menu" data-close>
-        <i class="ph-bold ph-x text-2xl"></i>
+      <button type="button" class="w-10 h-10 rounded-full flex items-center justify-center text-ink border border-line" aria-label="Close menu" data-close>
+        <i class="ph-bold ph-x text-xl"></i>
       </button>
     </div>
-    <nav class="px-6 py-6 space-y-1" aria-label="Mobile">
+    <nav class="px-5 py-6 flex flex-col gap-1" aria-label="Mobile">
       {links.map((l) => (
         <a
           href={l.href}
           data-close
           class:list={[
-            'flex items-center justify-between py-3.5 text-[16px] font-medium border-b border-border',
-            active === l.href ? 'text-fg' : 'text-fg-secondary'
+            'py-3.5 text-[17px] font-medium border-b border-line',
+            active === l.href ? 'text-ink' : 'text-ink-2',
           ]}
         >
-          <span>{l.label}</span>
-          <i class="ph-bold ph-arrow-right text-fg-muted text-base"></i>
+          {l.label}
         </a>
       ))}
+      <a href="/pulse-audit" data-close class="py-3.5 text-[17px] font-medium text-ink-2 border-b border-line">
+        Free PULSE audit
+      </a>
     </nav>
-    <div class="px-6 pt-4 pb-8 space-y-3">
+    <div class="px-5 pt-4 pb-8 flex flex-col gap-3">
       <a href="/pulse-audit" data-close class="btn btn-primary btn-large w-full justify-center">
-        Get free PULSE audit
+        Get free audit
       </a>
       <a href="/contact" data-close class="btn btn-ghost btn-large w-full justify-center">
         Book a call
@@ -97,7 +90,7 @@ const links = [
 
   function onScroll() {
     if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 8);
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });

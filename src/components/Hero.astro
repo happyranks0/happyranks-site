@@ -1,4 +1,6 @@
 ---
+import PageHeader from './PageHeader.astro';
+
 const {
   eyebrow = '',
   title = '',
@@ -13,50 +15,14 @@ const {
 } = Astro.props;
 ---
 
-<section class:list={[
-  compact ? 'pt-24 pb-12 md:pt-28 md:pb-14' : 'hero-section',
-  mesh && 'mesh-hero',
-  'relative',
-]}>
-  <div class="container-wide relative">
-    <div class:list={['max-w-4xl', align === 'center' && 'mx-auto text-center']}>
-      {eyebrow && (
-        <div class="eyebrow-pill mb-5">{eyebrow}</div>
-      )}
-      <h1 class="text-display-1 mb-5">
-        {title}{highlight && (<><br/><span class="text-gradient-brand">{highlight}</span></>)}
-      </h1>
-      {description && (
-        <p class:list={['text-lg text-fg-secondary leading-relaxed mb-8', align === 'center' ? 'max-w-2xl mx-auto' : 'max-w-2xl']}>
-          {description}
-        </p>
-      )}
-      {(primaryCta || secondaryCta) && (
-        <div class:list={['flex flex-wrap items-center gap-3', align === 'center' && 'justify-center']}>
-          {primaryCta && (
-            <a href={primaryCta.href} class="btn btn-primary btn-large">
-              {primaryCta.icon && <i class={`ph-bold ${primaryCta.icon}`}></i>}
-              {primaryCta.label}
-            </a>
-          )}
-          {secondaryCta && (
-            <a href={secondaryCta.href} class="btn btn-ghost btn-large">
-              {secondaryCta.label}
-              {secondaryCta.icon && <i class={`ph-bold ${secondaryCta.icon}`}></i>}
-            </a>
-          )}
-        </div>
-      )}
-      {meta && (
-        <div class:list={['mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-fg-muted', align === 'center' && 'justify-center']}>
-          {meta.map((m) => (
-            <div class="flex items-center gap-1.5 whitespace-nowrap">
-              <i class="ph-bold ph-check-circle text-success"></i>
-              <span>{m}</span>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  </div>
-</section>
+<PageHeader
+  kicker={eyebrow}
+  title={title}
+  highlight={highlight}
+  description={description}
+  primaryCta={primaryCta}
+  secondaryCta={secondaryCta}
+  meta={meta}
+  align={align}
+  compact={compact}
+/>

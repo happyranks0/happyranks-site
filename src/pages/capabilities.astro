@@ -23,7 +23,7 @@ const dimensions = [
     headline: 'Can the right people find the business?',
     desc: 'In 2026, "find you" means Google, ChatGPT, Perplexity, Gemini, and Claude. We engineer your site to show up in all of them — for the queries that bring you customers, not just traffic.',
     icon: 'ph-binoculars',
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-accent/20 to-accent/5',
     checks: [
       { name: 'Technical SEO audit', detail: 'Crawlability, indexation, site architecture, Core Web Vitals, mobile-first indexing compliance, hreflang, canonicalization.' },
       { name: 'Generative Engine Optimization (GEO)', detail: 'LLM-friendly content structure, entity definitions, citation-worthy formatting, source attribution, freshness signals.' },
@@ -40,7 +40,7 @@ const dimensions = [
     headline: 'Do they quickly understand what you do and why it matters?',
     desc: 'Speed, design, copy clarity, social proof. The first impression determines whether the visitor stays, scrolls, and converts — or bounces to your competitor. We make sure they stay.',
     icon: 'ph-eye',
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-accent/20 to-accent/5',
     checks: [
       { name: 'Core Web Vitals optimization', detail: 'LCP under 2.5s, INP under 200ms, CLS under 0.1. Measured on real-user data (field metrics), not just lab tests. Mobile and desktop separately.' },
       { name: 'Hero clarity & value proposition', detail: 'Above-the-fold message in plain English. Visitor knows what you do, who it\'s for, and why it matters — in under 5 seconds.' },
@@ -57,7 +57,7 @@ const dimensions = [
     headline: 'Can an interested visitor become an enquiry easily?',
     desc: 'The path from "interested" to "booked call." Friction here is the most expensive leak in most marketing funnels. We eliminate it with psychology-backed design, copy, and flow.',
     icon: 'ph-arrow-right',
-    color: 'from-orange-500 to-red-500',
+    color: 'from-accent/20 to-accent/5',
     checks: [
       { name: 'CTA placement & copy', detail: 'Above-fold, contextually embedded throughout, action-oriented language. Multiple CTA types matched to visitor intent (book, download, chat, call).' },
       { name: 'Form design & friction reduction', detail: 'Fewer fields, multi-step where appropriate, inline validation, social proof at the form, mobile-optimized input types (tel, email, date).' },
@@ -74,7 +74,7 @@ const dimensions = [
     headline: 'What happens after the enquiry arrives?',
     desc: 'A visitor who doesn\'t convert today is a lead for tomorrow — if your system is set up to nurture them. We wire up the full stack so no engagement falls through the cracks.',
     icon: 'ph-robot',
-    color: 'from-emerald-500 to-teal-500',
+    color: 'from-accent/20 to-accent/5',
     checks: [
       { name: 'CRM setup & integration', detail: 'Mautic, HubSpot, Pipedrive, Salesforce — whichever you use (or should use). Contact properties, deal stages, lead scoring, automation workflows.' },
       { name: 'Email nurture sequences', detail: 'Welcome series, educational content, conversion nudges, re-engagement. Behavior-triggered, not just time-based. 20%+ open rates as the baseline.' },
@@ -91,7 +91,7 @@ const dimensions = [
     headline: 'Does the business measure results and improve the system?',
     desc: 'You can\'t improve what you don\'t measure. We set up the full attribution stack so you know exactly where every dollar came from — and where the next dollar should go.',
     icon: 'ph-chart-line-up',
-    color: 'from-yellow-500 to-orange-500',
+    color: 'from-accent/20 to-accent/5',
     checks: [
       { name: 'GA4 + server-side tracking', detail: 'Cookie-proof, GDPR-compliant, future-proof. Server-side GTM for accurate data even with Safari ITP and ad blockers. Custom event taxonomy.' },
       { name: 'Conversion attribution modeling', detail: 'First-touch, last-touch, linear, time-decay, position-based, data-driven. Pick the model that matches your sales cycle, not the default.' },
@@ -130,7 +130,7 @@ const dimensions = [
               <div class={`w-11 h-11 rounded-xl bg-gradient-to-br ${d.color} flex items-center justify-center shadow-lg`}>
                 <i class={`ph-bold ${d.icon} text-xl text-fg`}></i>
               </div>
-              <div class="text-3xl font-black text-[#222] mono leading-none">{d.letter}</div>
+              <div class="text-3xl font-black text-ink-4 mono leading-none">{d.letter}</div>
             </div>
             <h2 class="text-display-3 text-fg mb-3">{d.name}</h2>
             <p class="text-fg-secondary text-[15px] leading-relaxed mb-4">{d.headline}</p>

@@ -35,7 +35,7 @@ import Hero from '../components/Hero.astro';
         </div>
 
         <div class="card p-8 lg:sticky lg:top-24">
-          <div class="aspect-square rounded-xl bg-gradient-to-br from-[#1a0808] to-[#0a0a0a] border border-border flex items-center justify-center mb-6">
+          <div class="aspect-square rounded-xl bg-gradient-to-br from-canvas-2 to-canvas border border-border flex items-center justify-center mb-6">
             <div class="w-32 h-32 rounded-full bg-gradient-to-br from-[var(--color-brand)] to-[#7a0a0a] flex items-center justify-center text-6xl font-black text-fg">S</div>
           </div>
           <div class="text-center">
@@ -139,7 +139,7 @@ import Hero from '../components/Hero.astro';
               <div class="w-12 h-12 rounded-xl bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)]">
                 <i class={`ph-bold ${v.icon} text-2xl`}></i>
               </div>
-              <div class="text-3xl font-black text-[#222] mono">{v.n}</div>
+              <div class="text-3xl font-black text-ink-4 mono">{v.n}</div>
             </div>
             <h3 class="text-xl font-bold text-fg mb-3">{v.title}</h3>
             <p class="text-fg-secondary leading-relaxed">{v.desc}</p>
