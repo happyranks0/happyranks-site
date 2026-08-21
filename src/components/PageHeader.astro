@@ -12,16 +12,16 @@ const {
 } = Astro.props;
 ---
 
-<section class:list={[compact ? 'pt-28 pb-10' : 'hero-section mesh-hero', 'relative']}>
+<section class:list={[compact ? 'pt-28 pb-10 border-b border-line' : 'masthead', 'relative']}>
   <div class="wrap relative">
     <div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
-      {kicker && <p class="kicker kicker-accent mb-4">{kicker}</p>}
+      {kicker && <p class="kicker mb-4">{kicker}</p>}
       <h1 class="display-hero mb-5">
         {title}
         {highlight && (
           <>
             <br />
-            <span class="text-gradient-brand">{highlight}</span>
+            <em class="serif not-italic text-accent">{highlight}</em>
           </>
         )}
       </h1>

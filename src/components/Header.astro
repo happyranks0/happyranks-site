@@ -26,19 +26,15 @@ const auditFocus = active === '' || active === '/pulse-audit';
     <div class="flex items-center gap-2">
       {auditFocus ? (
         <>
-          <a href="/contact" class="hidden sm:inline-flex btn btn-ghost text-[13px]">
-            Book a call
-          </a>
+          <a href="/contact" class="hidden sm:inline-flex btn btn-ghost text-[13px]">Book a call</a>
           <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-primary text-[13px]">
-            Free PULSE audit
+            Free audit
             <i class="ph-bold ph-lightning"></i>
           </a>
         </>
       ) : (
         <>
-          <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-text text-[13px]">
-            Free audit
-          </a>
+          <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-text text-[13px]">Free audit</a>
           <a href="/contact" class="hidden sm:inline-flex btn btn-primary text-[13px]">
             Book a call
             <i class="ph-bold ph-arrow-up-right"></i>
@@ -47,7 +43,7 @@ const auditFocus = active === '' || active === '/pulse-audit';
       )}
       <button
         type="button"
-        class="mobile-trigger md:hidden w-10 h-10 rounded-full flex items-center justify-center text-ink hover:bg-canvas-2 transition border border-line"
+        class="mobile-trigger md:hidden w-10 h-10 flex items-center justify-center text-ink border border-line rounded-sm"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -66,45 +62,28 @@ const auditFocus = active === '' || active === '/pulse-audit';
         <span class="header-logo">H</span>
         <span class="header-name">Happyranks</span>
       </a>
-      <button type="button" class="w-10 h-10 rounded-full flex items-center justify-center text-ink border border-line" aria-label="Close menu" data-close>
+      <button type="button" class="w-10 h-10 flex items-center justify-center border border-line rounded-sm" aria-label="Close menu" data-close>
         <i class="ph-bold ph-x text-xl"></i>
       </button>
     </div>
     <nav class="px-5 py-6 flex flex-col gap-1" aria-label="Mobile">
       {links.map((l) => (
-        <a
-          href={l.href}
-          data-close
-          class:list={[
-            'py-3.5 text-[17px] font-medium border-b border-line',
-            active === l.href ? 'text-ink' : 'text-ink-2',
-          ]}
-        >
+        <a href={l.href} data-close class:list={['py-3.5 text-[17px] font-medium border-b border-line', active === l.href ? 'text-ink' : 'text-ink-2']}>
           {l.label}
         </a>
       ))}
-      <a href="/pulse-audit" data-close class="py-3.5 text-[17px] font-medium text-ink-2 border-b border-line">
-        Free PULSE audit
-      </a>
+      <a href="/pulse-audit" data-close class="py-3.5 text-[17px] font-medium text-ink-2 border-b border-line">Free PULSE audit</a>
     </nav>
     <div class="px-5 pt-4 pb-8 flex flex-col gap-3">
       {auditFocus ? (
         <>
-          <a href="/pulse-audit" data-close class="btn btn-primary btn-large w-full justify-center">
-            Get free audit
-          </a>
-          <a href="/contact" data-close class="btn btn-ghost btn-large w-full justify-center">
-            Book a call
-          </a>
+          <a href="/pulse-audit" data-close class="btn btn-primary btn-large w-full justify-center">Get free audit</a>
+          <a href="/contact" data-close class="btn btn-ghost btn-large w-full justify-center">Book a call</a>
         </>
       ) : (
         <>
-          <a href="/contact" data-close class="btn btn-primary btn-large w-full justify-center">
-            Book a call
-          </a>
-          <a href="/pulse-audit" data-close class="btn btn-ghost btn-large w-full justify-center">
-            Get free audit
-          </a>
+          <a href="/contact" data-close class="btn btn-primary btn-large w-full justify-center">Book a call</a>
+          <a href="/pulse-audit" data-close class="btn btn-ghost btn-large w-full justify-center">Get free audit</a>
         </>
       )}
     </div>
@@ -119,7 +98,7 @@ const auditFocus = active === '' || active === '/pulse-audit';
 
   function onScroll() {
     if (!header) return;
-    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });

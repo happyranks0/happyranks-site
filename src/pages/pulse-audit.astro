@@ -6,11 +6,9 @@ import PulseAuditForm from '../components/PulseAuditForm.astro';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. No catch. We make money when you hire us to act on what the audit finds.' } },
-    { '@type': 'Question', name: 'How long does the audit take?', acceptedAnswer: { '@type': 'Answer', text: 'The audit itself takes 90 seconds. The PDF report is generated and emailed within 2 minutes.' } },
-    { '@type': 'Question', name: 'Will I get spammed after?', acceptedAnswer: { '@type': 'Answer', text: 'No. We may send 2-3 follow-up emails with relevant insights, and you can unsubscribe anytime.' } },
-    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions. A defensible number. Re-run quarterly to track progress.' } },
-    { '@type': 'Question', name: 'Can I use the audit for my clients?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, white-label it. We do not restrict use of the audit report. Just do not resell the report itself.' } },
+    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. No catch.' } },
+    { '@type': 'Question', name: 'How long does the audit take?', acceptedAnswer: { '@type': 'Answer', text: '90 seconds to run. PDF emailed within 2 minutes.' } },
+    { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions.' } },
   ],
 };
 
@@ -18,109 +16,70 @@ const serviceSchema = {
   '@type': 'Service',
   serviceType: 'Free Marketing Audit',
   provider: { '@type': 'Organization', name: 'Happyranks' },
-  areaServed: ['US', 'GB', 'AE', 'IN'],
-  description: 'Free 90-second PULSE audit scoring websites across 5 dimensions and 50+ checks.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 
 const reportSections = [
-  { p: '01', title: 'Cover & Executive Summary', desc: 'Overall PULSE score, top 3 revenue fixes, estimated annual lift.' },
-  { p: '02', title: 'Presence Deep-Dive', desc: 'SEO health, AI citation potential, knowledge graph, search intent.' },
-  { p: '03', title: 'Understanding Deep-Dive', desc: 'Core Web Vitals, mobile experience, hero clarity, social proof.' },
-  { p: '04', title: 'Lead Capture Deep-Dive', desc: 'CTA placement, form friction, booking flow, conversion paths.' },
-  { p: '05', title: 'Sales Follow-up Deep-Dive', desc: 'CRM, email capture, retargeting, lead scoring, handoff automation.' },
-  { p: '06', title: 'Evaluation Deep-Dive', desc: 'Analytics setup, attribution gaps, measurement maturity.' },
-  { p: '07', title: 'SWOT Analysis', desc: 'Strengths, weaknesses, opportunities, threats across all dimensions.' },
-  { p: '08', title: '90-Day Action Plan', desc: 'Prioritized fixes with effort and impact estimates.' },
+  { p: '01', title: 'Executive summary', desc: 'Overall score, top fixes, estimated revenue lift.' },
+  { p: '02', title: 'Dimension deep-dives', desc: 'Presence, Understanding, Lead capture, Follow-up, Evaluation.' },
+  { p: '03', title: 'SWOT + 90-day plan', desc: 'Prioritized fixes with effort and impact estimates.' },
 ];
 ---
 
 <Layout
   title="Free PULSE Audit — Score your website in 90 seconds"
-  description="Get a free PULSE audit across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. 50+ checks, real numbers, no call required."
+  description="Free PULSE audit across five revenue dimensions. 50+ checks, PDF in 2 minutes, no call required."
   active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
-  <section class="hero-canvas min-h-0 pb-16">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-start pt-4">
-        <div class="relative z-10">
-          <p class="kicker kicker-accent mb-5">Free · 90 seconds · No call required</p>
-          <h1 class="display-hero mb-6">
-            Score your site<br />
-            <span class="text-gradient-brand">in 90 seconds.</span>
-          </h1>
-          <p class="lead max-w-lg mb-8">
-            Five dimensions. Fifty-plus checks. A 10-page PDF with prioritized fixes — emailed in 2 minutes.
-          </p>
-          <div class="hidden lg:block">
-            <PulseScore />
-          </div>
-        </div>
+  <section class="masthead">
+    <div class="wrap masthead-grid">
+      <div>
+        <p class="kicker mb-5">Free · 90 seconds</p>
+        <h1 class="display-hero mb-6">
+          Score your site<br />
+          <em class="serif not-italic text-accent">in 90 seconds.</em>
+        </h1>
+        <p class="lead max-w-md mb-8">
+          Five dimensions. Fifty-plus checks. A real PDF with prioritized fixes — emailed in 2 minutes.
+        </p>
+      </div>
+      <PulseScore />
+    </div>
+  </section>
 
-        <div class="glass rounded-2xl p-6 lg:p-8 lg:sticky lg:top-24 z-10" id="pulse-form-panel">
-          <PulseAuditForm formId="pulse-form" />
-        </div>
+  <section class="band-ink section-tight" id="pulse-form-panel">
+    <div class="wrap max-w-lg mx-auto">
+      <div class="panel panel-pad-lg band-ink-form">
+        <PulseAuditForm formId="pulse-form" />
       </div>
     </div>
   </section>
 
-  <section class="section-tight border-y border-line bg-canvas-1">
+  <section class="section-tight section-band">
     <div class="wrap">
-      <p class="kicker mb-8">Under the hood</p>
-      <div class="timeline">
-        {[
-          { n: '01', title: 'Submit URL', desc: 'Homepage URL and email. That is all we need.' },
-          { n: '02', title: 'Engine crawls', desc: 'HTML, meta, schema, scripts, DNS — 50+ measurable signals.' },
-          { n: '03', title: 'Score & report', desc: 'Weighted rubric across 5 dimensions. PDF with 90-day plan.' },
-        ].map((s) => (
-          <div class="timeline-step">
-            <p class="timeline-step-num">{s.n}</p>
-            <h3 class="display-md mb-2">{s.title}</h3>
-            <p class="body-sm">{s.desc}</p>
+      <p class="kicker mb-8">What you get</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        {reportSections.map((r) => (
+          <div>
+            <p class="mono text-sm text-accent mb-2">{r.p}</p>
+            <h3 class="text-lg font-semibold text-ink mb-2">{r.title}</h3>
+            <p class="body-sm">{r.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
-        <div>
-          <p class="kicker mb-3">Inside the report</p>
-          <h2 class="display-lg mb-4">A real audit,<br />not a vanity score.</h2>
-          <p class="lead mb-6">10 pages built for a CEO who wants truth — not consultant-speak.</p>
-          <a href="#pulse-form-panel" class="btn btn-primary">
-            Run free audit
-            <i class="ph-bold ph-arrow-down"></i>
-          </a>
-        </div>
-        <div class="space-y-3">
-          {reportSections.map((r) => (
-            <div class="panel panel-pad flex gap-5 items-start panel-hover">
-              <span class="mono text-sm text-accent shrink-0">{r.p}</span>
-              <div>
-                <h3 class="font-semibold text-ink mb-1">{r.title}</h3>
-                <p class="body-sm">{r.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight bg-canvas-1 border-t border-line">
+  <section class="section-tight">
     <div class="wrap max-w-3xl">
-      <p class="kicker mb-3 text-center">FAQ</p>
-      <h2 class="display-lg mb-10 text-center">Common questions</h2>
-      <div class="space-y-3">
+      <h2 class="display-lg text-center mb-10">Questions</h2>
+      <div class="border-t border-line">
         {faqSchema.mainEntity.map((f) => (
-          <details class="panel panel-pad group">
-            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-ink">
+          <details class="group border-b border-line py-5">
+            <summary class="flex justify-between cursor-pointer list-none font-medium text-ink">
               {f.name}
-              <i class="ph-bold ph-plus text-accent transition-transform group-open:rotate-45"></i>
+              <i class="ph-bold ph-plus text-accent group-open:rotate-45 transition-transform"></i>
             </summary>
             <p class="mt-4 body-sm">{f.acceptedAnswer.text}</p>
           </details>
@@ -129,3 +88,19 @@ const reportSections = [
     </div>
   </section>
 </Layout>
+
+<style>
+  .band-ink-form {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .band-ink-form .btn-primary {
+    background: var(--color-ink-band-fg);
+    color: var(--color-ink);
+  }
+  .band-ink-form .btn-primary:hover {
+    background: var(--color-accent-soft);
+    color: #fff;
+  }
+  .band-ink-form .text-ink-3 { color: var(--color-ink-band-muted); }
+</style>

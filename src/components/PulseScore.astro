@@ -1,23 +1,37 @@
 ---
 const dimensions = [
-  { l: 'P', name: 'Presence', s: 78, x: '8%', y: '12%' },
-  { l: 'U', name: 'Understanding', s: 71, x: '72%', y: '8%' },
-  { l: 'L', name: 'Lead capture', s: 42, x: '78%', y: '58%' },
-  { l: 'S', name: 'Sales follow-up', s: 38, x: '12%', y: '68%' },
-  { l: 'E', name: 'Evaluation', s: 81, x: '48%', y: '78%' },
+  { l: 'P', name: 'Presence', s: 78 },
+  { l: 'U', name: 'Understanding', s: 71 },
+  { l: 'L', name: 'Lead capture', s: 42 },
+  { l: 'S', name: 'Sales follow-up', s: 38 },
+  { l: 'E', name: 'Evaluation', s: 81 },
 ];
 ---
 
-<div class="score-cluster" aria-hidden="true">
-  <div class="score-orb score-orb-main">
-    <span class="score-num">62</span>
-    <span class="score-label">PULSE score</span>
-  </div>
-  {dimensions.map((d) => (
-    <div class="score-chip" style={`left: ${d.x}; top: ${d.y};`}>
-      <span class="score-chip-letter">{d.l}</span>
-      <span class="text-ink-3 hidden sm:inline">{d.name}</span>
-      <span class="score-chip-val">{d.s}</span>
+<div class="scorecard" aria-label="Sample PULSE score">
+  <div class="scorecard-header">
+    <div>
+      <p class="kicker mb-2">Sample report</p>
+      <div class="scorecard-total">62<span>/100</span></div>
     </div>
-  ))}
+    <div class="scorecard-meta">
+      <span>Est. revenue lift</span>
+      <strong>+2.4×</strong>
+      <span>if fixes ship in 90 days</span>
+    </div>
+  </div>
+  <div class="scorecard-rows">
+    {dimensions.map((d) => (
+      <div class="scorecard-row">
+        <span class="scorecard-letter">{d.l}</span>
+        <div>
+          <div class="text-sm font-medium text-ink mb-2">{d.name}</div>
+          <div class="scorecard-bar">
+            <div class="scorecard-bar-fill" style={`width: ${d.s}%`}></div>
+          </div>
+        </div>
+        <span class="scorecard-val">{d.s}</span>
+      </div>
+    ))}
+  </div>
 </div>
