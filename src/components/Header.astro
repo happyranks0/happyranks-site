@@ -6,6 +6,8 @@ const links = [
   { href: '/pricing', label: 'Pricing' },
   { href: '/about', label: 'About' },
 ];
+
+const auditFocus = active === '' || active === '/pulse-audit';
 ---
 
 <header class="site-header" id="site-header">
@@ -22,13 +24,27 @@ const links = [
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-text text-[13px]">
-        Free audit
-      </a>
-      <a href="/contact" class="hidden sm:inline-flex btn btn-primary text-[13px]">
-        Book a call
-        <i class="ph-bold ph-arrow-up-right"></i>
-      </a>
+      {auditFocus ? (
+        <>
+          <a href="/contact" class="hidden sm:inline-flex btn btn-ghost text-[13px]">
+            Book a call
+          </a>
+          <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-primary text-[13px]">
+            Free PULSE audit
+            <i class="ph-bold ph-lightning"></i>
+          </a>
+        </>
+      ) : (
+        <>
+          <a href="/pulse-audit" class="hidden sm:inline-flex btn btn-text text-[13px]">
+            Free audit
+          </a>
+          <a href="/contact" class="hidden sm:inline-flex btn btn-primary text-[13px]">
+            Book a call
+            <i class="ph-bold ph-arrow-up-right"></i>
+          </a>
+        </>
+      )}
       <button
         type="button"
         class="mobile-trigger md:hidden w-10 h-10 rounded-full flex items-center justify-center text-ink hover:bg-canvas-2 transition border border-line"
@@ -72,12 +88,25 @@ const links = [
       </a>
     </nav>
     <div class="px-5 pt-4 pb-8 flex flex-col gap-3">
-      <a href="/pulse-audit" data-close class="btn btn-primary btn-large w-full justify-center">
-        Get free audit
-      </a>
-      <a href="/contact" data-close class="btn btn-ghost btn-large w-full justify-center">
-        Book a call
-      </a>
+      {auditFocus ? (
+        <>
+          <a href="/pulse-audit" data-close class="btn btn-primary btn-large w-full justify-center">
+            Get free audit
+          </a>
+          <a href="/contact" data-close class="btn btn-ghost btn-large w-full justify-center">
+            Book a call
+          </a>
+        </>
+      ) : (
+        <>
+          <a href="/contact" data-close class="btn btn-primary btn-large w-full justify-center">
+            Book a call
+          </a>
+          <a href="/pulse-audit" data-close class="btn btn-ghost btn-large w-full justify-center">
+            Get free audit
+          </a>
+        </>
+      )}
     </div>
   </aside>
 </div>

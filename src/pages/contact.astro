@@ -1,14 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+
+const planLabels: Record<string, string> = {
+  starter: 'Starter',
+  growth: 'Growth',
+  scale: 'Scale',
+};
+
+const channels = [
+  {
+    icon: 'ph-envelope-simple',
+    title: 'Email',
+    detail: 'hello@happyranks.com',
+    href: 'mailto:hello@happyranks.com',
+    sub: 'General questions, partnerships, press',
+  },
+  {
+    icon: 'ph-phone',
+    title: 'Phone / WhatsApp',
+    detail: '+91 82488 16834',
+    href: 'tel:+918248816834',
+    sub: 'India & international — venue and hospitality clients',
+  },
+  {
+    icon: 'ph-linkedin-logo',
+    title: 'LinkedIn',
+    detail: 'Sanjeev',
+    href: 'https://www.linkedin.com/in/sanjeev/',
+    sub: 'Professional intros and updates',
+  },
+];
 ---
 
 <Layout
   title="Contact — Book a strategy call"
   description="Book a 45-minute strategy call. We'll walk through your PULSE audit results, talk about your goals, and see if we're a good fit. Response within 4 working hours."
   active="/contact"
+  noStickyCta={true}
 >
-  <!-- HERO + FORM -->
   <section class="section-y">
     <div class="container-wide">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -42,13 +72,27 @@ import Hero from '../components/Hero.astro';
           </div>
         </div>
 
-        <!-- FORM CARD -->
-        <div class="card p-8 lg:p-10 card-glow lg:sticky lg:top-24">
+        <div class="card p-8 lg:p-10 lg:sticky lg:top-24">
+          <div id="plan-banner" class="hidden mb-6 p-4 rounded-xl border border-accent/30 bg-accent/10 text-sm text-ink-2"></div>
+
           <div class="eyebrow mb-2">Book a call</div>
           <h2 class="text-2xl font-bold text-fg mb-2">Tell us about your business</h2>
           <p class="text-sm text-fg-muted mb-8">We read every submission. Reply within 4 working hours.</p>
 
-          <form id="contact-form" class="space-y-5">
+          <form
+            id="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="space-y-5"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="plan" id="plan-field" value="" />
+            <p class="hidden">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <label for="name" class="block text-sm font-semibold text-fg mb-2">Name *</label>
@@ -80,28 +124,27 @@ import Hero from '../components/Hero.astro';
             </div>
             <div>
               <label for="message" class="block text-sm font-semibold text-fg mb-2">What are you trying to solve? *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve. Specific numbers welcome." class="w-full input-field resize-none"></textarea>
+              <textarea id="message" name="message" rows="4" required placeholder="A few sentences about your business and what you want to improve." class="w-full input-field resize-none"></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-large w-full justify-center">
               <i class="ph-bold ph-calendar-check"></i>
               Request a call
             </button>
             <div class="text-[10px] text-fg-muted text-center">
-              We respect your inbox. No spam, no marketing list trades, no selling your data.
+              We respect your inbox. No spam, no marketing list trades.
             </div>
           </form>
 
-          <div id="contact-success" class="hidden mt-6 p-6 bg-accent/10 border border-emerald-500/30 rounded-lg text-center">
-            <i class="ph-bold ph-check-circle text-emerald-500 text-3xl mb-2"></i>
+          <div id="contact-success" class="hidden mt-6 p-6 bg-ok-bg border border-ok/30 rounded-lg text-center">
+            <i class="ph-bold ph-check-circle text-ok text-3xl mb-2"></i>
             <div class="font-semibold text-fg mb-1">Request received</div>
-            <p class="text-sm text-fg-secondary">We\'ll be in touch within 4 working hours. Usually faster.</p>
+            <p class="text-sm text-fg-secondary">We'll be in touch within 4 working hours. Usually faster.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="section-y bg-bg-subtle">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
@@ -112,12 +155,9 @@ import Hero from '../components/Hero.astro';
       </div>
       <div class="space-y-3">
         {[
-          { q: 'What happens after I submit this form?', a: 'A real person on our team reads your submission (not a bot, not a triage algorithm). We reply within 4 working hours with either: 1) a Calendly link to book the strategy call, 2) a quick clarifying question, or 3) an honest "we\'re not the right fit, here\'s who is."' },
-          { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free. It\'s 45 minutes of senior time. If we end up working together, great. If not, you walk away with a clearer picture of what to do next.' },
-          { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. We read everything. The form is for booking a call; the inbox is for everything else.' },
-          { q: 'Can I send you materials before the call?', a: 'Yes. After you book, you\'ll get a prep email with a link to share any documents (decks, audits, current metrics, etc.). We\'ll review them before the call so we don\'t waste your time.' },
-          { q: 'What timezone will the call be in?', a: 'We work across US, UK, UAE, and India timezones. We\'ll find a slot that works for both. Most US-based clients prefer 8-10am EST, which is 5:30-7:30pm IST. Most UK clients prefer 4-6pm GMT. We\'re flexible.' },
-          { q: 'Will there be a follow-up if I don\'t engage?', a: 'No. We send one or two follow-up emails max. If you don\'t reply, we leave you alone. We don\'t believe in aggressive sales follow-up — it doesn\'t work and it makes everyone\'s life worse.' },
+          { q: 'What happens after I submit this form?', a: 'A real person reads your submission. We reply within 4 working hours with a Calendly link, a clarifying question, or an honest referral if we are not the right fit.' },
+          { q: 'Do you charge for the strategy call?', a: 'No. The first call is always free — 45 minutes of senior time.' },
+          { q: 'What if I just have a quick question?', a: 'Email hello@happyranks.com directly. The form is for booking a call.' },
         ].map((f) => (
           <details class="card p-6 group">
             <summary class="flex items-center justify-between cursor-pointer list-none">
@@ -131,7 +171,6 @@ import Hero from '../components/Hero.astro';
     </div>
   </section>
 
-  <!-- ALTERNATIVE WAYS TO REACH US -->
   <section class="section-y">
     <div class="container-wide max-w-3xl">
       <div class="text-center mb-12">
@@ -141,50 +180,71 @@ import Hero from '../components/Hero.astro';
         </h2>
       </div>
       <div class="grid md:grid-cols-3 gap-4">
-        {[
-          { icon: 'ph-envelope-simple', title: 'Email', detail: 'hello@happyranks.com', sub: 'Best for general questions, partnerships, press' },
-          { icon: 'ph-linkedin-logo', title: 'LinkedIn', detail: 'linkedin.com/in/sanjeev', sub: 'Best for professional intros and content updates' },
-          { icon: 'ph-twitter-logo', title: 'X / Twitter', detail: '@happyranks', sub: 'Best for quick takes and conversations' },
-        ].map((c) => (
-          <div class="card p-6 text-center">
+        {channels.map((c) => (
+          <a href={c.href} class="card p-6 text-center panel-hover block no-underline" target={c.href.startsWith('http') ? '_blank' : undefined} rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
             <div class="w-12 h-12 rounded-lg bg-bg-muted border border-border flex items-center justify-center text-[var(--color-brand)] mx-auto mb-3">
               <i class={`ph-bold ${c.icon} text-2xl`}></i>
             </div>
             <div class="font-bold text-fg mb-1">{c.title}</div>
             <div class="text-sm text-[var(--color-brand)] mono mb-2">{c.detail}</div>
             <div class="text-xs text-fg-muted">{c.sub}</div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 </Layout>
 
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+<script define:vars={{ planLabels }}>
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  const planField = document.getElementById('plan-field');
+  const planBanner = document.getElementById('plan-banner');
+
+  if (plan && planField) {
+    planField.value = plan;
+    const label = planLabels[plan] || plan;
+    if (planBanner) {
+      planBanner.textContent = `You're interested in the ${label} plan — we'll tailor the call around that tier.`;
+      planBanner.classList.remove('hidden');
+    }
+  }
+
+  const form = document.getElementById('contact-form');
   const success = document.getElementById('contact-success');
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="ph-bold ph-circle-notch animate-spin"></i> Sending...';
-    btn.disabled = true;
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn?.innerHTML;
+    if (btn) {
+      btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Sending...';
+      btn.disabled = true;
+    }
+
     try {
       const body = new URLSearchParams();
       body.append('form-name', 'contact');
       formData.forEach((v, k) => body.append(k, v.toString()));
-      await fetch('/', {
+
+      const response = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body.toString(),
       });
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
       form.classList.add('hidden');
       success?.classList.remove('hidden');
     } catch (err) {
-      btn.innerHTML = original;
-      btn.disabled = false;
+      if (btn) {
+        btn.innerHTML = original;
+        btn.disabled = false;
+      }
       alert('Failed to send. Please email hello@happyranks.com directly.');
+      console.error(err);
     }
   });
 </script>

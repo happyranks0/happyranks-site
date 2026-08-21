@@ -1,12 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+
+const personSchema = {
+  '@type': 'Person',
+  name: 'Sanjeev',
+  jobTitle: 'Founder & Senior Marketing Strategist',
+  worksFor: { '@type': 'Organization', name: 'Happyranks' },
+  url: 'https://happyranks.com/about',
+  sameAs: ['https://www.linkedin.com/in/sanjeev/'],
+  knowsAbout: ['Marketing Strategy', 'SEO', 'Generative Engine Optimization', 'Marketing Automation'],
+};
 ---
 
 <Layout
   title="About — Senior marketing, without the agency overhead"
   description="Happyranks is led by Sanjeev, a senior marketing operator with 12+ years building marketing systems for businesses across the US, UK, UAE, and India."
   active="/about"
+  schema={personSchema}
 >
   <!-- HERO -->
   <section class="hero-section relative">

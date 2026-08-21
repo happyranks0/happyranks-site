@@ -7,8 +7,9 @@ const cases = [
     slug: 'tutti-rouge',
     name: 'Tutti Rouge',
     industry: 'Fashion resale',
+    category: 'fashion',
     location: 'United Kingdom',
-    image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80',
+    image: '/images/tutti-rouge.jpg',
     summary: 'From invisible to market leader in UK fashion resale. We rebuilt the entire acquisition engine around GEO and conversion.',
     metrics: [
       { v: '+187%', l: 'organic traffic' },
@@ -24,8 +25,9 @@ const cases = [
     slug: 'lotus-mahal',
     name: 'Lotus Mahal',
     industry: 'Wedding venue',
+    category: 'wedding',
     location: 'India',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80',
+    image: '/images/lotus-mahal.jpg',
     summary: 'Inbound booking engine for a premium wedding venue in Coimbatore. We rebuilt the entire booking experience.',
     metrics: [
       { v: '3.4x', l: 'qualified leads' },
@@ -41,8 +43,9 @@ const cases = [
     slug: 'think-accounting',
     name: 'Think Accounting',
     industry: 'B2B professional services',
+    category: 'b2b',
     location: 'United Kingdom',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80',
+    image: '/images/think-accounting.jpg',
     summary: 'AI-search-optimized site that wins on intent, not just keywords. The first accounting firm showing up in ChatGPT answers.',
     metrics: [
       { v: '+312%', l: 'AI citations' },
@@ -58,8 +61,9 @@ const cases = [
     slug: 'viruksha-gardens',
     name: 'Viruksha Gardens',
     industry: 'Event venue & hospitality',
+    category: 'wedding',
     location: 'India',
-    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80',
+    image: '/images/viruksha-gardens.jpg',
     summary: 'A brand refresh and conversion system for a destination venue. Made them the go-to for destination weddings in South India.',
     metrics: [
       { v: '+221%', l: 'enquiries' },
@@ -74,10 +78,10 @@ const cases = [
 ];
 
 const industries = [
-  { name: 'All', count: cases.length, icon: 'ph-squares-four' },
-  { name: 'Fashion', count: 1, icon: 'ph-tag' },
-  { name: 'Wedding & events', count: 2, icon: 'ph-heart' },
-  { name: 'B2B services', count: 1, icon: 'ph-briefcase' },
+  { id: 'all', name: 'All', count: cases.length, icon: 'ph-squares-four' },
+  { id: 'fashion', name: 'Fashion', count: 1, icon: 'ph-tag' },
+  { id: 'wedding', name: 'Wedding & events', count: 2, icon: 'ph-heart' },
+  { id: 'b2b', name: 'B2B services', count: 1, icon: 'ph-briefcase' },
 ];
 ---
 
@@ -98,11 +102,32 @@ const industries = [
   <!-- CASE GRID -->
   <section class="pb-24">
     <div class="container-wide">
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="flex flex-wrap gap-2 mb-8" id="case-filters" role="tablist" aria-label="Filter case studies">
+        {industries.map((i, idx) => (
+          <button
+            type="button"
+            class:list={[
+              'px-4 py-2 rounded-full text-sm font-medium border transition-colors',
+              idx === 0 ? 'bg-accent text-white border-accent' : 'border-border text-fg-secondary hover:text-fg hover:border-line-strong',
+            ]}
+            data-filter={i.id}
+            role="tab"
+            aria-selected={idx === 0}
+          >
+            {i.name} ({i.count})
+          </button>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6" id="case-grid">
         {cases.map((c) => (
-          <a href={`/work/${c.slug}`} class="card card-hover overflow-hidden group p-0 block">
+          <a
+            href={`/work/${c.slug}`}
+            class="case-card card card-hover overflow-hidden group p-0 block"
+            data-category={c.category}
+          >
             <div class="relative aspect-[16/10] overflow-hidden">
-              <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+              <img src={c.image} alt={`${c.name} case study`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width="1200" height="750" />
               <div class="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/40 to-transparent"></div>
               <div class="absolute top-4 right-4 px-3 py-1.5 bg-canvas/80 backdrop-blur border border-border rounded-full">
                 <div class="text-[10px] mono text-fg-muted">PULSE</div>
@@ -224,3 +249,29 @@ const industries = [
     </div>
   </section>
 </Layout>
+
+<script>
+  const filters = document.getElementById('case-filters');
+  const cards = document.querySelectorAll<HTMLElement>('.case-card');
+
+  filters?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button[data-filter]');
+    if (!btn) return;
+
+    const filter = btn.dataset.filter;
+    filters.querySelectorAll('button').forEach((b) => {
+      const active = b === btn;
+      b.classList.toggle('bg-accent', active);
+      b.classList.toggle('text-white', active);
+      b.classList.toggle('border-accent', active);
+      b.classList.toggle('border-border', !active);
+      b.classList.toggle('text-fg-secondary', !active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    cards.forEach((card) => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('hidden', !show);
+    });
+  });
+</script>

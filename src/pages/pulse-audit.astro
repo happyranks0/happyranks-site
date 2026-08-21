@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PulseScore from '../components/PulseScore.astro';
+import PulseAuditForm from '../components/PulseAuditForm.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -18,7 +19,7 @@ const serviceSchema = {
   serviceType: 'Free Marketing Audit',
   provider: { '@type': 'Organization', name: 'Happyranks' },
   areaServed: ['US', 'GB', 'AE', 'IN'],
-  description: 'Free 90-second PULSE audit scoring websites across 5 dimensions and 50+ checks. Delivers a 10-page PDF report with prioritized fixes and a 90-day action plan.',
+  description: 'Free 90-second PULSE audit scoring websites across 5 dimensions and 50+ checks.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 
@@ -36,11 +37,10 @@ const reportSections = [
 
 <Layout
   title="Free PULSE Audit — Score your website in 90 seconds"
-  description="Get a free PULSE audit across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. 50+ checks, real numbers, real recommendations, no call required."
+  description="Get a free PULSE audit across Presence, Understanding, Lead capture, Sales follow-up, and Evaluation. 50+ checks, real numbers, no call required."
   active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
-  <!-- Hero + form -->
   <section class="hero-canvas min-h-0 pb-16">
     <div class="wrap">
       <div class="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-16 items-start pt-4">
@@ -59,41 +59,12 @@ const reportSections = [
         </div>
 
         <div class="glass rounded-2xl p-6 lg:p-8 lg:sticky lg:top-24 z-10" id="pulse-form-panel">
-          <p class="kicker mb-2">Run audit</p>
-          <h2 class="display-md mb-2">Enter URL + email</h2>
-          <p class="body-sm mb-6">Report lands in your inbox within 2 minutes.</p>
-
-          <form id="pulse-form" class="space-y-4">
-            <div>
-              <label for="url" class="block text-sm font-medium text-ink mb-2">Website URL</label>
-              <input type="url" id="url" name="url" required placeholder="https://yoursite.com" class="input-field" />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-ink mb-2">Email for the report</label>
-              <input type="email" id="email" name="email" required placeholder="you@company.com" class="input-field" />
-            </div>
-            <button type="submit" class="btn btn-primary btn-large w-full justify-center">
-              <i class="ph-bold ph-lightning"></i>
-              Run my free PULSE audit
-            </button>
-            <p class="text-[11px] text-ink-3 text-center leading-relaxed">
-              We may send 2–3 follow-up insights. Unsubscribe anytime.
-            </p>
-          </form>
-
-          <div id="pulse-result" class="hidden mt-6 p-5 rounded-xl bg-ok-bg border border-ok/30">
-            <div class="flex items-center gap-2 text-ok font-semibold mb-2">
-              <i class="ph-bold ph-check-circle"></i>
-              Audit queued
-            </div>
-            <p class="body-sm">Check your inbox in the next 2 minutes.</p>
-          </div>
+          <PulseAuditForm formId="pulse-form" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- How it works -->
   <section class="section-tight border-y border-line bg-canvas-1">
     <div class="wrap">
       <p class="kicker mb-8">Under the hood</p>
@@ -113,7 +84,6 @@ const reportSections = [
     </div>
   </section>
 
-  <!-- Report contents -->
   <section class="section">
     <div class="wrap">
       <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
@@ -141,59 +111,21 @@ const reportSections = [
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="section-tight bg-canvas-1 border-t border-line">
     <div class="wrap max-w-3xl">
       <p class="kicker mb-3 text-center">FAQ</p>
       <h2 class="display-lg mb-10 text-center">Common questions</h2>
       <div class="space-y-3">
-        {[
-          { q: 'Is this really free?', a: 'Yes. No credit card. No trial that converts to paid. We make money when you hire us to fix what the audit finds.' },
-          { q: 'How long does it take?', a: '90 seconds to run. PDF emailed within 2 minutes.' },
-          { q: 'Will I get spammed?', a: 'No. Up to 3 follow-up emails with insights. Unsubscribe anytime.' },
-          { q: 'How accurate is the score?', a: '50+ measurable signals — defensible, not opinion. Re-run quarterly to track progress.' },
-          { q: 'Can agencies use this?', a: 'Yes. White-label for clients. Do not resell the report itself.' },
-        ].map((f) => (
+        {faqSchema.mainEntity.map((f) => (
           <details class="panel panel-pad group">
             <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-ink">
-              {f.q}
+              {f.name}
               <i class="ph-bold ph-plus text-accent transition-transform group-open:rotate-45"></i>
             </summary>
-            <p class="mt-4 body-sm">{f.a}</p>
+            <p class="mt-4 body-sm">{f.acceptedAnswer.text}</p>
           </details>
         ))}
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  const form = document.getElementById('pulse-form') as HTMLFormElement | null;
-  const result = document.getElementById('pulse-result');
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const url = formData.get('url') as string;
-    const email = formData.get('email') as string;
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="ph-bold ph-circle-notch"></i> Running...';
-    btn.disabled = true;
-    try {
-      const apiBase = (window as any).PULSE_API_URL || (window as any).VITAL_API_URL || 'https://vital.gohappyranks.com';
-      const resp = await fetch(`${apiBase}/api/vital/scan`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url, email }),
-      });
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      form.classList.add('hidden');
-      result?.classList.remove('hidden');
-    } catch (err) {
-      btn.innerHTML = original;
-      btn.disabled = false;
-      alert('Audit failed. Please try again or email hello@happyranks.com');
-      console.error(err);
-    }
-  });
-</script>

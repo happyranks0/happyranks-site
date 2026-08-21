@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PulseScore from '../components/PulseScore.astro';
+import PulseAuditForm from '../components/PulseAuditForm.astro';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -12,13 +13,27 @@ const faqSchema = {
   ],
 };
 
+const faqItems = faqSchema.mainEntity.map((item) => ({
+  q: item.name,
+  a: item.acceptedAnswer.text,
+}));
+
+const personSchema = {
+  '@type': 'Person',
+  name: 'Sanjeev',
+  jobTitle: 'Founder & Senior Marketing Strategist',
+  worksFor: { '@type': 'Organization', name: 'Happyranks' },
+  url: 'https://happyranks.com/about',
+  sameAs: ['https://www.linkedin.com/in/sanjeev/'],
+};
+
 const marqueeItems = [
-  { stat: '312+', label: 'audits this month' },
-  { stat: '50+', label: 'checks per site' },
+  { stat: '50+', label: 'checks per audit' },
   { stat: '90s', label: 'to first score' },
+  { stat: '5', label: 'PULSE dimensions' },
   { stat: '4', label: 'continents' },
-  { stat: 'PULSE', label: 'framework' },
   { stat: '2 min', label: 'PDF delivery' },
+  { stat: '30-day', label: 'money-back guarantee' },
 ];
 
 const pulseDimensions = [
@@ -30,36 +45,18 @@ const pulseDimensions = [
 ];
 
 const systems = [
-  {
-    title: 'Presence engine',
-    desc: 'Technical SEO + GEO so AI search and Google cite you for the queries that bring revenue.',
-    span: 'bento-a',
-    icon: 'ph-radar',
-  },
-  {
-    title: 'Conversion layer',
-    desc: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.',
-    span: 'bento-b',
-    icon: 'ph-cursor-click',
-  },
-  {
-    title: 'Nurture stack',
-    desc: 'Email sequences, CRM routing, retargeting pixels — wired to sales handoff.',
-    span: 'bento-c',
-    icon: 'ph-envelope-simple',
-  },
-  {
-    title: 'Measurement core',
-    desc: 'GA4, server-side tracking, attribution models — know where every dollar came from.',
-    span: 'bento-d',
-    icon: 'ph-chart-line-up',
-  },
-  {
-    title: 'Iteration loop',
-    desc: 'Weekly reports, A/B tests, quarterly re-scores — the system improves itself.',
-    span: 'bento-e',
-    icon: 'ph-arrows-clockwise',
-  },
+  { title: 'Presence engine', desc: 'Technical SEO + GEO so AI search and Google cite you for the queries that bring revenue.', span: 'bento-a', icon: 'ph-radar' },
+  { title: 'Conversion layer', desc: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.', span: 'bento-b', icon: 'ph-cursor-click' },
+  { title: 'Nurture stack', desc: 'Email sequences, CRM routing, retargeting pixels — wired to sales handoff.', span: 'bento-c', icon: 'ph-envelope-simple' },
+  { title: 'Measurement core', desc: 'GA4, server-side tracking, attribution models — know where every dollar came from.', span: 'bento-d', icon: 'ph-chart-line-up' },
+  { title: 'Iteration loop', desc: 'Weekly reports, A/B tests, quarterly re-scores — the system improves itself.', span: 'bento-e', icon: 'ph-arrows-clockwise' },
+];
+
+const clientLogos = [
+  { name: 'Tutti Rouge', src: '/logos/tutti-rouge.svg', width: 100 },
+  { name: 'Lotus Mahal', src: '/logos/lotus-mahal.svg', width: 110 },
+  { name: 'THINK', src: '/logos/think.svg', width: 72 },
+  { name: 'Viruksha', src: '/logos/viruksha.svg', width: 100 },
 ];
 ---
 
@@ -67,9 +64,8 @@ const systems = [
   title="Happyranks — Marketing systems that grow revenue"
   description="A marketing system for businesses that want measurable revenue growth, not just traffic. Built around the PULSE framework. Free 90-second audit."
   active=""
-  schema={faqSchema}
+  schema={[faqSchema, personSchema]}
 >
-  <!-- Hero -->
   <section class="hero-canvas">
     <div class="wrap hero-grid pb-16 lg:pb-24">
       <div class="relative z-10">
@@ -82,7 +78,7 @@ const systems = [
           We score your site across five dimensions that actually drive revenue — then build the system to lift the score. No vanity metrics. No guesswork.
         </p>
         <div class="flex flex-wrap items-center gap-3 mb-10">
-          <a href="/pulse-audit" class="btn btn-primary btn-large">
+          <a href="#run-audit" class="btn btn-primary btn-large">
             Get my free PULSE audit
             <i class="ph-bold ph-lightning"></i>
           </a>
@@ -112,7 +108,6 @@ const systems = [
     </div>
   </section>
 
-  <!-- Marquee -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
       {marqueeItems.concat(marqueeItems).map((item) => (
@@ -125,7 +120,32 @@ const systems = [
     </div>
   </div>
 
-  <!-- Problem -->
+  <section id="run-audit" class="section-tight border-b border-line bg-canvas-1">
+    <div class="wrap">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="kicker mb-3">Run it now</p>
+          <h2 class="display-lg mb-4">Free audit — no extra click.</h2>
+          <p class="lead">Enter your URL and email. Your scored PDF lands in ~2 minutes.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 lg:p-8">
+          <PulseAuditForm formId="home-audit-form" showTitle={false} compact={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight border-b border-line">
+    <div class="wrap">
+      <p class="kicker text-center mb-6">Trusted by growth-focused teams</p>
+      <div class="flex flex-wrap items-center justify-center gap-10 gap-y-6 opacity-80">
+        {clientLogos.map((logo) => (
+          <img src={logo.src} alt={logo.name} width={logo.width} height={32} class="h-8 w-auto" loading="lazy" />
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end">
@@ -145,7 +165,6 @@ const systems = [
     </div>
   </section>
 
-  <!-- PULSE bento -->
   <section class="section-tight bg-canvas-1 border-y border-line">
     <div class="wrap">
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
@@ -180,7 +199,7 @@ const systems = [
       </div>
 
       <div class="mt-8">
-        <a href="/pulse-audit" class="btn btn-text">
+        <a href="#run-audit" class="btn btn-text">
           Run a free audit
           <i class="ph-bold ph-arrow-right text-accent"></i>
         </a>
@@ -188,7 +207,6 @@ const systems = [
     </div>
   </section>
 
-  <!-- Systems bento -->
   <section class="section">
     <div class="wrap">
       <div class="mb-12 max-w-2xl">
@@ -218,7 +236,6 @@ const systems = [
     </div>
   </section>
 
-  <!-- Process timeline -->
   <section class="section-tight bg-canvas-1 border-y border-line">
     <div class="wrap">
       <div class="mb-10">
@@ -242,7 +259,6 @@ const systems = [
     </div>
   </section>
 
-  <!-- Featured case study -->
   <section class="section">
     <div class="wrap">
       <div class="panel overflow-hidden">
@@ -271,10 +287,11 @@ const systems = [
             </a>
           </div>
           <div class="relative min-h-[280px] lg:min-h-full bg-canvas-3 flex items-center justify-center p-8 border-t lg:border-t-0 lg:border-l border-line">
-            <div class="text-center">
+            <img src="/images/tutti-rouge.jpg" alt="Tutti Rouge fashion resale" class="absolute inset-0 w-full h-full object-cover opacity-40" width="900" height="675" loading="lazy" />
+            <div class="text-center relative z-10">
               <p class="kicker mb-3">Fashion resale · UK</p>
-              <p class="display-md text-ink-2 max-w-xs mx-auto">
-                From invisible to market leader in UK fashion resale — GEO, conversion, attribution.
+              <p class="display-md text-ink max-w-xs mx-auto">
+                From invisible to market leader — GEO, conversion, attribution.
               </p>
             </div>
           </div>
@@ -291,14 +308,32 @@ const systems = [
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-cta">
-    <div class="wrap text-center max-w-2xl mx-auto">
+  <section class="section-tight bg-canvas-1 border-y border-line">
+    <div class="wrap max-w-3xl mx-auto">
+      <p class="kicker text-center mb-3">FAQ</p>
+      <h2 class="display-lg text-center mb-10">Common questions</h2>
+      <div class="space-y-3">
+        {faqItems.map((f) => (
+          <details class="panel panel-pad group">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-ink">
+              {f.q}
+              <i class="ph-bold ph-plus text-accent transition-transform group-open:rotate-45"></i>
+            </summary>
+            <p class="mt-4 body-sm">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cta relative overflow-hidden">
+    <div class="orb-red top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="wrap text-center max-w-2xl mx-auto relative z-10">
       <h2 class="display-lg mb-4">See what your site is leaking.</h2>
       <p class="lead mb-8">
         Free PULSE audit. 90 seconds. Real numbers — no sales call required.
       </p>
-      <a href="/pulse-audit" class="btn btn-primary btn-large">
+      <a href="#run-audit" class="btn btn-primary btn-large">
         Get my free PULSE audit
         <i class="ph-bold ph-lightning"></i>
       </a>
