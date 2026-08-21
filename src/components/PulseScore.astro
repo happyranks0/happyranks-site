@@ -8,24 +8,31 @@ const dimensions = [
 ];
 ---
 
-<div class="scorecard" aria-label="Sample PULSE score">
+<div class="scorecard">
+  <div class="scorecard-topbar">
+    <span class="flex items-center gap-2">
+      <span class="scorecard-topbar-dot pulse-dot"></span>
+      pulse.happyranks.com
+    </span>
+    <span class="mono">live scan</span>
+  </div>
   <div class="scorecard-header">
     <div>
-      <p class="kicker mb-2">Sample report</p>
+      <p class="kicker-muted mb-2 mono text-[11px]">PULSE SCORE</p>
       <div class="scorecard-total">62<span>/100</span></div>
     </div>
     <div class="scorecard-meta">
       <span>Est. revenue lift</span>
       <strong>+2.4×</strong>
-      <span>if fixes ship in 90 days</span>
+      <span>90-day fixes</span>
     </div>
   </div>
-  <div class="scorecard-rows">
+  <div>
     {dimensions.map((d) => (
       <div class="scorecard-row">
         <span class="scorecard-letter">{d.l}</span>
         <div>
-          <div class="text-sm font-medium text-ink mb-2">{d.name}</div>
+          <div class="text-ink-2 mb-1.5 truncate">{d.name}</div>
           <div class="scorecard-bar">
             <div class="scorecard-bar-fill" style={`width: ${d.s}%`}></div>
           </div>

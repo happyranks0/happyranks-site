@@ -6,7 +6,7 @@ import PulseAuditForm from '../components/PulseAuditForm.astro';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial. No catch.' } },
+    { '@type': 'Question', name: 'Is the PULSE audit really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. No credit card. No trial.' } },
     { '@type': 'Question', name: 'How long does the audit take?', acceptedAnswer: { '@type': 'Answer', text: '90 seconds to run. PDF emailed within 2 minutes.' } },
     { '@type': 'Question', name: 'How accurate is the PULSE score?', acceptedAnswer: { '@type': 'Answer', text: 'Based on 50+ measurable signals, not opinions.' } },
   ],
@@ -18,12 +18,6 @@ const serviceSchema = {
   provider: { '@type': 'Organization', name: 'Happyranks' },
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
-
-const reportSections = [
-  { p: '01', title: 'Executive summary', desc: 'Overall score, top fixes, estimated revenue lift.' },
-  { p: '02', title: 'Dimension deep-dives', desc: 'Presence, Understanding, Lead capture, Follow-up, Evaluation.' },
-  { p: '03', title: 'SWOT + 90-day plan', desc: 'Prioritized fixes with effort and impact estimates.' },
-];
 ---
 
 <Layout
@@ -32,75 +26,64 @@ const reportSections = [
   active="/pulse-audit"
   schema={[faqSchema, serviceSchema]}
 >
-  <section class="masthead">
-    <div class="wrap masthead-grid">
-      <div>
-        <p class="kicker mb-5">Free · 90 seconds</p>
-        <h1 class="display-hero mb-6">
-          Score your site<br />
-          <em class="serif not-italic text-accent">in 90 seconds.</em>
-        </h1>
-        <p class="lead max-w-md mb-8">
-          Five dimensions. Fifty-plus checks. A real PDF with prioritized fixes — emailed in 2 minutes.
-        </p>
-      </div>
-      <PulseScore />
-    </div>
-  </section>
-
-  <section class="band-ink section-tight" id="pulse-form-panel">
-    <div class="wrap max-w-lg mx-auto">
-      <div class="panel panel-pad-lg band-ink-form">
-        <PulseAuditForm formId="pulse-form" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight section-band">
+  <section class="cf-hero min-h-0 py-28 lg:py-32">
     <div class="wrap">
-      <p class="kicker mb-8">What you get</p>
-      <div class="grid md:grid-cols-3 gap-8">
-        {reportSections.map((r) => (
-          <div>
-            <p class="mono text-sm text-accent mb-2">{r.p}</p>
-            <h3 class="text-lg font-semibold text-ink mb-2">{r.title}</h3>
-            <p class="body-sm">{r.desc}</p>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div class="relative z-10">
+          <div class="eyebrow-pill mb-6">Free · 90 seconds · No call required</div>
+          <h1 class="display-hero mb-6">
+            Score your site<br />
+            <span class="text-gradient-brand">in 90 seconds.</span>
+          </h1>
+          <p class="lead max-w-lg mb-8">
+            Five dimensions. Fifty-plus checks. A 10-page PDF with prioritized fixes — delivered to your inbox in 2 minutes.
+          </p>
+        </div>
+        <div class="relative z-10 lg:sticky lg:top-24">
+          <div class="audit-panel mb-6" id="pulse-form-panel">
+            <PulseAuditForm formId="pulse-form" />
+          </div>
+          <div class="hidden lg:block">
+            <PulseScore />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="wrap">
+      <p class="kicker mb-8">Under the hood</p>
+      <div class="timeline">
+        {[
+          { n: '01', t: 'Submit URL', d: 'Homepage URL and email. That is all we need.' },
+          { n: '02', t: 'Engine crawls', d: 'HTML, meta, schema, scripts — 50+ measurable signals.' },
+          { n: '03', t: 'Score & report', d: 'Weighted rubric across 5 dimensions. PDF with 90-day plan.' },
+        ].map((s) => (
+          <div class="timeline-step">
+            <p class="timeline-step-num">{s.n}</p>
+            <h3 class="display-md mb-2">{s.t}</h3>
+            <p class="body-sm-muted">{s.d}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section-tight">
+  <section class="section">
     <div class="wrap max-w-3xl">
       <h2 class="display-lg text-center mb-10">Questions</h2>
-      <div class="border-t border-line">
+      <div class="space-y-3">
         {faqSchema.mainEntity.map((f) => (
-          <details class="group border-b border-line py-5">
-            <summary class="flex justify-between cursor-pointer list-none font-medium text-ink">
+          <details class="card group">
+            <summary class="flex justify-between cursor-pointer list-none font-semibold text-ink p-5">
               {f.name}
               <i class="ph-bold ph-plus text-accent group-open:rotate-45 transition-transform"></i>
             </summary>
-            <p class="mt-4 body-sm">{f.acceptedAnswer.text}</p>
+            <p class="px-5 pb-5 body-sm-muted border-t border-line pt-4">{f.acceptedAnswer.text}</p>
           </details>
         ))}
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .band-ink-form {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.12);
-  }
-  .band-ink-form .btn-primary {
-    background: var(--color-ink-band-fg);
-    color: var(--color-ink);
-  }
-  .band-ink-form .btn-primary:hover {
-    background: var(--color-accent-soft);
-    color: #fff;
-  }
-  .band-ink-form .text-ink-3 { color: var(--color-ink-band-muted); }
-</style>

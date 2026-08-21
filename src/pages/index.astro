@@ -19,11 +19,20 @@ const faqItems = faqSchema.mainEntity.map((item) => ({
 }));
 
 const pulseDimensions = [
-  { n: 'I', letter: 'P', name: 'Presence', q: 'Can the right people find you?', d: 'Google, ChatGPT, Perplexity — visibility engineered for buyer queries, not vanity traffic.' },
-  { n: 'II', letter: 'U', name: 'Understanding', q: 'Do they get what you do?', d: 'Hero clarity, speed, design hierarchy — a first impression that earns the scroll.' },
-  { n: 'III', letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?', d: 'Forms, booking flows, and CTAs rebuilt to convert — not decorate.' },
-  { n: 'IV', letter: 'S', name: 'Sales follow-up', q: 'What happens after?', d: 'CRM, nurture sequences, retargeting — no enquiry left behind.' },
-  { n: 'V', letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?', d: 'Attribution, dashboards, experiments — a closed loop from spend to revenue.' },
+  { letter: 'P', name: 'Presence', q: 'Can the right people find you?' },
+  { letter: 'U', name: 'Understanding', q: 'Do they get what you do?' },
+  { letter: 'L', name: 'Lead capture', q: 'Can they enquire easily?' },
+  { letter: 'S', name: 'Sales follow-up', q: 'What happens after?' },
+  { letter: 'E', name: 'Evaluation', q: 'Do you measure and improve?' },
+];
+
+const features = [
+  { icon: 'ph-radar', title: 'Presence + GEO', desc: 'Technical SEO and AI-search optimization — show up in Google, ChatGPT, and Perplexity for buyer queries.' },
+  { icon: 'ph-cursor-click', title: 'Conversion systems', desc: 'Landing pages, forms, and booking flows rebuilt for enquiry — not decoration.' },
+  { icon: 'ph-envelope-simple', title: 'Nurture + CRM', desc: 'Email sequences, lead routing, retargeting — wired from first visit to sales handoff.' },
+  { icon: 'ph-chart-line-up', title: 'Measurement', desc: 'GA4, server-side tracking, attribution models — know where every dollar came from.' },
+  { icon: 'ph-arrows-clockwise', title: 'Iteration loop', desc: 'Weekly reports, A/B tests, quarterly re-scores — the system compounds over time.' },
+  { icon: 'ph-shield-check', title: '90-day guarantee', desc: 'Money-back if we are not delivering value in the first 30 days. No friction.' },
 ];
 
 const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gardens'];
@@ -35,52 +44,83 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   active=""
   schema={faqSchema}
 >
-  <!-- Masthead -->
-  <section class="masthead">
-    <div class="wrap masthead-grid">
+  <!-- Hero -->
+  <section class="cf-hero">
+    <div class="wrap cf-hero-grid">
       <div>
-        <p class="kicker mb-5">Free PULSE audit · 90 seconds</p>
+        <div class="eyebrow-pill mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span>
+          Free PULSE audit · 90 seconds
+        </div>
         <h1 class="display-hero mb-6">
-          Marketing that<br />
-          <em class="serif not-italic">prints money.</em>
+          Connect, measure, and grow<br />
+          <span class="text-gradient-brand">your revenue stack.</span>
         </h1>
-        <p class="lead max-w-md mb-8">
-          We score your site on five dimensions that drive revenue — then build the system to lift the score. Numbers you can defend. Work you can measure.
+        <p class="lead max-w-lg mb-8">
+          Happyranks scores your marketing across five dimensions that actually drive revenue — then builds the system to lift the score. Infrastructure-grade measurement for growth teams.
         </p>
         <div class="flex flex-wrap gap-3 mb-8">
-          <a href="#audit" class="btn btn-primary btn-large">Get my free audit</a>
-          <a href="/work" class="btn btn-ghost btn-large">Case studies</a>
+          <a href="#audit" class="btn btn-primary btn-large">
+            Get my free PULSE audit
+            <i class="ph-bold ph-lightning"></i>
+          </a>
+          <a href="/work" class="btn btn-ghost btn-large">View case studies</a>
         </div>
-        <p class="text-sm text-ink-3 mono">No contract · PDF in 2 min · 30-day guarantee</p>
+        <p class="text-sm text-ink-3">No contract · PDF in 2 minutes · 30-day guarantee</p>
       </div>
-      <div class="lg:pt-4">
+      <div class="hidden lg:block">
         <PulseScore />
       </div>
     </div>
   </section>
 
-  <!-- Ink band: inline audit -->
-  <section id="audit" class="band-ink section-tight">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div>
-          <p class="kicker mb-4">Run it now</p>
-          <h2 class="display-lg mb-4">Your score in two minutes.</h2>
-          <p class="lead">URL and email. A 10-page PDF with prioritized fixes — no sales call, no credit card.</p>
-        </div>
-        <div class="panel panel-pad-lg band-ink-form">
-          <PulseAuditForm formId="home-audit-form" showTitle={false} compact={true} />
-        </div>
+  <!-- Stats -->
+  <div class="stats-strip">
+    {[
+      { v: '50+', l: 'checks per audit' },
+      { v: '90s', l: 'to first score' },
+      { v: '5', l: 'PULSE dimensions' },
+      { v: '2 min', l: 'PDF delivery' },
+    ].map((s) => (
+      <div class="stats-strip-item">
+        <div class="stats-strip-value">{s.v}</div>
+        <div class="stats-strip-label">{s.l}</div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Clients -->
+  <section class="section-tight border-b border-line">
+    <div class="wrap text-center">
+      <p class="kicker-muted mb-5">Trusted by growth-focused teams</p>
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-medium text-ink-3">
+        {clients.map((c) => <span>{c}</span>)}
       </div>
     </div>
   </section>
 
-  <!-- Clients -->
-  <section class="section-tight border-b border-line">
+  <!-- Inline audit -->
+  <section id="audit" class="section section-band">
     <div class="wrap">
-      <p class="kicker text-center mb-6">Selected clients</p>
-      <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm font-medium text-ink-3 tracking-wide">
-        {clients.map((c) => <span>{c}</span>)}
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="kicker mb-4">Run a scan</p>
+          <h2 class="display-lg mb-4">Score your site in 90 seconds.</h2>
+          <p class="lead mb-6">
+            Enter your URL and email. Our engine runs 50+ checks across five dimensions and emails a 10-page PDF with prioritized fixes.
+          </p>
+          <ul class="space-y-3 text-sm text-ink-2">
+            {['No credit card', 'No sales call', 'Real numbers, not opinions'].map((t) => (
+              <li class="flex items-center gap-2">
+                <i class="ph-bold ph-check-circle text-accent"></i>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="audit-panel">
+          <PulseAuditForm formId="home-audit-form" showTitle={false} compact={true} />
+        </div>
       </div>
     </div>
   </section>
@@ -88,50 +128,45 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   <!-- PULSE framework -->
   <section class="section">
     <div class="wrap">
-      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-start mb-4">
-        <div>
-          <p class="kicker mb-4">The framework</p>
-          <h2 class="display-lg">Five questions.<br />One defensible score.</h2>
-        </div>
-        <p class="lead lg:pt-8">
-          PULSE measures whether your marketing makes money — 50+ checks per dimension, scored 0–100, weighted into a single number CEOs can track quarterly.
-        </p>
+      <div class="max-w-2xl mb-12">
+        <p class="kicker mb-3">The PULSE framework</p>
+        <h2 class="display-lg mb-4">Five dimensions. One defensible score.</h2>
+        <p class="lead">Each dimension answers whether your marketing makes money — scored 0–100 from measurable checks, not consultant opinions.</p>
       </div>
-
-      <div class="pulse-list">
+      <div class="pulse-grid">
         {pulseDimensions.map((d) => (
-          <article class="pulse-item">
-            <div class="pulse-item-num">{d.n}</div>
-            <div>
-              <p class="kicker mb-1">{d.name} · {d.letter}</p>
-              <h3 class="display-md">{d.q}</h3>
-            </div>
-            <p class="body-sm lg:pt-2">{d.d}</p>
-          </article>
+          <div class="pulse-card">
+            <div class="pulse-card-letter">{d.letter}</div>
+            <h3 class="font-semibold text-ink mb-2">{d.name}</h3>
+            <p class="body-sm-muted text-sm">{d.q}</p>
+          </div>
         ))}
       </div>
-
-      <div class="mt-10">
-        <a href="/capabilities" class="btn btn-ghost">Full capabilities <i class="ph-bold ph-arrow-right"></i></a>
+      <div class="mt-8">
+        <a href="/capabilities" class="btn btn-ghost">
+          Explore all capabilities
+          <i class="ph-bold ph-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- What we build -->
-  <section class="section-tight section-band">
+  <!-- Platform features -->
+  <section class="section section-band">
     <div class="wrap">
-      <p class="kicker mb-4">What we build</p>
-      <h2 class="display-lg mb-12 max-w-2xl">The full stack — findability, conversion, nurture, measurement.</h2>
-
-      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
-        {[
-          { t: 'Presence + GEO', d: 'Technical SEO and AI-search optimization so the right buyers find you in Google and ChatGPT.' },
-          { t: 'Conversion systems', d: 'Landing pages, forms, and booking flows engineered for enquiry — not awards.' },
-          { t: 'Measurement loop', d: 'GA4, attribution, weekly reporting, quarterly re-scores — the system improves itself.' },
-        ].map((item) => (
-          <div>
-            <h3 class="text-lg font-semibold text-ink mb-3">{item.t}</h3>
-            <p class="body-sm">{item.d}</p>
+      <div class="max-w-2xl mb-12">
+        <p class="kicker mb-3">What we build</p>
+        <h2 class="display-lg mb-4">The full marketing stack — deployed and measured.</h2>
+        <p class="lead">From findability to follow-up to attribution. One team, one score, one roadmap.</p>
+      </div>
+      <div class="feature-grid">
+        {features.map((f) => (
+          <div class="feature-card">
+            <div class="feature-icon mb-4">
+              <i class={`ph-bold ${f.icon}`}></i>
+            </div>
+            <h3 class="font-semibold text-ink mb-2">{f.title}</h3>
+            <p class="body-sm-muted">{f.desc}</p>
           </div>
         ))}
       </div>
@@ -141,18 +176,18 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   <!-- Process -->
   <section class="section">
     <div class="wrap">
-      <p class="kicker mb-4">How it works</p>
-      <h2 class="display-lg mb-10">Audit → plan → lift in 90 days.</h2>
+      <p class="kicker mb-3">How it works</p>
+      <h2 class="display-lg mb-10">Audit → plan → measurable lift in 90 days.</h2>
       <div class="timeline">
         {[
           { n: '01', t: 'Free PULSE audit', d: 'URL + email. Scored PDF in your inbox within 2 minutes.' },
-          { n: '02', t: 'Strategy call', d: 'Prioritize fixes by revenue impact. Agree a 90-day roadmap.' },
+          { n: '02', t: 'Strategy call', d: 'Prioritize fixes by revenue impact. Agree a 90-day plan.' },
           { n: '03', t: 'Build & measure', d: 'We ship the work. Weekly numbers. Re-score at day 90.' },
         ].map((s) => (
           <div class="timeline-step">
             <p class="timeline-step-num">{s.n}</p>
             <h3 class="display-md mb-3">{s.t}</h3>
-            <p class="body-sm">{s.d}</p>
+            <p class="body-sm-muted">{s.d}</p>
           </div>
         ))}
       </div>
@@ -160,13 +195,14 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   </section>
 
   <!-- Case study -->
-  <section class="band-ink section">
-    <div class="wrap">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <section class="section section-band relative overflow-hidden">
+    <div class="orb-red top-0"></div>
+    <div class="wrap relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <p class="kicker mb-4">Case study</p>
           <h2 class="display-lg mb-2">Tutti Rouge</h2>
-          <p class="lead mb-8">PULSE 42 → 78 in 90 days. UK fashion resale — from invisible to cited in AI search.</p>
+          <p class="text-accent font-semibold mb-6 mono">PULSE 42 → 78 · 90 days</p>
           <div class="grid grid-cols-3 gap-6 mb-8">
             {[
               { v: '+187%', l: 'traffic' },
@@ -174,35 +210,36 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
               { v: '£2.1M', l: 'pipeline' },
             ].map((m) => (
               <div>
-                <div class="stat-tile-value text-[var(--color-ink-band-fg)]">{m.v}</div>
-                <div class="stat-tile-label text-[var(--color-ink-band-muted)]">{m.l}</div>
+                <div class="stat-tile-value">{m.v}</div>
+                <div class="stat-tile-label">{m.l}</div>
               </div>
             ))}
           </div>
-          <a href="/work/tutti-rouge" class="btn btn-ghost border-[rgba(255,255,255,0.2)] text-[var(--color-ink-band-fg)] hover:bg-white/10">
-            Read case study <i class="ph-bold ph-arrow-up-right"></i>
+          <a href="/work/tutti-rouge" class="btn btn-primary">
+            Read case study
+            <i class="ph-bold ph-arrow-up-right"></i>
           </a>
         </div>
-        <div class="relative aspect-[4/3] rounded-sm overflow-hidden border border-white/10">
-          <img src="/images/tutti-rouge.jpg" alt="Tutti Rouge" class="absolute inset-0 w-full h-full object-cover" width="900" height="675" loading="lazy" />
+        <div class="rounded-xl overflow-hidden border border-line aspect-[4/3]">
+          <img src="/images/tutti-rouge.jpg" alt="Tutti Rouge" class="w-full h-full object-cover" width="900" height="675" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section-tight">
+  <section class="section">
     <div class="wrap max-w-3xl">
       <p class="kicker text-center mb-3">FAQ</p>
       <h2 class="display-lg text-center mb-10">Common questions</h2>
-      <div class="space-y-0 border-t border-line">
+      <div class="space-y-3">
         {faqItems.map((f) => (
-          <details class="group border-b border-line py-5">
-            <summary class="flex items-center justify-between cursor-pointer list-none font-medium text-ink text-lg">
+          <details class="card group">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-semibold text-ink p-5">
               {f.q}
               <i class="ph-bold ph-plus text-accent transition-transform group-open:rotate-45 shrink-0 ml-4"></i>
             </summary>
-            <p class="mt-4 body-sm pr-8">{f.a}</p>
+            <p class="px-5 pb-5 body-sm-muted border-t border-line pt-4">{f.a}</p>
           </details>
         ))}
       </div>
@@ -210,30 +247,15 @@ const clients = ['Tutti Rouge', 'Lotus Mahal', 'Think Accounting', 'Viruksha Gar
   </section>
 
   <!-- CTA -->
-  <section class="section-tight band-ink">
-    <div class="wrap text-center max-w-xl mx-auto">
+  <section class="section section-cta relative overflow-hidden">
+    <div class="orb-red top-0"></div>
+    <div class="wrap text-center max-w-2xl mx-auto relative z-10">
       <h2 class="display-lg mb-4">See what your site is leaking.</h2>
       <p class="lead mb-8">Free PULSE audit. Real numbers. No sales call required.</p>
-      <a href="#audit" class="btn btn-accent btn-large">Get my free audit</a>
+      <a href="#audit" class="btn btn-primary btn-large">
+        Get my free PULSE audit
+        <i class="ph-bold ph-lightning"></i>
+      </a>
     </div>
   </section>
 </Layout>
-
-<style>
-  .band-ink-form {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: none;
-  }
-  .band-ink-form .btn-primary {
-    background: var(--color-ink-band-fg);
-    color: var(--color-ink);
-    border-color: var(--color-ink-band-fg);
-  }
-  .band-ink-form .btn-primary:hover {
-    background: var(--color-accent-soft);
-    border-color: var(--color-accent-soft);
-    color: #fff;
-  }
-  .band-ink-form .text-ink-3 { color: var(--color-ink-band-muted); }
-</style>
